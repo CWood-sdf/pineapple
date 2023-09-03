@@ -29,7 +29,21 @@ M.setup = function(opts)
         end
     end
     vim.api.nvim_create_user_command("Themer", function(opts)
+        local lines = {}
+        for k, v in pairs(values) do
+            lines[k] = v.name
+        end
         local buf = vim.api.nvim_create_buf(false, true)
+        vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+        vim.api.nvim_open_win(buf, true, {
+            relative = "win",
+            width = 80,
+            height = 20,
+            row = 10,
+            col = 10,
+            style = "minimal",
+            bufpos = { 100, 100 },
+        })
     end, {
     })
 end
