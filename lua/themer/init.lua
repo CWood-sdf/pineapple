@@ -25,7 +25,6 @@ M.setup = function(opts)
     for k, v in pairs(values) do
         if values[k].name == "vim" or values[k].name == "neovim" or values[k].name == "nvim" then
             values[k].name = split(values[k].githubUrl, "/")[1]
-            print(values[k].name)
         end
     end
     vim.api.nvim_create_user_command("Themer", function(opts)
@@ -35,14 +34,18 @@ M.setup = function(opts)
         end
         local buf = vim.api.nvim_create_buf(false, true)
         vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+        local width = vim.o.columns - 10
+        local height = vim.o.lines - 10
+        local offsetX = 5
+        local offsetY = 5
         vim.api.nvim_open_win(buf, true, {
             relative = "win",
-            width = 80,
-            height = 20,
+            width = width,
+            height = height,
             row = 10,
             col = 10,
-            style = "minimal",
-            bufpos = { 100, 100 },
+            style = "",
+            bufpos = { offsetX, offsetY },
         })
     end, {
     })
