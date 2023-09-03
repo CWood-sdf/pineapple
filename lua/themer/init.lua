@@ -1,7 +1,8 @@
 local M = {}
 
-M.setup = function()
-    print "yo"
+local values = nil
+M.setup = function(opts)
+    values = require("themer.data")
 end
 
 return M
