@@ -2,7 +2,7 @@ return {
     {
         id = 358671583,
         name = "tokyonight.nvim",
-        githubUrl = "https://github.com/folke/tokyonight.nvim",
+        githubUrl = "folke/tokyonight.nvim",
         isLua = true,
         isVim = false,
         description =
@@ -19,7 +19,7 @@ return {
     {
         id = 44947263,
         name = "onedark.vim",
-        githubUrl = "https://github.com/joshdick/onedark.vim",
+        githubUrl = "joshdick/onedark.vim",
         isLua = false,
         isVim = true,
         description = "A dark Vim/Neovim color scheme inspired by Atom's One Dark syntax theme.",
@@ -35,7 +35,7 @@ return {
     {
         id = 397434315,
         name = "nvim",
-        githubUrl = "https://github.com/catppuccin/nvim",
+        githubUrl = "catppuccin/nvim",
         isLua = true,
         isVim = false,
         description = "🍨 Soothing pastel theme for (Neo)vim",
@@ -66,7 +66,7 @@ return {
     {
         id = 29762329,
         name = "papercolor-theme",
-        githubUrl = "https://github.com/NLKNguyen/papercolor-theme",
+        githubUrl = "NLKNguyen/papercolor-theme",
         isLua = false,
         isVim = true,
         description = "🎨 Light & Dark Vim color schemes inspired by Google's Material Design",
@@ -83,7 +83,7 @@ return {
     {
         id = 74609695,
         name = "vim",
-        githubUrl = "https://github.com/nordtheme/vim",
+        githubUrl = "nordtheme/vim",
         isLua = false,
         isVim = true,
         description = "An arctic, north-bluish clean and elegant Vim theme.",
@@ -99,7 +99,7 @@ return {
     {
         id = 387936184,
         name = "nightfox.nvim",
-        githubUrl = "https://github.com/EdenEast/nightfox.nvim",
+        githubUrl = "EdenEast/nightfox.nvim",
         isLua = true,
         isVim = false,
         description =
@@ -145,7 +145,7 @@ return {
     {
         id = 173537943,
         name = "everforest",
-        githubUrl = "https://github.com/sainnhe/everforest",
+        githubUrl = "sainnhe/everforest",
         isLua = true,
         isVim = false,
         description = "🌲 Comfortable & Pleasant Color Scheme for Vim",
@@ -162,7 +162,7 @@ return {
     {
         id = 15625247,
         name = "iceberg.vim",
-        githubUrl = "https://github.com/cocopon/iceberg.vim",
+        githubUrl = "cocopon/iceberg.vim",
         isLua = false,
         isVim = true,
         description = "🇦🇶 Bluish color scheme for Vim and Neovim",
@@ -175,7 +175,7 @@ return {
     {
         id = 71132308,
         name = "ayu-vim",
-        githubUrl = "https://github.com/ayu-theme/ayu-vim",
+        githubUrl = "ayu-theme/ayu-vim",
         isLua = false,
         isVim = true,
         description = "Modern theme for modern VIMs",
@@ -191,7 +191,7 @@ return {
     {
         id = 197986666,
         name = "gruvbox-material",
-        githubUrl = "https://github.com/sainnhe/gruvbox-material",
+        githubUrl = "sainnhe/gruvbox-material",
         isLua = true,
         isVim = false,
         description = "Gruvbox with Material Palette",
@@ -208,7 +208,7 @@ return {
     {
         id = 2626112,
         name = "vim-monokai",
-        githubUrl = "https://github.com/ku1ik/vim-monokai",
+        githubUrl = "ku1ik/vim-monokai",
         isLua = false,
         isVim = true,
         description = "Monokai color scheme for Vim converted from Textmate theme",
@@ -224,7 +224,7 @@ return {
     {
         id = 240891809,
         name = "sonokai",
-        githubUrl = "https://github.com/sainnhe/sonokai",
+        githubUrl = "sainnhe/sonokai",
         isLua = true,
         isVim = false,
         description = "High Contrast & Vivid Color Scheme based on Monokai Pro",
@@ -241,7 +241,7 @@ return {
     {
         id = 368594631,
         name = "neovim",
-        githubUrl = "https://github.com/rose-pine/neovim",
+        githubUrl = "rose-pine/neovim",
         isLua = true,
         isVim = false,
         description = "Soho vibes for Neovim",
@@ -272,7 +272,7 @@ return {
     {
         id = 59148638,
         name = "vim",
-        githubUrl = "https://github.com/dracula/vim",
+        githubUrl = "dracula/vim",
         isLua = false,
         isVim = true,
         description = "🧛🏻‍♂️ Dark theme for Vim",
@@ -288,7 +288,7 @@ return {
     {
         id = 365824143,
         name = "onedark.nvim",
-        githubUrl = "https://github.com/navarasu/onedark.nvim",
+        githubUrl = "navarasu/onedark.nvim",
         isLua = true,
         isVim = false,
         description =
@@ -306,7 +306,7 @@ return {
     {
         id = 57986522,
         name = "tender.vim",
-        githubUrl = "https://github.com/jacoborus/tender.vim",
+        githubUrl = "jacoborus/tender.vim",
         isLua = false,
         isVim = true,
         description = "A 24bit colorscheme for Vim, Airline and Lightline",
@@ -322,7 +322,7 @@ return {
     {
         id = 106918941,
         name = "neovim-init.vim",
-        githubUrl = "https://github.com/Optixal/neovim-init.vim",
+        githubUrl = "Optixal/neovim-init.vim",
         isLua = true,
         isVim = false,
         description =
@@ -368,7 +368,7 @@ return {
     {
         id = 20751078,
         name = "lucario",
-        githubUrl = "https://github.com/raphamorim/lucario",
+        githubUrl = "raphamorim/lucario",
         isLua = false,
         isVim = true,
         description =
@@ -385,7 +385,7 @@ return {
     {
         id = 199572501,
         name = "edge",
-        githubUrl = "https://github.com/sainnhe/edge",
+        githubUrl = "sainnhe/edge",
         isLua = true,
         isVim = false,
         description = "Clean & Elegant Color Scheme inspired by Atom One and Material",
@@ -402,7 +402,7 @@ return {
     {
         id = 60805462,
         name = "srcery-vim",
-        githubUrl = "https://github.com/srcery-colors/srcery-vim",
+        githubUrl = "srcery-colors/srcery-vim",
         isLua = false,
         isVim = true,
         description = "Dark colorscheme for gvim and vim",
@@ -418,7 +418,7 @@ return {
     {
         id = 137605080,
         name = "spaceduck",
-        githubUrl = "https://github.com/pineapplegiant/spaceduck",
+        githubUrl = "pineapplegiant/spaceduck",
         isLua = false,
         isVim = true,
         description = "🚀 🦆 An intergalactic space theme for Vim, Terminal, and more!",
@@ -434,7 +434,7 @@ return {
     {
         id = 235726708,
         name = "vim-nightfly-colors",
-        githubUrl = "https://github.com/bluz71/vim-nightfly-colors",
+        githubUrl = "bluz71/vim-nightfly-colors",
         isLua = true,
         isVim = false,
         description = "A dark midnight theme for modern Neovim & classic Vim",
@@ -451,7 +451,7 @@ return {
     {
         id = 90825684,
         name = "vim-moonfly-colors",
-        githubUrl = "https://github.com/bluz71/vim-moonfly-colors",
+        githubUrl = "bluz71/vim-moonfly-colors",
         isLua = true,
         isVim = false,
         description = "A dark charcoal theme for modern Neovim & classic Vim",
@@ -468,7 +468,7 @@ return {
     {
         id = 277658686,
         name = "vim",
-        githubUrl = "https://github.com/embark-theme/vim",
+        githubUrl = "embark-theme/vim",
         isLua = false,
         isVim = true,
         description = "An ambitious theme for vim",
@@ -484,7 +484,7 @@ return {
     {
         id = 165318412,
         name = "Cyberpunk-Neon",
-        githubUrl = "https://github.com/Roboron3042/Cyberpunk-Neon",
+        githubUrl = "Roboron3042/Cyberpunk-Neon",
         isLua = false,
         isVim = true,
         description = "Cyberpunk Neon Themes for KDE Plasma, GTK, Telegram, Tilix, Vim, Zim and more.",
@@ -497,7 +497,7 @@ return {
     {
         id = 72986195,
         name = "space-vim-dark",
-        githubUrl = "https://github.com/liuchengxu/space-vim-dark",
+        githubUrl = "liuchengxu/space-vim-dark",
         isLua = false,
         isVim = true,
         description = "💜 A dark colorscheme for space-vim, see space-vim-theme for light background support!",
@@ -513,7 +513,7 @@ return {
     {
         id = 276777834,
         name = "tokyonight-vim",
-        githubUrl = "https://github.com/ghifarit53/tokyonight-vim",
+        githubUrl = "ghifarit53/tokyonight-vim",
         isLua = false,
         isVim = true,
         description =
@@ -530,7 +530,7 @@ return {
     {
         id = 195092604,
         name = "rigel",
-        githubUrl = "https://github.com/Rigellute/rigel",
+        githubUrl = "Rigellute/rigel",
         isLua = false,
         isVim = true,
         description = "🌌 Colorscheme for vim, terminal, vscode and slack - based on the star Rigel ✨.",
@@ -546,7 +546,7 @@ return {
     {
         id = 368842448,
         name = "vscode.nvim",
-        githubUrl = "https://github.com/Mofiqul/vscode.nvim",
+        githubUrl = "Mofiqul/vscode.nvim",
         isLua = true,
         isVim = false,
         description = "Neovim/Vim color scheme inspired by Dark+ and Light+ theme in Visual Studio Code",
@@ -570,7 +570,7 @@ return {
     {
         id = 138182059,
         name = "night-owl.vim",
-        githubUrl = "https://github.com/haishanh/night-owl.vim",
+        githubUrl = "haishanh/night-owl.vim",
         isLua = false,
         isVim = true,
         description = "A 24bit dark Vim colorscheme based on sdras/night-owl-vscode-theme",
@@ -586,7 +586,7 @@ return {
     {
         id = 189784448,
         name = "SpaceCamp",
-        githubUrl = "https://github.com/jaredgorski/SpaceCamp",
+        githubUrl = "jaredgorski/SpaceCamp",
         isLua = false,
         isVim = true,
         description = "🔭 Vim colors for the final frontier",
@@ -608,7 +608,7 @@ return {
     {
         id = 8378840,
         name = "focus",
-        githubUrl = "https://github.com/sindresorhus/focus",
+        githubUrl = "sindresorhus/focus",
         isLua = false,
         isVim = true,
         description =
@@ -631,7 +631,7 @@ return {
     {
         id = 26859245,
         name = "vim-atom-dark",
-        githubUrl = "https://github.com/gosukiwi/vim-atom-dark",
+        githubUrl = "gosukiwi/vim-atom-dark",
         isLua = false,
         isVim = true,
         description = "A vim theme inspired by Atom's default dark theme",
@@ -647,7 +647,7 @@ return {
     {
         id = 115221876,
         name = "vim",
-        githubUrl = "https://github.com/rainglow/vim",
+        githubUrl = "rainglow/vim",
         isLua = false,
         isVim = true,
         description = "320+ color themes for VIM.",
@@ -2613,7 +2613,7 @@ return {
     {
         id = 96388701,
         name = "vim-material",
-        githubUrl = "https://github.com/hzchirs/vim-material",
+        githubUrl = "hzchirs/vim-material",
         isLua = false,
         isVim = true,
         description = "🧩 Visual Studio Code Material Theme port for Vim/Neovim",
@@ -2630,7 +2630,7 @@ return {
     {
         id = 129811691,
         name = "vim-snazzy",
-        githubUrl = "https://github.com/connorholyday/vim-snazzy",
+        githubUrl = "connorholyday/vim-snazzy",
         isLua = false,
         isVim = true,
         description = "Elegant vim theme with bright colors.",
@@ -2646,7 +2646,7 @@ return {
     {
         id = 634519515,
         name = "oh-my-nvim",
-        githubUrl = "https://github.com/hardhackerlabs/oh-my-nvim",
+        githubUrl = "hardhackerlabs/oh-my-nvim",
         isLua = true,
         isVim = false,
         description = "A theme-driven, out-of-the-box modern configuration of neovim (HardHackerNvim)💎",
@@ -2782,7 +2782,7 @@ return {
     {
         id = 213182116,
         name = "darcula",
-        githubUrl = "https://github.com/doums/darcula",
+        githubUrl = "doums/darcula",
         isLua = false,
         isVim = true,
         description = "A Vim color scheme reproduction of the official JetBrains IDE Darcula theme",
@@ -2798,7 +2798,7 @@ return {
     {
         id = 17348444,
         name = "lavalamp",
-        githubUrl = "https://github.com/jasonlong/lavalamp",
+        githubUrl = "jasonlong/lavalamp",
         isLua = false,
         isVim = true,
         description = "A text editor theme that visually differentiates languages.",
@@ -2811,7 +2811,7 @@ return {
     {
         id = 407967910,
         name = "vim-enfocado",
-        githubUrl = "https://github.com/wuelnerdotexe/vim-enfocado",
+        githubUrl = "wuelnerdotexe/vim-enfocado",
         isLua = false,
         isVim = true,
         description = "How themes should be.",
@@ -2828,7 +2828,7 @@ return {
     {
         id = 140598280,
         name = "purify",
-        githubUrl = "https://github.com/kyoz/purify",
+        githubUrl = "kyoz/purify",
         isLua = false,
         isVim = true,
         description = "🌈 Clean & vibrant color schemes for Vim, Terminals...",
@@ -2844,7 +2844,7 @@ return {
     {
         id = 45385164,
         name = "nofrils",
-        githubUrl = "https://github.com/robertmeta/nofrils",
+        githubUrl = "robertmeta/nofrils",
         isLua = false,
         isVim = true,
         description = "An extremely minimalist colorscheme, even opting out of the second L in frills",
@@ -2878,7 +2878,7 @@ return {
     {
         id = 441811715,
         name = "gruvbox-baby",
-        githubUrl = "https://github.com/luisiacc/gruvbox-baby",
+        githubUrl = "luisiacc/gruvbox-baby",
         isLua = true,
         isVim = false,
         description = "Gruvbox theme for neovim with full 🎄TreeSitter support. ",
@@ -2895,7 +2895,7 @@ return {
     {
         id = 2766283,
         name = "vim-tomorrow-theme",
-        githubUrl = "https://github.com/chriskempson/vim-tomorrow-theme",
+        githubUrl = "chriskempson/vim-tomorrow-theme",
         isLua = false,
         isVim = true,
         description = "Tomorrow Theme for Vim",
@@ -2935,7 +2935,7 @@ return {
     {
         id = 61883,
         name = "vim-railscasts-theme",
-        githubUrl = "https://github.com/jpo/vim-railscasts-theme",
+        githubUrl = "jpo/vim-railscasts-theme",
         isLua = false,
         isVim = true,
         description = "A vim color scheme based on the Railscasts Textmate theme.",
@@ -2951,7 +2951,7 @@ return {
     {
         id = 37965511,
         name = "vim-material-theme",
-        githubUrl = "https://github.com/jdkanani/vim-material-theme",
+        githubUrl = "jdkanani/vim-material-theme",
         isLua = false,
         isVim = true,
         description = "Material theme for vim",
@@ -2968,7 +2968,7 @@ return {
     {
         id = 270308027,
         name = "aurora",
-        githubUrl = "https://github.com/ray-x/aurora",
+        githubUrl = "ray-x/aurora",
         isLua = true,
         isVim = false,
         description = "A vivid dark theme for (Neo)Vim. Optimized for treesitter, LSP.",
@@ -2984,7 +2984,7 @@ return {
     {
         id = 406824785,
         name = "themer.lua",
-        githubUrl = "https://github.com/ThemerCorp/themer.lua",
+        githubUrl = "ThemerCorp/themer.lua",
         isLua = true,
         isVim = false,
         description = "A simple, minimal highlighter plugin for neovim",
@@ -3008,7 +3008,7 @@ return {
     {
         id = 370225592,
         name = "gruvbox-flat.nvim",
-        githubUrl = "https://github.com/eddyekofo94/gruvbox-flat.nvim",
+        githubUrl = "eddyekofo94/gruvbox-flat.nvim",
         isLua = true,
         isVim = false,
         description = "Another attempt of a flat Gruvbox theme for Neovim ",
@@ -3032,7 +3032,7 @@ return {
     {
         id = 186432580,
         name = "shades-of-purple.vim",
-        githubUrl = "https://github.com/Rigellute/shades-of-purple.vim",
+        githubUrl = "Rigellute/shades-of-purple.vim",
         isLua = false,
         isVim = true,
         description = "Dark theme for vim",
@@ -3048,7 +3048,7 @@ return {
     {
         id = 514655156,
         name = "poimandres.nvim",
-        githubUrl = "https://github.com/olivercederborg/poimandres.nvim",
+        githubUrl = "olivercederborg/poimandres.nvim",
         isLua = true,
         isVim = false,
         description = "Poimandres colorscheme for Neovim written in Lua",
@@ -3065,7 +3065,7 @@ return {
     {
         id = 24151299,
         name = "vim-janah",
-        githubUrl = "https://github.com/mhinz/vim-janah",
+        githubUrl = "mhinz/vim-janah",
         isLua = false,
         isVim = true,
         description = "Vim colorscheme.",
@@ -3081,7 +3081,7 @@ return {
     {
         id = 476724514,
         name = "nvim",
-        githubUrl = "https://github.com/Everblush/nvim",
+        githubUrl = "Everblush/nvim",
         isLua = true,
         isVim = false,
         description = "A port of everblush.vim but written in lua",
@@ -3098,7 +3098,7 @@ return {
     {
         id = 549469242,
         name = "bluloco.nvim",
-        githubUrl = "https://github.com/uloco/bluloco.nvim",
+        githubUrl = "uloco/bluloco.nvim",
         isLua = true,
         isVim = false,
         description = "bluloco theme port for neovim",
@@ -3122,7 +3122,7 @@ return {
     {
         id = 351072797,
         name = "nebulous.nvim",
-        githubUrl = "https://github.com/Yagua/nebulous.nvim",
+        githubUrl = "Yagua/nebulous.nvim",
         isLua = true,
         isVim = false,
         description = "Minimalist Collection of Colorschemes for Neovim Written in Lua",
@@ -3139,7 +3139,7 @@ return {
     {
         id = 27905779,
         name = "darcula",
-        githubUrl = "https://github.com/blueshirts/darcula",
+        githubUrl = "blueshirts/darcula",
         isLua = false,
         isVim = true,
         description = "VIM Darcula Theme",
@@ -3155,7 +3155,7 @@ return {
     {
         id = 168636147,
         name = "space-vim-theme",
-        githubUrl = "https://github.com/liuchengxu/space-vim-theme",
+        githubUrl = "liuchengxu/space-vim-theme",
         isLua = false,
         isVim = true,
         description = "🌼 A dark and light colorscheme for space-vim that supports GUI & terminal",
@@ -3172,7 +3172,7 @@ return {
     {
         id = 119914071,
         name = "typewriter",
-        githubUrl = "https://github.com/logico/typewriter",
+        githubUrl = "logico/typewriter",
         isLua = false,
         isVim = true,
         description =
@@ -3195,7 +3195,7 @@ return {
     {
         id = 50354847,
         name = "vim-themes",
-        githubUrl = "https://github.com/mswift42/vim-themes",
+        githubUrl = "mswift42/vim-themes",
         isLua = false,
         isVim = true,
         description = "some emacs themes ported to vim.",
@@ -3319,7 +3319,7 @@ return {
     {
         id = 365374977,
         name = "neon",
-        githubUrl = "https://github.com/rafamadriz/neon",
+        githubUrl = "rafamadriz/neon",
         isLua = true,
         isVim = false,
         description = "Customizable coloscheme with dark and light options, vivid colors and easy on the eye.",
@@ -3336,7 +3336,7 @@ return {
     {
         id = 186867737,
         name = "colorstorm",
-        githubUrl = "https://github.com/benbusby/colorstorm",
+        githubUrl = "benbusby/colorstorm",
         isLua = false,
         isVim = true,
         description = "A color theme generator for editors and terminal emulators",
@@ -3349,7 +3349,7 @@ return {
     {
         id = 29059629,
         name = "yowish.vim",
-        githubUrl = "https://github.com/KabbAmine/yowish.vim",
+        githubUrl = "KabbAmine/yowish.vim",
         isLua = false,
         isVim = true,
         description = "A dark & yellowish vim colorscheme",
@@ -3365,7 +3365,7 @@ return {
     {
         id = 372898270,
         name = "solarized.nvim",
-        githubUrl = "https://github.com/shaunsingh/solarized.nvim",
+        githubUrl = "shaunsingh/solarized.nvim",
         isLua = true,
         isVim = false,
         description = "Port of the Solarized colorscheme for vim, written in lua, with treesitter support. ",
@@ -3382,7 +3382,7 @@ return {
     {
         id = 292177906,
         name = "modus-theme-vim",
-        githubUrl = "https://github.com/ishan9299/modus-theme-vim",
+        githubUrl = "ishan9299/modus-theme-vim",
         isLua = true,
         isVim = false,
         description = "Port of modus-themes in neovim",
@@ -3413,7 +3413,7 @@ return {
     {
         id = 365554498,
         name = "vim-github-dark",
-        githubUrl = "https://github.com/vv9k/vim-github-dark",
+        githubUrl = "vv9k/vim-github-dark",
         isLua = false,
         isVim = true,
         description = "A dark GitHub theme for Vim and NeoVim",
@@ -3429,7 +3429,7 @@ return {
     {
         id = 100154945,
         name = "hydrangea-vim",
-        githubUrl = "https://github.com/yuttie/hydrangea-vim",
+        githubUrl = "yuttie/hydrangea-vim",
         isLua = false,
         isVim = true,
         description = "Hydrangea theme for Vim.",
@@ -3445,7 +3445,7 @@ return {
     {
         id = 306911777,
         name = "toast.vim",
-        githubUrl = "https://github.com/jsit/toast.vim",
+        githubUrl = "jsit/toast.vim",
         isLua = false,
         isVim = true,
         description =
@@ -3463,7 +3463,7 @@ return {
     {
         id = 486981531,
         name = "vim",
-        githubUrl = "https://github.com/catppuccin/vim",
+        githubUrl = "catppuccin/vim",
         isLua = false,
         isVim = true,
         description = "🧋 Soothing pastel theme for Vim",
@@ -3497,7 +3497,7 @@ return {
     {
         id = 68756779,
         name = "spacemacs-theme.vim",
-        githubUrl = "https://github.com/colepeters/spacemacs-theme.vim",
+        githubUrl = "colepeters/spacemacs-theme.vim",
         isLua = false,
         isVim = true,
         description = "Spacemacs-flavoured colorscheme for Vim and iTerm",
@@ -3513,7 +3513,7 @@ return {
     {
         id = 200997514,
         name = "vim-synthwave84",
-        githubUrl = "https://github.com/artanikin/vim-synthwave84",
+        githubUrl = "artanikin/vim-synthwave84",
         isLua = false,
         isVim = true,
         description = "The port of SynthWave '84 - VS Code theme to Vim",
@@ -3529,7 +3529,7 @@ return {
     {
         id = 416839917,
         name = "kat.nvim",
-        githubUrl = "https://github.com/katawful/kat.nvim",
+        githubUrl = "katawful/kat.nvim",
         isLua = true,
         isVim = false,
         description = "NeoVim specifc port of kat.vim, a warm blue theme, written in Fennel with Aniseed",
@@ -3546,7 +3546,7 @@ return {
     {
         id = 64402018,
         name = "Base2Tone-vim",
-        githubUrl = "https://github.com/atelierbram/Base2Tone-vim",
+        githubUrl = "atelierbram/Base2Tone-vim",
         isLua = false,
         isVim = true,
         description = "Base2Tone - duotone - Themes for Vim",
@@ -3796,7 +3796,7 @@ return {
     {
         id = 404064478,
         name = "palenightfall.nvim",
-        githubUrl = "https://github.com/JoosepAlviste/palenightfall.nvim",
+        githubUrl = "JoosepAlviste/palenightfall.nvim",
         isLua = true,
         isVim = false,
         description = "🌑 Neovim theme inspired by material palenight.",
@@ -3813,7 +3813,7 @@ return {
     {
         id = 49833871,
         name = "preto",
-        githubUrl = "https://github.com/ewilazarus/preto",
+        githubUrl = "ewilazarus/preto",
         isLua = false,
         isVim = true,
         description = "A minimal dark theme for VIM.",
@@ -3829,7 +3829,7 @@ return {
     {
         id = 305056437,
         name = "doom-one.vim",
-        githubUrl = "https://github.com/romgrk/doom-one.vim",
+        githubUrl = "romgrk/doom-one.vim",
         isLua = false,
         isVim = true,
         description = "A dark colorschme for vim, ported from doom-emacs' doom-one theme.",
@@ -3845,7 +3845,7 @@ return {
     {
         id = 20299,
         name = "github_editor_theme",
-        githubUrl = "https://github.com/sbecker/github_editor_theme",
+        githubUrl = "sbecker/github_editor_theme",
         isLua = false,
         isVim = true,
         description = "Github Theme for Textmate, Sublime Text, and Vim",
@@ -3858,7 +3858,7 @@ return {
     {
         id = 177820341,
         name = "equinusocio-material.vim",
-        githubUrl = "https://github.com/yunlingz/equinusocio-material.vim",
+        githubUrl = "yunlingz/equinusocio-material.vim",
         isLua = false,
         isVim = true,
         description = "Equinusocio's material theme for vim",
@@ -3874,7 +3874,7 @@ return {
     {
         id = 56923868,
         name = "vim-wwdc16-theme",
-        githubUrl = "https://github.com/lifepillar/vim-wwdc16-theme",
+        githubUrl = "lifepillar/vim-wwdc16-theme",
         isLua = false,
         isVim = true,
         description = "Colorful dark color scheme for Vim inspired by Apple's WWDC16 page",
@@ -3890,7 +3890,7 @@ return {
     {
         id = 60020994,
         name = "vim-fahrenheit",
-        githubUrl = "https://github.com/fcpg/vim-fahrenheit",
+        githubUrl = "fcpg/vim-fahrenheit",
         isLua = false,
         isVim = true,
         description = "Dark, warm base16 Vim theme for 256-color terminals",
@@ -3906,7 +3906,7 @@ return {
     {
         id = 235099885,
         name = "aylin.vim",
-        githubUrl = "https://github.com/AhmedAbdulrahman/aylin.vim",
+        githubUrl = "AhmedAbdulrahman/aylin.vim",
         isLua = false,
         isVim = true,
         description = "🌌Aylin a modern and minimal VIM dark theme with bright colors.",
@@ -3922,7 +3922,7 @@ return {
     {
         id = 543121549,
         name = "noctis.nvim",
-        githubUrl = "https://github.com/kartikp10/noctis.nvim",
+        githubUrl = "kartikp10/noctis.nvim",
         isLua = true,
         isVim = false,
         description = "A neovim port of the high contrast noctis theme for VSCode. ",
@@ -3935,7 +3935,7 @@ return {
     {
         id = 519443131,
         name = "horizon.nvim",
-        githubUrl = "https://github.com/LunarVim/horizon.nvim",
+        githubUrl = "LunarVim/horizon.nvim",
         isLua = true,
         isVim = false,
         description = "🌅 Neovim port of horizon colorscheme",
@@ -3951,7 +3951,7 @@ return {
     {
         id = 129306696,
         name = "soft-era-vim",
-        githubUrl = "https://github.com/soft-aesthetic/soft-era-vim",
+        githubUrl = "soft-aesthetic/soft-era-vim",
         isLua = false,
         isVim = true,
         description = "🌸 soft era for Vim ~ Light pastel syntax theme for soft, warm, cozy, cute coding. 🌱",
@@ -3967,7 +3967,7 @@ return {
     {
         id = 107333220,
         name = "parchment",
-        githubUrl = "https://github.com/ajgrf/parchment",
+        githubUrl = "ajgrf/parchment",
         isLua = false,
         isVim = true,
         description = "A light editor theme for Vim and Emacs, inspired by Acme and Leuven – GitHub mirror",
@@ -3983,7 +3983,7 @@ return {
     {
         id = 82664606,
         name = "vim-orbital",
-        githubUrl = "https://github.com/fcpg/vim-orbital",
+        githubUrl = "fcpg/vim-orbital",
         isLua = false,
         isVim = true,
         description = "Dark blue base16 theme for 256-color terminals",
@@ -3999,7 +3999,7 @@ return {
     {
         id = 367816733,
         name = "bogster",
-        githubUrl = "https://github.com/vv9k/bogster",
+        githubUrl = "vv9k/bogster",
         isLua = false,
         isVim = true,
         description = "A theme for Vim and NeoVim",
@@ -4016,7 +4016,7 @@ return {
     {
         id = 17266463,
         name = "vim-aurora",
-        githubUrl = "https://github.com/rafalbromirski/vim-aurora",
+        githubUrl = "rafalbromirski/vim-aurora",
         isLua = false,
         isVim = true,
         description = "dark theme for vim",
@@ -4029,7 +4029,7 @@ return {
     {
         id = 445203811,
         name = "pywal.nvim",
-        githubUrl = "https://github.com/AlphaTechnolog/pywal.nvim",
+        githubUrl = "AlphaTechnolog/pywal.nvim",
         isLua = true,
         isVim = false,
         description =
@@ -4046,7 +4046,7 @@ return {
     {
         id = 330164292,
         name = "base16-vim",
-        githubUrl = "https://github.com/tinted-theming/base16-vim",
+        githubUrl = "tinted-theming/base16-vim",
         isLua = false,
         isVim = true,
         description =
@@ -5545,7 +5545,7 @@ return {
     {
         id = 506329460,
         name = "nvim-juliana",
-        githubUrl = "https://github.com/kaiuri/nvim-juliana",
+        githubUrl = "kaiuri/nvim-juliana",
         isLua = true,
         isVim = false,
         description = "Port of Sublime's Mariana Theme to Neovim for short attention span devs.",
@@ -5564,7 +5564,7 @@ return {
     {
         id = 181263040,
         name = "atlas.vim",
-        githubUrl = "https://github.com/huyvohcmc/atlas.vim",
+        githubUrl = "huyvohcmc/atlas.vim",
         isLua = false,
         isVim = true,
         description = "Colorful theme for colorful souls",
@@ -5580,7 +5580,7 @@ return {
     {
         id = 300634939,
         name = "vim-humanoid-colorscheme",
-        githubUrl = "https://github.com/humanoid-colors/vim-humanoid-colorscheme",
+        githubUrl = "humanoid-colors/vim-humanoid-colorscheme",
         isLua = false,
         isVim = true,
         description = "Light and dark theme for vim with bright colors",
@@ -5597,7 +5597,7 @@ return {
     {
         id = 521314685,
         name = "oxocarbon-lua.nvim",
-        githubUrl = "https://github.com/B4mbus/oxocarbon-lua.nvim",
+        githubUrl = "B4mbus/oxocarbon-lua.nvim",
         isLua = true,
         isVim = false,
         description = "A lua rewrite of the original oxocarbon theme.",
@@ -5614,7 +5614,7 @@ return {
     {
         id = 384846226,
         name = "Colorschemes",
-        githubUrl = "https://github.com/LunarVim/Colorschemes",
+        githubUrl = "LunarVim/Colorschemes",
         isLua = true,
         isVim = false,
         description = "🌈 Collection of colorschemes made to be compatible with LunarVim",
@@ -5696,7 +5696,7 @@ return {
     {
         id = 186175394,
         name = "plastic.vim",
-        githubUrl = "https://github.com/flrnd/plastic.vim",
+        githubUrl = "flrnd/plastic.vim",
         isLua = false,
         isVim = true,
         description = "VSCode Plastic theme port for vim/neovim.",
@@ -5712,7 +5712,7 @@ return {
     {
         id = 290607555,
         name = "vim-paper",
-        githubUrl = "https://github.com/yorickpeterse/vim-paper",
+        githubUrl = "yorickpeterse/vim-paper",
         isLua = false,
         isVim = true,
         description = "A light theme for (Neo)Vim, based on the colour of paper as found in various notebooks.",
@@ -5728,7 +5728,7 @@ return {
     {
         id = 181728900,
         name = "vimdark",
-        githubUrl = "https://github.com/ldelossa/vimdark",
+        githubUrl = "ldelossa/vimdark",
         isLua = false,
         isVim = true,
         description = "A dark theme for vim based on vim-monotonic and chrome's dark reader",
@@ -5750,7 +5750,7 @@ return {
     {
         id = 347987924,
         name = "shadotheme",
-        githubUrl = "https://github.com/Shadorain/shadotheme",
+        githubUrl = "Shadorain/shadotheme",
         isLua = true,
         isVim = false,
         description = "The ultimate purple and pink dark cherry blossom theme!",
@@ -5766,7 +5766,7 @@ return {
     {
         id = 622978,
         name = "neverland-vim-theme",
-        githubUrl = "https://github.com/trapd00r/neverland-vim-theme",
+        githubUrl = "trapd00r/neverland-vim-theme",
         isLua = false,
         isVim = true,
         description = "256 colors CLI and GUI. It doesn't suck.",
@@ -5803,7 +5803,7 @@ return {
     {
         id = 74244392,
         name = "angr.vim",
-        githubUrl = "https://github.com/zacanger/angr.vim",
+        githubUrl = "zacanger/angr.vim",
         isLua = false,
         isVim = true,
         description = "A pleasant, mild, dark (n)vim theme.",
@@ -5819,7 +5819,7 @@ return {
     {
         id = 208566342,
         name = "vim-yami",
-        githubUrl = "https://github.com/danishprakash/vim-yami",
+        githubUrl = "danishprakash/vim-yami",
         isLua = false,
         isVim = true,
         description = "Monochromatic dark(闇) theme for Vim",
@@ -5835,7 +5835,7 @@ return {
     {
         id = 923302,
         name = "vim-mac-classic-theme",
-        githubUrl = "https://github.com/nelstrom/vim-mac-classic-theme",
+        githubUrl = "nelstrom/vim-mac-classic-theme",
         isLua = false,
         isVim = true,
         description =
@@ -5852,7 +5852,7 @@ return {
     {
         id = 482674,
         name = "vim-irblack",
-        githubUrl = "https://github.com/wesgibbs/vim-irblack",
+        githubUrl = "wesgibbs/vim-irblack",
         isLua = false,
         isVim = true,
         description = "Infinite Red's ir_black vim theme packaged to work with Tim Pope's pathogen plugin.",
@@ -5868,7 +5868,7 @@ return {
     {
         id = 417100917,
         name = "lighthaus.nvim",
-        githubUrl = "https://github.com/mrjones2014/lighthaus.nvim",
+        githubUrl = "mrjones2014/lighthaus.nvim",
         isLua = true,
         isVim = false,
         description = "A Lua implementation of lighthaus-theme/vim-lighthaus",
@@ -5881,7 +5881,7 @@ return {
     {
         id = 111295623,
         name = "tempus-themes",
-        githubUrl = "https://github.com/protesilaos/tempus-themes",
+        githubUrl = "protesilaos/tempus-themes",
         isLua = false,
         isVim = true,
         description =
@@ -5940,7 +5940,7 @@ return {
     {
         id = 594893266,
         name = "nightly.nvim",
-        githubUrl = "https://github.com/Alexis12119/nightly.nvim",
+        githubUrl = "Alexis12119/nightly.nvim",
         isLua = true,
         isVim = false,
         description = "A customized theme for Neovim, based on the Everblush color scheme.",
@@ -5956,7 +5956,7 @@ return {
     {
         id = 40187873,
         name = "vim-brogrammer-theme",
-        githubUrl = "https://github.com/marciomazza/vim-brogrammer-theme",
+        githubUrl = "marciomazza/vim-brogrammer-theme",
         isLua = false,
         isVim = true,
         description = "Vim port of Sublime Text Brogrammer theme",
@@ -5972,7 +5972,7 @@ return {
     {
         id = 329978373,
         name = "vim-cyberpunk",
-        githubUrl = "https://github.com/thedenisnikulin/vim-cyberpunk",
+        githubUrl = "thedenisnikulin/vim-cyberpunk",
         isLua = false,
         isVim = true,
         description = "Cyberpunk colorscheme for VIM. Also includes vim-airline theme.",
@@ -5994,7 +5994,7 @@ return {
     {
         id = 275384536,
         name = "doki-theme-vim",
-        githubUrl = "https://github.com/doki-theme/doki-theme-vim",
+        githubUrl = "doki-theme/doki-theme-vim",
         isLua = false,
         isVim = true,
         description =
@@ -6284,7 +6284,7 @@ return {
     {
         id = 38125966,
         name = "vim-materialtheme",
-        githubUrl = "https://github.com/gwutz/vim-materialtheme",
+        githubUrl = "gwutz/vim-materialtheme",
         isLua = false,
         isVim = true,
         description = "Material Theme, the vim adaption by Günther Wutz",
@@ -6300,7 +6300,7 @@ return {
     {
         id = 303961530,
         name = "daycula-vim",
-        githubUrl = "https://github.com/ghifarit53/daycula-vim",
+        githubUrl = "ghifarit53/daycula-vim",
         isLua = false,
         isVim = true,
         description = "A dark, vivid and calming colorscheme for Vim [Archived because I'm no longer using this]",
@@ -6316,11 +6316,11 @@ return {
     {
         id = 26050805,
         name = "vim-dracula",
-        githubUrl = "https://github.com/crusoexia/vim-dracula",
+        githubUrl = "crusoexia/vim-dracula",
         isLua = false,
         isVim = true,
         description =
-        "Refined Dracula color scheme for Vim, color palettes are from https://github.com/zenorocha/dracula-theme.",
+        "Refined Dracula color scheme for Vim, color palettes are from zenorocha/dracula-theme.",
         vimColorSchemes = {
             {
                 name = "dracula",
@@ -6330,7 +6330,7 @@ return {
     {
         id = 277186493,
         name = "oceanic-next-vim",
-        githubUrl = "https://github.com/adrian5/oceanic-next-vim",
+        githubUrl = "adrian5/oceanic-next-vim",
         isLua = false,
         isVim = true,
         description = "Oceanic Next colorscheme for vim",
@@ -6346,7 +6346,7 @@ return {
     {
         id = 49545442,
         name = "termschool-vim-theme",
-        githubUrl = "https://github.com/marcopaganini/termschool-vim-theme",
+        githubUrl = "marcopaganini/termschool-vim-theme",
         isLua = false,
         isVim = true,
         description =
@@ -6363,7 +6363,7 @@ return {
     {
         id = 105279472,
         name = "vim-farout",
-        githubUrl = "https://github.com/fcpg/vim-farout",
+        githubUrl = "fcpg/vim-farout",
         isLua = false,
         isVim = true,
         description = "Dark retro base16 theme for gvim and 24-bit color terminals",
@@ -6379,7 +6379,7 @@ return {
     {
         id = 51153036,
         name = "mod8.vim",
-        githubUrl = "https://github.com/easysid/mod8.vim",
+        githubUrl = "easysid/mod8.vim",
         isLua = false,
         isVim = true,
         description = "A dark theme only modification of base16 vim themes to use fewer colors.",
@@ -6392,7 +6392,7 @@ return {
     {
         id = 118678784,
         name = "vim-vscode-theme",
-        githubUrl = "https://github.com/dunstontc/vim-vscode-theme",
+        githubUrl = "dunstontc/vim-vscode-theme",
         isLua = false,
         isVim = true,
         description = "Visual Studio Code's \"Dark+\" theme",
@@ -6408,7 +6408,7 @@ return {
     {
         id = 547562088,
         name = "kyotonight",
-        githubUrl = "https://github.com/sigmavim/kyotonight",
+        githubUrl = "sigmavim/kyotonight",
         isLua = false,
         isVim = true,
         description =
@@ -6425,7 +6425,7 @@ return {
     {
         id = 229824711,
         name = "sitruuna.vim",
-        githubUrl = "https://github.com/eemed/sitruuna.vim",
+        githubUrl = "eemed/sitruuna.vim",
         isLua = false,
         isVim = true,
         description = "Yellowish theme for vim",
@@ -6441,7 +6441,7 @@ return {
     {
         id = 27220038,
         name = "cobalt2-vim-theme",
-        githubUrl = "https://github.com/GertjanReynaert/cobalt2-vim-theme",
+        githubUrl = "GertjanReynaert/cobalt2-vim-theme",
         isLua = false,
         isVim = true,
         description = "Vim port of cobalt2 sublime theme",
@@ -6457,7 +6457,7 @@ return {
     {
         id = 20622,
         name = "github_vim_theme",
-        githubUrl = "https://github.com/nono/github_vim_theme",
+        githubUrl = "nono/github_vim_theme",
         isLua = false,
         isVim = true,
         description = "Github Theme for ViM",
@@ -6470,7 +6470,7 @@ return {
     {
         id = 30131811,
         name = "itg_flat_vim",
-        githubUrl = "https://github.com/chrisdiana/itg_flat_vim",
+        githubUrl = "chrisdiana/itg_flat_vim",
         isLua = false,
         isVim = true,
         description = "Port of the awesome Sublime Text theme itg.flat for VIM",
@@ -6486,7 +6486,7 @@ return {
     {
         id = 50211885,
         name = "vim-monokai-phoenix",
-        githubUrl = "https://github.com/Reewr/vim-monokai-phoenix",
+        githubUrl = "Reewr/vim-monokai-phoenix",
         isLua = false,
         isVim = true,
         description = "Monokai Phoenix Theme for Vim",
@@ -6502,7 +6502,7 @@ return {
     {
         id = 1074389,
         name = "vim-aldmeris",
-        githubUrl = "https://github.com/veloce/vim-aldmeris",
+        githubUrl = "veloce/vim-aldmeris",
         isLua = false,
         isVim = true,
         description = "A vim colorscheme based on oblivion gedit theme",
@@ -6518,7 +6518,7 @@ return {
     {
         id = 462491684,
         name = "carbon.vim",
-        githubUrl = "https://github.com/michaeldyrynda/carbon.vim",
+        githubUrl = "michaeldyrynda/carbon.vim",
         isLua = true,
         isVim = false,
         description = "A Vim port of the IntelliJ Carbon theme",
@@ -6531,7 +6531,7 @@ return {
     {
         id = 3343709,
         name = "vim-getafe",
-        githubUrl = "https://github.com/larssmit/vim-getafe",
+        githubUrl = "larssmit/vim-getafe",
         isLua = false,
         isVim = true,
         description = "Vim Getafe color theme ",
@@ -6547,7 +6547,7 @@ return {
     {
         id = 35322252,
         name = "vim-phoenix",
-        githubUrl = "https://github.com/widatama/vim-phoenix",
+        githubUrl = "widatama/vim-phoenix",
         isLua = false,
         isVim = true,
         description = "Monochrome color schemes for Vim",
@@ -6563,10 +6563,10 @@ return {
     {
         id = 33599619,
         name = "oceanic-next-vim",
-        githubUrl = "https://github.com/yosiat/oceanic-next-vim",
+        githubUrl = "yosiat/oceanic-next-vim",
         isLua = false,
         isVim = true,
-        description = "Vim port for https://github.com/voronianski/oceanic-next-theme",
+        description = "Vim port for voronianski/oceanic-next-theme",
         vimColorSchemes = {
             {
                 backgrounds = {
@@ -6579,7 +6579,7 @@ return {
     {
         id = 72924973,
         name = "vim-hue",
-        githubUrl = "https://github.com/AdnanHodzic/vim-hue",
+        githubUrl = "AdnanHodzic/vim-hue",
         isLua = false,
         isVim = true,
         description = "vim-hue - colorful Vim config & theme for all your SRE/DevOps needs",
@@ -6595,7 +6595,7 @@ return {
     {
         id = 31399631,
         name = "wellsokai.vim",
-        githubUrl = "https://github.com/wellsjo/wellsokai.vim",
+        githubUrl = "wellsjo/wellsokai.vim",
         isLua = false,
         isVim = true,
         description = "Dark vim theme with pronounced colors",
@@ -6611,7 +6611,7 @@ return {
     {
         id = 568413,
         name = "vim-blackboard",
-        githubUrl = "https://github.com/nelstrom/vim-blackboard",
+        githubUrl = "nelstrom/vim-blackboard",
         isLua = false,
         isVim = true,
         description = "A port of the Blackboard theme from TextMate to Vim.",
@@ -6627,7 +6627,7 @@ return {
     {
         id = 298547872,
         name = "vim-lighthaus",
-        githubUrl = "https://github.com/lighthaus-theme/vim-lighthaus",
+        githubUrl = "lighthaus-theme/vim-lighthaus",
         isLua = false,
         isVim = true,
         description = "A Lighthaus theme for (n)vim, vim-airline and lightline",
@@ -6643,7 +6643,7 @@ return {
     {
         id = 93992843,
         name = "vim-wwdc17-theme",
-        githubUrl = "https://github.com/lifepillar/vim-wwdc17-theme",
+        githubUrl = "lifepillar/vim-wwdc17-theme",
         isLua = false,
         isVim = true,
         description = "Colorful light color scheme for Vim inspired by Apple's WWDC17 page",
@@ -6659,7 +6659,7 @@ return {
     {
         id = 21080108,
         name = "Glacier-Remixes",
-        githubUrl = "https://github.com/NSBrianWard/Glacier-Remixes",
+        githubUrl = "NSBrianWard/Glacier-Remixes",
         isLua = false,
         isVim = true,
         description =
@@ -6676,7 +6676,7 @@ return {
     {
         id = 4905676,
         name = "codeschool-vim-theme",
-        githubUrl = "https://github.com/29decibel/codeschool-vim-theme",
+        githubUrl = "29decibel/codeschool-vim-theme",
         isLua = false,
         isVim = true,
         description = "codeschool vim theme",
@@ -6692,7 +6692,7 @@ return {
     {
         id = 285608093,
         name = "gruber-darker-vim",
-        githubUrl = "https://github.com/drsooch/gruber-darker-vim",
+        githubUrl = "drsooch/gruber-darker-vim",
         isLua = false,
         isVim = true,
         description = "Gruber Darker Theme ported from Emacs",
@@ -6708,7 +6708,7 @@ return {
     {
         id = 277298188,
         name = "intellij.vim",
-        githubUrl = "https://github.com/chiendo97/intellij.vim",
+        githubUrl = "chiendo97/intellij.vim",
         isLua = false,
         isVim = true,
         description = "Implementation of a light colorscheme for Vim, based on light default IntelliJ theme. ",
@@ -6724,7 +6724,7 @@ return {
     {
         id = 5265116,
         name = "Muon",
-        githubUrl = "https://github.com/gregsexton/Muon",
+        githubUrl = "gregsexton/Muon",
         isLua = false,
         isVim = true,
         description = "Vim color scheme that draws heavy influence from the Emacs theme, Charcoal Black.",
@@ -6740,7 +6740,7 @@ return {
     {
         id = 49817876,
         name = "vimterial",
-        githubUrl = "https://github.com/larsbs/vimterial",
+        githubUrl = "larsbs/vimterial",
         isLua = false,
         isVim = true,
         description = "A vim color scheme based on Material Theme http://equinusocio.github.io/material-theme",
@@ -6756,7 +6756,7 @@ return {
     {
         id = 340139135,
         name = "sobrio",
-        githubUrl = "https://github.com/elvessousa/sobrio",
+        githubUrl = "elvessousa/sobrio",
         isLua = false,
         isVim = true,
         description = "Sobrio is a theme for [Neo]Vim with sober colors.",
@@ -6796,7 +6796,7 @@ return {
     {
         id = 79389960,
         name = "crayon",
-        githubUrl = "https://github.com/dylanaraps/crayon",
+        githubUrl = "dylanaraps/crayon",
         isLua = false,
         isVim = true,
         description = "🎨 A dark 16 color colorscheme for Vim, Gvim, and Nvim",
@@ -6812,7 +6812,7 @@ return {
     {
         id = 2488674,
         name = "vim-wombat256mod",
-        githubUrl = "https://github.com/michalbachowski/vim-wombat256mod",
+        githubUrl = "michalbachowski/vim-wombat256mod",
         isLua = false,
         isVim = true,
         description = "Wombat256 vim theme packaged to work with Tim Pope's pathogen plugin",
@@ -6828,7 +6828,7 @@ return {
     {
         id = 286516792,
         name = "vim",
-        githubUrl = "https://github.com/GuiLra/vim",
+        githubUrl = "GuiLra/vim",
         isLua = false,
         isVim = true,
         description = "🎨 Omni for Vim",
@@ -6844,7 +6844,7 @@ return {
     {
         id = 152789469,
         name = "vim",
-        githubUrl = "https://github.com/DankNeon/vim",
+        githubUrl = "DankNeon/vim",
         isLua = false,
         isVim = true,
         description = "A danker, more neon theme for vim",
@@ -6857,7 +6857,7 @@ return {
     {
         id = 34850082,
         name = "schellar",
-        githubUrl = "https://github.com/igungor/schellar",
+        githubUrl = "igungor/schellar",
         isLua = false,
         isVim = true,
         description = "Shaded colorscheme for Vim",
@@ -6873,7 +6873,7 @@ return {
     {
         id = 2267007,
         name = "vim-sunburst",
-        githubUrl = "https://github.com/ku1ik/vim-sunburst",
+        githubUrl = "ku1ik/vim-sunburst",
         isLua = false,
         isVim = true,
         description =
@@ -6890,7 +6890,7 @@ return {
     {
         id = 41635820,
         name = "true-monochrome_vim",
-        githubUrl = "https://github.com/ryanpcmcquen/true-monochrome_vim",
+        githubUrl = "ryanpcmcquen/true-monochrome_vim",
         isLua = false,
         isVim = true,
         description = "A true black/grey/white theme for vim.",
@@ -6906,7 +6906,7 @@ return {
     {
         id = 366254214,
         name = "vim",
-        githubUrl = "https://github.com/blackbirdtheme/vim",
+        githubUrl = "blackbirdtheme/vim",
         isLua = false,
         isVim = true,
         description = "🏴 blackbird theme for vim",
@@ -6922,7 +6922,7 @@ return {
     {
         id = 103396823,
         name = "skull-vim",
-        githubUrl = "https://github.com/kxzk/skull-vim",
+        githubUrl = "kxzk/skull-vim",
         isLua = false,
         isVim = true,
         description = "☠️ Minimal/elegant theme for vim",
@@ -6938,7 +6938,7 @@ return {
     {
         id = 1321400,
         name = "twilight256.vim",
-        githubUrl = "https://github.com/vim-scripts/twilight256.vim",
+        githubUrl = "vim-scripts/twilight256.vim",
         isLua = false,
         isVim = true,
         description = "A color scheme that imitates the Twilight theme for TextMate",
@@ -6954,7 +6954,7 @@ return {
     {
         id = 138318869,
         name = "night-owl-vim-theme",
-        githubUrl = "https://github.com/Khaledgarbaya/night-owl-vim-theme",
+        githubUrl = "Khaledgarbaya/night-owl-vim-theme",
         isLua = false,
         isVim = true,
         description = "Night owl theme ported to vim",
@@ -6970,7 +6970,7 @@ return {
     {
         id = 583269,
         name = "sunburst.vim",
-        githubUrl = "https://github.com/kdwinter/sunburst.vim",
+        githubUrl = "kdwinter/sunburst.vim",
         isLua = false,
         isVim = true,
         description = "Port of the Sunburst TextMate theme to Vim",
@@ -6986,7 +6986,7 @@ return {
     {
         id = 23034921,
         name = "150colors",
-        githubUrl = "https://github.com/luckydev/150colors",
+        githubUrl = "luckydev/150colors",
         isLua = false,
         isVim = true,
         description = "Themes for (Mac)VIM",
@@ -8127,7 +8127,7 @@ return {
     {
         id = 253684307,
         name = "onedarkhc.vim",
-        githubUrl = "https://github.com/pacokwon/onedarkhc.vim",
+        githubUrl = "pacokwon/onedarkhc.vim",
         isLua = false,
         isVim = true,
         description = "a modified high-contrast onedark colorscheme for vim",
@@ -8143,7 +8143,7 @@ return {
     {
         id = 1625741,
         name = "Vim-Darkmate",
-        githubUrl = "https://github.com/yearofmoo/Vim-Darkmate",
+        githubUrl = "yearofmoo/Vim-Darkmate",
         isLua = false,
         isVim = true,
         description = "A Vim version of the Gedit Darkmate theme ",
@@ -8159,7 +8159,7 @@ return {
     {
         id = 94037521,
         name = "neuromancer.vim",
-        githubUrl = "https://github.com/Zabanaa/neuromancer.vim",
+        githubUrl = "Zabanaa/neuromancer.vim",
         isLua = false,
         isVim = true,
         description = "Cyberpunk themed vim colorscheme",
@@ -8175,7 +8175,7 @@ return {
     {
         id = 191774866,
         name = "dark-theme.vim",
-        githubUrl = "https://github.com/kamykn/dark-theme.vim",
+        githubUrl = "kamykn/dark-theme.vim",
         isLua = false,
         isVim = true,
         description = "Dark theme for vim💜",
@@ -8191,7 +8191,7 @@ return {
     {
         id = 1976623,
         name = "vim-monokai",
-        githubUrl = "https://github.com/rickharris/vim-monokai",
+        githubUrl = "rickharris/vim-monokai",
         isLua = false,
         isVim = true,
         description = "Monokai for vim (with iTerm2 theme)",
@@ -8207,7 +8207,7 @@ return {
     {
         id = 7792817,
         name = "soda.vim",
-        githubUrl = "https://github.com/DAddYE/soda.vim",
+        githubUrl = "DAddYE/soda.vim",
         isLua = false,
         isVim = true,
         description = "Reinterpreted Soda Theme for Vim Users",
@@ -8223,7 +8223,7 @@ return {
     {
         id = 129858287,
         name = "vim-theme-papaya",
-        githubUrl = "https://github.com/HenryNewcomer/vim-theme-papaya",
+        githubUrl = "HenryNewcomer/vim-theme-papaya",
         isLua = false,
         isVim = true,
         description = "A dark theme for Vim specifically made to focus your attention on the important things.",
@@ -8245,7 +8245,7 @@ return {
     {
         id = 81878462,
         name = "synthwave.vim",
-        githubUrl = "https://github.com/ashervb/synthwave.vim",
+        githubUrl = "ashervb/synthwave.vim",
         isLua = false,
         isVim = true,
         description = "Fsociety's synthwave theme",
@@ -8261,7 +8261,7 @@ return {
     {
         id = 5281491,
         name = "superman",
-        githubUrl = "https://github.com/tristen/superman",
+        githubUrl = "tristen/superman",
         isLua = false,
         isVim = true,
         description = "🎨 A dark theme for Vim",
@@ -8277,7 +8277,7 @@ return {
     {
         id = 465186864,
         name = "zengarden",
-        githubUrl = "https://github.com/tobi-wan-kenobi/zengarden",
+        githubUrl = "tobi-wan-kenobi/zengarden",
         isLua = false,
         isVim = true,
         description = "Calm color scheme for vim/neovim",
@@ -8294,7 +8294,7 @@ return {
     {
         id = 64293689,
         name = "vim-undead",
-        githubUrl = "https://github.com/chrisduerr/vim-undead",
+        githubUrl = "chrisduerr/vim-undead",
         isLua = false,
         isVim = true,
         description = "My personal vim-airline Theme",
@@ -8310,7 +8310,7 @@ return {
     {
         id = 118965934,
         name = "vim-colors-sketching",
-        githubUrl = "https://github.com/thenewvu/vim-colors-sketching",
+        githubUrl = "thenewvu/vim-colors-sketching",
         isLua = false,
         isVim = true,
         description = "A minimal light colorscheme for Vim/Neovim",
@@ -8326,7 +8326,7 @@ return {
     {
         id = 29209331,
         name = "vim-evokai",
-        githubUrl = "https://github.com/amadeus/vim-evokai",
+        githubUrl = "amadeus/vim-evokai",
         isLua = false,
         isVim = true,
         description = "A high contrast theme inspired by monokai, consider it the next evolution of monokai.",
@@ -8342,7 +8342,7 @@ return {
     {
         id = 375729,
         name = "vim-github-theme",
-        githubUrl = "https://github.com/acarapetis/vim-github-theme",
+        githubUrl = "acarapetis/vim-github-theme",
         isLua = false,
         isVim = true,
         description = "A vim theme similar to github's syntax highlighting",
@@ -8355,7 +8355,7 @@ return {
     {
         id = 348432867,
         name = "truedark-vim",
-        githubUrl = "https://github.com/bratpeki/truedark-vim",
+        githubUrl = "bratpeki/truedark-vim",
         isLua = false,
         isVim = true,
         description = "A true dark theme. For Vim. Duh.",
@@ -8371,7 +8371,7 @@ return {
     {
         id = 307411323,
         name = "papercolor-theme-slim",
-        githubUrl = "https://github.com/pappasam/papercolor-theme-slim",
+        githubUrl = "pappasam/papercolor-theme-slim",
         isLua = false,
         isVim = true,
         description = "(Neo)Vim colorscheme that is pretty, slim, and performant ",
@@ -8388,7 +8388,7 @@ return {
     {
         id = 67898779,
         name = "vim-colors",
-        githubUrl = "https://github.com/sherifkandeel/vim-colors",
+        githubUrl = "sherifkandeel/vim-colors",
         isLua = false,
         isVim = true,
         description = "my color theme repository",
@@ -8404,7 +8404,7 @@ return {
     {
         id = 17045961,
         name = "darkcloud-vimconfig",
-        githubUrl = "https://github.com/prurigro/darkcloud-vimconfig",
+        githubUrl = "prurigro/darkcloud-vimconfig",
         isLua = false,
         isVim = true,
         description =
@@ -8421,7 +8421,7 @@ return {
     {
         id = 354382281,
         name = "vim-jimbothemes",
-        githubUrl = "https://github.com/i3d/vim-jimbothemes",
+        githubUrl = "i3d/vim-jimbothemes",
         isLua = false,
         isVim = true,
         description = "Self developed morden vim themes (mainly for neovim)",
@@ -8521,7 +8521,7 @@ return {
     {
         id = 222187,
         name = "ir_black",
-        githubUrl = "https://github.com/gilesbowkett/ir_black",
+        githubUrl = "gilesbowkett/ir_black",
         isLua = false,
         isVim = true,
         description = "fork of Infinite Red's excellent vim theme",
@@ -8534,7 +8534,7 @@ return {
     {
         id = 61706330,
         name = "wwdc-2016",
-        githubUrl = "https://github.com/Snazzyham/wwdc-2016",
+        githubUrl = "Snazzyham/wwdc-2016",
         isLua = false,
         isVim = true,
         description = "A syntax theme for Sublime Text 3 (and now vim)",
@@ -8550,7 +8550,7 @@ return {
     {
         id = 534512044,
         name = "neogruvbox.nvim",
-        githubUrl = "https://github.com/Almo7aya/neogruvbox.nvim",
+        githubUrl = "Almo7aya/neogruvbox.nvim",
         isLua = true,
         isVim = false,
         description = "⚙️ Modernized gruvbox color scheme for neovim and its popular plugins",
@@ -8566,7 +8566,7 @@ return {
     {
         id = 6134090,
         name = "vim-herokudoc-theme",
-        githubUrl = "https://github.com/uu59/vim-herokudoc-theme",
+        githubUrl = "uu59/vim-herokudoc-theme",
         isLua = false,
         isVim = true,
         description = "colorscheme for vim inspired by Heroku document colors",
@@ -8582,7 +8582,7 @@ return {
     {
         id = 361208060,
         name = "kat.vim",
-        githubUrl = "https://github.com/katawful/kat.vim",
+        githubUrl = "katawful/kat.vim",
         isLua = false,
         isVim = true,
         description = "Blue based Vim theme with warm hues",
@@ -8598,7 +8598,7 @@ return {
     {
         id = 2034444,
         name = "vim-railscasts",
-        githubUrl = "https://github.com/rickharris/vim-railscasts",
+        githubUrl = "rickharris/vim-railscasts",
         isLua = false,
         isVim = true,
         description = "Railscasts theme for vim + iTerm2",
@@ -8614,7 +8614,7 @@ return {
     {
         id = 15036931,
         name = "vim-colors-codeschool",
-        githubUrl = "https://github.com/antlypls/vim-colors-codeschool",
+        githubUrl = "antlypls/vim-colors-codeschool",
         isLua = false,
         isVim = true,
         description = "CodeSchool color theme for vim",
@@ -8630,7 +8630,7 @@ return {
     {
         id = 24158159,
         name = "genericdc",
-        githubUrl = "https://github.com/nowk/genericdc",
+        githubUrl = "nowk/genericdc",
         isLua = false,
         isVim = true,
         description = "Minimal VIM theme",
@@ -8652,7 +8652,7 @@ return {
     {
         id = 106367648,
         name = "hyper.vim",
-        githubUrl = "https://github.com/jdsimcoe/hyper.vim",
+        githubUrl = "jdsimcoe/hyper.vim",
         isLua = false,
         isVim = true,
         description = "A dark theme for based on Hyper.",
@@ -8668,7 +8668,7 @@ return {
     {
         id = 54160676,
         name = "lanox-vim-theme",
-        githubUrl = "https://github.com/lanox/lanox-vim-theme",
+        githubUrl = "lanox/lanox-vim-theme",
         isLua = false,
         isVim = true,
         description = "lanox vim theme",
@@ -8684,7 +8684,7 @@ return {
     {
         id = 630372865,
         name = "theme-vim",
-        githubUrl = "https://github.com/hardhackerlabs/theme-vim",
+        githubUrl = "hardhackerlabs/theme-vim",
         isLua = false,
         isVim = true,
         description = "🧑🏾‍🚀 HardHacker Theme for Vim/Neovim 🌈",
@@ -8700,7 +8700,7 @@ return {
     {
         id = 256631660,
         name = "andromeda.vim",
-        githubUrl = "https://github.com/safv12/andromeda.vim",
+        githubUrl = "safv12/andromeda.vim",
         isLua = false,
         isVim = true,
         description = "Vim theme inspired in andromeda.",
@@ -8716,7 +8716,7 @@ return {
     {
         id = 29941764,
         name = "sprinkles",
-        githubUrl = "https://github.com/ajgrf/sprinkles",
+        githubUrl = "ajgrf/sprinkles",
         isLua = false,
         isVim = true,
         description = "A low-key, adjustable colorscheme for vim – GitHub mirror",
@@ -8733,7 +8733,7 @@ return {
     {
         id = 192153101,
         name = "dark-purple.vim",
-        githubUrl = "https://github.com/shapeoflambda/dark-purple.vim",
+        githubUrl = "shapeoflambda/dark-purple.vim",
         isLua = false,
         isVim = true,
         description = "Port of the dark purple intellij theme",
@@ -8749,7 +8749,7 @@ return {
     {
         id = 47629722,
         name = "stonewashed-themes",
-        githubUrl = "https://github.com/adampasz/stonewashed-themes",
+        githubUrl = "adampasz/stonewashed-themes",
         isLua = false,
         isVim = true,
         description = "A simple, readable, vim theme for Vim. UPDATED: Now featuring light and dark themes.",
@@ -8783,7 +8783,7 @@ return {
     {
         id = 16381274,
         name = "molokai-terminal",
-        githubUrl = "https://github.com/zhou13/molokai-terminal",
+        githubUrl = "zhou13/molokai-terminal",
         isLua = false,
         isVim = true,
         description = "A molokai-like theme for 16-color terminals and a 256-color theme for vim.",
@@ -8796,7 +8796,7 @@ return {
     {
         id = 373291035,
         name = "codesmell_dark.vim",
-        githubUrl = "https://github.com/whatsthatsmell/codesmell_dark.vim",
+        githubUrl = "whatsthatsmell/codesmell_dark.vim",
         isLua = false,
         isVim = true,
         description = "CodeSmell's Neovim Theme        💩",
@@ -8812,7 +8812,7 @@ return {
     {
         id = 1048310,
         name = "molokai.vim",
-        githubUrl = "https://github.com/mrtazz/molokai.vim",
+        githubUrl = "mrtazz/molokai.vim",
         isLua = false,
         isVim = true,
         description = "tomas restrepos molokai theme for vim put here for easy installation as a submodule via pathogen",
@@ -8828,7 +8828,7 @@ return {
     {
         id = 51564384,
         name = "predawn.vim",
-        githubUrl = "https://github.com/juanedi/predawn.vim",
+        githubUrl = "juanedi/predawn.vim",
         isLua = false,
         isVim = true,
         description = "Predawn theme for vim.",
@@ -8844,7 +8844,7 @@ return {
     {
         id = 588606,
         name = "vim-twilight",
-        githubUrl = "https://github.com/scottymoon/vim-twilight",
+        githubUrl = "scottymoon/vim-twilight",
         isLua = false,
         isVim = true,
         description = "Theme inspired from Textmate's twilight theme.",
@@ -8860,7 +8860,7 @@ return {
     {
         id = 1976628,
         name = "vim-blackboard",
-        githubUrl = "https://github.com/rickharris/vim-blackboard",
+        githubUrl = "rickharris/vim-blackboard",
         isLua = false,
         isVim = true,
         description = "Textmate's Blackboard theme for vim (with iTerm2 theme)",
@@ -8876,7 +8876,7 @@ return {
     {
         id = 95404597,
         name = "dosbox-vim-colorscheme",
-        githubUrl = "https://github.com/Evalir/dosbox-vim-colorscheme",
+        githubUrl = "Evalir/dosbox-vim-colorscheme",
         isLua = false,
         isVim = true,
         description = "An oldschool DOS-like nostalgia theme.",
@@ -8900,7 +8900,7 @@ return {
     {
         id = 130316620,
         name = "austere.vim",
-        githubUrl = "https://github.com/LuRsT/austere.vim",
+        githubUrl = "LuRsT/austere.vim",
         isLua = false,
         isVim = true,
         description = "An austere colorscheme for vim",
@@ -8916,7 +8916,7 @@ return {
     {
         id = 349216593,
         name = "noirblaze-vim",
-        githubUrl = "https://github.com/n1ghtmare/noirblaze-vim",
+        githubUrl = "n1ghtmare/noirblaze-vim",
         isLua = false,
         isVim = true,
         description = "A minimal vim theme with a touch of hot pink",
@@ -8932,7 +8932,7 @@ return {
     {
         id = 75392676,
         name = "vim-theme-chroma",
-        githubUrl = "https://github.com/crater2150/vim-theme-chroma",
+        githubUrl = "crater2150/vim-theme-chroma",
         isLua = true,
         isVim = false,
         description = "",
@@ -8945,7 +8945,7 @@ return {
     {
         id = 50793736,
         name = "mojave-vim-theme",
-        githubUrl = "https://github.com/marcopaganini/mojave-vim-theme",
+        githubUrl = "marcopaganini/mojave-vim-theme",
         isLua = false,
         isVim = true,
         description = "A dark, desert colors inspired theme for vim optimized for 256-color terminals.",
@@ -8961,7 +8961,7 @@ return {
     {
         id = 8614184,
         name = "vim-newsprint-theme",
-        githubUrl = "https://github.com/bruth/vim-newsprint-theme",
+        githubUrl = "bruth/vim-newsprint-theme",
         isLua = false,
         isVim = true,
         description = "Newspaper style Vim theme",
@@ -8977,7 +8977,7 @@ return {
     {
         id = 39486427,
         name = "vim-material",
-        githubUrl = "https://github.com/jackiehluo/vim-material",
+        githubUrl = "jackiehluo/vim-material",
         isLua = false,
         isVim = true,
         description = "A Vim colorscheme based on equinusocio's Material Theme.",
@@ -8994,7 +8994,7 @@ return {
     {
         id = 3456231,
         name = "vim-vwilight",
-        githubUrl = "https://github.com/jaywilliams/vim-vwilight",
+        githubUrl = "jaywilliams/vim-vwilight",
         isLua = false,
         isVim = true,
         description = "A Vim clone of the famous TextMate Twilight theme, originally converted using Coloration v0.3.2.",
@@ -9010,7 +9010,7 @@ return {
     {
         id = 150993117,
         name = "vim-xcode-dark-theme",
-        githubUrl = "https://github.com/nickaroot/vim-xcode-dark-theme",
+        githubUrl = "nickaroot/vim-xcode-dark-theme",
         isLua = false,
         isVim = true,
         description = "Vim Xcode 10 Dark Theme",
@@ -9026,7 +9026,7 @@ return {
     {
         id = 46635704,
         name = "naz.vim",
-        githubUrl = "https://github.com/1995parham/naz.vim",
+        githubUrl = "1995parham/naz.vim",
         isLua = true,
         isVim = false,
         description = "Naz Neovim Theme 🥺",
@@ -9042,7 +9042,7 @@ return {
     {
         id = 339683076,
         name = "vim-dark-frost-theme",
-        githubUrl = "https://github.com/Softmotions/vim-dark-frost-theme",
+        githubUrl = "Softmotions/vim-dark-frost-theme",
         isLua = false,
         isVim = true,
         description = "Dark Frost color theme for Vim",
@@ -9058,7 +9058,7 @@ return {
     {
         id = 249966427,
         name = "vim-themes",
-        githubUrl = "https://github.com/terroo/vim-themes",
+        githubUrl = "terroo/vim-themes",
         isLua = false,
         isVim = true,
         description = "The themes for Vim that I think are the coolest!",
@@ -9128,7 +9128,7 @@ return {
     {
         id = 291372922,
         name = "dalton-vim",
-        githubUrl = "https://github.com/lissatransborda/dalton-vim",
+        githubUrl = "lissatransborda/dalton-vim",
         isLua = false,
         isVim = true,
         description = "A minimalistic VIM theme.",
@@ -9144,7 +9144,7 @@ return {
     {
         id = 25343239,
         name = "VimCleanColors",
-        githubUrl = "https://github.com/jordwalke/VimCleanColors",
+        githubUrl = "jordwalke/VimCleanColors",
         isLua = false,
         isVim = true,
         description = "Collection of Clean Vim ColorSchemes With Airline Themes",
@@ -9179,7 +9179,7 @@ return {
     {
         id = 59314705,
         name = "patine",
-        githubUrl = "https://github.com/Canop/patine",
+        githubUrl = "Canop/patine",
         isLua = false,
         isVim = true,
         description = "A minimalist color scheme for vim",
@@ -9195,7 +9195,7 @@ return {
     {
         id = 256206516,
         name = "night-coder",
-        githubUrl = "https://github.com/a5hk/night-coder",
+        githubUrl = "a5hk/night-coder",
         isLua = false,
         isVim = true,
         description = "A dark theme for VS Code, vim, bat, and Windows Terminal",
@@ -9223,7 +9223,7 @@ return {
     {
         id = 954152,
         name = "vim-twilight",
-        githubUrl = "https://github.com/matthewtodd/vim-twilight",
+        githubUrl = "matthewtodd/vim-twilight",
         isLua = false,
         isVim = true,
         description = "A(nother) port of TextMate's Twilight theme to Vim.",
@@ -9239,7 +9239,7 @@ return {
     {
         id = 543106,
         name = "vim-pyte",
-        githubUrl = "https://github.com/therubymug/vim-pyte",
+        githubUrl = "therubymug/vim-pyte",
         isLua = false,
         isVim = true,
         description = "Henning Hasemann's pyte vim theme packaged to work with Tim Pope's pathogen plugin.",
@@ -9255,7 +9255,7 @@ return {
     {
         id = 164437168,
         name = "citylights.vim",
-        githubUrl = "https://github.com/saltdotac/citylights.vim",
+        githubUrl = "saltdotac/citylights.vim",
         isLua = false,
         isVim = true,
         description = "Citylights theme tuned for kitty, Neovim, and friends",
@@ -9271,7 +9271,7 @@ return {
     {
         id = 439716743,
         name = "fleetish-vim",
-        githubUrl = "https://github.com/krfl/fleetish-vim",
+        githubUrl = "krfl/fleetish-vim",
         isLua = false,
         isVim = true,
         description = "A theme based on a screenshot of JetBrains Fleet. May or may not be accurate ¯\\_(ツ)_/¯",
@@ -9287,7 +9287,7 @@ return {
     {
         id = 1831311,
         name = "argonaut.vim",
-        githubUrl = "https://github.com/effkay/argonaut.vim",
+        githubUrl = "effkay/argonaut.vim",
         isLua = false,
         isVim = true,
         description = "Port of David Lee's Argonaut TextMate theme",
@@ -9303,7 +9303,7 @@ return {
     {
         id = 53759576,
         name = "vim-distill",
-        githubUrl = "https://github.com/deathlyfrantic/vim-distill",
+        githubUrl = "deathlyfrantic/vim-distill",
         isLua = false,
         isVim = true,
         description = "dark \"mid-contrast\" theme for neovim/gvim",
@@ -9316,7 +9316,7 @@ return {
     {
         id = 1001171,
         name = "desert256.vim",
-        githubUrl = "https://github.com/vim-scripts/desert256.vim",
+        githubUrl = "vim-scripts/desert256.vim",
         isLua = false,
         isVim = true,
         description = "A slightly-modified desert theme, for 88- and 256-color xterms.",
@@ -9332,7 +9332,7 @@ return {
     {
         id = 35677161,
         name = "feral-vim",
-        githubUrl = "https://github.com/glortho/feral-vim",
+        githubUrl = "glortho/feral-vim",
         isLua = false,
         isVim = true,
         description = "A JavaScript-optimized dark theme for Vim, based on the excellent [croaker/mustang-vim][m] theme.",
@@ -9348,7 +9348,7 @@ return {
     {
         id = 68916589,
         name = "vim-adventurous",
-        githubUrl = "https://github.com/kitten/vim-adventurous",
+        githubUrl = "kitten/vim-adventurous",
         isLua = false,
         isVim = true,
         description = "A dark vim color theme using common colours often seen in the cult series Adventure Time",
@@ -9364,7 +9364,7 @@ return {
     {
         id = 52119853,
         name = "black-coffee-molokai",
-        githubUrl = "https://github.com/caiocutrim/black-coffee-molokai",
+        githubUrl = "caiocutrim/black-coffee-molokai",
         isLua = false,
         isVim = true,
         description = "My personal vim colorscheme or vim-theme",
@@ -9380,7 +9380,7 @@ return {
     {
         id = 56937899,
         name = "vim-grimmjow",
-        githubUrl = "https://github.com/adelarsq/vim-grimmjow",
+        githubUrl = "adelarsq/vim-grimmjow",
         isLua = false,
         isVim = true,
         description = "🌴 Vim theme",
@@ -9396,7 +9396,7 @@ return {
     {
         id = 62479417,
         name = "colorpal.vim",
-        githubUrl = "https://github.com/tweekmonster/colorpal.vim",
+        githubUrl = "tweekmonster/colorpal.vim",
         isLua = false,
         isVim = true,
         description = "Vim theming plugin",
@@ -9418,7 +9418,7 @@ return {
     {
         id = 617482905,
         name = "vim-github-theme",
-        githubUrl = "https://github.com/leviosa42/vim-github-theme",
+        githubUrl = "leviosa42/vim-github-theme",
         isLua = false,
         isVim = true,
         description = "GitHub theme for Vim (unofficial)",
@@ -9431,7 +9431,7 @@ return {
     {
         id = 145293998,
         name = "Hypsteria",
-        githubUrl = "https://github.com/hexared/Hypsteria",
+        githubUrl = "hexared/Hypsteria",
         isLua = false,
         isVim = true,
         description = "Low contrast color scheme for vim",
@@ -9447,7 +9447,7 @@ return {
     {
         id = 1679826,
         name = "znake-vim",
-        githubUrl = "https://github.com/znake/znake-vim",
+        githubUrl = "znake/znake-vim",
         isLua = false,
         isVim = true,
         description = "A customized Railscasts theme I use in VIM",
@@ -9463,7 +9463,7 @@ return {
     {
         id = 61207685,
         name = "solas.vim",
-        githubUrl = "https://github.com/damage220/solas.vim",
+        githubUrl = "damage220/solas.vim",
         isLua = false,
         isVim = true,
         description = "Vim dark color scheme based on PhpStorm's default theme",
@@ -9479,7 +9479,7 @@ return {
     {
         id = 1087813,
         name = "SunburstVIM",
-        githubUrl = "https://github.com/tangphillip/SunburstVIM",
+        githubUrl = "tangphillip/SunburstVIM",
         isLua = false,
         isVim = true,
         description =
@@ -9496,7 +9496,7 @@ return {
     {
         id = 382948833,
         name = "lake.nvim",
-        githubUrl = "https://github.com/antonk52/lake.nvim",
+        githubUrl = "antonk52/lake.nvim",
         isLua = true,
         isVim = false,
         description = "A simplified ocean color scheme with treesitter support",
@@ -9512,7 +9512,7 @@ return {
     {
         id = 72789482,
         name = "tsen-magenta-yellow",
-        githubUrl = "https://github.com/marreman/tsen-magenta-yellow",
+        githubUrl = "marreman/tsen-magenta-yellow",
         isLua = false,
         isVim = true,
         description = "A color scheme for Terminal.app and vim based on duo-tone theme for Atom.",
@@ -9525,7 +9525,7 @@ return {
     {
         id = 594262279,
         name = "the-matrix.nvim",
-        githubUrl = "https://github.com/luisiacc/the-matrix.nvim",
+        githubUrl = "luisiacc/the-matrix.nvim",
         isLua = true,
         isVim = false,
         description = "Theme for neovim inspired in the movie \"The Matrix\"",
@@ -9541,7 +9541,7 @@ return {
     {
         id = 9960489,
         name = "stereokai.vim",
-        githubUrl = "https://github.com/gummesson/stereokai.vim",
+        githubUrl = "gummesson/stereokai.vim",
         isLua = false,
         isVim = true,
         description = "Monokai theme for Vim.",
@@ -9557,7 +9557,7 @@ return {
     {
         id = 75549849,
         name = "vim-old-hope",
-        githubUrl = "https://github.com/j-tom/vim-old-hope",
+        githubUrl = "j-tom/vim-old-hope",
         isLua = false,
         isVim = true,
         description = "Vim port of \"An Old Hope\" theme",
@@ -9573,7 +9573,7 @@ return {
     {
         id = 784778,
         name = "Birds-of-Paradise-VIM-Theme",
-        githubUrl = "https://github.com/kennethlove/Birds-of-Paradise-VIM-Theme",
+        githubUrl = "kennethlove/Birds-of-Paradise-VIM-Theme",
         isLua = false,
         isVim = true,
         description = "VIM theme based on the Birds of Paradise theme for Coda.",
@@ -9586,7 +9586,7 @@ return {
     {
         id = 581449459,
         name = "vim",
-        githubUrl = "https://github.com/rose-pine/vim",
+        githubUrl = "rose-pine/vim",
         isLua = false,
         isVim = true,
         description = "Soho vibes for Vim",
@@ -9614,7 +9614,7 @@ return {
     {
         id = 116568918,
         name = "SpaceVim-theme",
-        githubUrl = "https://github.com/SpaceVim/SpaceVim-theme",
+        githubUrl = "SpaceVim/SpaceVim-theme",
         isLua = false,
         isVim = true,
         description = "Default theme of SpaceVim",
@@ -9630,7 +9630,7 @@ return {
     {
         id = 157720962,
         name = "LuckyCharms-tmTheme",
-        githubUrl = "https://github.com/ttscoff/LuckyCharms-tmTheme",
+        githubUrl = "ttscoff/LuckyCharms-tmTheme",
         isLua = false,
         isVim = true,
         description = "A light theme for Sublime Text, VS Code, and Vim",
@@ -9643,7 +9643,7 @@ return {
     {
         id = 257018578,
         name = "paper.vim",
-        githubUrl = "https://github.com/equt/paper.vim",
+        githubUrl = "equt/paper.vim",
         isLua = false,
         isVim = true,
         description = "Vim Theme",
@@ -9660,7 +9660,7 @@ return {
     {
         id = 173604840,
         name = "vim-garbage-oracle",
-        githubUrl = "https://github.com/sabrinagannon/vim-garbage-oracle",
+        githubUrl = "sabrinagannon/vim-garbage-oracle",
         isLua = false,
         isVim = true,
         description = "Light and dark vim themes with colours inspired by the goddess mode comic series",
@@ -9677,7 +9677,7 @@ return {
     {
         id = 1318600,
         name = "obsidian2.vim",
-        githubUrl = "https://github.com/vim-scripts/obsidian2.vim",
+        githubUrl = "vim-scripts/obsidian2.vim",
         isLua = false,
         isVim = true,
         description = "Obsidian2 based on Notepad++ obsidian theme colors",
@@ -9693,7 +9693,7 @@ return {
     {
         id = 22821845,
         name = "xcode-low-key-vim",
-        githubUrl = "https://github.com/dgraham/xcode-low-key-vim",
+        githubUrl = "dgraham/xcode-low-key-vim",
         isLua = false,
         isVim = true,
         description = "A Vim theme using Xcode's Low Key color palette.",
@@ -9709,7 +9709,7 @@ return {
     {
         id = 413018235,
         name = "walh",
-        githubUrl = "https://github.com/casonadams/walh",
+        githubUrl = "casonadams/walh",
         isLua = false,
         isVim = true,
         description = "Clean vim color scheme; Uses terminal colors for highlights.",
@@ -9767,7 +9767,7 @@ return {
     {
         id = 142845840,
         name = "snow",
-        githubUrl = "https://github.com/Mitgorakh/snow",
+        githubUrl = "Mitgorakh/snow",
         isLua = false,
         isVim = true,
         description = "a blue-tinted winter vimscape (vim theme/colorscheme)",
@@ -9784,7 +9784,7 @@ return {
     {
         id = 59505235,
         name = "vim-crystallite",
-        githubUrl = "https://github.com/tomsik68/vim-crystallite",
+        githubUrl = "tomsik68/vim-crystallite",
         isLua = false,
         isVim = true,
         description = "Dark-looking theme for vim editor that tries to look colorful",
@@ -9800,7 +9800,7 @@ return {
     {
         id = 68953550,
         name = "vim-darcula-colors",
-        githubUrl = "https://github.com/isobit/vim-darcula-colors",
+        githubUrl = "isobit/vim-darcula-colors",
         isLua = false,
         isVim = true,
         description = "Vim colors inspired by Intellij IDEA's Darcula theme",
@@ -9816,7 +9816,7 @@ return {
     {
         id = 124590621,
         name = "blue-mood-vim",
-        githubUrl = "https://github.com/lmintmate/blue-mood-vim",
+        githubUrl = "lmintmate/blue-mood-vim",
         isLua = false,
         isVim = true,
         description = "A port of emacs Blue Mood theme for Gvim and true color terminal vim. Includes Lightline theme.",
@@ -9832,7 +9832,7 @@ return {
     {
         id = 2751908,
         name = "vim-color-github",
-        githubUrl = "https://github.com/telamon/vim-color-github",
+        githubUrl = "telamon/vim-color-github",
         isLua = false,
         isVim = true,
         description = "Github Theme for vim",
@@ -9848,7 +9848,7 @@ return {
     {
         id = 260158174,
         name = "anis.vim",
-        githubUrl = "https://github.com/haze/anis.vim",
+        githubUrl = "haze/anis.vim",
         isLua = false,
         isVim = true,
         description = "dark vim theme with extended rust & zig support",
@@ -9861,7 +9861,7 @@ return {
     {
         id = 446068778,
         name = "sublimetext-spacegray.vim",
-        githubUrl = "https://github.com/yuttie/sublimetext-spacegray.vim",
+        githubUrl = "yuttie/sublimetext-spacegray.vim",
         isLua = false,
         isVim = true,
         description = "Vim-port of Spacegray themes for Sublime Text",
@@ -9883,7 +9883,7 @@ return {
     {
         id = 1004036,
         name = "vilight.vim",
-        githubUrl = "https://github.com/vim-scripts/vilight.vim",
+        githubUrl = "vim-scripts/vilight.vim",
         isLua = false,
         isVim = true,
         description = "A more literal translation of Will Farrington's Twilight color theme",
@@ -9899,7 +9899,7 @@ return {
     {
         id = 225191563,
         name = "vim-trash-polka",
-        githubUrl = "https://github.com/A/vim-trash-polka",
+        githubUrl = "A/vim-trash-polka",
         isLua = false,
         isVim = true,
         description = "Dark & Light Theme for Vim and ITerm2 inspired by @arcticicestudio/Nord.",
@@ -9921,7 +9921,7 @@ return {
     {
         id = 473899889,
         name = "aura-neovim",
-        githubUrl = "https://github.com/techtuner/aura-neovim",
+        githubUrl = "techtuner/aura-neovim",
         isLua = false,
         isVim = true,
         description = "Neovim colorscheme for Aura theme",
@@ -9937,7 +9937,7 @@ return {
     {
         id = 122873479,
         name = "vim-colors-synthetic",
-        githubUrl = "https://github.com/semibran/vim-colors-synthetic",
+        githubUrl = "semibran/vim-colors-synthetic",
         isLua = false,
         isVim = true,
         description = "🎨 minimal vim color scheme",
@@ -9953,7 +9953,7 @@ return {
     {
         id = 6257660,
         name = "blackboard.vim",
-        githubUrl = "https://github.com/ratazzi/blackboard.vim",
+        githubUrl = "ratazzi/blackboard.vim",
         isLua = false,
         isVim = true,
         description = "Clone of the Blackboard theme from textmate, work with xterm-256color.",
@@ -9969,10 +9969,10 @@ return {
     {
         id = 8718124,
         name = "tomorrow-theme-vim",
-        githubUrl = "https://github.com/d11wtq/tomorrow-theme-vim",
+        githubUrl = "d11wtq/tomorrow-theme-vim",
         isLua = false,
         isVim = true,
-        description = "Auto-updated vim-specific files from https://github.com/chriskempson/tomorrow-theme.git",
+        description = "Auto-updated vim-specific files from chriskempson/tomorrow-theme.git",
         vimColorSchemes = {
             {
                 backgrounds = {
@@ -10009,7 +10009,7 @@ return {
     {
         id = 176522069,
         name = "rubber-themes.vim",
-        githubUrl = "https://github.com/VonHeikemen/rubber-themes.vim",
+        githubUrl = "VonHeikemen/rubber-themes.vim",
         isLua = false,
         isVim = true,
         description = "Collection of color schemes with minimal amount of highlighting for Vim.",
@@ -10037,7 +10037,7 @@ return {
     {
         id = 11389422,
         name = "vim-theme-bronkow",
-        githubUrl = "https://github.com/cange/vim-theme-bronkow",
+        githubUrl = "cange/vim-theme-bronkow",
         isLua = false,
         isVim = true,
         description = "A vim color theme with light and dark mode",
@@ -10053,7 +10053,7 @@ return {
     {
         id = 275142904,
         name = "Vi-theme",
-        githubUrl = "https://github.com/Madhava-mng/Vi-theme",
+        githubUrl = "Madhava-mng/Vi-theme",
         isLua = false,
         isVim = true,
         description = "Vim Theme editing and debugging frame-work",
@@ -11060,7 +11060,7 @@ return {
     {
         id = 208428310,
         name = "voir.vim",
-        githubUrl = "https://github.com/PierreCapo/voir.vim",
+        githubUrl = "PierreCapo/voir.vim",
         isLua = false,
         isVim = true,
         description = "Vim color theme for JavaScript",
@@ -11076,7 +11076,7 @@ return {
     {
         id = 1200263,
         name = "RailsCastsThemeHack",
-        githubUrl = "https://github.com/lukaszkorecki/RailsCastsThemeHack",
+        githubUrl = "lukaszkorecki/RailsCastsThemeHack",
         isLua = false,
         isVim = true,
         description = "Community driven fork of RailsCasts Vim colorscheme",
@@ -11092,7 +11092,7 @@ return {
     {
         id = 266877927,
         name = "night-owl.vim",
-        githubUrl = "https://github.com/charliesbot/night-owl.vim",
+        githubUrl = "charliesbot/night-owl.vim",
         isLua = false,
         isVim = true,
         description = "",
@@ -11108,7 +11108,7 @@ return {
     {
         id = 431771611,
         name = "camarada.vim",
-        githubUrl = "https://github.com/nicolascb/camarada.vim",
+        githubUrl = "nicolascb/camarada.vim",
         isLua = false,
         isVim = true,
         description = "A light/dark colorscheme for Vim.",
@@ -11130,7 +11130,7 @@ return {
     {
         id = 248457705,
         name = "homecolors.vim",
-        githubUrl = "https://github.com/rflban/homecolors.vim",
+        githubUrl = "rflban/homecolors.vim",
         isLua = false,
         isVim = true,
         description = "Vim color scheme",
@@ -11146,7 +11146,7 @@ return {
     {
         id = 132687595,
         name = "oblivion.vim",
-        githubUrl = "https://github.com/miguelmota/oblivion.vim",
+        githubUrl = "miguelmota/oblivion.vim",
         isLua = false,
         isVim = true,
         description = "A fork of Tomorrow-Night-Bright color scheme with some minimal modifications",
@@ -11159,7 +11159,7 @@ return {
     {
         id = 400849841,
         name = "4colors",
-        githubUrl = "https://github.com/mihaifm/4colors",
+        githubUrl = "mihaifm/4colors",
         isLua = false,
         isVim = true,
         description = "Distraction-free Vim theme that only uses 4 colors.",
@@ -11175,7 +11175,7 @@ return {
     {
         id = 591087284,
         name = "concoctis.nvim",
-        githubUrl = "https://github.com/GwHisHere/concoctis.nvim",
+        githubUrl = "GwHisHere/concoctis.nvim",
         isLua = true,
         isVim = false,
         description = "lua port of the gruvbox-concoctis vscode theme",
@@ -11192,7 +11192,7 @@ return {
     {
         id = 518829224,
         name = "Cyber23",
-        githubUrl = "https://github.com/nerdbude/Cyber23",
+        githubUrl = "nerdbude/Cyber23",
         isLua = false,
         isVim = true,
         description = "A dark Linux theme for netrunner",
@@ -11205,7 +11205,7 @@ return {
     {
         id = 3391804,
         name = "vim-gummybears-colorscheme",
-        githubUrl = "https://github.com/dbb/vim-gummybears-colorscheme",
+        githubUrl = "dbb/vim-gummybears-colorscheme",
         isLua = false,
         isVim = true,
         description = "A nice dark-theme pastel colorscheme",
@@ -11218,7 +11218,7 @@ return {
     {
         id = 1417479,
         name = "vim-color-raggi",
-        githubUrl = "https://github.com/raggi/vim-color-raggi",
+        githubUrl = "raggi/vim-color-raggi",
         isLua = false,
         isVim = true,
         description = "A lightweight white background grayscale theme with bold keywords. Good in the sun.",
@@ -11231,7 +11231,7 @@ return {
     {
         id = 4399309,
         name = "tropikos-vim-theme",
-        githubUrl = "https://github.com/blackgate/tropikos-vim-theme",
+        githubUrl = "blackgate/tropikos-vim-theme",
         isLua = false,
         isVim = true,
         description = "Tropikos vim color scheme",
@@ -11244,7 +11244,7 @@ return {
     {
         id = 179379810,
         name = "vim-ariake-dark",
-        githubUrl = "https://github.com/davidcelis/vim-ariake-dark",
+        githubUrl = "davidcelis/vim-ariake-dark",
         isLua = false,
         isVim = true,
         description = "The Ariake Dark theme for Vim",
@@ -11257,7 +11257,7 @@ return {
     {
         id = 167890162,
         name = "vim-dark-meadow",
-        githubUrl = "https://github.com/cliuj/vim-dark-meadow",
+        githubUrl = "cliuj/vim-dark-meadow",
         isLua = false,
         isVim = true,
         description = "A dark vim theme based on a meadow of blue/purple flowers",
@@ -11270,7 +11270,7 @@ return {
     {
         id = 201476710,
         name = "Base4Tone-vim",
-        githubUrl = "https://github.com/atelierbram/Base4Tone-vim",
+        githubUrl = "atelierbram/Base4Tone-vim",
         isLua = false,
         isVim = true,
         description = "Themes for Vim",
@@ -11508,7 +11508,7 @@ return {
     {
         id = 256838732,
         name = "sci.vim",
-        githubUrl = "https://github.com/szorfein/sci.vim",
+        githubUrl = "szorfein/sci.vim",
         isLua = false,
         isVim = true,
         description = "Yet another vim theme :)",
@@ -11524,7 +11524,7 @@ return {
     {
         id = 60625844,
         name = "vim-neodark",
-        githubUrl = "https://github.com/CallumHoward/vim-neodark",
+        githubUrl = "CallumHoward/vim-neodark",
         isLua = false,
         isVim = true,
         description = "Dark theme for NeoVim",
@@ -11540,7 +11540,7 @@ return {
     {
         id = 204287813,
         name = "vim-svelte-theme",
-        githubUrl = "https://github.com/leafOfTree/vim-svelte-theme",
+        githubUrl = "leafOfTree/vim-svelte-theme",
         isLua = false,
         isVim = true,
         description = "A vim svelte color theme.",
@@ -11556,7 +11556,7 @@ return {
     {
         id = 111295822,
         name = "tempus-themes-vim",
-        githubUrl = "https://github.com/protesilaos/tempus-themes-vim",
+        githubUrl = "protesilaos/tempus-themes-vim",
         isLua = false,
         isVim = true,
         description =
@@ -11663,7 +11663,7 @@ return {
     {
         id = 73256431,
         name = "vim-dzo",
-        githubUrl = "https://github.com/Blevs/vim-dzo",
+        githubUrl = "Blevs/vim-dzo",
         isLua = false,
         isVim = true,
         description = "A dark color scheme for vim.",
@@ -11679,7 +11679,7 @@ return {
     {
         id = 465152849,
         name = "vim-zhi",
-        githubUrl = "https://github.com/ingram1107/vim-zhi",
+        githubUrl = "ingram1107/vim-zhi",
         isLua = false,
         isVim = true,
         description = "Vim/Neovim light theme aims at eyes comfort",
@@ -11695,7 +11695,7 @@ return {
     {
         id = 1685021,
         name = "vim-colors",
-        githubUrl = "https://github.com/travisjeffery/vim-colors",
+        githubUrl = "travisjeffery/vim-colors",
         isLua = false,
         isVim = true,
         description = "good vim color themes i've hacked together",
@@ -11777,7 +11777,7 @@ return {
     {
         id = 1002247,
         name = "vibrantink",
-        githubUrl = "https://github.com/vim-scripts/vibrantink",
+        githubUrl = "vim-scripts/vibrantink",
         isLua = false,
         isVim = true,
         description = "A Vim port of Justin Palmer's VibrantInk theme for TextMate",
@@ -11793,7 +11793,7 @@ return {
     {
         id = 4521727,
         name = "vim-colors-writer",
-        githubUrl = "https://github.com/nathanlong/vim-colors-writer",
+        githubUrl = "nathanlong/vim-colors-writer",
         isLua = false,
         isVim = true,
         description = "Distraction free writing for Vim, with light and dark themes",
@@ -11810,7 +11810,7 @@ return {
     {
         id = 33995635,
         name = "vim-one-colorschemes",
-        githubUrl = "https://github.com/lloeki/vim-one-colorschemes",
+        githubUrl = "lloeki/vim-one-colorschemes",
         isLua = false,
         isVim = true,
         description = "One Dark and One Light themes from Atom for Vim",
@@ -11826,7 +11826,7 @@ return {
     {
         id = 315000022,
         name = "themer",
-        githubUrl = "https://github.com/creativecreature/themer",
+        githubUrl = "creativecreature/themer",
         isLua = false,
         isVim = true,
         description = "Generate syntax themes from yaml files. I use this to create a shared theme for neovim and tmux",
@@ -11842,7 +11842,7 @@ return {
     {
         id = 4862518,
         name = "made-of-code.vim",
-        githubUrl = "https://github.com/johnallen3d/made-of-code.vim",
+        githubUrl = "johnallen3d/made-of-code.vim",
         isLua = false,
         isVim = true,
         description =
@@ -11859,7 +11859,7 @@ return {
     {
         id = 350160411,
         name = "PastellGit",
-        githubUrl = "https://github.com/natanscalvence/PastellGit",
+        githubUrl = "natanscalvence/PastellGit",
         isLua = false,
         isVim = true,
         description = "🦄 A dark theme for vim, based on Code Sample of the Github (Dark-Mode).",
@@ -11875,7 +11875,7 @@ return {
     {
         id = 437156319,
         name = "citylights.nvim",
-        githubUrl = "https://github.com/jordanbrauer/citylights.nvim",
+        githubUrl = "jordanbrauer/citylights.nvim",
         isLua = true,
         isVim = false,
         description = "A Neovim port of the beautiful City Lights syntax theme by Yummygum",
@@ -11894,7 +11894,7 @@ return {
     {
         id = 641657601,
         name = "nvim-andromeda",
-        githubUrl = "https://github.com/nobbmaestro/nvim-andromeda",
+        githubUrl = "nobbmaestro/nvim-andromeda",
         isLua = true,
         isVim = false,
         description = "Neovim port of Andromeda 👨🏼‍🎤 ",
@@ -11910,7 +11910,7 @@ return {
     {
         id = 224286496,
         name = "rice",
-        githubUrl = "https://github.com/dapc11/rice",
+        githubUrl = "dapc11/rice",
         isLua = true,
         isVim = true,
         description = "Ricing of my linux setup",
@@ -11929,7 +11929,7 @@ return {
     {
         id = 767606,
         name = "dark-themes",
-        githubUrl = "https://github.com/prabirshrestha/dark-themes",
+        githubUrl = "prabirshrestha/dark-themes",
         isLua = false,
         isVim = true,
         description = "Dark themes for various text editors - Visual Studio, Notepad++, Vim, Eclipse",
@@ -11942,7 +11942,7 @@ return {
     {
         id = 340445973,
         name = "nord.vim",
-        githubUrl = "https://github.com/casonadams/nord.vim",
+        githubUrl = "casonadams/nord.vim",
         isLua = false,
         isVim = true,
         description = "nord light and dark themes for vim",
@@ -11964,7 +11964,7 @@ return {
     {
         id = 116903186,
         name = "vim-colors-blueprint",
-        githubUrl = "https://github.com/thenewvu/vim-colors-blueprint",
+        githubUrl = "thenewvu/vim-colors-blueprint",
         isLua = false,
         isVim = true,
         description = "A color scheme for #vim and #neovim which was inspired by blueprints.",
@@ -11980,7 +11980,7 @@ return {
     {
         id = 20018746,
         name = "tomorrow-night.vim",
-        githubUrl = "https://github.com/squarefrog/tomorrow-night.vim",
+        githubUrl = "squarefrog/tomorrow-night.vim",
         isLua = false,
         isVim = true,
         description = "A tomorrow night theme created for use with NeoBundle",
@@ -11996,7 +11996,7 @@ return {
     {
         id = 48742753,
         name = "vim-color-theme-protect-eyes",
-        githubUrl = "https://github.com/wsniper/vim-color-theme-protect-eyes",
+        githubUrl = "wsniper/vim-color-theme-protect-eyes",
         isLua = false,
         isVim = true,
         description = "vim 护眼配色方案",
@@ -12012,7 +12012,7 @@ return {
     {
         id = 16066287,
         name = "my.vim",
-        githubUrl = "https://github.com/srushti/my.vim",
+        githubUrl = "srushti/my.vim",
         isLua = false,
         isVim = true,
         description = "Repository with additional personalisations like my own theme",
@@ -12034,7 +12034,7 @@ return {
     {
         id = 119618260,
         name = "heman",
-        githubUrl = "https://github.com/kjohnsen/heman",
+        githubUrl = "kjohnsen/heman",
         isLua = false,
         isVim = true,
         description = "vim color theme inspired by the 90es",
@@ -12047,7 +12047,7 @@ return {
     {
         id = 191728,
         name = "vim-config",
-        githubUrl = "https://github.com/paydro/vim-config",
+        githubUrl = "paydro/vim-config",
         isLua = false,
         isVim = true,
         description = "Paydro's vim configuration files. Includes an idleFingers theme for vim!",
@@ -12063,7 +12063,7 @@ return {
     {
         id = 45266183,
         name = "molokai_dark",
-        githubUrl = "https://github.com/fcevado/molokai_dark",
+        githubUrl = "fcevado/molokai_dark",
         isLua = false,
         isVim = true,
         description =
@@ -12077,7 +12077,7 @@ return {
     {
         id = 72394026,
         name = "monokai-soda.vim",
-        githubUrl = "https://github.com/jzelinskie/monokai-soda.vim",
+        githubUrl = "jzelinskie/monokai-soda.vim",
         isLua = true,
         isVim = false,
         description = "monokai soda vim theme",
@@ -12093,7 +12093,7 @@ return {
     {
         id = 163288821,
         name = "fireslime.vim",
-        githubUrl = "https://github.com/erickzanardo/fireslime.vim",
+        githubUrl = "erickzanardo/fireslime.vim",
         isLua = false,
         isVim = true,
         description = "Vim color theme",
@@ -12109,7 +12109,7 @@ return {
     {
         id = 362876248,
         name = "vim-hivacruz-theme",
-        githubUrl = "https://github.com/kinoute/vim-hivacruz-theme",
+        githubUrl = "kinoute/vim-hivacruz-theme",
         isLua = false,
         isVim = true,
         description = "A dark blue Vim color scheme.",
@@ -12125,7 +12125,7 @@ return {
     {
         id = 379671546,
         name = "codely-vim-theme",
-        githubUrl = "https://github.com/codingpotions/codely-vim-theme",
+        githubUrl = "codingpotions/codely-vim-theme",
         isLua = false,
         isVim = true,
         description = "🎨 A port of the modern, good-looking, productivity-increaser theme of Codely for vim.",
@@ -12138,7 +12138,7 @@ return {
     {
         id = 1328733,
         name = "VIM-Railscasts-Color-Theme",
-        githubUrl = "https://github.com/minofare/VIM-Railscasts-Color-Theme",
+        githubUrl = "minofare/VIM-Railscasts-Color-Theme",
         isLua = false,
         isVim = true,
         description = "A Railscasts color theme that works in 256 color terminals as well as gui ",
@@ -12151,7 +12151,7 @@ return {
     {
         id = 506497653,
         name = "vim-leuven-theme",
-        githubUrl = "https://github.com/gzagatti/vim-leuven-theme",
+        githubUrl = "gzagatti/vim-leuven-theme",
         isLua = false,
         isVim = true,
         description =
@@ -12168,7 +12168,7 @@ return {
     {
         id = 4690447,
         name = "tomorrow.vim",
-        githubUrl = "https://github.com/DAddYE/tomorrow.vim",
+        githubUrl = "DAddYE/tomorrow.vim",
         isLua = false,
         isVim = true,
         description = "Dark light version of new Tomorrow Theme",
@@ -12185,7 +12185,7 @@ return {
     {
         id = 122652909,
         name = "vim-bluloco-dark",
-        githubUrl = "https://github.com/uloco/vim-bluloco-dark",
+        githubUrl = "uloco/vim-bluloco-dark",
         isLua = false,
         isVim = true,
         description = "Vim port of bluloco-dark color theme",
@@ -12201,7 +12201,7 @@ return {
     {
         id = 228429616,
         name = "NorthernLights.vim",
-        githubUrl = "https://github.com/eskilop/NorthernLights.vim",
+        githubUrl = "eskilop/NorthernLights.vim",
         isLua = false,
         isVim = true,
         description = "A dark blue theme for Vim",
@@ -12214,7 +12214,7 @@ return {
     {
         id = 626195,
         name = "cobalt.vim",
-        githubUrl = "https://github.com/jarodl/cobalt.vim",
+        githubUrl = "jarodl/cobalt.vim",
         isLua = false,
         isVim = true,
         description = "A clone of the cobalt TextMate theme for vim.",
@@ -12230,7 +12230,7 @@ return {
     {
         id = 28117507,
         name = "Spacegray.vim",
-        githubUrl = "https://github.com/vim-scripts/Spacegray.vim",
+        githubUrl = "vim-scripts/Spacegray.vim",
         isLua = false,
         isVim = true,
         description = "A Vim colorscheme loosely modeled after the Spacegray Xcode theme.",
@@ -12246,7 +12246,7 @@ return {
     {
         id = 937131,
         name = "pastelsondark-vim",
-        githubUrl = "https://github.com/mikefarmer/pastelsondark-vim",
+        githubUrl = "mikefarmer/pastelsondark-vim",
         isLua = false,
         isVim = true,
         description = "Port of the Textmate theme Pastels on Dark for VIM",
@@ -12259,7 +12259,7 @@ return {
     {
         id = 438788907,
         name = "bloop-vim",
-        githubUrl = "https://github.com/nocksock/bloop-vim",
+        githubUrl = "nocksock/bloop-vim",
         isLua = false,
         isVim = true,
         description = "a custom theme for vim. work in progress.",
@@ -12275,7 +12275,7 @@ return {
     {
         id = 355513024,
         name = "github-dimmed.vim",
-        githubUrl = "https://github.com/zoomlogo/github-dimmed.vim",
+        githubUrl = "zoomlogo/github-dimmed.vim",
         isLua = false,
         isVim = true,
         description = "Github's dark dimmed theme for Neovim / Vim",
@@ -12291,7 +12291,7 @@ return {
     {
         id = 655726923,
         name = "vim-light-chromeclipse",
-        githubUrl = "https://github.com/josebalius/vim-light-chromeclipse",
+        githubUrl = "josebalius/vim-light-chromeclipse",
         isLua = false,
         isVim = true,
         description = "A super simple Chome DevTools / Eclipse inspired vim theme",
@@ -12307,7 +12307,7 @@ return {
     {
         id = 31280906,
         name = "summerfruit256.vim",
-        githubUrl = "https://github.com/ku-s-h/summerfruit256.vim",
+        githubUrl = "ku-s-h/summerfruit256.vim",
         isLua = false,
         isVim = true,
         description = "A slightly modified/improved version of the original summerfruit256 theme.",
@@ -12323,7 +12323,7 @@ return {
     {
         id = 631666284,
         name = "dusklight.vim",
-        githubUrl = "https://github.com/drazil100/dusklight.vim",
+        githubUrl = "drazil100/dusklight.vim",
         isLua = false,
         isVim = true,
         description = "A vim color scheme that resembles colorful lights on a night sky.",
@@ -12339,7 +12339,7 @@ return {
     {
         id = 89183999,
         name = "Cognac-Vim",
-        githubUrl = "https://github.com/ckmorris/Cognac-Vim",
+        githubUrl = "ckmorris/Cognac-Vim",
         isLua = false,
         isVim = true,
         description = "An Alluring, Dark, and Muted Theme For Vim.  https://sabintsev.com",
@@ -12352,7 +12352,7 @@ return {
     {
         id = 131522347,
         name = "colorific.vim",
-        githubUrl = "https://github.com/sudorook/colorific.vim",
+        githubUrl = "sudorook/colorific.vim",
         isLua = false,
         isVim = true,
         description =
@@ -12369,7 +12369,7 @@ return {
     {
         id = 412289490,
         name = "vim-earl-grey",
-        githubUrl = "https://github.com/jacksonludwig/vim-earl-grey",
+        githubUrl = "jacksonludwig/vim-earl-grey",
         isLua = false,
         isVim = true,
         description = "Vim Port of the Earl Grey Theme - A gentle color scheme, for code.",
@@ -12385,7 +12385,7 @@ return {
     {
         id = 435160957,
         name = "hg.vim",
-        githubUrl = "https://github.com/epszaw/hg.vim",
+        githubUrl = "epszaw/hg.vim",
         isLua = false,
         isVim = true,
         description = "🎨 Color scheme for pure alchemists",
@@ -12398,7 +12398,7 @@ return {
     {
         id = 344572110,
         name = "paper",
-        githubUrl = "https://github.com/a5hk/paper",
+        githubUrl = "a5hk/paper",
         isLua = false,
         isVim = true,
         description = "A light VS Code theme, vim, and Windows Terminal",
@@ -12414,7 +12414,7 @@ return {
     {
         id = 487564387,
         name = "nightforest.nvim",
-        githubUrl = "https://github.com/xfyuan/nightforest.nvim",
+        githubUrl = "xfyuan/nightforest.nvim",
         isLua = true,
         isVim = false,
         description =
@@ -12431,7 +12431,7 @@ return {
     {
         id = 38939448,
         name = "camila",
-        githubUrl = "https://github.com/jlobos/camila",
+        githubUrl = "jlobos/camila",
         isLua = false,
         isVim = true,
         description = "Elegant Vim/Neovim color scheme that lets you focus on the content with simple bright colors ",
@@ -12447,7 +12447,7 @@ return {
     {
         id = 182219846,
         name = "boogiewoogie",
-        githubUrl = "https://github.com/capaldo/boogiewoogie",
+        githubUrl = "capaldo/boogiewoogie",
         isLua = false,
         isVim = true,
         description =
@@ -12461,7 +12461,7 @@ return {
     {
         id = 1230250,
         name = "vim-pixelmuerto",
-        githubUrl = "https://github.com/pixelmuerto/vim-pixelmuerto",
+        githubUrl = "pixelmuerto/vim-pixelmuerto",
         isLua = false,
         isVim = true,
         description = "vim theme",
@@ -12474,7 +12474,7 @@ return {
     {
         id = 39185755,
         name = "pride.vim",
-        githubUrl = "https://github.com/haoyu953/pride.vim",
+        githubUrl = "haoyu953/pride.vim",
         isLua = false,
         isVim = true,
         description = "probably the best pride celebrating vim theme",
@@ -12490,7 +12490,7 @@ return {
     {
         id = 173249901,
         name = "cosmic_latte",
-        githubUrl = "https://github.com/kristijanhusak/cosmic_latte",
+        githubUrl = "kristijanhusak/cosmic_latte",
         isLua = false,
         isVim = true,
         description =
@@ -12508,7 +12508,7 @@ return {
     {
         id = 14572546,
         name = "vim-codeschool",
-        githubUrl = "https://github.com/akmassey/vim-codeschool",
+        githubUrl = "akmassey/vim-codeschool",
         isLua = false,
         isVim = true,
         description = "A vim color scheme based on AstonJ's theme based on code school.",
@@ -12521,7 +12521,7 @@ return {
     {
         id = 129349220,
         name = "vim-theme-underflow",
-        githubUrl = "https://github.com/HenryNewcomer/vim-theme-underflow",
+        githubUrl = "HenryNewcomer/vim-theme-underflow",
         isLua = false,
         isVim = true,
         description = "A darker, blue, pastel-like color theme for Vim",
@@ -12537,7 +12537,7 @@ return {
     {
         id = 198008733,
         name = "onedark.vim",
-        githubUrl = "https://github.com/ukyouz/onedark.vim",
+        githubUrl = "ukyouz/onedark.vim",
         isLua = false,
         isVim = true,
         description =
@@ -12554,7 +12554,7 @@ return {
     {
         id = 431327200,
         name = "hotline-vim",
-        githubUrl = "https://github.com/ronwoch/hotline-vim",
+        githubUrl = "ronwoch/hotline-vim",
         isLua = false,
         isVim = true,
         description = "Dark Vim theme with bright colours",
@@ -12570,7 +12570,7 @@ return {
     {
         id = 4384198,
         name = "sonoma.vim",
-        githubUrl = "https://github.com/vim-scripts/sonoma.vim",
+        githubUrl = "vim-scripts/sonoma.vim",
         isLua = false,
         isVim = true,
         description = "An easy-breezy color theme that acts as a soothing balm for your eyes.",
@@ -12586,7 +12586,7 @@ return {
     {
         id = 376862251,
         name = "workspace-setup",
-        githubUrl = "https://github.com/viktorChekhovoi/workspace-setup",
+        githubUrl = "viktorChekhovoi/workspace-setup",
         isLua = false,
         isVim = true,
         description = "Installs themes and configs for Linux terminal, TMUX, and Vim, as well as Vim plugins",
@@ -12599,7 +12599,7 @@ return {
     {
         id = 158104931,
         name = "red_alert_vim_theme",
-        githubUrl = "https://github.com/pcostasgr/red_alert_vim_theme",
+        githubUrl = "pcostasgr/red_alert_vim_theme",
         isLua = false,
         isVim = true,
         description = "Red theme for VIM",
@@ -12615,7 +12615,7 @@ return {
     {
         id = 17734962,
         name = "vim-tomorrow-theme",
-        githubUrl = "https://github.com/gotchacode/vim-tomorrow-theme",
+        githubUrl = "gotchacode/vim-tomorrow-theme",
         isLua = false,
         isVim = true,
         description = "Tomorrow themes for Vim",
@@ -12655,7 +12655,7 @@ return {
     {
         id = 162407753,
         name = "oceanic-primal-vim",
-        githubUrl = "https://github.com/barlog-m/oceanic-primal-vim",
+        githubUrl = "barlog-m/oceanic-primal-vim",
         isLua = false,
         isVim = true,
         description = "Oceanic Primal VIM theme",
@@ -12671,7 +12671,7 @@ return {
     {
         id = 436398920,
         name = "vim-microtone",
-        githubUrl = "https://github.com/rstacruz/vim-microtone",
+        githubUrl = "rstacruz/vim-microtone",
         isLua = false,
         isVim = true,
         description = "Minimal theme for Vim",
@@ -12723,7 +12723,7 @@ return {
     {
         id = 315423379,
         name = "violenta-vim",
-        githubUrl = "https://github.com/lissatransborda/violenta-vim",
+        githubUrl = "lissatransborda/violenta-vim",
         isLua = false,
         isVim = true,
         description = "Violenta's vim theme",
@@ -12736,7 +12736,7 @@ return {
     {
         id = 321488537,
         name = "vim-earthbound-themes",
-        githubUrl = "https://github.com/benbusby/vim-earthbound-themes",
+        githubUrl = "benbusby/vim-earthbound-themes",
         isLua = false,
         isVim = true,
         description = "Vim submodule for the earthbound-themes repo",
@@ -12818,7 +12818,7 @@ return {
     {
         id = 1806368,
         name = "Cowabunga-Vim-Theme",
-        githubUrl = "https://github.com/afj176/Cowabunga-Vim-Theme",
+        githubUrl = "afj176/Cowabunga-Vim-Theme",
         isLua = false,
         isVim = true,
         description =
@@ -12832,7 +12832,7 @@ return {
     {
         id = 110773660,
         name = "mono-theme",
-        githubUrl = "https://github.com/felipevolpone/mono-theme",
+        githubUrl = "felipevolpone/mono-theme",
         isLua = false,
         isVim = true,
         description = "A monochromatic theme for vim/neovim",
@@ -12848,7 +12848,7 @@ return {
     {
         id = 100849957,
         name = "The-Matrix-Hacker-VIM-Theme",
-        githubUrl = "https://github.com/spartrekus/The-Matrix-Hacker-VIM-Theme",
+        githubUrl = "spartrekus/The-Matrix-Hacker-VIM-Theme",
         isLua = false,
         isVim = true,
         description = "The Matrix Hacker VIM Theme",
@@ -12861,7 +12861,7 @@ return {
     {
         id = 50505981,
         name = "vimtom",
-        githubUrl = "https://github.com/larsbs/vimtom",
+        githubUrl = "larsbs/vimtom",
         isLua = false,
         isVim = true,
         description = "Atom One Dark theme port to Gvim.",
@@ -12877,7 +12877,7 @@ return {
     {
         id = 7151195,
         name = "denkai.vim",
-        githubUrl = "https://github.com/dciccale/denkai.vim",
+        githubUrl = "dciccale/denkai.vim",
         isLua = false,
         isVim = true,
         description = "Modified molokai theme for vim",
@@ -12893,7 +12893,7 @@ return {
     {
         id = 286752615,
         name = "vim-spooky",
-        githubUrl = "https://github.com/SpookySec/vim-spooky",
+        githubUrl = "SpookySec/vim-spooky",
         isLua = false,
         isVim = true,
         description = "a nice vim color theme",
@@ -12909,7 +12909,7 @@ return {
     {
         id = 5298725,
         name = "forest-monk-theme",
-        githubUrl = "https://github.com/paulyasi/forest-monk-theme",
+        githubUrl = "paulyasi/forest-monk-theme",
         isLua = false,
         isVim = true,
         description = "Forest Monk Theme for Emacs and Vim",
@@ -12922,7 +12922,7 @@ return {
     {
         id = 534255469,
         name = "gekkou.vim",
-        githubUrl = "https://github.com/niuez/gekkou.vim",
+        githubUrl = "niuez/gekkou.vim",
         isLua = false,
         isVim = true,
         description = "vim theme with only 3 colors",
