@@ -23,148 +23,151 @@ local remaps = {}
 
 local exampleCode = {
     {
-        { "\" Returns true if the color hex value is light", "vimLineComment" },
+        { "\" Returns true if the color hex value is light", "vimLineComment", "NormalBg" },
     },
     {
-        { "function",          "vimCommand" },
-        { "! IsHexColorLight", "vimFunction" },
-        { "(",                 "vimParenSep" },
-        { "color",             "vimOperParen" },
-        { ")",                 "vimParenSep" },
-        { " ",                 "vimFuncBody" },
-        { "abort",             "vimIsCommand" },
+        { "function",          "vimCommand",   "NormalBg" },
+        { "! IsHexColorLight", "vimFunction",  "NormalBg" },
+        { "(",                 "vimParenSep",  "NormalBg" },
+        { "color",             "vimOperParen", "NormalBg" },
+        { ")",                 "vimParenSep",  "NormalBg" },
+        { " ",                 "vimFuncBody",  "NormalBg" },
+        { "abort",             "vimIsCommand", "NormalBg" },
     },
     {
-        { "  ",          "vimFuncBody" },
-        { "let",         "vimLet" },
-        { " ",           "vimFuncBody" },
-        { "l:raw_color", "vimVar" },
-        { " ",           "vimFuncBody" },
-        { "=",           "vimOper" },
-        { " ",           "vimFuncBody" },
-        { "trim",        "vimFuncName" },
-        { "(",           "vimParenSep" },
-        { "a:color",     "vimFuncVar" },
-        { ", ",          "vimOperParen" },
-        { "'#'",         "vimString" },
-        { ")",           "vimParenSep" },
+        { "  ",          "vimFuncBody",  "NormalBg" },
+        { "let",         "vimLet",       "NormalBg" },
+        { " ",           "vimFuncBody",  "NormalBg" },
+        { "l:raw_color", "vimVar",       "NormalBg" },
+        { " ",           "vimFuncBody",  "NormalBg" },
+        { "=",           "vimOper",      "NormalBg" },
+        { " ",           "vimFuncBody",  "NormalBg" },
+        { "trim",        "vimFuncName",  "NormalBg" },
+        { "(",           "vimParenSep",  "NormalBg" },
+        { "a:color",     "vimFuncVar",   "NormalBg" },
+        { ", ",          "vimOperParen", "NormalBg" },
+        { "'#'",         "vimString",    "NormalBg" },
+        { ")",           "vimParenSep",  "NormalBg" },
     },
     {
+        { "  ", "vimFuncBody", "NormalBg" },
     },
     {
-        { "  ",            "vimFuncBody" },
-        { "let",           "vimLet" },
-        { " ",             "vimFuncBody" },
-        { "l:red",         "vimVar" },
-        { " ",             "vimFuncBody" },
-        { "=",             "vimOper" },
-        { " ",             "vimFuncBody" },
-        { "str2nr",        "vimFuncName" },
-        { "(",             "vimParenSep" },
-        { "substitute",    "vimSubst" },
-        { "(",             "vimParenSep" },
-        { "l:raw_color, ", "vimOperParen" },
-        { "'(.{2}).{4}'",  "vimString" },
-        { ", ",            "vimOperParen" },
-        { "'1'",           "vimString" },
-        { ", ",            "vimOperParen" },
-        { "'g'",           "vimString" },
-        { ")",             "vimParenSep" },
-        { ", ",            "vimFuncBody" },
-        { "16",            "vimNumber" },
-        { ")",             "vimParenSep" },
+        { "  ",            "vimFuncBody",  "NormalBg" },
+        { "let",           "vimLet",       "NormalBg" },
+        { " ",             "vimFuncBody",  "NormalBg" },
+        { "l:red",         "vimVar",       "NormalBg" },
+        { " ",             "vimFuncBody",  "NormalBg" },
+        { "=",             "vimOper",      "NormalBg" },
+        { " ",             "vimFuncBody",  "NormalBg" },
+        { "str2nr",        "vimFuncName",  "NormalBg" },
+        { "(",             "vimParenSep",  "NormalBg" },
+        { "substitute",    "vimSubst",     "NormalBg" },
+        { "(",             "vimParenSep",  "NormalBg" },
+        { "l:raw_color, ", "vimOperParen", "NormalBg" },
+        { "'(.{2}).{4}'",  "vimString",    "NormalBg" },
+        { ", ",            "vimOperParen", "NormalBg" },
+        { "'1'",           "vimString",    "NormalBg" },
+        { ", ",            "vimOperParen", "NormalBg" },
+        { "'g'",           "vimString",    "NormalBg" },
+        { ")",             "vimParenSep",  "NormalBg" },
+        { ", ",            "vimFuncBody",  "NormalBg" },
+        { "16",            "vimNumber",    "NormalBg" },
+        { ")",             "vimParenSep",  "NormalBg" },
     },
     {
-        { "  ",               "vimFuncBody" },
-        { "let",              "vimLet" },
-        { " ",                "vimFuncBody" },
-        { "l:green",          "vimVar" },
-        { " ",                "vimFuncBody" },
-        { "=",                "vimOper" },
-        { " ",                "vimFuncBody" },
-        { "str2nr",           "vimFuncName" },
-        { "(",                "vimParenSep" },
-        { "substitute",       "vimSubst" },
-        { "(",                "vimParenSep" },
-        { "l:raw_color, ",    "vimOperParen" },
-        { "'.{2}(.{2}).{2}'", "vimString" },
-        { ", ",               "vimOperParen" },
-        { "'1'",              "vimString" },
-        { ", ",               "vimOperParen" },
-        { "'g'",              "vimString" },
-        { ")",                "vimParenSep" },
-        { ", ",               "vimFuncBody" },
-        { "16",               "vimNumber" },
-        { ")",                "vimParenSep" },
+        { "  ",               "vimFuncBody",  "NormalBg" },
+        { "let",              "vimLet",       "NormalBg" },
+        { " ",                "vimFuncBody",  "NormalBg" },
+        { "l:green",          "vimVar",       "NormalBg" },
+        { " ",                "vimFuncBody",  "NormalBg" },
+        { "=",                "vimOper",      "NormalBg" },
+        { " ",                "vimFuncBody",  "NormalBg" },
+        { "str2nr",           "vimFuncName",  "NormalBg" },
+        { "(",                "vimParenSep",  "NormalBg" },
+        { "substitute",       "vimSubst",     "NormalBg" },
+        { "(",                "vimParenSep",  "NormalBg" },
+        { "l:raw_color, ",    "vimOperParen", "NormalBg" },
+        { "'.{2}(.{2}).{2}'", "vimString",    "NormalBg" },
+        { ", ",               "vimOperParen", "NormalBg" },
+        { "'1'",              "vimString",    "NormalBg" },
+        { ", ",               "vimOperParen", "NormalBg" },
+        { "'g'",              "vimString",    "NormalBg" },
+        { ")",                "vimParenSep",  "NormalBg" },
+        { ", ",               "vimFuncBody",  "NormalBg" },
+        { "16",               "vimNumber",    "NormalBg" },
+        { ")",                "vimParenSep",  "NormalBg" },
     },
     {
-        { "  ",            "vimFuncBody" },
-        { "let",           "vimLet" },
-        { " ",             "vimFuncBody" },
-        { "l:blue",        "vimVar" },
-        { " ",             "vimFuncBody" },
-        { "=",             "vimOper" },
-        { " ",             "vimFuncBody" },
-        { "str2nr",        "vimFuncName" },
-        { "(",             "vimParenSep" },
-        { "substitute",    "vimSubst" },
-        { "(",             "vimParenSep" },
-        { "l:raw_color, ", "vimOperParen" },
-        { "'.{4}(.{2})'",  "vimString" },
-        { ", ",            "vimOperParen" },
-        { "'1'",           "vimString" },
-        { ", ",            "vimOperParen" },
-        { "'g'",           "vimString" },
-        { ")",             "vimParenSep" },
-        { ", ",            "vimFuncBody" },
-        { "16",            "vimNumber" },
-        { ")",             "vimParenSep" },
+        { "  ",            "vimFuncBody",  "NormalBg" },
+        { "let",           "vimLet",       "NormalBg" },
+        { " ",             "vimFuncBody",  "NormalBg" },
+        { "l:blue",        "vimVar",       "NormalBg" },
+        { " ",             "vimFuncBody",  "NormalBg" },
+        { "=",             "vimOper",      "NormalBg" },
+        { " ",             "vimFuncBody",  "NormalBg" },
+        { "str2nr",        "vimFuncName",  "NormalBg" },
+        { "(",             "vimParenSep",  "NormalBg" },
+        { "substitute",    "vimSubst",     "NormalBg" },
+        { "(",             "vimParenSep",  "NormalBg" },
+        { "l:raw_color, ", "vimOperParen", "NormalBg" },
+        { "'.{4}(.{2})'",  "vimString",    "NormalBg" },
+        { ", ",            "vimOperParen", "NormalBg" },
+        { "'1'",           "vimString",    "NormalBg" },
+        { ", ",            "vimOperParen", "NormalBg" },
+        { "'g'",           "vimString",    "NormalBg" },
+        { ")",             "vimParenSep",  "NormalBg" },
+        { ", ",            "vimFuncBody",  "NormalBg" },
+        { "16",            "vimNumber",    "NormalBg" },
+        { ")",             "vimParenSep",  "NormalBg" },
     },
     {
+        { "  ", "vimFuncBody", "NormalBg" },
     },
     {
-        { "  ",           "vimFuncBody" },
-        { "let",          "vimLet" },
-        { " ",            "vimFuncBody" },
-        { "l:brightness", "vimVar" },
-        { " ",            "vimFuncBody" },
-        { "=",            "vimOper" },
-        { " ",            "vimFuncBody" },
-        { "((",           "vimParenSep" },
-        { "l:red * ",     "vimOperParen" },
-        { "299",          "vimNumber" },
-        { ")",            "vimParenSep" },
-        { " ",            "vimOperParen" },
-        { "+",            "vimOper" },
-        { " ",            "vimOperParen" },
-        { "(",            "vimParenSep" },
-        { "l:green * ",   "vimOperParen" },
-        { "587",          "vimNumber" },
-        { ")",            "vimParenSep" },
-        { " ",            "vimOperParen" },
-        { "+",            "vimOper" },
-        { " ",            "vimOperParen" },
-        { "(",            "vimParenSep" },
-        { "l:blue * ",    "vimOperParen" },
-        { "114",          "vimNumber" },
-        { "))",           "vimParenSep" },
-        { " / ",          "vimFuncBody" },
-        { "1000",         "vimNumber" },
+        { "  ",           "vimFuncBody",  "NormalBg" },
+        { "let",          "vimLet",       "NormalBg" },
+        { " ",            "vimFuncBody",  "NormalBg" },
+        { "l:brightness", "vimVar",       "NormalBg" },
+        { " ",            "vimFuncBody",  "NormalBg" },
+        { "=",            "vimOper",      "NormalBg" },
+        { " ",            "vimFuncBody",  "NormalBg" },
+        { "((",           "vimParenSep",  "NormalBg" },
+        { "l:red * ",     "vimOperParen", "NormalBg" },
+        { "299",          "vimNumber",    "NormalBg" },
+        { ")",            "vimParenSep",  "NormalBg" },
+        { " ",            "vimOperParen", "NormalBg" },
+        { "+",            "vimOper",      "NormalBg" },
+        { " ",            "vimOperParen", "NormalBg" },
+        { "(",            "vimParenSep",  "NormalBg" },
+        { "l:green * ",   "vimOperParen", "NormalBg" },
+        { "587",          "vimNumber",    "NormalBg" },
+        { ")",            "vimParenSep",  "NormalBg" },
+        { " ",            "vimOperParen", "NormalBg" },
+        { "+",            "vimOper",      "NormalBg" },
+        { " ",            "vimOperParen", "NormalBg" },
+        { "(",            "vimParenSep",  "NormalBg" },
+        { "l:blue * ",    "vimOperParen", "NormalBg" },
+        { "114",          "vimNumber",    "NormalBg" },
+        { "))",           "vimParenSep",  "NormalBg" },
+        { " / ",          "vimFuncBody",  "NormalBg" },
+        { "1000",         "vimNumber",    "NormalBg" },
     },
     {
+        { "  ", "vimFuncBody", "NormalBg" },
     },
     {
-        { "  ",           "vimFuncBody" },
-        { "return",       "vimNotFunc" },
-        { " ",            "vimFuncBody" },
-        { "l:brightness", "vimVar" },
-        { " ",            "vimFuncBody" },
-        { ">",            "vimOper" },
-        { " ",            "vimFuncBody" },
-        { "155",          "vimNumber" },
+        { "  ",           "vimFuncBody", "NormalBg" },
+        { "return",       "vimNotFunc",  "NormalBg" },
+        { " ",            "vimFuncBody", "NormalBg" },
+        { "l:brightness", "vimVar",      "NormalBg" },
+        { " ",            "vimFuncBody", "NormalBg" },
+        { ">",            "vimOper",     "NormalBg" },
+        { " ",            "vimFuncBody", "NormalBg" },
+        { "155",          "vimNumber",   "NormalBg" },
     },
     {
-        { "endfunction", "vimCommand" },
+        { "endfunction", "vimCommand", "NormalBg" },
     },
 
 }
@@ -187,9 +190,14 @@ local function getNs()
     end
     return ns_id
 end
+
+local function getHighlightName(line)
+    local name = "_pineapple_" .. line[2] .. "_" .. line[3]
+    return name
+end
 local function useHighlight(valIndex, fgName, bgName)
-    bgName = bgName or "NormalBg"
-    local name = fgName
+    local name = getHighlightName({ "", fgName, bgName })
+
 
     local ns = getNs()
     local mode = vim.o.background
@@ -214,7 +222,7 @@ local function useHighlight(valIndex, fgName, bgName)
     end
     local bg = values[valIndex].vimColorSchemes[schemeIndex].data[mode][bgName] or "#000000"
     local fg = values[valIndex].vimColorSchemes[schemeIndex].data[mode][fgName] or "#ffffff"
-    vim.api.nvim_set_hl(ns, "_pineapple_" .. name, {
+    vim.api.nvim_set_hl(ns, name, {
         bg = bg,
         foreground = fg,
     })
@@ -237,22 +245,22 @@ local function addContextHighlights()
         local highlights = {}
         for i = 1, #exampleCode do
             for j = 1, #exampleCode[i] do
-                highlights[#exampleCode[i][j][2]] = true
+                highlights[exampleCode[i][j][2]] = exampleCode[i][j][3]
             end
         end
-        for k, _ in pairs(highlights) do
-            useHighlight(context[2], k)
+        for k, v in pairs(highlights) do
+            useHighlight(context[2], k, v)
         end
         local startLine = #values[context[2]].vimColorSchemes + 6
         for line = 1, #exampleCode do
             local acc = 0
             for i = 1, #exampleCode[line] do
-                if i == #exampleCode[line][i] then
-                    vim.api.nvim_buf_add_highlight(getBuffer(), ns, "_pineapple_" .. exampleCode[line][i][2],
+                if i == #exampleCode[line] then
+                    vim.api.nvim_buf_add_highlight(getBuffer(), ns, getHighlightName(exampleCode[line][i]),
                         startLine + line - 1,
                         acc, -1)
                 else
-                    vim.api.nvim_buf_add_highlight(getBuffer(), ns, "_pineapple_" .. exampleCode[line][i][2],
+                    vim.api.nvim_buf_add_highlight(getBuffer(), ns, getHighlightName(exampleCode[line][i]),
                         startLine + line - 1,
                         acc, acc + #exampleCode[line][i][1])
                 end
@@ -289,7 +297,7 @@ local function getLinesFromContext()
             table.insert(lines, "  " .. v.name)
         end
     elseif context[1] == "view" then
-        table.insert(lines, "  " .. values[context[2]].name .. "(" .. values[context[2]].githubUrl .. ")")
+        table.insert(lines, "  " .. values[context[2]].name .. " (" .. values[context[2]].githubUrl .. ")")
         table.insert(lines, "  " .. values[context[2]].description)
         table.insert(lines, "  Variants:")
         for _, v in pairs(values[context[2]].vimColorSchemes) do
@@ -303,25 +311,13 @@ local function getLinesFromContext()
             for _, word in pairs(line) do
                 newLine = newLine .. word[1]
             end
-            code = code .. newLine .. "\n"
-        end
-        --         local code = [[
-        -- " Comment
-        -- function! IsHexColorLight(hexColor) abort
-        --   let l:raw_color = trim(a:color, '#')
-        --   let l:red = str2nr(substitute(l:raw_color, '(.{2}).{4}', '1', 'g'), 16)
-        --   let l:green = str2nr(substitute(l:raw_color, '.{2}(.{2}).{2}', '1', 'g'), 16)
-        --   let l:blue = str2nr(substitute(l:raw_color, '.{4}(.{2})', '1', 'g'), 16)
-        --   let l:brightness = ((l:red * 299) + (l:green * 587) + (l:blue * 114)) / 1000
-        --   return l:brightness > 155
-        -- endfunction
-        -- ]]
-        for _, line in pairs(split(code, "\n")) do
-            local newLine = line
             while #newLine < width - 4 do
                 newLine = newLine .. " "
             end
-            table.insert(lines, "  " .. newLine)
+            code = code .. newLine .. "\n"
+        end
+        for _, line in pairs(split(code, "\n")) do
+            table.insert(lines, line)
         end
     end
     return lines
@@ -418,12 +414,10 @@ local function setKeymapsForContext()
             if line < 1 then
                 return
             end
-            print(#values[context[2]].vimColorSchemes)
             if line > #values[context[2]].vimColorSchemes then
                 return
             end
             schemeIndex = line
-            print(line)
             refreshBuffer()
             setKeymapsForContext()
         end, {
@@ -436,6 +430,20 @@ local function setKeymapsForContext()
     end
 end
 M.setup = function(opts)
+    for i = 1, #exampleCode do
+        local lineNum = i .. " "
+        while #lineNum < 5 do
+            lineNum = " " .. lineNum
+        end
+        exampleCode[i][1][1] = " " .. exampleCode[i][1][1]
+        if i == 3 then
+            table.insert(exampleCode[i], 1, { lineNum, "CursorLineNrFg", "CursorLineNrBg" })
+        else
+            table.insert(exampleCode[i], 1, { lineNum, "LineNrFg", "LineNrBg" })
+        end
+    end
+
+
     local tempValues = require("pineapple.data")
     values = {}
     for _, v in pairs(tempValues) do
