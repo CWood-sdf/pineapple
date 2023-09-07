@@ -1,6 +1,6 @@
 local M = {}
 -- from https://stackoverflow.com/questions/1426954/split-string-in-lua
-local function split(pString, pPattern)
+M.split = function(pString, pPattern)
     local Table = {} -- NOTE: use {n = 0} in Lua-5.0
     local fpat = "(.-)" .. pPattern
     local last_end = 1
@@ -18,349 +18,234 @@ local function split(pString, pPattern)
     end
     return Table
 end
+M.installedThemes = {}
+M.installFile = nil
+M.remaps = {}
 
-local remaps = {}
+M.values = nil
+M.bufnr = nil
+M.width = nil
+M.height = nil
+M.getLineAcross = function()
+    local line = ""
+    for _ = 1, M.width do
+        line = line .. "-"
+    end
+    return line
+end
+M.getNameAtMiddle = function()
+    local line = "~~ Pineapple ~~"
+    -- make firstLine centered
+    local padding = math.floor((M.width - #line) / 2)
+    for _ = 1, padding do
+        line = " " .. line
+    end
+    return line
+end
 
-local exampleCode = {
-    {
-        { "\" Returns true if the color hex value is light", "vimLineComment", "NormalBg" },
-    },
-    {
-        { "function",          "vimCommand",   "NormalBg" },
-        { "! IsHexColorLight", "vimFunction",  "NormalBg" },
-        { "(",                 "vimParenSep",  "NormalBg" },
-        { "color",             "vimOperParen", "NormalBg" },
-        { ")",                 "vimParenSep",  "NormalBg" },
-        { " ",                 "vimFuncBody",  "NormalBg" },
-        { "abort",             "vimIsCommand", "NormalBg" },
-    },
-    {
-        { "  ",          "vimFuncBody",  "NormalBg" },
-        { "let",         "vimLet",       "NormalBg" },
-        { " ",           "vimFuncBody",  "NormalBg" },
-        { "l:raw_color", "vimVar",       "NormalBg" },
-        { " ",           "vimFuncBody",  "NormalBg" },
-        { "=",           "vimOper",      "NormalBg" },
-        { " ",           "vimFuncBody",  "NormalBg" },
-        { "trim",        "vimFuncName",  "NormalBg" },
-        { "(",           "vimParenSep",  "NormalBg" },
-        { "a:color",     "vimFuncVar",   "NormalBg" },
-        { ", ",          "vimOperParen", "NormalBg" },
-        { "'#'",         "vimString",    "NormalBg" },
-        { ")",           "vimParenSep",  "NormalBg" },
-    },
-    {
-        { "  ", "vimFuncBody", "NormalBg" },
-    },
-    {
-        { "  ",            "vimFuncBody",  "NormalBg" },
-        { "let",           "vimLet",       "NormalBg" },
-        { " ",             "vimFuncBody",  "NormalBg" },
-        { "l:red",         "vimVar",       "NormalBg" },
-        { " ",             "vimFuncBody",  "NormalBg" },
-        { "=",             "vimOper",      "NormalBg" },
-        { " ",             "vimFuncBody",  "NormalBg" },
-        { "str2nr",        "vimFuncName",  "NormalBg" },
-        { "(",             "vimParenSep",  "NormalBg" },
-        { "substitute",    "vimSubst",     "NormalBg" },
-        { "(",             "vimParenSep",  "NormalBg" },
-        { "l:raw_color, ", "vimOperParen", "NormalBg" },
-        { "'(.{2}).{4}'",  "vimString",    "NormalBg" },
-        { ", ",            "vimOperParen", "NormalBg" },
-        { "'1'",           "vimString",    "NormalBg" },
-        { ", ",            "vimOperParen", "NormalBg" },
-        { "'g'",           "vimString",    "NormalBg" },
-        { ")",             "vimParenSep",  "NormalBg" },
-        { ", ",            "vimFuncBody",  "NormalBg" },
-        { "16",            "vimNumber",    "NormalBg" },
-        { ")",             "vimParenSep",  "NormalBg" },
-    },
-    {
-        { "  ",               "vimFuncBody",  "NormalBg" },
-        { "let",              "vimLet",       "NormalBg" },
-        { " ",                "vimFuncBody",  "NormalBg" },
-        { "l:green",          "vimVar",       "NormalBg" },
-        { " ",                "vimFuncBody",  "NormalBg" },
-        { "=",                "vimOper",      "NormalBg" },
-        { " ",                "vimFuncBody",  "NormalBg" },
-        { "str2nr",           "vimFuncName",  "NormalBg" },
-        { "(",                "vimParenSep",  "NormalBg" },
-        { "substitute",       "vimSubst",     "NormalBg" },
-        { "(",                "vimParenSep",  "NormalBg" },
-        { "l:raw_color, ",    "vimOperParen", "NormalBg" },
-        { "'.{2}(.{2}).{2}'", "vimString",    "NormalBg" },
-        { ", ",               "vimOperParen", "NormalBg" },
-        { "'1'",              "vimString",    "NormalBg" },
-        { ", ",               "vimOperParen", "NormalBg" },
-        { "'g'",              "vimString",    "NormalBg" },
-        { ")",                "vimParenSep",  "NormalBg" },
-        { ", ",               "vimFuncBody",  "NormalBg" },
-        { "16",               "vimNumber",    "NormalBg" },
-        { ")",                "vimParenSep",  "NormalBg" },
-    },
-    {
-        { "  ",            "vimFuncBody",  "NormalBg" },
-        { "let",           "vimLet",       "NormalBg" },
-        { " ",             "vimFuncBody",  "NormalBg" },
-        { "l:blue",        "vimVar",       "NormalBg" },
-        { " ",             "vimFuncBody",  "NormalBg" },
-        { "=",             "vimOper",      "NormalBg" },
-        { " ",             "vimFuncBody",  "NormalBg" },
-        { "str2nr",        "vimFuncName",  "NormalBg" },
-        { "(",             "vimParenSep",  "NormalBg" },
-        { "substitute",    "vimSubst",     "NormalBg" },
-        { "(",             "vimParenSep",  "NormalBg" },
-        { "l:raw_color, ", "vimOperParen", "NormalBg" },
-        { "'.{4}(.{2})'",  "vimString",    "NormalBg" },
-        { ", ",            "vimOperParen", "NormalBg" },
-        { "'1'",           "vimString",    "NormalBg" },
-        { ", ",            "vimOperParen", "NormalBg" },
-        { "'g'",           "vimString",    "NormalBg" },
-        { ")",             "vimParenSep",  "NormalBg" },
-        { ", ",            "vimFuncBody",  "NormalBg" },
-        { "16",            "vimNumber",    "NormalBg" },
-        { ")",             "vimParenSep",  "NormalBg" },
-    },
-    {
-        { "  ", "vimFuncBody", "NormalBg" },
-    },
-    {
-        { "  ",           "vimFuncBody",  "NormalBg" },
-        { "let",          "vimLet",       "NormalBg" },
-        { " ",            "vimFuncBody",  "NormalBg" },
-        { "l:brightness", "vimVar",       "NormalBg" },
-        { " ",            "vimFuncBody",  "NormalBg" },
-        { "=",            "vimOper",      "NormalBg" },
-        { " ",            "vimFuncBody",  "NormalBg" },
-        { "((",           "vimParenSep",  "NormalBg" },
-        { "l:red * ",     "vimOperParen", "NormalBg" },
-        { "299",          "vimNumber",    "NormalBg" },
-        { ")",            "vimParenSep",  "NormalBg" },
-        { " ",            "vimOperParen", "NormalBg" },
-        { "+",            "vimOper",      "NormalBg" },
-        { " ",            "vimOperParen", "NormalBg" },
-        { "(",            "vimParenSep",  "NormalBg" },
-        { "l:green * ",   "vimOperParen", "NormalBg" },
-        { "587",          "vimNumber",    "NormalBg" },
-        { ")",            "vimParenSep",  "NormalBg" },
-        { " ",            "vimOperParen", "NormalBg" },
-        { "+",            "vimOper",      "NormalBg" },
-        { " ",            "vimOperParen", "NormalBg" },
-        { "(",            "vimParenSep",  "NormalBg" },
-        { "l:blue * ",    "vimOperParen", "NormalBg" },
-        { "114",          "vimNumber",    "NormalBg" },
-        { "))",           "vimParenSep",  "NormalBg" },
-        { " / ",          "vimFuncBody",  "NormalBg" },
-        { "1000",         "vimNumber",    "NormalBg" },
-    },
-    {
-        { "  ", "vimFuncBody", "NormalBg" },
-    },
-    {
-        { "  ",           "vimFuncBody", "NormalBg" },
-        { "return",       "vimNotFunc",  "NormalBg" },
-        { " ",            "vimFuncBody", "NormalBg" },
-        { "l:brightness", "vimVar",      "NormalBg" },
-        { " ",            "vimFuncBody", "NormalBg" },
-        { ">",            "vimOper",     "NormalBg" },
-        { " ",            "vimFuncBody", "NormalBg" },
-        { "155",          "vimNumber",   "NormalBg" },
-    },
-    {
-        { "endfunction", "vimCommand", "NormalBg" },
-    },
-
+M.globalTopMatter = {
+    M.getNameAtMiddle,
+    M.getLineAcross,
 }
-local values = nil
-local bufnr = nil
-local width = nil
-local height = nil
-local function getBuffer()
-    if bufnr == nil then
+
+-- the stuff at the top of the screen
+M.topMatter = {
+    home = {
+    }
+}
+
+M.exampleCode = nil
+M.context = nil
+M.ns_id = nil
+M.schemeIndex = 1
+M.getBuffer = function()
+    if M.bufnr == nil then
         error("bufnr is nil, call refreshBuffer() first")
     end
-    return bufnr
+    return M.bufnr
 end
-local context = nil
-local ns_id = nil
-local schemeIndex = 1
-local function getNs()
-    if ns_id == nil then
-        ns_id = vim.api.nvim_create_namespace("pineapple")
+M.getNs = function()
+    if M.ns_id == nil then
+        M.ns_id = vim.api.nvim_create_namespace("pineapple")
     end
-    return ns_id
+    return M.ns_id
 end
 
-local function getHighlightName(line)
+M.getHighlightName = function(line)
     local name = "_pineapple_" .. line[2] .. "_" .. line[3]
     return name
 end
-local function useHighlight(valIndex, fgName, bgName)
-    local name = getHighlightName({ "", fgName, bgName })
+M.useHighlight = function(valIndex, fgName, bgName)
+    local name = M.getHighlightName({ "", fgName, bgName })
 
 
-    local ns = getNs()
+    local ns = M.getNs()
     local mode = vim.o.background
-    if values == nil then
+    if M.values == nil then
         error("values is nil, call setup() first")
     end
-    if values[valIndex] == nil then
+    if M.values[valIndex] == nil then
         error("invalid valIndex: " .. valIndex)
     end
-    if values[valIndex].vimColorSchemes[schemeIndex] == nil then
-        error("invalid schemeIndex: " .. schemeIndex)
+    if M.values[valIndex].vimColorSchemes[M.schemeIndex] == nil then
+        error("invalid schemeIndex: " .. M.schemeIndex)
     end
-    if values[valIndex].vimColorSchemes[schemeIndex].data[mode] == nil then
+    if M.values[valIndex].vimColorSchemes[M.schemeIndex].data[mode] == nil then
         if mode == "dark" then
             mode = "light"
         else
             mode = "dark"
         end
     end
-    if values[valIndex].vimColorSchemes[schemeIndex].data[mode] == nil then
+    if M.values[valIndex].vimColorSchemes[M.schemeIndex].data[mode] == nil then
         return {}
     end
-    local bg = values[valIndex].vimColorSchemes[schemeIndex].data[mode][bgName] or "#000000"
-    local fg = values[valIndex].vimColorSchemes[schemeIndex].data[mode][fgName] or "#ffffff"
+    local bg = M.values[valIndex].vimColorSchemes[M.schemeIndex].data[mode][bgName] or "#000000"
+    local fg = M.values[valIndex].vimColorSchemes[M.schemeIndex].data[mode][fgName] or "#ffffff"
     vim.api.nvim_set_hl(ns, name, {
         bg = bg,
         foreground = fg,
     })
 end
 
-local function addContextHighlights()
-    if context == nil then
+M.addContextHighlights = function()
+    if M.context == nil then
         error("context is nil, call setup() first")
     end
     -- for _, v in pairs(namespaces) do
     --     vim.api.nvim_buf_clear_namespace(getBuffer(), v, 0, -1)
     -- end
-    if values == nil then
+    if M.values == nil then
         error("values is nil, call setup() first")
     end
 
-    if context[1] == "view" then
-        local ns = getNs()
+    if M.context[1] == "view" then
+        local ns = M.getNs()
         vim.api.nvim_win_set_hl_ns(0, ns)
         local highlights = {}
-        for i = 1, #exampleCode do
-            for j = 1, #exampleCode[i] do
-                highlights[exampleCode[i][j][2]] = exampleCode[i][j][3]
+        for i = 1, #M.exampleCode do
+            for j = 1, #M.exampleCode[i] do
+                highlights[M.exampleCode[i][j][2]] = M.exampleCode[i][j][3]
             end
         end
         for k, v in pairs(highlights) do
-            useHighlight(context[2], k, v)
+            M.useHighlight(M.context[2], k, v)
         end
-        local startLine = #values[context[2]].vimColorSchemes + 6
-        for line = 1, #exampleCode do
+        local startLine = #M.values[M.context[2]].vimColorSchemes + 6
+        for line = 1, #M.exampleCode do
             local acc = 0
-            for i = 1, #exampleCode[line] do
-                if i == #exampleCode[line] then
-                    vim.api.nvim_buf_add_highlight(getBuffer(), ns, getHighlightName(exampleCode[line][i]),
+            for i = 1, #M.exampleCode[line] do
+                if i == #M.exampleCode[line] then
+                    vim.api.nvim_buf_add_highlight(M.getBuffer(), ns, M.getHighlightName(M.exampleCode[line][i]),
                         startLine + line - 1,
                         acc, -1)
                 else
-                    vim.api.nvim_buf_add_highlight(getBuffer(), ns, getHighlightName(exampleCode[line][i]),
+                    vim.api.nvim_buf_add_highlight(M.getBuffer(), ns, M.getHighlightName(M.exampleCode[line][i]),
                         startLine + line - 1,
-                        acc, acc + #exampleCode[line][i][1])
+                        acc, acc + #M.exampleCode[line][i][1])
                 end
-                acc = acc + #exampleCode[line][i][1]
+                acc = acc + #M.exampleCode[line][i][1]
             end
         end
     end
 end
-local function getLinesFromContext()
-    if context == nil then
+M.getLinesFromContext = function()
+    if M.context == nil then
         error("context is nil, call setup() first")
     end
 
-    if values == nil then
+    if M.values == nil then
         error("values is nil, call setup() first")
         return {}
     end
     local lines = {}
-    local firstLine = "~~ Pineapple ~~"
-    -- make firstLine centered
-    local padding = math.floor((width - #firstLine) / 2)
-    for _ = 1, padding do
-        firstLine = " " .. firstLine
+    for _, v in pairs(M.globalTopMatter) do
+        if type(v) == "function" then
+            table.insert(lines, v())
+        else
+            table.insert(lines, v)
+        end
     end
-    table.insert(lines, firstLine)
-    local secondLine = ""
-    for _ = 1, width do
-        secondLine = secondLine .. "-"
+    if M.topMatter[M.context[1]] ~= nil then
+        for _, v in pairs(M.topMatter[M.context[1]]) do
+            if type(v) == "function" then
+                table.insert(lines, v())
+            else
+                table.insert(lines, v)
+            end
+        end
     end
-    table.insert(lines, secondLine)
 
-    if context[1] == "home" then
-        for _, v in pairs(values) do
+    if M.context[1] == "home" then
+        for _, v in pairs(M.values) do
             table.insert(lines, "  " .. v.name)
         end
-    elseif context[1] == "view" then
-        table.insert(lines, "  " .. values[context[2]].name .. " (" .. values[context[2]].githubUrl .. ")")
-        table.insert(lines, "  " .. values[context[2]].description)
+    elseif M.context[1] == "view" then
+        table.insert(lines, "  " .. M.values[M.context[2]].name .. " (" .. M.values[M.M.context[2]].githubUrl .. ")")
+        table.insert(lines, "  " .. M.values[M.context[2]].description)
         table.insert(lines, "  Variants:")
-        for _, v in pairs(values[context[2]].vimColorSchemes) do
+        for _, v in pairs(M.values[M.M.context[2]].vimColorSchemes) do
             table.insert(lines, "    " .. v.name)
         end
         table.insert(lines, "  ")
 
         local code = ""
-        for _, line in pairs(exampleCode) do
+        for _, line in pairs(M.exampleCode) do
             local newLine = ""
             for _, word in pairs(line) do
                 newLine = newLine .. word[1]
             end
-            while #newLine < width - 4 do
+            while #newLine < M.width - 4 do
                 newLine = newLine .. " "
             end
             code = code .. newLine .. "\n"
         end
-        for _, line in pairs(split(code, "\n")) do
+        for _, line in pairs(M.split(code, "\n")) do
             table.insert(lines, line)
         end
     end
     return lines
 end
-local function refreshBuffer()
-    if bufnr == nil then
-        bufnr = vim.api.nvim_create_buf(false, true)
+M.refreshBuffer = function()
+    if M.bufnr == nil then
+        M.bufnr = vim.api.nvim_create_buf(false, true)
     end
-    local lines = getLinesFromContext()
-    vim.api.nvim_buf_set_option(bufnr, "modifiable", true)
-    vim.api.nvim_buf_set_option(bufnr, "buftype", "nofile")
-    vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
-    addContextHighlights()
-    vim.api.nvim_buf_set_option(bufnr, "modifiable", false)
+    local lines = M.getLinesFromContext()
+    vim.api.nvim_buf_set_option(M.bufnr, "modifiable", true)
+    vim.api.nvim_buf_set_option(M.bufnr, "buftype", "nofile")
+    vim.api.nvim_buf_set_lines(M.bufnr, 0, -1, false, lines)
+    M.addContextHighlights()
+    vim.api.nvim_buf_set_option(M.bufnr, "modifiable", false)
 end
-local function setKeymapsForContext()
-    for _, v in pairs(remaps) do
+M.setKeymapsForContext = function()
+    for _, v in pairs(M.remaps) do
         vim.keymap.del("n", v, { buffer = true })
     end
-    if context == nil then
+    if M.context == nil then
         error("context is nil, call setup() first")
     end
-    if values == nil then
+    if M.values == nil then
         error("values is nil, call setup() first")
     end
-    if context[1] == "home" then
+    if M.context[1] == "home" then
         vim.keymap.set("n", "<CR>", function()
             local line = vim.fn.line(".") - 2
             if line < 1 then
                 return
             end
-            print("colorscheme " .. values[line].name)
+            print("colorscheme " .. M.values[line].name)
         end, {
-            buffer = getBuffer(),
+            buffer = M.getBuffer(),
         })
+
         vim.keymap.set("n", "u", function()
             local line = vim.fn.line(".") - 2
             if line < 1 then
                 return
             end
-            print(values[line].githubUrl)
+            print(M.values[line].githubUrl)
         end, {
-            buffer = getBuffer(),
+            buffer = M.getBuffer(),
         })
         vim.keymap.set("n", "t", function()
             local line = vim.fn.line(".") - 2
@@ -368,84 +253,134 @@ local function setKeymapsForContext()
                 return
             end
             local s = ""
-            for _, v in pairs(values[line].vimColorSchemes) do
+            for _, v in pairs(M.values[line].vimColorSchemes) do
                 -- if v.valid == true then
                 s = s .. v.name .. " "
                 -- end
             end
             print(s)
         end, {
-            buffer = getBuffer(),
+            buffer = M.getBuffer(),
         })
         vim.keymap.set("n", "v", function()
             local line = vim.fn.line(".") - 2
             if line < 1 then
                 return
             end
-            context = {
+            M.context = {
                 "view",
                 line,
             }
-            schemeIndex = 1
-            refreshBuffer()
-            setKeymapsForContext()
+            M.schemeIndex = 1
+            M.refreshBuffer()
+            M.setKeymapsForContext()
         end, {
-            buffer = getBuffer(),
+            buffer = M.getBuffer(),
         })
-        remaps = {
+        vim.keymap.set("n", "i", function()
+            local line = vim.fn.line(".") - 2
+            if line < 1 then
+                return
+            end
+            local info = {}
+            table.insert(info, M.values[line].githubUrl)
+            if M.installFile == nil then
+                error("installFile is nil, call setup() first")
+            end
+            local fPath = string.gsub(M.installFile, "%.", "/")
+            local fLoc = os.getenv("HOME") .. "/.config/nvim/lua/" .. fPath .. ".lua"
+            table.insert(info, fLoc)
+            local f = io.open(fLoc, "w")
+            if f == nil then
+                fLoc = os.getenv("HOME") .. "/.config/nvim/lua/" .. fPath .. "/init.lua"
+                table.insert(info, fLoc)
+                f = io.open(fLoc, "w")
+            end
+            if f == nil then
+                table.insert(info, "Could not open file")
+                print(vim.inspect(info))
+                return false
+            end
+            local s = "return {\n"
+            for _, v in pairs(M.installedThemes) do
+                s = s .. "    \"" .. v .. "\",\n"
+            end
+            s = s .. "    \"" .. M.values[line].githubUrl .. "\",\n"
+            s = s .. "}\n"
+            table.insert(info, s)
+            table.insert(M.installedThemes, M.values[line].githubUrl)
+            print(vim.inspect(info))
+            f:write(s)
+            f:close()
+        end, {
+            buffer = M.getBuffer(),
+        })
+        M.remaps = {
             "<CR>",
+            "i",
             "u",
             "t",
             "v",
         }
-    elseif context[1] == "view" then
+    elseif M.context[1] == "view" then
         vim.keymap.set("n", "b", function()
-            context = {
+            M.context = {
                 "home",
                 "",
             }
-            refreshBuffer()
-            setKeymapsForContext()
+            M.refreshBuffer()
+            M.setKeymapsForContext()
         end, {
-            buffer = getBuffer(),
+            buffer = M.getBuffer(),
         })
         vim.keymap.set("n", "p", function()
             local line = vim.fn.line(".") - 5
             if line < 1 then
                 return
             end
-            if line > #values[context[2]].vimColorSchemes then
+            if line > #M.values[M.context[2]].vimColorSchemes then
                 return
             end
-            schemeIndex = line
-            refreshBuffer()
-            setKeymapsForContext()
+            M.schemeIndex = line
+            M.refreshBuffer()
+            M.setKeymapsForContext()
         end, {
-            buffer = getBuffer(),
+            buffer = M.getBuffer(),
         })
-        remaps = {
+        M.remaps = {
             "b",
             "p"
         }
     end
 end
+M.opts = {}
 M.setup = function(opts)
-    for i = 1, #exampleCode do
+    M.opts = opts
+end
+M.actualSetup = function()
+    M.exampleCode = require("pineapple.example-code")
+    local opts = M.opts
+    if opts.installedRegistry == nil then
+        opts.installedRegistry = "pineapple-installed"
+    end
+    M.installFile = opts.installedRegistry
+    M.installedThemes = require(M.installFile)
+    for i = 1, #M.exampleCode do
         local lineNum = i .. " "
         while #lineNum < 5 do
             lineNum = " " .. lineNum
         end
-        exampleCode[i][1][1] = " " .. exampleCode[i][1][1]
+        M.exampleCode[i][1][1] = " " .. M.exampleCode[i][1][1]
         if i == 3 then
-            table.insert(exampleCode[i], 1, { lineNum, "CursorLineNrFg", "CursorLineNrBg" })
+            table.insert(M.exampleCode[i], 1, { lineNum, "CursorLineNrFg", "CursorLineNrBg" })
         else
-            table.insert(exampleCode[i], 1, { lineNum, "LineNrFg", "LineNrBg" })
+            table.insert(M.exampleCode[i], 1, { lineNum, "LineNrFg", "LineNrBg" })
         end
     end
 
 
     local tempValues = require("pineapple.data")
-    values = {}
+    M.values = {}
     for _, v in pairs(tempValues) do
         local canInsert = true
         local tempVal = v
@@ -464,33 +399,19 @@ M.setup = function(opts)
             canInsert = false
         end
         if canInsert then
-            table.insert(values, tempVal)
+            table.insert(M.values, tempVal)
         end
     end
-    context = { "home", "" }
-    for k, _ in pairs(values) do
-        values[k].githubUrl = values[k].githubUrl:gsub("https://github.com/", "")
-        if values[k].name == "vim" or values[k].name == "neovim" or values[k].name == "nvim" then
-            values[k].name = split(values[k].githubUrl, "/")[1]
+    M.context = { "home", "" }
+    for k, _ in pairs(M.values) do
+        M.values[k].githubUrl = M.values[k].githubUrl:gsub("https://github.com/", "")
+        if M.values[k].name == "vim" or M.values[k].name == "neovim" or M.values[k].name == "nvim" then
+            M.values[k].name = M.split(M.values[k].githubUrl, "/")[1]
         end
     end
-    vim.api.nvim_create_user_command("Pineapple", function(cmd_opts)
-        local offsetX = 8
-        local offsetY = 3
-        width = vim.o.columns - offsetX * 2
-        height = vim.o.lines - offsetY * 2 - 4
-        refreshBuffer()
-        vim.api.nvim_open_win(getBuffer(), true, {
-            relative = "win",
-            width = width,
-            height = height,
-            row = offsetY,
-            col = offsetX,
-            style = "minimal",
-        })
-        setKeymapsForContext()
-        addContextHighlights()
-    end, {})
+end
+M.use = function(file)
+    return require(file)
 end
 
 return M
