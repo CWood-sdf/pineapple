@@ -1,6 +1,10 @@
+local hasSetup = false
 vim.api.nvim_create_user_command("Pineapple", function(_)
     local pineapple = require("pineapple")
-    pineapple.actualSetup()
+    if not hasSetup then
+        pineapple.actualSetup()
+        hasSetup = true
+    end
     local offsetX = 8
     local offsetY = 3
     pineapple.width = vim.o.columns - offsetX * 2

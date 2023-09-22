@@ -1,0 +1,7 @@
+idk maybe a manager file (install, uninstall, set colscheme)
+
+prolly a registry management file (like get variants of, or get registry or something)
+
+a folder for the ui
+
+have each individual context in a file, and have it have all its own functions

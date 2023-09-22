@@ -181,10 +181,10 @@ M.getLinesFromContext = function()
             table.insert(lines, "  " .. v.name)
         end
     elseif M.context[1] == "view" then
-        table.insert(lines, "  " .. M.values[M.context[2]].name .. " (" .. M.values[M.M.context[2]].githubUrl .. ")")
+        table.insert(lines, "  " .. M.values[M.context[2]].name .. " (" .. M.values[M.context[2]].githubUrl .. ")")
         table.insert(lines, "  " .. M.values[M.context[2]].description)
         table.insert(lines, "  Variants:")
-        for _, v in pairs(M.values[M.M.context[2]].vimColorSchemes) do
+        for _, v in pairs(M.values[M.context[2]].vimColorSchemes) do
             table.insert(lines, "    " .. v.name)
         end
         table.insert(lines, "  ")
@@ -203,6 +203,29 @@ M.getLinesFromContext = function()
         for _, line in pairs(M.split(code, "\n")) do
             table.insert(lines, line)
         end
+    elseif M.context[1] == "installed" then
+        local line = #M.globalTopMatter
+        local lineToVariant = {}
+        for _, v in pairs(M.installedThemes) do
+            local installedVariants = {}
+            for _, val in pairs(M.values) do
+                if val.githubUrl == v then
+                    for _, vimColorScheme in pairs(val.vimColorSchemes) do
+                        if vimColorScheme.data ~= nil and ((vimColorScheme.data.light ~= nil and vimColorScheme.data.light.vimNumber ~= nil) or (vimColorScheme.data.dark ~= nil and vimColorScheme.data.dark.vimNumber ~= nil)) then
+                            table.insert(installedVariants, vimColorScheme.name)
+                        end
+                    end
+                end
+            end
+            line = line + 1
+            table.insert(lines, "  " .. v)
+            for _, variant in pairs(installedVariants) do
+                line = line + 1
+                lineToVariant[line] = variant
+                table.insert(lines, "    " .. variant)
+            end
+        end
+        M.context[2] = lineToVariant
     end
     return lines
 end
@@ -227,6 +250,11 @@ M.setKeymapsForContext = function()
     if M.values == nil then
         error("values is nil, call setup() first")
     end
+    vim.keymap.set("n", "q", function()
+        vim.cmd("q")
+    end, {
+        buffer = M.getBuffer(),
+    })
     if M.context[1] == "home" then
         vim.keymap.set("n", "<CR>", function()
             local line = vim.fn.line(".") - 2
@@ -238,6 +266,16 @@ M.setKeymapsForContext = function()
             buffer = M.getBuffer(),
         })
 
+        vim.keymap.set("n", "I", function()
+            M.context = {
+                "installed",
+                "",
+            }
+            M.refreshBuffer()
+            M.setKeymapsForContext()
+        end, {
+            buffer = M.getBuffer(),
+        })
         vim.keymap.set("n", "u", function()
             local line = vim.fn.line(".") - 2
             if line < 1 then
@@ -282,23 +320,23 @@ M.setKeymapsForContext = function()
             if line < 1 then
                 return
             end
-            local info = {}
-            table.insert(info, M.values[line].githubUrl)
             if M.installFile == nil then
                 error("installFile is nil, call setup() first")
             end
+            for _, v in pairs(M.installedThemes) do
+                if v == M.values[line].githubUrl then
+                    print("already installed")
+                    return
+                end
+            end
             local fPath = string.gsub(M.installFile, "%.", "/")
             local fLoc = os.getenv("HOME") .. "/.config/nvim/lua/" .. fPath .. ".lua"
-            table.insert(info, fLoc)
             local f = io.open(fLoc, "w")
             if f == nil then
                 fLoc = os.getenv("HOME") .. "/.config/nvim/lua/" .. fPath .. "/init.lua"
-                table.insert(info, fLoc)
                 f = io.open(fLoc, "w")
             end
             if f == nil then
-                table.insert(info, "Could not open file")
-                print(vim.inspect(info))
                 return false
             end
             local s = "return {\n"
@@ -307,9 +345,6 @@ M.setKeymapsForContext = function()
             end
             s = s .. "    \"" .. M.values[line].githubUrl .. "\",\n"
             s = s .. "}\n"
-            table.insert(info, s)
-            table.insert(M.installedThemes, M.values[line].githubUrl)
-            print(vim.inspect(info))
             f:write(s)
             f:close()
         end, {
@@ -319,6 +354,7 @@ M.setKeymapsForContext = function()
             "<CR>",
             "i",
             "u",
+            "I",
             "t",
             "v",
         }
@@ -350,6 +386,40 @@ M.setKeymapsForContext = function()
         M.remaps = {
             "b",
             "p"
+        }
+    elseif M.context[1] == "installed" then
+        vim.keymap.set("n", "b", function()
+            M.context = {
+                "home",
+                "",
+            }
+            M.refreshBuffer()
+            M.setKeymapsForContext()
+        end, {
+            buffer = M.getBuffer(),
+        })
+        vim.keymap.set("n", "u", function()
+            local line = vim.fn.line(".")
+            local lineToVariant = M.context[2]
+            if lineToVariant[line] == nil then
+                return
+            end
+            vim.cmd("colorscheme " .. lineToVariant[line])
+            if M.opts.colorschemeFile == nil then
+                error("colorschemeFile was not defined in setup()")
+            else
+                local file = io.open(os.getenv("HOME") .. "/.config/nvim/" .. M.opts.colorschemeFile, "w")
+                if file == nil then
+                    error("could not open file: " .. os.getenv("HOME") .. "/.config/nvim/" .. M.opts.colorschemeFile)
+                end
+                file:write([[vim.cmd("colorscheme ]] .. lineToVariant[line] .. [[")]])
+                file:close()
+            end
+        end, {
+            buffer = M.getBuffer(),
+        })
+        M.remaps = {
+            "b",
         }
     end
 end
