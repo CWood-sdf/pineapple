@@ -3,7 +3,6 @@ M.opts = {}
 function M.setup(opts)
     -- basically we wont load anything for now, until we actually need it
     M.opts = opts
-    -- require("pineapple.ui.buffer").openWindow()
 end
 
 local has_setup = false
