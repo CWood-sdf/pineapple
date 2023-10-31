@@ -4,13 +4,11 @@ The ultimate theme manager for neovim
 
 ## Why?
 
-The goals of this plugin are pretty simple:
+The goals of this plugin are:
 
 - Find a theme without using google
 - Be able to preview a theme in neovim
 - Install a theme and change the colorscheme without touching the config
-
-This plugin uses the vimcolorschemes worker to download and generate previews for files.
 
 ## Setup
 
@@ -44,7 +42,7 @@ All the remaps are shown at the top of the plugin.
 
 ## Speed
 
-Nothing is loaded until the plugin is opened with the command `Pineapple`, meaning that you can't script the plugin until it is opened. The whole point of this is so that it adds very little time to startup.
+Pineapple is designed to minimally interrupt your startup time. Nothing is loaded until the plugin is opened with the command `Pineapple`.
 
 ## Requirements
 
@@ -60,4 +58,4 @@ A modified version of the [vimcolorschemes worker](https://github.com/vimcolorsc
 
 The vimcolorschemes worker has a problem where it incorrectly generates some themes (I think the ones that only use treesitter)
 
-This plugin is non-customizable, and can't be accessed from scripts (well, it can, but it won't work until the plugin is loaded)
+This plugin is non-customizable and is not designed to be scripted
