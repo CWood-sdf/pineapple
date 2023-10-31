@@ -162,7 +162,6 @@ function M.setup(opts)
     for _, v in pairs(contexts) do
         setSubContextToArray(v)
     end
-    M.openWindow()
 end
 
 local function centerString(str)

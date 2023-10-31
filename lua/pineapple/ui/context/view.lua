@@ -89,7 +89,6 @@ function viewCtx:getLines(context)
     table.insert(ret, "")
 
     exampleStartLine = #ret + 3 + #self:getKeymaps()
-    print(exampleStartLine)
     for _, v in pairs(exampleCode) do
         local line = ""
         for _, s in pairs(v) do

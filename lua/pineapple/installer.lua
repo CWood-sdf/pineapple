@@ -5,7 +5,7 @@ local installedThemes = {}
 local installFile = nil
 -- this is a string in actual file format
 local colorSchemeFile = nil
-M.setup = function(opts)
+function M.setup(opts)
     installFile = opts.installedRegistry
     if installFile == nil then
         error("installFile is required")
@@ -16,7 +16,8 @@ M.setup = function(opts)
         error("colorSchemeFile is required")
     end
 end
-M.getInstallFileName = function()
+
+function M.getInstallFileName()
     if installFile == nil then
         error("setup is required")
     end
@@ -29,13 +30,16 @@ M.getInstallFileName = function()
     end
     return fLoc
 end
-M.getInstalledThemes = function()
+
+function M.getInstalledThemes()
     return installedThemes
 end
-M.getInstallFile = function()
+
+function M.getInstallFile()
     return installFile
 end
-M.uninstall = function(gitUrl)
+
+function M.uninstall(gitUrl)
     local found = false
     for k, v in pairs(installedThemes) do
         if v == gitUrl then
@@ -44,7 +48,7 @@ M.uninstall = function(gitUrl)
         end
     end
     if not found then
-        print("Theme not installed")
+        error("Theme not installed")
         return
     end
     local fLoc = M.getInstallFileName()
@@ -60,10 +64,11 @@ M.uninstall = function(gitUrl)
     f:write(s)
     f:close()
 end
-M.install = function(gitUrl)
+
+function M.install(gitUrl)
     for _, v in pairs(installedThemes) do
         if v == gitUrl then
-            print("Theme already installed")
+            error("Theme already installed")
             return
         end
     end
@@ -83,7 +88,7 @@ M.install = function(gitUrl)
     table.insert(installedThemes, gitUrl)
 end
 
-M.setColorscheme = function(colorscheme)
+function M.setColorscheme(colorscheme)
     if colorSchemeFile == nil then
         error("setup is required")
     end
