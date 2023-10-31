@@ -3,6 +3,7 @@ local M = {}
 local bufnr = nil
 local width = 0
 local height = 0
+---@type Context[]
 local contexts = {}
 local data = {}
 local contextIndex = 1
@@ -27,11 +28,17 @@ local winId = nil
 -- local usedHighlights = {}
 
 local function changeContextIndex(index)
+    ---@type boolean|table
     local newData = contexts[contextIndex]:setExitContext(data)
+    ---@diagnostic disable-next-line: param-type-mismatch
     newData = contexts[index]:setContext(newData)
     if newData ~= false then
         contextIndex = index
-        data = newData
+        if type(newData) == "table" then
+            data = newData
+        else
+            data = {}
+        end
         M.refreshBuffer()
     end
 end
@@ -40,11 +47,17 @@ function M.refreshBuffer()
     local buf = M.getBufNr()
     M.setRemaps()
     local lines = M.getLines()
-    vim.api.nvim_buf_set_option(buf, "modifiable", true)
-    vim.api.nvim_buf_set_option(buf, "buftype", "nofile")
+    vim.api.nvim_set_option_value("modifiable", true, {
+        buf = buf,
+    })
+    vim.api.nvim_set_option_value("buftype", "nofile", {
+        buf = buf,
+    })
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
     M.addHighlights()
-    vim.api.nvim_buf_set_option(buf, "modifiable", false)
+    vim.api.nvim_set_option_value("modifiable", false, {
+        buf = buf,
+    })
 end
 
 function M.openWindow()
@@ -71,6 +84,7 @@ end
 function M.getBufNr()
     if bufnr == nil then
         bufnr = vim.api.nvim_create_buf(false, true)
+        keysToUnmap = {}
     end
     if not vim.api.nvim_buf_is_valid(bufnr) then
         keysToUnmap = {}
@@ -101,6 +115,19 @@ local function setSubContextToArray(context)
         table.insert(contexts, subContext)
         subContext:setIndex(#contexts)
         setSubContextToArray(subContext)
+    end
+end
+
+local function refreshEntryKeys()
+    local remapOpts = {
+        buffer = M.getBufNr(),
+    }
+    for _, v in ipairs(tabline.permanent) do
+        vim.keymap.set("n", v.key,
+            function()
+                changeContextIndex(v.index)
+                M.refreshBuffer()
+            end, remapOpts)
     end
 end
 
@@ -164,6 +191,16 @@ function M.getLines()
     end
     table.insert(topLines, secondLine)
     table.insert(topLines, string.rep("-", width))
+    local keymaps = contexts[contextIndex]:getKeymaps(data)
+    for _, kmp in ipairs(keymaps) do
+        local line = "  " .. kmp.key .. ": " .. kmp.desc
+        if kmp.isGroup then
+            for _, sub in ipairs(kmp.subKeymaps) do
+                line = line .. "  ..." .. sub.desc .. ": " .. sub.key
+            end
+        end
+        table.insert(topLines, line)
+    end
 
     local lines = contexts[contextIndex]:getLines(data)
 
@@ -204,6 +241,23 @@ function M.addHighlights()
     if winId == nil or not vim.api.nvim_win_is_valid(winId) then
         return
     end
+    local keymaps = contexts[contextIndex]:getKeymaps(data)
+    local line = 3
+    for _, kmp in ipairs(keymaps) do
+        if kmp.isGroup then
+            M.highlight(line, 2, 3, "Operator")
+            local col = 5
+            col = #kmp.desc + col
+            for _, sub in ipairs(kmp.subKeymaps) do
+                col = col + 5 + #sub.desc + 2
+                M.highlight(line, col, col + 1, "Constant")
+                col = col + 1
+            end
+        else
+            M.highlight(line, 2, 3, "Operator")
+        end
+        line = line + 1
+    end
     vim.api.nvim_win_set_hl_ns(winId, M.getNsId())
     contexts[contextIndex]:addHighlights(data, M.highlight, M.makeHighlight)
     local line2 = vim.api.nvim_buf_get_lines(M.getBufNr(), 1, 2, false)[1]
@@ -233,8 +287,13 @@ function M.addHighlights()
 end
 
 function M.setRemaps()
+    local buf = M.getBufNr()
     for k, _ in pairs(keysToUnmap) do
-        vim.api.nvim_buf_del_keymap(M.getBufNr(), "n", k)
+        local ok, _ = pcall(vim.api.nvim_buf_del_keymap, buf, "n", k)
+        if not ok then
+            keysToUnmap = {}
+            refreshEntryKeys()
+        end
     end
     tabline.temporary = {}
     keysToUnmap = {}
@@ -243,10 +302,24 @@ function M.setRemaps()
     }
     local keymaps = contexts[contextIndex]:getKeymaps(data)
     for _, keymap in ipairs(keymaps) do
-        opts.desc = keymap.desc
-        vim.keymap.set("n", keymap.key, keymap.fn, opts)
-        opts.desc = nil
-        keysToUnmap[keymap.key] = true
+        if keymap.isGroup then
+            local baseKey = keymap.key
+            local baseDesc = keymap.desc .. " "
+            for _, sub in ipairs(keymap.subKeymaps) do
+                if sub.isGroup then
+                    error("Can not nest pineapple keymap groups more than 2 layers deep")
+                end
+                opts.desc = baseDesc .. sub.desc
+                vim.keymap.set("n", baseKey .. sub.key, sub.fn, opts)
+                keysToUnmap[baseKey .. sub.key] = true
+                opts.desc = nil
+            end
+        else
+            opts.desc = keymap.desc
+            vim.keymap.set("n", keymap.key, keymap.fn, opts)
+            keysToUnmap[keymap.key] = true
+            opts.desc = nil
+        end
     end
     for _, subCtx in ipairs(contexts[contextIndex]:getSubContexts()) do
         local entry = subCtx:getEntryKey()

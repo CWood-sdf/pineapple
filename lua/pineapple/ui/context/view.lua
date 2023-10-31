@@ -3,9 +3,9 @@ local makeContext = require("pineapple.ui.context.makeContext")
 local viewCtx = {
 }
 
-local remapLines = {
-    "  p: Preview",
-}
+-- local remapLines = {
+--     "  p: Preview",
+-- }
 local exampleStartLine = 0
 local colorschemeIndex = 1
 
@@ -15,6 +15,7 @@ end
 
 ---@return Keymap[]
 function viewCtx:getKeymaps(context)
+    ---@type Keymap[]
     return {
         {
             key = "p",
@@ -29,6 +30,7 @@ function viewCtx:getKeymaps(context)
                 self.render()
             end,
             desc = "Preview",
+            isGroup = false
         },
     }
 end
@@ -51,6 +53,8 @@ function viewCtx:addHighlights(context, highlight, makeHighlight)
     else
         colorData = colorData[vim.o.background]
     end
+    -- make the github url less readable bc it's kinda uneccessary
+    highlight(4, 3 + #context[1].name, -1, "Comment")
     for line, l in ipairs(exampleCode) do
         local currentRow = 0
         for k, v in ipairs(l) do
@@ -68,9 +72,9 @@ end
 
 function viewCtx:getLines(context)
     local ret = {}
-    for _, v in ipairs(remapLines) do
-        table.insert(ret, v)
-    end
+    -- for _, v in ipairs(remapLines) do
+    --     table.insert(ret, v)
+    -- end
     table.insert(ret, context[1].name .. " (" .. context[1].githubUrl .. ")")
     table.insert(ret, context[1].description)
     table.insert(ret, "Stars: " .. context[1].stargazersCount)
@@ -84,7 +88,7 @@ function viewCtx:getLines(context)
     end
     table.insert(ret, "")
 
-    exampleStartLine = #ret + 3
+    exampleStartLine = #ret + 3 + #self:getKeymaps()
     print(exampleStartLine)
     for _, v in pairs(exampleCode) do
         local line = ""
@@ -134,7 +138,7 @@ function viewCtx:setup()
 end
 
 function viewCtx:setContext(context)
-    if vim.fn.line('.') <= 5 then
+    if vim.fn.line('.') <= #require("pineapple.ui.context.home"):getKeymaps({}) + 3 then
         print("Must be over a theme")
         return false
     end

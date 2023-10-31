@@ -2,8 +2,10 @@ local M = {}
 
 ---@class (exact) Keymap
 ---@field key string
----@field fn fun()
+---@field fn? fun()
 ---@field desc string
+---@field isGroup boolean
+---@field subKeymaps? Keymap[]
 
 ---@class Context
 ---@field hasSetup boolean
@@ -11,7 +13,6 @@ local M = {}
 ---@field subContexts Context[]
 ---@field addSubContext fun(self: Context, context: table)
 ---@field getSubContexts fun(self: Context): Context[]
----@field setKeymaps fun(self: Context, context: table)
 ---@field getKeymaps fun(self: Context, context: table): Keymap[]
 ---@field setContext fun(self: Context, context: table): table | boolean
 ---@field setExitContext fun(self: Context, context: table): table
@@ -74,12 +75,6 @@ function M.newContext(opts)
         end,
         getSubContexts = function(self)
             return self.subContexts
-        end,
-        setKeymaps = function(self, context)
-            local keymaps = self:getKeymaps(context)
-            for _, keymap in ipairs(keymaps) do
-                vim.api.nvim_set_keymap("n", unpack(keymap))
-            end
         end,
         ---@diagnostic disable-next-line: unused-local
         getKeymaps = function(self, context)

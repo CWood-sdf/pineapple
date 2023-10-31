@@ -9,97 +9,127 @@ local themeStartLine = 3
 function homeCtx:filterEntries()
 end
 
--- note: adding stuff here requires editing view.lua in setContext
-local remapLines = {
-    "  f: Filter  ...by text: t  ...by variants: v  ...clear: c  ...dark: d",
-    "  i: Install",
-}
-
-
 ---@return Keymap[]
 function homeCtx:getKeymaps()
     ---@type Keymap[]
     local ret = {
         {
-            key = "ft",
-            fn = function()
-                local text = vim.fn.input("Yo gimme a name: ")
-                local newData = {}
-                for _, v in ipairs(data.org) do
-                    if vim.fn.stridx(v.name, text) ~= -1 or vim.fn.stridx(v.description, text) ~= -1 or vim.fn.stridx(v.githubUrl, text) ~= -1 then
-                        table.insert(newData, v)
-                    end
-                end
-                data.disp = newData
-                self.render()
-            end,
-            desc = "Filter by text"
-        },
-        {
-            key = "fv",
-            desc = "Filter by variants",
-            fn = function()
-                local text = vim.fn.input("Yo gimme a name: ")
-                local newData = {}
-                for _, v in ipairs(data.org) do
-                    local variants = {}
-                    for _, vimColorScheme in pairs(v.vimColorSchemes) do
-                        if vim.fn.stridx(vimColorScheme.name, text) ~= -1 then
-                            table.insert(variants, vimColorScheme)
+            key = "f",
+            desc = "Filter",
+            isGroup = true,
+            subKeymaps = {
+                {
+                    key = "t",
+                    fn = function()
+                        local text = vim.fn.input("Yo gimme a name: ")
+                        local newData = {}
+                        for _, v in ipairs(data.disp) do
+                            if vim.fn.stridx(v.name, text) ~= -1 or vim.fn.stridx(v.description, text) ~= -1 or vim.fn.stridx(v.githubUrl, text) ~= -1 then
+                                table.insert(newData, v)
+                            end
                         end
-                    end
-                    if #variants > 0 then
-                        local newRow = vim.fn.deepcopy(v)
-                        newRow.vimColorSchemes = variants
-                        table.insert(newData, newRow)
-                    end
-                end
-                data.disp = newData
-                self.render()
-            end
-        },
-        {
-            key = "fc",
-            desc = "Filter clear",
-            fn = function()
-                data.disp = data.org
-                self.render()
-            end
-        },
-        {
-            key = "fd",
-            desc = "Filter dark",
-            fn = function()
-                data.disp = {}
-                for _, v in ipairs(data.org) do
-                    local variants = {}
-                    for _, vimColorScheme in pairs(v.vimColorSchemes) do
-                        if vimColorScheme.data ~= nil and vimColorScheme.data.dark ~= nil and vimColorScheme.data.dark.vimNumber ~= nil then
-                            table.insert(variants, vimColorScheme)
+                        data.disp = newData
+                        self.render()
+                    end,
+                    desc = "by text",
+                    isGroup = false
+                },
+                {
+                    key = "v",
+                    desc = "by variants",
+                    fn = function()
+                        local text = vim.fn.input("Yo gimme a name: ")
+                        local newData = {}
+                        for _, v in ipairs(data.disp) do
+                            local variants = {}
+                            for _, vimColorScheme in pairs(v.vimColorSchemes) do
+                                if vim.fn.stridx(vimColorScheme.name, text) ~= -1 then
+                                    table.insert(variants, vimColorScheme)
+                                end
+                            end
+                            if #variants > 0 then
+                                local newRow = vim.fn.deepcopy(v)
+                                newRow.vimColorSchemes = variants
+                                table.insert(newData, newRow)
+                            end
                         end
-                    end
-                    if #variants > 0 then
-                        local newRow = vim.fn.deepcopy(v)
-                        newRow.vimColorSchemes = variants
-                        table.insert(data.disp, newRow)
-                    end
-                end
-                self.render()
-            end
+                        data.disp = newData
+                        self.render()
+                    end,
+                    isGroup = false
+                },
+                {
+                    key = "c",
+                    desc = "clear",
+                    fn = function()
+                        data.disp = data.org
+                        self.render()
+                    end,
+                    isGroup = false,
+                },
+                {
+                    key = "d",
+                    desc = "dark",
+                    fn = function()
+                        local newData = {}
+                        for _, v in ipairs(data.disp) do
+                            local variants = {}
+                            for _, vimColorScheme in pairs(v.vimColorSchemes) do
+                                if vimColorScheme.data ~= nil and vimColorScheme.data.dark ~= nil and vimColorScheme.data.dark.vimNumber ~= nil then
+                                    table.insert(variants, vimColorScheme)
+                                end
+                            end
+                            if #variants > 0 then
+                                local newRow = vim.fn.deepcopy(v)
+                                newRow.vimColorSchemes = variants
+                                table.insert(newData, newRow)
+                            end
+                        end
+                        data.disp = newData
+                        self.render()
+                    end,
+                    isGroup = false,
+                },
+                {
+                    key = "l",
+                    desc = "light",
+                    fn = function()
+                        local newData = {}
+                        for _, v in ipairs(data.disp) do
+                            local variants = {}
+                            for _, vimColorScheme in pairs(v.vimColorSchemes) do
+                                if vimColorScheme.data ~= nil and vimColorScheme.data.light ~= nil and vimColorScheme.data.light.vimNumber ~= nil then
+                                    table.insert(variants, vimColorScheme)
+                                end
+                            end
+                            if #variants > 0 then
+                                local newRow = vim.fn.deepcopy(v)
+                                newRow.vimColorSchemes = variants
+                                table.insert(newData, newRow)
+                            end
+                        end
+                        data.disp = newData
+                        self.render()
+                    end,
+                    isGroup = false,
+                },
+
+            },
         },
         {
             key = "i",
             desc = "Install",
             fn = function()
                 local line = vim.fn.line(".")
-                local index = line - #remapLines - 3
+                local index = line - #self:getKeymaps() - 3
                 if index < 1 or index > #data.disp then
                     print("Not hovering over a theme")
                     return
                 end
                 local theme = data.disp[index]
                 require("pineapple.installer").install(theme.githubUrl)
-            end
+            end,
+            isGroup = false,
         }
     }
     return ret
@@ -109,31 +139,17 @@ function homeCtx:getEntryKey()
     return "H"
 end
 
-function homeCtx:addHighlights(context, highlight, makeHighlight)
-    for l, v in ipairs(remapLines) do
-        local foundFirstChar = false
-        local colonCount = 0
-        for i = 1, #v do
-            if not foundFirstChar and v:sub(i, i):match("%w") then
-                foundFirstChar = true
-                highlight(l + 2, i - 1, i, "Operator")
-            elseif v:sub(i, i) == ":" then
-                if colonCount > 0 then
-                    highlight(l + 2, i + 1, i + 2, "Constant")
-                end
-                colonCount = colonCount + 1
-            end
-        end
-    end
+function homeCtx:addHighlights(_, _, _)
+
 end
 
 function homeCtx:getLines(_)
     local ret = {}
 
-    for _, v in ipairs(remapLines) do
-        table.insert(ret, v)
-    end
-    themeStartLine = 3 + #ret
+    -- for _, v in ipairs(remapLines) do
+    --     table.insert(ret, v)
+    -- end
+    themeStartLine = 3 + #self:getKeymaps()
     for _, v in ipairs(data.disp) do
         table.insert(ret, "  " .. v.name)
     end

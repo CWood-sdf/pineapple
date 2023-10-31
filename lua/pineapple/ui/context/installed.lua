@@ -5,30 +5,24 @@ local installedCtx = {
 
 local installedThemes = {}
 
-local remapLines = {
-    "  x: Uninstall",
-    "  u: Use color scheme",
-
-}
+-- local remapLines = {
+--     "  x: Uninstall",
+--     "  u: Use color scheme",
+--
+-- }
 
 function installedCtx:filterEntries()
 end
 
 ---@return Keymap[]
-function installedCtx:getKeymaps(context)
+function installedCtx:getKeymaps()
+    ---@type Keymap[]
     return {
-        {
-            key = "<C-f>",
-            fn = function()
-                print(vim.inspect(context))
-            end,
-            desc = "Filter",
-        },
         {
             key = "u",
             fn = function()
                 local line = vim.fn.line(".")
-                local i = 3 + #remapLines
+                local i = 3 + #self:getKeymaps()
                 for _, v in pairs(installedThemes) do
                     i = i + 1
                     for _, theme in ipairs(v) do
@@ -42,12 +36,13 @@ function installedCtx:getKeymaps(context)
                 print("Not hovering over a colorscheme")
             end,
             desc = "Use color scheme",
+            isGroup = false
         },
         {
             key = "x",
             fn = function()
                 local line = vim.fn.line(".")
-                local i = 3 + #remapLines
+                local i = 3 + #self:getKeymaps()
                 for t, v in pairs(installedThemes) do
                     i = i + 1
                     if i == line then
@@ -64,6 +59,7 @@ function installedCtx:getKeymaps(context)
                 print("Not hovering over a theme")
             end,
             desc = "Uninstall color scheme",
+            isGroup = false
         }
 
     }
@@ -78,9 +74,9 @@ end
 
 function installedCtx:getLines()
     local lines = {}
-    for _, v in ipairs(remapLines) do
-        table.insert(lines, v)
-    end
+    -- for _, v in ipairs(remapLines) do
+    --     table.insert(lines, v)
+    -- end
     for n, v in pairs(installedThemes) do
         table.insert(lines, "  " .. n)
         for _, variant in ipairs(v) do
