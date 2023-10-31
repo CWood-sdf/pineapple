@@ -18,6 +18,11 @@ local tabline = {
     ---@type TablineElement[]
     temporary = {},
 }
+
+function M.getTabline()
+    return tabline
+end
+
 local winId = nil
 -- local usedHighlights = {}
 
@@ -31,7 +36,7 @@ local function changeContextIndex(index)
     end
 end
 
-M.refreshBuffer = function()
+function M.refreshBuffer()
     local buf = M.getBufNr()
     M.setRemaps()
     local lines = M.getLines()
@@ -42,12 +47,11 @@ M.refreshBuffer = function()
     vim.api.nvim_buf_set_option(buf, "modifiable", false)
 end
 
-M.openWindow = function()
+function M.openWindow()
     local offsetX = 8
     local offsetY = 3
     width = vim.o.columns - offsetX * 2
     height = vim.o.lines - offsetY * 2 - 4
-    M.refreshBuffer()
     if vim.api.nvim_win_is_valid(winId or -1) then
         vim.api.nvim_set_current_win(winId or -1)
         vim.api.nvim_win_set_buf(winId or -1, M.getBufNr())
@@ -61,20 +65,25 @@ M.openWindow = function()
             style = "minimal",
         })
     end
+    M.refreshBuffer()
 end
 
-
-M.getBufNr = function()
-    if bufnr == nil or (not vim.api.nvim_buf_is_valid(bufnr or -1)) then
+function M.getBufNr()
+    if bufnr == nil then
+        bufnr = vim.api.nvim_create_buf(false, true)
+    end
+    if not vim.api.nvim_buf_is_valid(bufnr) then
+        keysToUnmap = {}
         bufnr = vim.api.nvim_create_buf(false, true)
     end
     return bufnr
 end
 
-M.getWidth = function()
+function M.getWidth()
     return width
 end
-M.getHeight = function()
+
+function M.getHeight()
     return height
 end
 
@@ -95,7 +104,12 @@ local function setSubContextToArray(context)
     end
 end
 
+local hasSetup = false
 function M.setup(opts)
+    if hasSetup then
+        return
+    end
+    hasSetup = true
     local home = require("pineapple.ui.context.home")
     local installed = require("pineapple.ui.context.installed")
     contexts = {
@@ -231,7 +245,7 @@ function M.setRemaps()
     for _, keymap in ipairs(keymaps) do
         opts.desc = keymap.desc
         vim.keymap.set("n", keymap.key, keymap.fn, opts)
-        opts.description = nil
+        opts.desc = nil
         keysToUnmap[keymap.key] = true
     end
     for _, subCtx in ipairs(contexts[contextIndex]:getSubContexts()) do
