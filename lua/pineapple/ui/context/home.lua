@@ -25,7 +25,7 @@ function homeCtx:getKeymaps()
                         local newData = {}
                         for _, v in ipairs(data.disp) do
                             if vim.fn.stridx(v.name, text) ~= -1 or vim.fn.stridx(v.description, text) ~= -1 or vim.fn.stridx(v.githubUrl, text) ~= -1 then
-                                table.insert(newData, v)
+                                table.insert(newData, vim.fn.deepcopy(v))
                             end
                         end
                         data.disp = newData
@@ -49,7 +49,7 @@ function homeCtx:getKeymaps()
                             end
                             if #variants > 0 then
                                 local newRow = vim.fn.deepcopy(v)
-                                newRow.vimColorSchemes = variants
+                                newRow.vimColorSchemes = vim.fn.deepcopy(variants)
                                 table.insert(newData, newRow)
                             end
                         end
@@ -81,7 +81,7 @@ function homeCtx:getKeymaps()
                             end
                             if #variants > 0 then
                                 local newRow = vim.fn.deepcopy(v)
-                                newRow.vimColorSchemes = variants
+                                newRow.vimColorSchemes = vim.fn.deepcopy(variants)
                                 table.insert(newData, newRow)
                             end
                         end
@@ -104,7 +104,7 @@ function homeCtx:getKeymaps()
                             end
                             if #variants > 0 then
                                 local newRow = vim.fn.deepcopy(v)
-                                newRow.vimColorSchemes = variants
+                                newRow.vimColorSchemes = vim.fn.deepcopy(variants)
                                 table.insert(newData, newRow)
                             end
                         end
