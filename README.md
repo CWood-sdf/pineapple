@@ -56,6 +56,6 @@ A modified version of the [vimcolorschemes worker](https://github.com/vimcolorsc
 
 ## Known Issues
 
-The vimcolorschemes worker has a problem where it incorrectly generates some themes (I think the ones that only use treesitter)
+The vimcolorschemes worker has a problem where it incorrectly generates some themes (I think the ones that only use treesitter), leaving large portions of the theme as just black
 
-This plugin is non-customizable and is not designed to be scripted
+This plugin is non-customizable and is not designed to be scripted yet
