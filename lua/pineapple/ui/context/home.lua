@@ -2,7 +2,13 @@ local makeContext = require("pineapple.ui.context.makeContext")
 
 local homeCtx = {
 }
-local data = {}
+---@class (exact) _homeCtxData
+---@field org PineappleDataElement[]
+---@field disp PineappleDataElement[]
+local data = {
+    org = {},
+    disp = {},
+}
 
 local themeStartLine = 3
 
@@ -157,29 +163,7 @@ function homeCtx:getLines(_)
 end
 
 function homeCtx:setup()
-    local orgData = require("pineapple.data")
-    local values = {}
-    for _, v in pairs(orgData) do
-        local canInsert = true
-        local tempVal = v
-        if v.vimColorSchemes ~= nil then
-            local newVimColorSchemes = {}
-            for _, vimColorScheme in pairs(v.vimColorSchemes) do
-                if vimColorScheme.data ~= nil and ((vimColorScheme.data.light ~= nil and vimColorScheme.data.light.vimNumber ~= nil) or (vimColorScheme.data.dark ~= nil and vimColorScheme.data.dark.vimNumber ~= nil)) then
-                    table.insert(newVimColorSchemes, vimColorScheme)
-                end
-            end
-            if #newVimColorSchemes == 0 then
-                canInsert = false
-            end
-            tempVal.vimColorSchemes = newVimColorSchemes
-        else
-            canInsert = false
-        end
-        if canInsert then
-            table.insert(values, tempVal)
-        end
-    end
+    local values = require("pineapple.dataManager").getCleanData()
     for k, _ in pairs(values) do
         values[k].githubUrl = values[k].githubUrl:gsub("https://github.com/", "")
         if values[k].name == "vim" or values[k].name == "neovim" or values[k].name == "nvim" then

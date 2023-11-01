@@ -67,7 +67,9 @@ A modified version of the [vimcolorschemes worker](https://github.com/vimcolorsc
 
 The vimcolorschemes worker has a problem where it incorrectly generates some themes (I think the ones that only use treesitter), leaving large portions of the theme as just black
 
-This plugin is non-customizable and is not designed to be scripted yet
+## Api
+
+The provided api functions can be found at pineapple.api.
 
 ## Uninstall
 

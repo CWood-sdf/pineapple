@@ -5,15 +5,26 @@ local installedThemes = {}
 local installFile = nil
 -- this is a string in actual file format
 local colorSchemeFile = nil
+
+---@class (exact) PineappleInstallerOptions
+---@field installedRegistry string
+---@field colorschemeFile string
+
+local hasSetup = false
+---@param opts PineappleInstallerOptions
 function M.setup(opts)
+    if hasSetup then
+        return
+    end
+    hasSetup = true
     installFile = opts.installedRegistry
     if installFile == nil then
-        error("installFile is required")
+        error("installedRegistry is required")
     end
     installedThemes = require(installFile)
     colorSchemeFile = opts.colorschemeFile
     if colorSchemeFile == nil then
-        error("colorSchemeFile is required")
+        error("colorschemeFile is required")
     end
 end
 
