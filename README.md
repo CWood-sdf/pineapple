@@ -10,14 +10,23 @@ The goals of this plugin are:
 - Be able to preview a theme in neovim
 - Install a theme and change the colorscheme without touching the config
 
+## What does it not do
+
+Pineapple is not designed to:
+
+- Find a theme that works with treesitter, though you can find some of those themes by a text filter of "treesitter" or "Treesitter"
+- Manage the installation for your theme, that is the package manager's job
+- Find a theme for your lualine or anything else that needs to be seperately themed
+- Manage any local themes in development you might be using
+
 ## Setup
 
 Pineapple has only been tested with lazy.nvim as a package manager.
 
 Here's the quick setup:
 
-1. Create an empty file in your ~/.config/nvim/lua/YOUR_LUA_DIRECTORY/pineapple.lua (or C:\Users\_\AppData\Local\Nvim if you're a Windows user)
-2. Create an empty file in the ~/.config/nvim/after/plugin folder
+1. Create an empty file in your ~/.config/nvim/lua/YOUR_LUA_DIRECTORY directory (or C:\Users\_\AppData\Local\Nvim if you're a Windows user) (Called pineapple.lua here). This file is for storing your installed themes.
+2. Create an empty file in the ~/.config/nvim/after/plugin folder (called theme.lua). This file is for setting the colorscheme.
 3. Then for setup, put this in your config:
 
 ```lua
@@ -59,3 +68,9 @@ A modified version of the [vimcolorschemes worker](https://github.com/vimcolorsc
 The vimcolorschemes worker has a problem where it incorrectly generates some themes (I think the ones that only use treesitter), leaving large portions of the theme as just black
 
 This plugin is non-customizable and is not designed to be scripted yet
+
+## Uninstall
+
+Pineapple is designed to be removed as easily as possible. The steps to remove it are pretty simple:
+
+Add the installation line for whatever your current theme is to your lazy.nvim config file. All your downloaded themes can be seen at ~/.config/nvim/YOUR_LUA_DIRECTORY/YOUR_PINEAPPLE_FILE.lua. After this, you can remove the pineapple install line and run `Lazy sync`.
