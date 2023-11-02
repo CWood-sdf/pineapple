@@ -43,6 +43,13 @@ Here's the quick setup:
 
 Note that opts.installedRegistry and colorschemeFile are in different file formats. This is so that opts.installedRegistry can be put in a variable at the top of your lazy config file. The directory that both installedRegistry and colorschemeFile are assumed to be in is $HOME\.config\nvim (or %USERPROFILE%\AppData\Local\Nvim if you're a Windows user)
 
+### Setup Options
+
+| option              | description                                                                                                                                           |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `installedRegistry` | A lua `require`able string that holds the location of the file where the themes to be installed will be stored|
+| `colorschemeFile`   | A string that holds the location of the file that will be sourced to set the colorscheme                                                              |
+
 ## Usage
 
 The plugin can be opened with the command `Pineapple`
