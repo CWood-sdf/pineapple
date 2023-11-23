@@ -45,10 +45,10 @@ Note that opts.installedRegistry and colorschemeFile are in different file forma
 
 ### Setup Options
 
-| option              | description                                                                                                                                           |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `installedRegistry` | A lua `require`able string that holds the location of the file where the themes to be installed will be stored|
-| `colorschemeFile`   | A string that holds the location of the file that will be sourced to set the colorscheme                                                              |
+| option              | description                                                                                                    |
+| ------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `installedRegistry` | A lua `require`able string that holds the location of the file where the themes to be installed will be stored |
+| `colorschemeFile`   | A string that holds the location of the file that will be sourced to set the colorscheme                       |
 
 ## Usage
 
