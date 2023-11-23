@@ -21,7 +21,7 @@ Pineapple is not designed to:
 
 ## Setup
 
-Pineapple has only been tested with lazy.nvim as a package manager.
+Pineapple has only been tested with lazy.nvim as a package manager, though it probably would work with others.
 
 Here's the quick setup:
 
