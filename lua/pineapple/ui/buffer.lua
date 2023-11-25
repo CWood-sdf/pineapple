@@ -141,9 +141,11 @@ function M.setup(opts)
 	hasSetup = true
 	local home = require("pineapple.ui.context.home")
 	local installed = require("pineapple.ui.context.installed")
+	local help = require("pineapple.ui.context.help")
 	contexts = {
 		home,
 		installed,
+		help,
 	}
 	local remapOpts = {
 		buffer = M.getBufNr(),
