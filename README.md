@@ -10,6 +10,10 @@ The goals of this plugin are:
 - Be able to preview a theme in neovim
 - Install a theme and change the colorscheme without touching the config
 
+## Requirements
+
+- Neovim 0.8.0 or greater
+
 ## What does it not do
 
 Pineapple is not designed to:
@@ -59,10 +63,6 @@ All the remaps are shown at the top of the plugin.
 ## Speed
 
 Pineapple is designed to minimally interrupt your startup time. Nothing is loaded until the plugin is opened with the command `Pineapple` (at least with lazy.nvim).
-
-## Requirements
-
-- Neovim 0.8.0 or greater
 
 ## Acknowledgements
 
