@@ -37,7 +37,7 @@ Here's the quick setup:
         installedRegistry = "YOUR_LUA_DIRECTORY.pineapple",
         colorschemeFile = "after/plugin/theme.lua"
     },
-    lazy = false,
+    cmd = "Pineapple",
 }
 ```
 
@@ -58,7 +58,7 @@ All the remaps are shown at the top of the plugin.
 
 ## Speed
 
-Pineapple is designed to minimally interrupt your startup time. Nothing is loaded until the plugin is opened with the command `Pineapple`.
+Pineapple is designed to minimally interrupt your startup time. Nothing is loaded until the plugin is opened with the command `Pineapple` (at least with lazy.nvim).
 
 ## Requirements
 
@@ -68,7 +68,7 @@ Pineapple is designed to minimally interrupt your startup time. Nothing is loade
 
 This whole idea is from the [vimcolorschemes website](https://vimcolorschemes.com/), and I wanted to put that in a neovim extension.
 
-A modified version of the [vimcolorschemes worker](https://github.com/vimcolorschemes/worker) was used to generate the themes.
+A modified version of the [vimcolorschemes worker](https://github.com/vimcolorschemes/worker) was used to generate the theme data.
 
 ## Known Issues
 
