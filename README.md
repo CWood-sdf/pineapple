@@ -76,7 +76,14 @@ The vimcolorschemes worker has a problem where it incorrectly generates some the
 
 ## Api
 
-The provided api functions can be found at pineapple.api.
+| Name                      | Description                                               |
+| ------------------------- | --------------------------------------------------------- |
+| `getInstalledThemes()`    | Returns the list of installed themes                      |
+| `uninstall(theme)`        | Uninstalls the theme from the config file                 |
+| `install(theme)`          | Installs the theme to the config file                     |
+| `setColorScheme(theme)`   | Sets the colorscheme to the given parameter               |
+| `getInstalledColorData()` | Returns the color data for the currently installed themes |
+| `getAllData()`            | Returns all the data for all the themes                   |
 
 ## Uninstall
 
