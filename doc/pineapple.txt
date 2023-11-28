@@ -5,11 +5,11 @@ Table of Contents                                *pineapple-table-of-contents*
 
 1. Pineapple.nvim                                   |pineapple-pineapple.nvim|
   - Why?                                       |pineapple-pineapple.nvim-why?|
+  - Requirements                       |pineapple-pineapple.nvim-requirements|
   - What does it not do         |pineapple-pineapple.nvim-what-does-it-not-do|
   - Setup                                     |pineapple-pineapple.nvim-setup|
   - Usage                                     |pineapple-pineapple.nvim-usage|
   - Speed                                     |pineapple-pineapple.nvim-speed|
-  - Requirements                       |pineapple-pineapple.nvim-requirements|
   - Acknowledgements               |pineapple-pineapple.nvim-acknowledgements|
   - Known Issues                       |pineapple-pineapple.nvim-known-issues|
   - Api                                         |pineapple-pineapple.nvim-api|
@@ -28,6 +28,11 @@ The goals of this plugin are:
 - Find a theme without using google
 - Be able to preview a theme in neovim
 - Install a theme and change the colorscheme without touching the config
+
+
+REQUIREMENTS                           *pineapple-pineapple.nvim-requirements*
+
+- Neovim 0.8.0 or greater
 
 
 WHAT DOES IT NOT DO             *pineapple-pineapple.nvim-what-does-it-not-do*
@@ -94,11 +99,6 @@ SPEED                                         *pineapple-pineapple.nvim-speed*
 Pineapple is designed to minimally interrupt your startup time. Nothing is
 loaded until the plugin is opened with the command `Pineapple` (at least with
 lazy.nvim).
-
-
-REQUIREMENTS                           *pineapple-pineapple.nvim-requirements*
-
-- Neovim 0.8.0 or greater
 
 
 ACKNOWLEDGEMENTS                   *pineapple-pineapple.nvim-acknowledgements*
