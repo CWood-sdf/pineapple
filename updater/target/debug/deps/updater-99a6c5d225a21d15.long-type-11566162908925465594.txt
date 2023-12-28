@@ -1,1 +1,0 @@
-std::iter::Filter<Flatten<std::iter::Map<std::iter::Filter<std::iter::Map<std::slice::Iter<'_, DirEntry>, {closure@src/main.rs:57:14: 57:17}>, {closure@src/main.rs:58:17: 58:20}>, {closure@src/main.rs:59:14: 59:17}>>, fn(Repo) -> impl Future<Output = bool> {repo_has_colscheme}>

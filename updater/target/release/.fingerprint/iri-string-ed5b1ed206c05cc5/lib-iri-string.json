@@ -1,1 +1,0 @@
-{"rustc":225508634607999698,"features":"[\"alloc\", \"default\", \"std\"]","target":14794729868418862568,"profile":14094339167972473758,"path":11802265321573456000,"deps":[],"local":[{"CheckDepInfo":{"dep_info":"release/.fingerprint/iri-string-ed5b1ed206c05cc5/dep-lib-iri-string"}}],"rustflags":[],"metadata":7878118179446240246,"config":2202906307356721367,"compile_kind":0}
