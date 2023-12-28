@@ -1,7 +1,9 @@
 local makeContext = require("pineapple.ui.context.makeContext")
 
 local homeCtx = {}
----@class (exact) _homeCtxData
+---@class (exact) Pineapple_homeCtxData
+---@field org PineappleDataElement[]
+---@field disp PineappleDataElement[]
 local data = {
 	org = {},
 	disp = {},
@@ -11,15 +13,16 @@ local themeStartLine = 3
 
 function homeCtx:filterEntries() end
 
----@return Keymap[]
+---@return PineappleKeymap[]
 function homeCtx:getKeymaps()
-	---@type Keymap[]
+	---@type PineappleKeymap[]
 	local ret = {
 		{
 			key = "v",
 			desc = "Preview theme",
 			fn = nil,
 			isGroup = false,
+			sdf = "sdf",
 		},
 		{
 			key = "f",
@@ -29,7 +32,7 @@ function homeCtx:getKeymaps()
 				{
 					key = "t",
 					fn = function()
-						local text = vim.fn.input("Yo gimme a name: ")
+						local text = vim.fn.input("Filter by name, gitUrl, or description: ")
 						local newData = {}
 						for _, v in ipairs(data.disp) do
 							if
@@ -50,7 +53,7 @@ function homeCtx:getKeymaps()
 					key = "v",
 					desc = "by variants",
 					fn = function()
-						local text = vim.fn.input("Yo gimme a name: ")
+						local text = vim.fn.input("Filter by variant names: ")
 						local newData = {}
 						for _, v in ipairs(data.disp) do
 							local variants = {}

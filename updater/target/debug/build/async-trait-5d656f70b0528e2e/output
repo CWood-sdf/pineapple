@@ -1,0 +1,2 @@
+cargo:rerun-if-env-changed=DOCS_RS
+cargo:rustc-cfg=native_async_fn_in_trait

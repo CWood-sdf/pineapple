@@ -3,23 +3,26 @@ local M = {}
 local bufnr = nil
 local width = 0
 local height = 0
----@type Context[]
+---@type PineappleContext[]
 local contexts = {}
 local data = {}
 local contextIndex = 1
 local keysToUnmap = {}
 
----@class (exact) TablineElement
-local TablineElement = {
+---@class (exact) PineappleTablineElement
+---@field key string
+---@field name string
+---@field index number
+local PineappleTablineElement = {
 	key = "",
 	name = "",
 	index = 0,
 }
 
 local tabline = {
-	---@type TablineElement[]
+	---@type PineappleTablineElement[]
 	permanent = {},
-	---@type TablineElement[]
+	---@type PineappleTablineElement[]
 	temporary = {},
 }
 

@@ -1,0 +1,2 @@
+cargo:rerun-if-env-changed=RUSTC_BOOTSTRAP
+cargo:rustc-cfg=error_generic_member_access

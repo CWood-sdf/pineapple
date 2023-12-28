@@ -1,0 +1,1 @@
+Flatten<std::iter::Map<Filter<std::iter::Map<std::slice::Iter<'_, DirEntry>, {closure@src/main.rs:54:14: 54:17}>, {closure@src/main.rs:55:17: 55:20}>, {closure@src/main.rs:56:14: 56:17}>>

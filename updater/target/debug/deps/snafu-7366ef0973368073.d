@@ -1,0 +1,12 @@
+/home/cwood/projects/pineapple/updater/target/debug/deps/libsnafu-7366ef0973368073.rmeta: /home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/lib.rs /home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/backtrace_shim.rs /home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/once_bool.rs /home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/error_chain.rs /home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/report.rs /home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/Snafu.md /home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/report.md /home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/../README.md
+
+/home/cwood/projects/pineapple/updater/target/debug/deps/snafu-7366ef0973368073.d: /home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/lib.rs /home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/backtrace_shim.rs /home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/once_bool.rs /home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/error_chain.rs /home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/report.rs /home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/Snafu.md /home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/report.md /home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/../README.md
+
+/home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/lib.rs:
+/home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/backtrace_shim.rs:
+/home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/once_bool.rs:
+/home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/error_chain.rs:
+/home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/report.rs:
+/home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/Snafu.md:
+/home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/report.md:
+/home/cwood/.cargo/registry/src/index.crates.io-6f17d22bba15001f/snafu-0.7.5/src/../README.md:

@@ -4,9 +4,9 @@ local helpCtx = {}
 
 function helpCtx:filterEntries() end
 
----@return Keymap[]
+---@return PineappleKeymap[]
 function helpCtx:getKeymaps()
-	---@type Keymap[]
+	---@type PineappleKeymap[]
 	local ret = {}
 	return ret
 end

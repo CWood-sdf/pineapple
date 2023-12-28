@@ -7,7 +7,7 @@ The ultimate theme manager for neovim
 The goals of this plugin are:
 
 - Find a theme without using google
-- Be able to preview a theme in neovim
+- Be able to preview a theme in neovim (including its treesitter support)
 - Install a theme and change the colorscheme without touching the config
 
 ## Requirements
@@ -68,11 +68,15 @@ Pineapple is designed to minimally interrupt your startup time. Nothing is loade
 
 This whole idea is from the [vimcolorschemes website](https://vimcolorschemes.com/), and I wanted to put that in a neovim extension.
 
-A modified version of the [vimcolorschemes worker](https://github.com/vimcolorschemes/worker) was used to generate the theme data.
+A rewritten version of the [vimcolorschemes worker](https://github.com/vimcolorschemes/worker) was used to generate the theme data.
 
-## Known Issues
+## Known issues
 
-The vimcolorschemes worker has a problem where it incorrectly generates some themes (I think the ones that only use treesitter), leaving large portions of the theme as just black
+There's a the preview doesn't account for screen size, so it can look pretty ugly on a small screen.
+
+The VimResize autocmd is not implemented yet, so the preview will not resize with the window.
+
+The generater is not completely automated, so some steps still have to be done manually.
 
 ## Api
 
