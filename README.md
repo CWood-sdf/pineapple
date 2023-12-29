@@ -62,7 +62,9 @@ Here's an example of my config:
 
 The plugin can be opened with the command `Pineapple`
 
-This is what the plugin looks like when it is first opened.
+This is what the plugin looks like when it is first opened:
+
+![startup screen](./assets/startup.png)
 
 All the remaps are shown at the top of the screen.
 
