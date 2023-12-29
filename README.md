@@ -82,7 +82,7 @@ A rewritten version of the [vimcolorschemes worker](https://github.com/vimcolors
 
 ## Known issues
 
-There's a the preview doesn't account for screen size, so it can look pretty ugly on a small screen.
+The preview doesn't account for screen size, so it can look pretty ugly on a small screen.
 
 The VimResize autocmd is not implemented yet, so the preview will not resize with the window.
 
