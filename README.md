@@ -29,7 +29,7 @@ Pineapple has only been tested with lazy.nvim as a package manager, though it pr
 
 Here's the quick setup:
 
-1. Create an empty file in your ~/.config/nvim/lua/YOUR_LUA_DIRECTORY directory (or C:\Users\_\AppData\Local\Nvim if you're a Windows user) (Called pineapple.lua here). This file is for storing your installed themes.
+1. Create an empty file in your ~/.config/nvim/lua/YOUR_LUA_DIRECTORY directory (or C:\Users\_\AppData\Local\Nvim if you're a Windows user). This file is for storing your installed themes.
 2. Create an empty file in the ~/.config/nvim/after/plugin folder (called theme.lua). This file is for setting the colorscheme.
 3. Then for setup, put this in your config:
 
@@ -58,7 +58,7 @@ Note that opts.installedRegistry and colorschemeFile are in different file forma
 
 The plugin can be opened with the command `Pineapple`
 
-All the remaps are shown at the top of the plugin.
+All the remaps are shown at the top of the screen.
 
 ## Speed
 
