@@ -1,13 +1,13 @@
 # Pineapple
 
-The ultimate theme manager for neovim
+The ultimate theme manager for Neovim
 
 ## Why
 
 The goals of this plugin are:
 
 - Find a theme without using google
-- Be able to preview a theme in neovim (including its treesitter support)
+- Be able to preview a theme in neovim (including its Tree-sitter support)
 - Install a theme and change the colorscheme without touching the config
 
 ## Requirements
@@ -18,7 +18,7 @@ The goals of this plugin are:
 
 Pineapple is not designed to:
 
-- Find a theme that works with treesitter, though you can find some of those themes by a text filter of "treesitter" or "Treesitter"
+- Find a theme that works with Tree-sitter, though you can find some of those themes by a text filter of "treesitter" or "Treesitter"
 - Manage the installation for your theme, that is the package manager's job
 - Find a theme for your lualine or anything else that needs to be seperately themed
 - Manage any local themes in development you might be using
@@ -104,4 +104,3 @@ The generater is not completely automated, so some steps still have to be done m
 Pineapple is designed to be removed as easily as possible. The steps to remove it are pretty simple:
 
 Add the installation line for whatever your current theme is to your lazy.nvim config file. All your downloaded themes can be seen at ~/.config/nvim/YOUR_LUA_DIRECTORY/YOUR_PINEAPPLE_FILE.lua. After this, you can remove the pineapple install line and run `Lazy sync`.
-
