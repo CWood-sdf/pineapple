@@ -105,4 +105,3 @@ Pineapple is designed to be removed as easily as possible. The steps to remove i
 
 Add the installation line for whatever your current theme is to your lazy.nvim config file. All your downloaded themes can be seen at ~/.config/nvim/YOUR_LUA_DIRECTORY/YOUR_PINEAPPLE_FILE.lua. After this, you can remove the pineapple install line and run `Lazy sync`.
 
-## Contributing
