@@ -49,7 +49,7 @@ Note that opts.installedRegistry and colorschemeFile are in different file forma
 
 Here's an example of my config:
 
-![config example](/assets/conf.png)
+![config example](./assets/conf.png)
 
 ### Setup Options
 
@@ -62,7 +62,11 @@ Here's an example of my config:
 
 The plugin can be opened with the command `Pineapple`
 
+This is what the plugin looks like when it is first opened.
+
 All the remaps are shown at the top of the screen.
+
+To preview a plugin, just hit `v` while hovering over it. To install a plugin, hit `i` while hovering over it. To uninstall a plugin, hit `x` while hovering over it in the "Installed" screen. To set the colorscheme, hit `u` while hovering over it in the Installed screen.
 
 ## Speed
 
