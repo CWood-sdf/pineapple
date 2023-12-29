@@ -1,8 +1,8 @@
-# Pineapple.nvim
+# Pineapple
 
 The ultimate theme manager for neovim
 
-## Why?
+## Why
 
 The goals of this plugin are:
 
