@@ -53,15 +53,17 @@ Some distros have their own way of setting the colorscheme. For example, LunarVi
 
 Here's an example with it set for LunarVim:
 
-````lua
-colorschemeSet = function(scheme)
-    return "vim.cmd('colorscheme " .. scheme .. "')\n lvim.colorscheme = '" .. scheme .. "'"
-end
+```lua
+{
+    colorschemeSet = function(scheme)
+        return "vim.cmd('colorscheme " .. scheme .. "')\n lvim.colorscheme = '" .. scheme .. "'"
+    end
+}
 ```
 
 ### My config
 
-Here is an example of my config:
+Here's an example of my config:
 
 ![config example](./assets/conf.png)
 
@@ -119,4 +121,7 @@ The generater is not completely automated, so some steps still have to be done m
 Pineapple is designed to be removed as easily as possible. The steps to remove it are pretty simple:
 
 Add the installation line for whatever your current theme is to your lazy.nvim config file. All your downloaded themes can be seen at ~/.config/nvim/YOUR_LUA_DIRECTORY/YOUR_PINEAPPLE_FILE.lua. After this, you can remove the pineapple install line and run `Lazy sync`.
-````
+
+```
+
+```
