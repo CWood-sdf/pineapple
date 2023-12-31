@@ -119,7 +119,7 @@ function M.setColorscheme(colorscheme)
     vim.cmd("colorscheme " .. colorscheme)
     local s = "vim.cmd(\"colorscheme " .. colorscheme .. "\")\n"
     if M.opts.colorschemeSet ~= nil then
-        s = s .. M.opts.colorschemeSet(colorscheme)
+        s = M.opts.colorschemeSet(colorscheme)
     end
     f:write(s)
     f:close()
