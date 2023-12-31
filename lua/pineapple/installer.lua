@@ -10,6 +10,7 @@ local colorSchemeFile = nil
 ---@field installedRegistry string
 ---@field colorschemeFile string
 ---@field colorschemeSet? fun(scheme: string): string
+M.opts = {}
 
 local hasSetup = false
 ---@param opts PineappleInstallerOptions
@@ -17,6 +18,7 @@ function M.setup(opts)
     if hasSetup then
         return
     end
+    M.opts = opts
     hasSetup = true
     installFile = opts.installedRegistry
     if installFile == nil then
