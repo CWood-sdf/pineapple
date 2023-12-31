@@ -370,9 +370,9 @@ async fn generate_no_ts(force: bool, filename: String) -> Result<(), Box<dyn std
                             }
                         }
                     }
-                    Err(e) => {
-                        println!("Data parse failed on data {}", data);
-                        println!("{:?}", e);
+                    Err(_) => {
+                        // println!("Data parse failed on data {}", data);
+                        // println!("{:?}", e);
                     }
                     _ => {}
                 };
@@ -397,9 +397,9 @@ async fn generate_no_ts(force: bool, filename: String) -> Result<(), Box<dyn std
                             }
                         }
                     }
-                    Err(e) => {
-                        println!("Data parse failed on data {}", data);
-                        println!("{:?}", e);
+                    Err(_) => {
+                        // println!("Data parse failed on data {}", data);
+                        // println!("{:?}", e);
                     }
                     _ => {}
                 };
@@ -475,7 +475,10 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
                 continue;
             }
             generate_colorscheme(colorscheme.name.clone(), false).await?;
-            let data = std::fs::read_to_string("gencolors.json")?;
+            let data = match std::fs::read_to_string("gencolors.json") {
+                Ok(d) => d,
+                Err(_) => "".to_string(),
+            };
             match serde_json::from_str::<HashMap<String, String>>(&data) {
                 Ok(parsed) if parsed.len() > 0 => {
                     colorscheme.backgrounds = Some(vec!["light".to_string()]);
@@ -489,13 +492,27 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
             };
 
             generate_colorscheme(colorscheme.name.clone(), true).await?;
-            let data = std::fs::read_to_string("gencolors.json")?;
+            let data = match std::fs::read_to_string("gencolors.json") {
+                Ok(d) => d,
+                Err(_) => "".to_string(),
+            };
             match serde_json::from_str::<HashMap<String, String>>(&data) {
                 Ok(parsed) if parsed.len() > 0 => {
-                    colorscheme
+                    if colorscheme.backgrounds.is_none() {
+                        colorscheme.backgrounds = Some(vec![]);
+                    }
+                    if !colorscheme
                         .backgrounds
-                        .get_or_insert(vec![])
-                        .push("dark".to_string());
+                        .clone()
+                        .unwrap()
+                        .contains(&"dark".to_string())
+                    {
+                        colorscheme
+                            .backgrounds
+                            .as_mut()
+                            .unwrap()
+                            .push("dark".to_string());
+                    }
                     colorscheme.data.dark = Some(parsed);
                 }
                 Err(e) => {
@@ -505,7 +522,9 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
                 _ => {}
             };
 
-            std::fs::remove_file("gencolors.json")?;
+            match std::fs::remove_file("gencolors.json") {
+                _ => {}
+            };
             std::fs::write("gencolors.json", "{}")?;
             i += 1;
             new_colorschemes.push(colorscheme);
@@ -518,10 +537,16 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
                 .as_secs(),
         );
         j += 1;
-        std::fs::write(
+        match std::fs::write(
             filename.clone(),
             serde_json::to_string_pretty(&items).unwrap(),
-        )?;
+        ) {
+            Ok(_) => {}
+            Err(e) => {
+                println!("Error writing to file {}: {:?}", filename.clone(), e);
+                return Err(e.into());
+            }
+        };
         // break;
     }
 
@@ -655,6 +680,42 @@ enum Commands {
         generate: bool,
     },
 }
+async fn dir_exists(dir: String) -> Result<bool, Box<dyn std::error::Error>> {
+    let mut cmd = tokio::process::Command::new("bash");
+    cmd.arg("-c").arg(format!("ls {}", dir));
+    let output = cmd.output().await?;
+    if output.status.code().unwrap() != 0 {
+        return Ok(false);
+    }
+    return Ok(true);
+}
+async fn move_dir(from: String, to: String) -> Result<(), Box<dyn std::error::Error>> {
+    let mut cmd = tokio::process::Command::new("bash");
+    cmd.arg("-c").arg(format!("mv {} {}", from, to));
+    let output = cmd.output().await?;
+    if output.status.code().unwrap() != 0 {
+        return Err("Error moving dir".into());
+    }
+    return Ok(());
+}
+async fn cp_dir(from: String, to: String) -> Result<(), Box<dyn std::error::Error>> {
+    let mut cmd = tokio::process::Command::new("bash");
+    cmd.arg("-c").arg(format!("cp -r {} {}", from, to));
+    let output = cmd.output().await?;
+    if output.status.code().unwrap() != 0 {
+        return Err("Error copying dir".into());
+    }
+    return Ok(());
+}
+async fn rm_dir(dir: String) -> Result<(), Box<dyn std::error::Error>> {
+    let mut cmd = tokio::process::Command::new("bash");
+    cmd.arg("-c").arg(format!("rm -rf {}", dir));
+    let output = cmd.output().await?;
+    if output.status.code().unwrap() != 0 {
+        return Err("Error removing dir".into());
+    }
+    return Ok(());
+}
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let cli = Cli::parse();
@@ -669,11 +730,54 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
         Some(Commands::GenerateNoTs { .. }) => {
             println!("Generating...");
-            generate_no_ts(cli.force, cli.file.unwrap_or("colors.json".to_string())).await?;
+
+            if dir_exists("~/.config/nvim".to_string()).await? {
+                println!("Nvim config found, moving to ~/.config/__pineapple_config_copy__");
+                move_dir(
+                    "~/.config/nvim".to_string(),
+                    "~/.config/__pineapple_config_copy__".to_string(),
+                )
+                .await?;
+                cp_dir(
+                    "./nvim_worker_no_ts".to_string(),
+                    "~/.config/nvim".to_string(),
+                )
+                .await?;
+            }
+            let res =
+                generate_no_ts(cli.force, cli.file.unwrap_or("colors.json".to_string())).await;
+            println!("Deleting ~/.config/nvim");
+            rm_dir("~/.config/nvim".to_string()).await?;
+            println!("Moving ~/.config/__pineapple_config_copy__ to ~/.config/nvim");
+            move_dir(
+                "~/.config/__pineapple_config_copy__".to_string(),
+                "~/.config/nvim".to_string(),
+            )
+            .await?;
+            res?;
         }
         Some(Commands::GenerateTs { .. }) => {
             println!("Generating...");
-            generate_ts(cli.force, cli.file.unwrap_or("colors.json".to_string())).await?;
+
+            if dir_exists("~/.config/nvim".to_string()).await? {
+                println!("Nvim config found, moving to ~/.config/__pineapple_config_copy__");
+                move_dir(
+                    "~/.config/nvim".to_string(),
+                    "~/.config/__pineapple_config_copy__".to_string(),
+                )
+                .await?;
+                cp_dir("./nvim_worker".to_string(), "~/.config/nvim".to_string()).await?;
+            }
+            let res = generate_ts(cli.force, cli.file.unwrap_or("colors.json".to_string())).await;
+            println!("Deleting ~/.config/nvim");
+            rm_dir("~/.config/nvim".to_string()).await?;
+            println!("Moving ~/.config/__pineapple_config_copy__ to ~/.config/nvim");
+            move_dir(
+                "~/.config/__pineapple_config_copy__".to_string(),
+                "~/.config/nvim".to_string(),
+            )
+            .await?;
+            res?;
         }
         Some(Commands::MakeColorData { .. }) => {
             println!("Making color data...");

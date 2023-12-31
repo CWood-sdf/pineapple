@@ -10,7 +10,7 @@ The pineapple updater takes several steps to complete.
 
 Execute the following shell commands:
 
-```sh
+```bash
 bash ./scrape_github.sh
 bash ./scrape_neovimcraft.sh
 ```
@@ -25,7 +25,7 @@ Though one problem is that usually the GitHub scraper will be rate limited. This
 
 Execute the following shell command:
 
-```sh
+```bash
 cargo run --release -- clean-import
 ```
 
@@ -33,19 +33,17 @@ cargo run --release -- clean-import
 
 Execute the following shell command:
 
-```sh
+```bash
 cargo run --release -- make-color-data
 ```
 
 ### 4. Generate theme data for treesitter
 
-This step, and the following step, take about 1hr to complete each.
+This step and the following step, take about 1hr to complete each.
 
 Execute the following shell command:
 
-Requires that the nvim_worker_ts folder has been moved to ~/.config/nvim
-
-```sh
+```bash
 cargo run --release -- generate-ts
 ```
 
@@ -53,9 +51,7 @@ cargo run --release -- generate-ts
 
 Execute the following shell command:
 
-Requires that the nvim_worker_no_ts folder has been moved to ~/.config/nvim
-
-```sh
+```bash
 cargo run --release -- generate-no-ts
 ```
 
@@ -63,6 +59,6 @@ cargo run --release -- generate-no-ts
 
 Execute the following shell command:
 
-```sh
+```bash
 cargo run --release -- move-to-lua
 ```

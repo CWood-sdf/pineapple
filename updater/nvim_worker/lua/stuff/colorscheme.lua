@@ -1,1 +1,1 @@
-return 'uloco/bluloco.nvim'
+return 'folke/tokyonight.nvim'

@@ -441,12 +441,11 @@ function WriteColorValues(filename, colorscheme, background)
 	end
 
 	local data = {}
-	if iscolorschemedark and background == "light" or not iscolorschemedark and background == "dark" then
-		data = GetColorValues()
-	else
-		print("background not match")
-		return
-	end
+    if (iscolorschemedark and background == "light") or (not iscolorschemedark and background == "dark") then
+        data = GetColorValues()
+    else
+        print("background not match")
+    end
 
 	local encodeddata = vim.fn.json_encode(data)
 	vim.fn.writefile({ encodeddata }, filename)
