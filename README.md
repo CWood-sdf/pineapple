@@ -61,7 +61,7 @@ end
 
 ### My config
 
-Here's an example of my config:
+Here is an example of my config:
 
 ![config example](./assets/conf.png)
 
