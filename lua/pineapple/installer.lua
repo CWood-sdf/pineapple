@@ -9,6 +9,7 @@ local colorSchemeFile = nil
 ---@class (exact) PineappleInstallerOptions
 ---@field installedRegistry string
 ---@field colorschemeFile string
+---@field colorschemeSet? fun(scheme: string): string
 
 local hasSetup = false
 ---@param opts PineappleInstallerOptions
@@ -115,6 +116,9 @@ function M.setColorscheme(colorscheme)
     end
     vim.cmd("colorscheme " .. colorscheme)
     local s = "vim.cmd(\"colorscheme " .. colorscheme .. "\")\n"
+    if M.opts.colorschemeSet ~= nil then
+        s = s .. M.opts.colorschemeSet(colorscheme)
+    end
     f:write(s)
     f:close()
 end
