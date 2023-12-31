@@ -47,6 +47,20 @@ Here's the quick setup:
 
 Note that opts.installedRegistry and colorschemeFile are in different file formats. This is so that opts.installedRegistry can be put in a variable at the top of your lazy config file. The directory that both installedRegistry and colorschemeFile are assumed to be in is $HOME\.config\nvim (or %USERPROFILE%\AppData\Local\Nvim if you're a Windows user)
 
+### Using with distros
+
+Some distros have their own way of setting the colorscheme. For example, LunarVim uses the 'lvim.colorscheme' variable to change the colorscheme. To accomodate this, there is a setup option called colorschemeSet, which is a function that determines what to write to colorschemeFile.
+
+Here's an example with it set for LunarVim:
+
+````lua
+colorschemeSet = function(scheme)
+    return "vim.cmd('colorscheme " .. scheme .. "')\n lvim.colorscheme = '" .. scheme .. "'"
+end
+```
+
+### My config
+
 Here's an example of my config:
 
 ![config example](./assets/conf.png)
@@ -57,6 +71,7 @@ Here's an example of my config:
 | ------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `installedRegistry` | A lua `require`able string that holds the location of the file where the themes to be installed will be stored |
 | `colorschemeFile`   | A string that holds the location of the file that will be sourced to set the colorscheme                       |
+| `colorschemeSet`    | A function that takes a string and returns a string that will be written to colorschemeFile                    |
 
 ## Usage
 
@@ -104,3 +119,4 @@ The generater is not completely automated, so some steps still have to be done m
 Pineapple is designed to be removed as easily as possible. The steps to remove it are pretty simple:
 
 Add the installation line for whatever your current theme is to your lazy.nvim config file. All your downloaded themes can be seen at ~/.config/nvim/YOUR_LUA_DIRECTORY/YOUR_PINEAPPLE_FILE.lua. After this, you can remove the pineapple install line and run `Lazy sync`.
+````
