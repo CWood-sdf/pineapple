@@ -27,14 +27,14 @@ function M.setup(opts)
     installedThemes = require(installFile)
     if installedThemes == nil then
         installedThemes = {}
+        local file = io.open(M.getInstallFileName(), "w")
+        if file == nil then
+            error("Could not open file: " .. M.getInstallFileName())
+            return
+        end
+        file:write("return {}")
+        file:close()
     end
-    local file = io.open(M.getInstallFileName(), "w")
-    if file == nil then
-        error("Could not open file: " .. M.getInstallFileName())
-        return
-    end
-    file:write("return {}")
-    file:close()
     colorSchemeFile = opts.colorschemeFile
     if colorSchemeFile == nil then
         error("colorschemeFile is required")
