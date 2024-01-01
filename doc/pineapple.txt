@@ -18,7 +18,7 @@ Table of Contents                                *pineapple-table-of-contents*
 ==============================================================================
 1. Pineapple                                             *pineapple-pineapple*
 
-The ultimate theme manager for neovim
+The ultimate theme manager for Neovim
 
 
 WHY                                                  *pineapple-pineapple-why*
@@ -26,7 +26,7 @@ WHY                                                  *pineapple-pineapple-why*
 The goals of this plugin are:
 
 - Find a theme without using google
-- Be able to preview a theme in neovim (including its treesitter support)
+- Be able to preview a theme in neovim (including its Tree-sitter support)
 - Install a theme and change the colorscheme without touching the config
 
 
@@ -39,7 +39,7 @@ WHAT DOES IT NOT DO                  *pineapple-pineapple-what-does-it-not-do*
 
 Pineapple is not designed to:
 
-- Find a theme that works with treesitter, though you can find some of those themes by a text filter of "treesitter" or "Treesitter"
+- Find a theme that works with Tree-sitter, though you can find some of those themes by a text filter of "treesitter" or "Treesitter"
 - Manage the installation for your theme, that is the package manager’s job
 - Find a theme for your lualine or anything else that needs to be seperately themed
 - Manage any local themes in development you might be using
