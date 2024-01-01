@@ -14,7 +14,6 @@ Table of Contents                                *pineapple-table-of-contents*
   - Known issues                            |pineapple-pineapple-known-issues|
   - Api                                              |pineapple-pineapple-api|
   - Uninstall                                  |pineapple-pineapple-uninstall|
-  - Contributing                            |pineapple-pineapple-contributing|
 
 ==============================================================================
 1. Pineapple                                             *pineapple-pineapple*
@@ -161,9 +160,6 @@ Add the installation line for whatever your current theme is to your lazy.nvim
 config file. All your downloaded themes can be seen at
 ~/.config/nvim/YOUR_LUA_DIRECTORY/YOUR_PINEAPPLE_FILE.lua. After this, you can
 remove the pineapple install line and run `Lazy sync`.
-
-
-CONTRIBUTING                                *pineapple-pineapple-contributing*
 
 ==============================================================================
 2. Links                                                     *pineapple-links*
