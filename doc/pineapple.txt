@@ -1,28 +1,28 @@
-*pineapple.txt*        For Neovim >= 0.8.0       Last change: 2023 December 31
+*pineapple.txt*        For Neovim >= 0.8.0        Last change: 2024 January 01
 
 ==============================================================================
 Table of Contents                                *pineapple-table-of-contents*
 
-1. Pineapple.nvim                                   |pineapple-pineapple.nvim|
-  - Why?                                       |pineapple-pineapple.nvim-why?|
-  - Requirements                       |pineapple-pineapple.nvim-requirements|
-  - What does it not do         |pineapple-pineapple.nvim-what-does-it-not-do|
-  - Setup                                     |pineapple-pineapple.nvim-setup|
-  - Usage                                     |pineapple-pineapple.nvim-usage|
-  - Speed                                     |pineapple-pineapple.nvim-speed|
-  - Acknowledgements               |pineapple-pineapple.nvim-acknowledgements|
-  - Known issues                       |pineapple-pineapple.nvim-known-issues|
-  - Api                                         |pineapple-pineapple.nvim-api|
-  - Uninstall                             |pineapple-pineapple.nvim-uninstall|
-  - Contributing                       |pineapple-pineapple.nvim-contributing|
+1. Pineapple                                             |pineapple-pineapple|
+  - Why                                              |pineapple-pineapple-why|
+  - Requirements                            |pineapple-pineapple-requirements|
+  - What does it not do              |pineapple-pineapple-what-does-it-not-do|
+  - Setup                                          |pineapple-pineapple-setup|
+  - Usage                                          |pineapple-pineapple-usage|
+  - Speed                                          |pineapple-pineapple-speed|
+  - Acknowledgements                    |pineapple-pineapple-acknowledgements|
+  - Known issues                            |pineapple-pineapple-known-issues|
+  - Api                                              |pineapple-pineapple-api|
+  - Uninstall                                  |pineapple-pineapple-uninstall|
+  - Contributing                            |pineapple-pineapple-contributing|
 
 ==============================================================================
-1. Pineapple.nvim                                   *pineapple-pineapple.nvim*
+1. Pineapple                                             *pineapple-pineapple*
 
 The ultimate theme manager for neovim
 
 
-WHY?                                           *pineapple-pineapple.nvim-why?*
+WHY                                                  *pineapple-pineapple-why*
 
 The goals of this plugin are:
 
@@ -31,12 +31,12 @@ The goals of this plugin are:
 - Install a theme and change the colorscheme without touching the config
 
 
-REQUIREMENTS                           *pineapple-pineapple.nvim-requirements*
+REQUIREMENTS                                *pineapple-pineapple-requirements*
 
 - Neovim 0.8.0 or greater
 
 
-WHAT DOES IT NOT DO             *pineapple-pineapple.nvim-what-does-it-not-do*
+WHAT DOES IT NOT DO                  *pineapple-pineapple-what-does-it-not-do*
 
 Pineapple is not designed to:
 
@@ -46,7 +46,7 @@ Pineapple is not designed to:
 - Manage any local themes in development you might be using
 
 
-SETUP                                         *pineapple-pineapple.nvim-setup*
+SETUP                                              *pineapple-pineapple-setup*
 
 Pineapple has only been tested with lazy.nvim as a package manager, though it
 probably would work with others.
@@ -88,21 +88,21 @@ SETUP OPTIONS ~
                       sourced to set the colorscheme
   --------------------------------------------------------------------------------
 
-USAGE                                         *pineapple-pineapple.nvim-usage*
+USAGE                                              *pineapple-pineapple-usage*
 
 The plugin can be opened with the command `Pineapple`
 
 All the remaps are shown at the top of the plugin.
 
 
-SPEED                                         *pineapple-pineapple.nvim-speed*
+SPEED                                              *pineapple-pineapple-speed*
 
 Pineapple is designed to minimally interrupt your startup time. Nothing is
 loaded until the plugin is opened with the command `Pineapple` (at least with
 lazy.nvim).
 
 
-ACKNOWLEDGEMENTS                   *pineapple-pineapple.nvim-acknowledgements*
+ACKNOWLEDGEMENTS                        *pineapple-pineapple-acknowledgements*
 
 This whole idea is from the vimcolorschemes website
 <https://vimcolorschemes.com/>, and I wanted to put that in a neovim extension.
@@ -112,7 +112,7 @@ A rewritten version of the vimcolorschemes worker
 data.
 
 
-KNOWN ISSUES                           *pineapple-pineapple.nvim-known-issues*
+KNOWN ISSUES                                *pineapple-pineapple-known-issues*
 
 There’s a the preview doesn’t account for screen size, so it can look
 pretty ugly on a small screen.
@@ -124,7 +124,7 @@ The generater is not completely automated, so some steps still have to be done
 manually.
 
 
-API                                             *pineapple-pineapple.nvim-api*
+API                                                  *pineapple-pineapple-api*
 
   ------------------------------------------------------------------------
   Name                      Description
@@ -143,7 +143,7 @@ API                                             *pineapple-pineapple.nvim-api*
   getAllData()              Returns all the data for all the themes
   ------------------------------------------------------------------------
 
-UNINSTALL                                 *pineapple-pineapple.nvim-uninstall*
+UNINSTALL                                      *pineapple-pineapple-uninstall*
 
 Pineapple is designed to be removed as easily as possible. The steps to remove
 it are pretty simple:
@@ -154,7 +154,7 @@ config file. All your downloaded themes can be seen at
 remove the pineapple install line and run `Lazy sync`.
 
 
-CONTRIBUTING                           *pineapple-pineapple.nvim-contributing*
+CONTRIBUTING                                *pineapple-pineapple-contributing*
 
 Generated by panvimdoc <https://github.com/kdheepak/panvimdoc>
 
