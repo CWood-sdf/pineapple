@@ -8,12 +8,6 @@ Table of Contents                                *pineapple-table-of-contents*
   - Requirements                            |pineapple-pineapple-requirements|
   - What does it not do              |pineapple-pineapple-what-does-it-not-do|
   - Setup                                          |pineapple-pineapple-setup|
-  - Usage                                          |pineapple-pineapple-usage|
-  - Speed                                          |pineapple-pineapple-speed|
-  - Acknowledgements                    |pineapple-pineapple-acknowledgements|
-  - Known issues                            |pineapple-pineapple-known-issues|
-  - Api                                              |pineapple-pineapple-api|
-  - Uninstall                                  |pineapple-pineapple-uninstall|
 
 ==============================================================================
 1. Pineapple                                             *pineapple-pineapple*
@@ -74,98 +68,83 @@ top of your lazy config file. The directory that both installedRegistry and
 colorschemeFile are assumed to be in is $HOME.config(or %USERPROFILE%if
 you’re a Windows user)
 
-Here’s an example of my config:
 
+USING WITH DISTROS ~
 
-SETUP OPTIONS ~
+Some distros have their own way of setting the colorscheme. For example,
+LunarVim uses the 'lvim.colorscheme' variable to change the colorscheme. To
+accomodate this, there is a setup option called colorschemeSet, which is a
+function that determines what to write to colorschemeFile.
 
-  --------------------------------------------------------------------------------
-  option              description
-  ------------------- ------------------------------------------------------------
-  installedRegistry   A lua requireable string that holds the location of the file
-                      where the themes to be installed will be stored
+Here’s an example with it set for LunarVim:
 
-  colorschemeFile     A string that holds the location of the file that will be
-                      sourced to set the colorscheme
-  --------------------------------------------------------------------------------
-
-USAGE                                              *pineapple-pineapple-usage*
-
-The plugin can be opened with the command `Pineapple`
-
-This is what the plugin looks like when it is first opened:
-
-All the remaps are shown at the top of the screen.
-
-To preview a plugin, just hit `v` while hovering over it. To install a plugin,
-hit `i` while hovering over it. To uninstall a plugin, hit `x` while hovering
-over it in the "Installed" screen. To set the colorscheme, hit `u` while
-hovering over it in the Installed screen.
-
-
-SPEED                                              *pineapple-pineapple-speed*
-
-Pineapple is designed to minimally interrupt your startup time. Nothing is
-loaded until the plugin is opened with the command `Pineapple` (at least with
-lazy.nvim).
-
-
-ACKNOWLEDGEMENTS                        *pineapple-pineapple-acknowledgements*
-
-This whole idea is from the vimcolorschemes website
-<https://vimcolorschemes.com/>, and I wanted to put that in a neovim extension.
-
-A rewritten version of the vimcolorschemes worker
-<https://github.com/vimcolorschemes/worker> was used to generate the theme
-data.
-
-
-KNOWN ISSUES                                *pineapple-pineapple-known-issues*
-
-The preview doesn’t account for screen size, so it can look pretty ugly on a
-small screen.
-
-The VimResize autocmd is not implemented yet, so the preview will not resize
-with the window.
-
-The generater is not completely automated, so some steps still have to be done
-manually.
-
-
-API                                                  *pineapple-pineapple-api*
-
-  ------------------------------------------------------------------------
-  Name                      Description
-  ------------------------- ----------------------------------------------
-  getInstalledThemes()      Returns the list of installed themes
-
-  uninstall(theme)          Uninstalls the theme from the config file
-
-  install(theme)            Installs the theme to the config file
-
-  setColorScheme(theme)     Sets the colorscheme to the given parameter
-
-  getInstalledColorData()   Returns the color data for the installed
-                            themes
-
-  getAllData()              Returns all the data for all the themes
-  ------------------------------------------------------------------------
-
-UNINSTALL                                      *pineapple-pineapple-uninstall*
-
-Pineapple is designed to be removed as easily as possible. The steps to remove
-it are pretty simple:
-
-Add the installation line for whatever your current theme is to your lazy.nvim
-config file. All your downloaded themes can be seen at
-~/.config/nvim/YOUR_LUA_DIRECTORY/YOUR_PINEAPPLE_FILE.lua. After this, you can
-remove the pineapple install line and run `Lazy sync`.
-
-==============================================================================
-2. Links                                                     *pineapple-links*
-
-1. *config example*: ./assets/conf.png
-2. *startup screen*: ./assets/startup.png
+>lua
+    colorschemeSet = function(scheme)
+        return "vim.cmd('colorscheme " .. scheme .. "')\n lvim.colorscheme = '" .. scheme .. "'"
+    end
+    ```
+    
+    ### My config
+    
+    Here's an example of my config:
+    
+    ![config example](./assets/conf.png)
+    
+    ### Setup Options
+    
+    | option              | description                                                                                                    |
+    | ------------------- | -------------------------------------------------------------------------------------------------------------- |
+    | `installedRegistry` | A lua `require`able string that holds the location of the file where the themes to be installed will be stored |
+    | `colorschemeFile`   | A string that holds the location of the file that will be sourced to set the colorscheme                       |
+    | `colorschemeSet`    | A function that takes a string and returns a string that will be written to colorschemeFile                    |
+    
+    ## Usage
+    
+    The plugin can be opened with the command `Pineapple`
+    
+    This is what the plugin looks like when it is first opened:
+    
+    ![startup screen](./assets/startup.png)
+    
+    All the remaps are shown at the top of the screen.
+    
+    To preview a plugin, just hit `v` while hovering over it. To install a plugin, hit `i` while hovering over it. To uninstall a plugin, hit `x` while hovering over it in the "Installed" screen. To set the colorscheme, hit `u` while hovering over it in the Installed screen.
+    
+    ## Speed
+    
+    Pineapple is designed to minimally interrupt your startup time. Nothing is loaded until the plugin is opened with the command `Pineapple` (at least with lazy.nvim).
+    
+    ## Acknowledgements
+    
+    This whole idea is from the [vimcolorschemes website](https://vimcolorschemes.com/), and I wanted to put that in a neovim extension.
+    
+    A rewritten version of the [vimcolorschemes worker](https://github.com/vimcolorschemes/worker) was used to generate the theme data.
+    
+    ## Known issues
+    
+    The preview doesn't account for screen size, so it can look pretty ugly on a small screen.
+    
+    The VimResize autocmd is not implemented yet, so the preview will not resize with the window.
+    
+    The generater is not completely automated, so some steps still have to be done manually.
+    
+    ## Api
+    
+    | Name                      | Description                                     |
+    | ------------------------- | ----------------------------------------------- |
+    | `getInstalledThemes()`    | Returns the list of installed themes            |
+    | `uninstall(theme)`        | Uninstalls the theme from the config file       |
+    | `install(theme)`          | Installs the theme to the config file           |
+    | `setColorScheme(theme)`   | Sets the colorscheme to the given parameter     |
+    | `getInstalledColorData()` | Returns the color data for the installed themes |
+    | `getAllData()`            | Returns all the data for all the themes         |
+    
+    ## Uninstall
+    
+    Pineapple is designed to be removed as easily as possible. The steps to remove it are pretty simple:
+    
+    Add the installation line for whatever your current theme is to your lazy.nvim config file. All your downloaded themes can be seen at ~/.config/nvim/YOUR_LUA_DIRECTORY/YOUR_PINEAPPLE_FILE.lua. After this, you can remove the pineapple install line and run `Lazy sync`.
+<
 
 Generated by panvimdoc <https://github.com/kdheepak/panvimdoc>
 
