@@ -86,7 +86,7 @@ Here’s an example with it set for LunarVim:
     
     ### My config
     
-    Here's an example of my config:
+    Here is an example of my config:
     
     ![config example](./assets/conf.png)
     
