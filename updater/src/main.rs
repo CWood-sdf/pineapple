@@ -1,7 +1,9 @@
+/// TODO: Need to add process timeout for generate
 use std::{collections::HashMap, io::Write};
 
 use clap::{Parser, Subcommand};
 use serde::{Deserialize, Serialize};
+use tokio::sync::oneshot::channel;
 
 #[derive(Serialize, Hash, Eq, PartialEq, Debug, Clone, Deserialize)]
 struct Repo {
@@ -267,7 +269,7 @@ async fn make_color_data() -> Result<(), Box<dyn std::error::Error>> {
 async fn generate_colorscheme(
     colorscheme: String,
     dark: bool,
-) -> Result<(), Box<dyn std::error::Error>> {
+) -> Result<bool, Box<dyn std::error::Error>> {
     let current_dir = std::env::current_dir()?;
     let background = if dark { "dark" } else { "light" };
     let write_color_values = format!("autocmd ColorScheme * :lua vim.fn.timer_start(100, function() WriteColorValues(\"{}/gencolors.json\", \"{}\", \"{}\");  vim.cmd('qa') end)", current_dir.to_str().unwrap(), colorscheme, background);
@@ -283,6 +285,7 @@ async fn generate_colorscheme(
     let mut args: Vec<String> = vec!["-c".to_string(), write_color_values];
 
     args.extend(vec![
+        // "--headless".to_string(),
         "-c".to_string(),
         set_background,
         "-c".to_string(),
@@ -294,8 +297,39 @@ async fn generate_colorscheme(
 
     let mut run_cmd = tokio::process::Command::new("nvim");
     run_cmd.args(args);
-    let _ = run_cmd.spawn()?.wait_with_output().await?;
-    Ok(())
+    let mut spawn = run_cmd.spawn()?;
+
+    let (send, recv) = channel::<()>();
+    tokio::spawn(async move {
+        tokio::time::sleep(std::time::Duration::from_secs(5)).await;
+        let _ = send.send(());
+    });
+    let was_killed;
+
+    tokio::select! {
+        _ = spawn.wait() => {
+            was_killed = false;
+        }
+        _ = recv => {
+            was_killed = true;
+            spawn.kill().await?;
+            println!("Process was killed");
+
+        }
+    }
+    // let kill_task = tokio::task::spawn(async move {
+    //     tokio::time::sleep(std::time::Duration::from_secs(5)).await;
+    //     let _ = tokio::process::Command::new("kill")
+    //         .arg("-9")
+    //         .arg(format!("{}", pid))
+    //         .spawn();
+    // });
+    // let was_killed = out.status.code().unwrap() == 137;
+    // if was_killed {
+    //     println!("Process was killed");
+    //     std::fs::write("gencolors.json", "{}")?;
+    // }
+    Ok(was_killed)
 }
 
 async fn generate_no_ts(force: bool, filename: String) -> Result<(), Box<dyn std::error::Error>> {
@@ -335,17 +369,39 @@ async fn generate_no_ts(force: bool, filename: String) -> Result<(), Box<dyn std
         )?;
         let mut install_cmd = tokio::process::Command::new("nvim");
         install_cmd
-            // .arg("--headless")
+            .arg("--headless")
             // .arg("--noplugin")
             // .arg("--clean")
             .arg("-c")
             .arg(
                 "lua vim.fn.timer_start(100, function() vim.cmd('Lazy! sync'); vim.cmd('qa!') end)",
             );
+        let mut spawn = install_cmd.spawn()?;
+
+        let (send, recv) = channel::<()>();
+        let was_killed;
+        tokio::spawn(async move {
+            tokio::time::sleep(std::time::Duration::from_secs(5)).await;
+            let _ = send.send(());
+        });
+        tokio::select! {
+            _ = spawn.wait() => {
+                was_killed = false;
+            }
+            _ = recv => {
+                spawn.kill().await?;
+                was_killed = true;
+
+            }
+        }
+        if was_killed {
+            println!("Process was killed");
+            j += 1;
+            continue;
+        }
 
         // install_cmd.stdout(Stdio::piped()).stdin(Stdio::piped());
 
-        let _ = install_cmd.spawn()?.wait_with_output().await?;
         // println!("{}", String::from_utf8(out.stdout)?);
         let mut new_colorschemes = Vec::new();
         let mut i = 0;
@@ -360,22 +416,24 @@ async fn generate_no_ts(force: bool, filename: String) -> Result<(), Box<dyn std
                     .iter()
                     .any(|(_, hex)| hex == "#000000")
             {
-                generate_colorscheme(colorscheme.name.clone(), false).await?;
-                let data = std::fs::read_to_string("gencolors.json")?;
-                match serde_json::from_str::<HashMap<String, String>>(&data) {
-                    Ok(parsed) if parsed.len() > 0 => {
-                        for (k, v) in parsed {
-                            if v != "#000000" {
-                                colorscheme.data.light.as_mut().unwrap().insert(k, v);
+                let was_killed = generate_colorscheme(colorscheme.name.clone(), false).await?;
+                if !was_killed {
+                    let data = std::fs::read_to_string("gencolors.json")?;
+                    match serde_json::from_str::<HashMap<String, String>>(&data) {
+                        Ok(parsed) if parsed.len() > 0 => {
+                            for (k, v) in parsed {
+                                if v != "#000000" {
+                                    colorscheme.data.light.as_mut().unwrap().insert(k, v);
+                                }
                             }
                         }
-                    }
-                    Err(_) => {
-                        // println!("Data parse failed on data {}", data);
-                        // println!("{:?}", e);
-                    }
-                    _ => {}
-                };
+                        Err(_) => {
+                            // println!("Data parse failed on data {}", data);
+                            // println!("{:?}", e);
+                        }
+                        _ => {}
+                    };
+                }
             }
 
             if colorscheme.data.dark.is_some()
@@ -387,26 +445,28 @@ async fn generate_no_ts(force: bool, filename: String) -> Result<(), Box<dyn std
                     .iter()
                     .any(|(_, hex)| hex == "#000000")
             {
-                generate_colorscheme(colorscheme.name.clone(), true).await?;
-                let data = std::fs::read_to_string("gencolors.json")?;
-                match serde_json::from_str::<HashMap<String, String>>(&data) {
-                    Ok(parsed) if parsed.len() > 0 => {
-                        for (k, v) in parsed {
-                            if v != "#000000" {
-                                colorscheme.data.dark.as_mut().unwrap().insert(k, v);
+                let was_killed = generate_colorscheme(colorscheme.name.clone(), true).await?;
+                if !was_killed {
+                    let data = std::fs::read_to_string("gencolors.json")?;
+                    match serde_json::from_str::<HashMap<String, String>>(&data) {
+                        Ok(parsed) if parsed.len() > 0 => {
+                            for (k, v) in parsed {
+                                if v != "#000000" {
+                                    colorscheme.data.dark.as_mut().unwrap().insert(k, v);
+                                }
                             }
                         }
-                    }
-                    Err(_) => {
-                        // println!("Data parse failed on data {}", data);
-                        // println!("{:?}", e);
-                    }
-                    _ => {}
-                };
+                        Err(_) => {
+                            // println!("Data parse failed on data {}", data);
+                            // println!("{:?}", e);
+                        }
+                        _ => {}
+                    };
+                }
             }
 
-            std::fs::remove_file("gencolors.json")?;
-            std::fs::write("gencolors.json", "{}")?;
+            let _ = std::fs::remove_file("gencolors.json");
+            let _ = std::fs::write("gencolors.json", "{}");
             i += 1;
             new_colorschemes.push(colorscheme);
         }
@@ -453,7 +513,7 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
         )?;
         let mut install_cmd = tokio::process::Command::new("nvim");
         install_cmd
-            // .arg("--headless")
+            .arg("--headless")
             // .arg("--noplugin")
             // .arg("--clean")
             .arg("-c")
@@ -463,7 +523,42 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
 
         // install_cmd.stdout(Stdio::piped()).stdin(Stdio::piped());
 
-        let _ = install_cmd.spawn()?.wait_with_output().await?;
+        let mut spawn = install_cmd.spawn()?;
+
+        // tokio::task::spawn(async move {
+        //     tokio::time::sleep(std::time::Duration::from_secs(5)).await;
+        //     let _ = tokio::process::Command::new("kill")
+        //         .arg("-9")
+        //         .arg(format!("{}", pid))
+        //         .spawn();
+        // });
+        let (send, recv) = channel::<()>();
+
+        tokio::spawn(async move {
+            tokio::time::sleep(std::time::Duration::from_secs(5)).await;
+            let _ = send.send(());
+        });
+        let was_killed;
+
+        tokio::select! {
+            _ = spawn.wait() => {
+                was_killed = false;
+            }
+            _ = recv => {
+                was_killed = true;
+                spawn.kill().await?;
+
+            }
+        }
+
+        // let out = spawn.wait_with_output().await?;
+        // let was_killed = out.status.code().unwrap() == 137;
+
+        if was_killed {
+            println!("Process was killed");
+            j += 1;
+            continue;
+        }
         // println!("{}", String::from_utf8(out.stdout)?);
         let mut new_colorschemes = Vec::new();
         let mut i = 0;
@@ -474,58 +569,60 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
                 i += 1;
                 continue;
             }
-            generate_colorscheme(colorscheme.name.clone(), false).await?;
-            let data = match std::fs::read_to_string("gencolors.json") {
-                Ok(d) => d,
-                Err(_) => "".to_string(),
-            };
-            match serde_json::from_str::<HashMap<String, String>>(&data) {
-                Ok(parsed) if parsed.len() > 0 => {
-                    colorscheme.backgrounds = Some(vec!["light".to_string()]);
-                    colorscheme.data.light = Some(parsed);
-                }
-                Err(e) => {
-                    println!("Data parse failed on data {}", data);
-                    println!("{:?}", e);
-                }
-                _ => {}
-            };
-
-            generate_colorscheme(colorscheme.name.clone(), true).await?;
-            let data = match std::fs::read_to_string("gencolors.json") {
-                Ok(d) => d,
-                Err(_) => "".to_string(),
-            };
-            match serde_json::from_str::<HashMap<String, String>>(&data) {
-                Ok(parsed) if parsed.len() > 0 => {
-                    if colorscheme.backgrounds.is_none() {
-                        colorscheme.backgrounds = Some(vec![]);
+            let was_killed = generate_colorscheme(colorscheme.name.clone(), false).await?;
+            if !was_killed {
+                let data = match std::fs::read_to_string("gencolors.json") {
+                    Ok(d) => d,
+                    Err(_) => "".to_string(),
+                };
+                match serde_json::from_str::<HashMap<String, String>>(&data) {
+                    Ok(parsed) if parsed.len() > 0 => {
+                        colorscheme.backgrounds = Some(vec!["light".to_string()]);
+                        colorscheme.data.light = Some(parsed);
                     }
-                    if !colorscheme
-                        .backgrounds
-                        .clone()
-                        .unwrap()
-                        .contains(&"dark".to_string())
-                    {
-                        colorscheme
+                    Err(e) => {
+                        println!("Data parse failed on data {}", data);
+                        println!("{:?}", e);
+                    }
+                    _ => {}
+                };
+            }
+
+            let was_killed = generate_colorscheme(colorscheme.name.clone(), true).await?;
+            if !was_killed {
+                let data = match std::fs::read_to_string("gencolors.json") {
+                    Ok(d) => d,
+                    Err(_) => "".to_string(),
+                };
+                match serde_json::from_str::<HashMap<String, String>>(&data) {
+                    Ok(parsed) if parsed.len() > 0 => {
+                        if colorscheme.backgrounds.is_none() {
+                            colorscheme.backgrounds = Some(vec![]);
+                        }
+                        if !colorscheme
                             .backgrounds
-                            .as_mut()
+                            .clone()
                             .unwrap()
-                            .push("dark".to_string());
+                            .contains(&"dark".to_string())
+                        {
+                            colorscheme
+                                .backgrounds
+                                .as_mut()
+                                .unwrap()
+                                .push("dark".to_string());
+                        }
+                        colorscheme.data.dark = Some(parsed);
                     }
-                    colorscheme.data.dark = Some(parsed);
-                }
-                Err(e) => {
-                    println!("Data parse failed on data {}", data);
-                    println!("{:?}", e);
-                }
-                _ => {}
-            };
+                    Err(e) => {
+                        println!("Data parse failed on data {}", data);
+                        println!("{:?}", e);
+                    }
+                    _ => {}
+                };
+            }
 
-            match std::fs::remove_file("gencolors.json") {
-                _ => {}
-            };
-            std::fs::write("gencolors.json", "{}")?;
+            let _ = std::fs::remove_file("gencolors.json");
+            let _ = std::fs::write("gencolors.json", "{}");
             i += 1;
             new_colorschemes.push(colorscheme);
         }
@@ -716,6 +813,41 @@ async fn rm_dir(dir: String) -> Result<(), Box<dyn std::error::Error>> {
     }
     return Ok(());
 }
+async fn do_yeet() -> Result<(), Box<dyn std::error::Error>> {
+    let mut cmd = tokio::process::Command::new("nvim");
+    cmd.arg("--headless");
+    // cmd.arg("-c").arg("nvim --headless");
+    // cmd.arg("./timeout_nvim.sh 5 qa".to_string());
+    // cmd
+    //
+    let mut spawn = cmd.spawn()?;
+    let pid = match spawn.id() {
+        Some(pid) => pid,
+        None => {
+            println!("Error getting pid");
+            return Err("Error getting pid".into());
+        }
+    };
+
+    println!("PID: {}", pid);
+    let (send, recv) = channel::<()>();
+    tokio::spawn(async move {
+        tokio::time::sleep(std::time::Duration::from_secs(5)).await;
+        let _ = send.send(());
+    });
+    tokio::select! {
+        _ = spawn.wait() => {
+            println!("Child process ended");
+        }
+        _ = recv => {
+            spawn.kill().await?;
+
+        }
+    }
+    // task.await?;
+    println!("Yeet");
+    Ok(())
+}
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let cli = Cli::parse();
@@ -731,6 +863,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         Some(Commands::GenerateNoTs { .. }) => {
             println!("Generating...");
 
+            let has_config;
             if dir_exists("~/.config/nvim".to_string()).await? {
                 println!("Nvim config found, moving to ~/.config/__pineapple_config_copy__");
                 move_dir(
@@ -738,26 +871,32 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     "~/.config/__pineapple_config_copy__".to_string(),
                 )
                 .await?;
-                cp_dir(
-                    "./nvim_worker_no_ts".to_string(),
-                    "~/.config/nvim".to_string(),
-                )
-                .await?;
+                has_config = true;
+            } else {
+                has_config = false;
             }
+            cp_dir(
+                "./nvim_worker_no_ts".to_string(),
+                "~/.config/nvim".to_string(),
+            )
+            .await?;
             let res =
                 generate_no_ts(cli.force, cli.file.unwrap_or("colors.json".to_string())).await;
             println!("Deleting ~/.config/nvim");
             rm_dir("~/.config/nvim".to_string()).await?;
             println!("Moving ~/.config/__pineapple_config_copy__ to ~/.config/nvim");
-            move_dir(
-                "~/.config/__pineapple_config_copy__".to_string(),
-                "~/.config/nvim".to_string(),
-            )
-            .await?;
+            if has_config {
+                move_dir(
+                    "~/.config/__pineapple_config_copy__".to_string(),
+                    "~/.config/nvim".to_string(),
+                )
+                .await?;
+            }
             res?;
         }
         Some(Commands::GenerateTs { .. }) => {
             println!("Generating...");
+            let has_config;
 
             if dir_exists("~/.config/nvim".to_string()).await? {
                 println!("Nvim config found, moving to ~/.config/__pineapple_config_copy__");
@@ -766,17 +905,22 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     "~/.config/__pineapple_config_copy__".to_string(),
                 )
                 .await?;
-                cp_dir("./nvim_worker".to_string(), "~/.config/nvim".to_string()).await?;
+                has_config = true;
+            } else {
+                has_config = false;
             }
+            cp_dir("./nvim_worker".to_string(), "~/.config/nvim".to_string()).await?;
             let res = generate_ts(cli.force, cli.file.unwrap_or("colors.json".to_string())).await;
             println!("Deleting ~/.config/nvim");
             rm_dir("~/.config/nvim".to_string()).await?;
             println!("Moving ~/.config/__pineapple_config_copy__ to ~/.config/nvim");
-            move_dir(
-                "~/.config/__pineapple_config_copy__".to_string(),
-                "~/.config/nvim".to_string(),
-            )
-            .await?;
+            if has_config {
+                move_dir(
+                    "~/.config/__pineapple_config_copy__".to_string(),
+                    "~/.config/nvim".to_string(),
+                )
+                .await?;
+            }
             res?;
         }
         Some(Commands::MakeColorData { .. }) => {
@@ -788,7 +932,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             clean_import().await?;
         }
         Some(Commands::Yeet { .. }) => {
-            println!("Yeet");
+            println!("Yeeting...");
+            do_yeet().await?;
+            do_yeet().await?;
+            // match task.await? {
+            //     Ok(_) => {}
+            //     Err(_) => {}
+            // };
         }
         None => {
             println!("No subcommand was used");
