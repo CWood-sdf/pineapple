@@ -1,4 +1,4 @@
-*pineapple.txt*        For Neovim >= 0.8.0        Last change: 2024 January 04
+*pineapple.txt*        For Neovim >= 0.8.0        Last change: 2024 January 05
 
 ==============================================================================
 Table of Contents                                *pineapple-table-of-contents*
@@ -153,7 +153,10 @@ The VimResize autocmd is not implemented yet, so the preview will not resize
 with the window.
 
 The generater is not completely automated, so some steps still have to be done
-manually.
+manually, this is almost done though.
+
+The filtering capabilities are minimal, and the sorting capabilities are
+non-existent.
 
 
 API                                                  *pineapple-pineapple-api*
@@ -184,10 +187,6 @@ Add the installation line for whatever your current theme is to your lazy.nvim
 config file. All your downloaded themes can be seen at
 ~/.config/nvim/YOUR_LUA_DIRECTORY/YOUR_PINEAPPLE_FILE.lua. After this, you can
 remove the pineapple install line and run `Lazy sync`.
-
->
-    
-<
 
 ==============================================================================
 2. Links                                                     *pineapple-links*
