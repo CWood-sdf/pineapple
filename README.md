@@ -103,7 +103,9 @@ The preview doesn't account for screen size, so it can look pretty ugly on a sma
 
 The VimResize autocmd is not implemented yet, so the preview will not resize with the window.
 
-The generater is not completely automated, so some steps still have to be done manually.
+The generater is not completely automated, so some steps still have to be done manually, this is almost done though.
+
+The filtering capabilities are minimal, and the sorting capabilities are non-existent.
 
 ## Api
 
@@ -121,7 +123,3 @@ The generater is not completely automated, so some steps still have to be done m
 Pineapple is designed to be removed as easily as possible. The steps to remove it are pretty simple:
 
 Add the installation line for whatever your current theme is to your lazy.nvim config file. All your downloaded themes can be seen at ~/.config/nvim/YOUR_LUA_DIRECTORY/YOUR_PINEAPPLE_FILE.lua. After this, you can remove the pineapple install line and run `Lazy sync`.
-
-```
-
-```
