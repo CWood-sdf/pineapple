@@ -1,3 +1,5 @@
+#!/bin/bash
+
 queries=("vim theme" "vim color scheme" "vim colour scheme" "vim colourscheme" "neovim color scheme" "neovim colorscheme" "neovim colour scheme" "neovim colourscheme" "neovim theme")
 
 skip=()

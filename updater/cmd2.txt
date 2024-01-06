@@ -1,1 +1,1 @@
-gh api /search/repositories?q=vim%20color%20scheme --paginate
+gh api /search/repositories?q=neovim%20theme --paginate

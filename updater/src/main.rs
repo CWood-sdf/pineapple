@@ -267,6 +267,8 @@ async fn make_color_data() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 async fn generate_colorscheme(
+    // repo_name: String,
+    // config: String,
     colorscheme: String,
     dark: bool,
 ) -> Result<bool, Box<dyn std::error::Error>> {
@@ -301,7 +303,7 @@ async fn generate_colorscheme(
 
     let (send, recv) = channel::<()>();
     tokio::spawn(async move {
-        tokio::time::sleep(std::time::Duration::from_secs(5)).await;
+        tokio::time::sleep(std::time::Duration::from_secs(10)).await;
         let _ = send.send(());
     });
     let was_killed;
@@ -363,8 +365,9 @@ async fn generate_no_ts(force: bool, filename: String) -> Result<(), Box<dyn std
             .join("/")
             .to_string();
         println!("Installing {}", repo_name);
+        let home_dir = std::env::var("HOME")?;
         std::fs::write(
-            "/home/cwood/.config/nvim/lua/stuff/colorscheme.lua",
+            format!("{}/.config/nvim/lua/stuff/colorscheme.lua", home_dir),
             format!("return '{}'", repo_name),
         )?;
         let mut install_cmd = tokio::process::Command::new("nvim");
@@ -381,7 +384,7 @@ async fn generate_no_ts(force: bool, filename: String) -> Result<(), Box<dyn std
         let (send, recv) = channel::<()>();
         let was_killed;
         tokio::spawn(async move {
-            tokio::time::sleep(std::time::Duration::from_secs(5)).await;
+            tokio::time::sleep(std::time::Duration::from_secs(10)).await;
             let _ = send.send(());
         });
         tokio::select! {
@@ -416,7 +419,13 @@ async fn generate_no_ts(force: bool, filename: String) -> Result<(), Box<dyn std
                     .iter()
                     .any(|(_, hex)| hex == "#000000")
             {
-                let was_killed = generate_colorscheme(colorscheme.name.clone(), false).await?;
+                let was_killed = generate_colorscheme(
+                    // repo_name.clone(),
+                    // "./nvim_worker_no_ts/init.lua".to_string(),
+                    colorscheme.name.clone(),
+                    false,
+                )
+                .await?;
                 if !was_killed {
                     let data = std::fs::read_to_string("gencolors.json")?;
                     match serde_json::from_str::<HashMap<String, String>>(&data) {
@@ -445,7 +454,13 @@ async fn generate_no_ts(force: bool, filename: String) -> Result<(), Box<dyn std
                     .iter()
                     .any(|(_, hex)| hex == "#000000")
             {
-                let was_killed = generate_colorscheme(colorscheme.name.clone(), true).await?;
+                let was_killed = generate_colorscheme(
+                    // repo_name.clone(),
+                    // "./nvim_worker_no_ts/init.lua".to_string(),
+                    colorscheme.name.clone(),
+                    true,
+                )
+                .await?;
                 if !was_killed {
                     let data = std::fs::read_to_string("gencolors.json")?;
                     match serde_json::from_str::<HashMap<String, String>>(&data) {
@@ -507,15 +522,19 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
             .join("/")
             .to_string();
         println!("Installing {}", repo_name);
+        let home_dir = std::env::var("HOME")?;
         std::fs::write(
-            "/home/cwood/.config/nvim/lua/stuff/colorscheme.lua",
+            format!("{}/.config/nvim/lua/stuff/colorscheme.lua", home_dir),
             format!("return '{}'", repo_name),
         )?;
         let mut install_cmd = tokio::process::Command::new("nvim");
         install_cmd
-            .arg("--headless")
-            // .arg("--noplugin")
             // .arg("--clean")
+            // .arg("-u")
+            // .arg("./nvim_worker/init.lua")
+            .arg("--headless")
+            // .arg(repo_name.clone())
+            // .arg("--noplugin")
             .arg("-c")
             .arg(
                 "lua vim.fn.timer_start(100, function() vim.cmd('Lazy! sync'); vim.cmd('qa!') end)",
@@ -535,7 +554,7 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
         let (send, recv) = channel::<()>();
 
         tokio::spawn(async move {
-            tokio::time::sleep(std::time::Duration::from_secs(5)).await;
+            tokio::time::sleep(std::time::Duration::from_secs(10)).await;
             let _ = send.send(());
         });
         let was_killed;
@@ -569,7 +588,13 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
                 i += 1;
                 continue;
             }
-            let was_killed = generate_colorscheme(colorscheme.name.clone(), false).await?;
+            let was_killed = generate_colorscheme(
+                // repo_name.clone(),
+                // "./nvim_worker/init.lua".to_string(),
+                colorscheme.name.clone(),
+                false,
+            )
+            .await?;
             if !was_killed {
                 let data = match std::fs::read_to_string("gencolors.json") {
                     Ok(d) => d,
@@ -588,7 +613,13 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
                 };
             }
 
-            let was_killed = generate_colorscheme(colorscheme.name.clone(), true).await?;
+            let was_killed = generate_colorscheme(
+                // repo_name.clone(),
+                // "./nvim_worker/init.lua".to_string(),
+                colorscheme.name.clone(),
+                true,
+            )
+            .await?;
             if !was_killed {
                 let data = match std::fs::read_to_string("gencolors.json") {
                     Ok(d) => d,
@@ -813,6 +844,7 @@ async fn rm_dir(dir: String) -> Result<(), Box<dyn std::error::Error>> {
     }
     return Ok(());
 }
+// A function to test stuff
 async fn do_yeet() -> Result<(), Box<dyn std::error::Error>> {
     let mut cmd = tokio::process::Command::new("nvim");
     cmd.arg("--headless");
@@ -832,7 +864,7 @@ async fn do_yeet() -> Result<(), Box<dyn std::error::Error>> {
     println!("PID: {}", pid);
     let (send, recv) = channel::<()>();
     tokio::spawn(async move {
-        tokio::time::sleep(std::time::Duration::from_secs(5)).await;
+        tokio::time::sleep(std::time::Duration::from_secs(10)).await;
         let _ = send.send(());
     });
     tokio::select! {
@@ -863,7 +895,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         Some(Commands::GenerateNoTs { .. }) => {
             println!("Generating...");
 
-            let has_config;
             if dir_exists("~/.config/nvim".to_string()).await? {
                 println!("Nvim config found, moving to ~/.config/__pineapple_config_copy__");
                 move_dir(
@@ -871,9 +902,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     "~/.config/__pineapple_config_copy__".to_string(),
                 )
                 .await?;
-                has_config = true;
-            } else {
-                has_config = false;
             }
             cp_dir(
                 "./nvim_worker_no_ts".to_string(),
@@ -885,7 +913,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             println!("Deleting ~/.config/nvim");
             rm_dir("~/.config/nvim".to_string()).await?;
             println!("Moving ~/.config/__pineapple_config_copy__ to ~/.config/nvim");
-            if has_config {
+            if dir_exists("~/.config/__pineapple_config_copy__".to_string()).await? {
                 move_dir(
                     "~/.config/__pineapple_config_copy__".to_string(),
                     "~/.config/nvim".to_string(),
@@ -896,7 +924,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
         Some(Commands::GenerateTs { .. }) => {
             println!("Generating...");
-            let has_config;
 
             if dir_exists("~/.config/nvim".to_string()).await? {
                 println!("Nvim config found, moving to ~/.config/__pineapple_config_copy__");
@@ -905,16 +932,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     "~/.config/__pineapple_config_copy__".to_string(),
                 )
                 .await?;
-                has_config = true;
-            } else {
-                has_config = false;
             }
             cp_dir("./nvim_worker".to_string(), "~/.config/nvim".to_string()).await?;
             let res = generate_ts(cli.force, cli.file.unwrap_or("colors.json".to_string())).await;
             println!("Deleting ~/.config/nvim");
             rm_dir("~/.config/nvim".to_string()).await?;
             println!("Moving ~/.config/__pineapple_config_copy__ to ~/.config/nvim");
-            if has_config {
+            if dir_exists("~/.config/__pineapple_config_copy__".to_string()).await? {
                 move_dir(
                     "~/.config/__pineapple_config_copy__".to_string(),
                     "~/.config/nvim".to_string(),
