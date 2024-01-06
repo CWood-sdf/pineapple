@@ -103,8 +103,6 @@ The preview doesn't account for screen size, so it can look pretty ugly on a sma
 
 The VimResize autocmd is not implemented yet, so the preview will not resize with the window.
 
-The generater is not completely automated, so some steps still have to be done manually, this is almost done though.
-
 The filtering capabilities are minimal, and the sorting capabilities are non-existent.
 
 ## Api
