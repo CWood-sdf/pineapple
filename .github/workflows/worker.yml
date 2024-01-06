@@ -1,0 +1,34 @@
+name: CI
+on:
+  schedule:
+    - cron: "0 0 8 * *"
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Setup Rust
+        uses: ATiltedTree/setup-rust@v1
+        with:
+          rust-version: stable
+      - name: Setup Neovim
+        uses: MunifTanjim/setup-neovim-action@v1
+        with:
+          tag: nightly
+      - name: Generate Color Schemes
+        run: mkdir ~/.config
+          mkdir ~/.config/nvim
+          cd updater
+          bash ./run.sh
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore(build): auto-generate color data"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
