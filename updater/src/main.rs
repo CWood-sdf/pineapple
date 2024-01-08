@@ -384,7 +384,7 @@ async fn generate_no_ts(force: bool, filename: String) -> Result<(), Box<dyn std
         let (send, recv) = channel::<()>();
         let was_killed;
         tokio::spawn(async move {
-            tokio::time::sleep(std::time::Duration::from_secs(10)).await;
+            tokio::time::sleep(std::time::Duration::from_secs(40)).await;
             let _ = send.send(());
         });
         tokio::select! {
@@ -554,7 +554,7 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
         let (send, recv) = channel::<()>();
 
         tokio::spawn(async move {
-            tokio::time::sleep(std::time::Duration::from_secs(10)).await;
+            tokio::time::sleep(std::time::Duration::from_secs(40)).await;
             let _ = send.send(());
         });
         let was_killed;
