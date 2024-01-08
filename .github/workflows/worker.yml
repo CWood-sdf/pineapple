@@ -20,11 +20,7 @@ jobs:
         with:
           tag: nightly
       - name: Generate Color Schemes
-        run: cat ~/.config
-          mkdir ~/.config
-          mkdir ~/.config/nvim
-          cd updater
-          bash ./run.sh
+        run: bash ./workflow.sh
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: Push changes
