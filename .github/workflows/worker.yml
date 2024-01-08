@@ -4,7 +4,7 @@ on:
     - cron: "0 0 8 * *"
 
 jobs:
-  docs:
+  worker:
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/main' }}
     steps:
@@ -19,7 +19,8 @@ jobs:
         with:
           tag: nightly
       - name: Generate Color Schemes
-        run: mkdir ~/.config
+        run: cat ~/.config
+          mkdir ~/.config
           mkdir ~/.config/nvim
           cd updater
           bash ./run.sh
