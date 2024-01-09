@@ -297,7 +297,7 @@ async fn generate_colorscheme(
         "./code_sample.vim".to_string(),
     ]);
 
-    let mut run_cmd = tokio::process::Command::new("nvim");
+    let mut run_cmd = tokio::process::Command::new("/home/codespace/.local/share/bob/nvim-bin/nvim");
     run_cmd.args(args);
     let mut spawn = run_cmd.spawn()?;
 
@@ -340,6 +340,7 @@ async fn generate_no_ts(force: bool, filename: String) -> Result<(), Box<dyn std
     let mut items: Vec<Item> = serde_json::from_reader(file)?;
     println!("Items: {}", items.len());
     let mut j = 0;
+    let len = items.len();
     while j < items.len() {
         let item = &mut items[j];
         // if item.last_generated.is_some() {
@@ -364,13 +365,16 @@ async fn generate_no_ts(force: bool, filename: String) -> Result<(), Box<dyn std
         let repo_name = split_url[split_url.len() - 2..=split_url.len() - 1]
             .join("/")
             .to_string();
+        println!("{} / {}", j, len);
         println!("Installing {}", repo_name);
         let home_dir = std::env::var("HOME")?;
+        //println!("Writing to lua file");
         std::fs::write(
             format!("{}/.config/nvim/lua/stuff/colorscheme.lua", home_dir),
             format!("return '{}'", repo_name),
         )?;
-        let mut install_cmd = tokio::process::Command::new("nvim");
+        //println!("Starting prog");
+        let mut install_cmd = tokio::process::Command::new("/home/codespace/.local/share/bob/nvim-bin/nvim");
         install_cmd
             .arg("--headless")
             // .arg("--noplugin")
@@ -511,6 +515,7 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
     println!("Items: {}", items.len());
     let mut j = 0;
     while j < items.len() {
+        let len = items.len();
         let item = &mut items[j];
         if item.last_generated.is_some() {
             j += 1;
@@ -521,13 +526,14 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
         let repo_name = split_url[split_url.len() - 2..=split_url.len() - 1]
             .join("/")
             .to_string();
+        println!("{} / {}", j, len);
         println!("Installing {}", repo_name);
         let home_dir = std::env::var("HOME")?;
         std::fs::write(
             format!("{}/.config/nvim/lua/stuff/colorscheme.lua", home_dir),
             format!("return '{}'", repo_name),
         )?;
-        let mut install_cmd = tokio::process::Command::new("nvim");
+        let mut install_cmd = tokio::process::Command::new("/home/codespace/.local/share/bob/nvim-bin/nvim");
         install_cmd
             // .arg("--clean")
             // .arg("-u")
@@ -541,7 +547,6 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
             );
 
         // install_cmd.stdout(Stdio::piped()).stdin(Stdio::piped());
-
         let mut spawn = install_cmd.spawn()?;
 
         // tokio::task::spawn(async move {
@@ -910,6 +915,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             .await?;
             let res =
                 generate_no_ts(cli.force, cli.file.unwrap_or("colors.json".to_string())).await;
+           match res {
+            Ok(_) => {}
+            Err(ref e) => println!("Err: {}", e)
+           };
             println!("Deleting ~/.config/nvim");
             rm_dir("~/.config/nvim".to_string()).await?;
             println!("Moving ~/.config/__pineapple_config_copy__ to ~/.config/nvim");
