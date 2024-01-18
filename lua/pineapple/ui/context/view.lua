@@ -51,7 +51,6 @@ end
 ---@param makeHighlight fun(name: string, fg: string, bg: string): string
 function viewCtx:addHighlights(context, highlight, makeHighlight)
     local colorData = context[1].vimColorSchemes[colorschemeIndex].data
-    local hasTs, _ = pcall(require, "nvim-treesitter")
     if colorData[vim.o.background] == nil then
         if vim.o.background == "dark" then
             colorData = colorData.light
@@ -62,27 +61,9 @@ function viewCtx:addHighlights(context, highlight, makeHighlight)
         colorData = colorData[vim.o.background]
     end
     -- make the github url less readable bc it's kinda uneccessary
-    highlight(4, 3 + #context[1].name, -1, "Comment")
-    for line, l in ipairs(exampleCode) do
-        local currentRow = 0
-        for k, v in ipairs(l) do
-            local hlSpot = 2
-            if hasTs then
-                hlSpot = 4
-            end
-            if colorData[v[hlSpot]] == nil then
-                hlSpot = 2
-            end
-            local hlGroup = makeHighlight(v[hlSpot] .. "_" .. v[3], colorData[v[hlSpot]], colorData[v[3]])
-            local endCol = currentRow + #v[1]
-            if k == #l then
-                endCol = -1
-            end
-
-            highlight(line + exampleStartLine - 1, currentRow, endCol, hlGroup)
-            currentRow = currentRow + #v[1]
-        end
-    end
+    highlight(3 + #self:getKeymaps(context), 3 + #context[1].name, -1, "Comment")
+    require('pineapple.ui.highlightExample')(colorData, makeHighlight, highlight, exampleStartLine,
+        require('pineapple.ui.buffer').getWinNr())
 end
 
 function viewCtx:getLines(context)
@@ -117,37 +98,6 @@ end
 
 function viewCtx:setup()
     exampleCode = require("pineapple.example-code")
-    local longestLine = 0
-    for i = 1, #exampleCode do
-        local lineNum = i .. " "
-        while #lineNum < 5 do
-            lineNum = " " .. lineNum
-        end
-        -- put two spaces before everything
-        exampleCode[i][1][1] = " " .. exampleCode[i][1][1]
-        -- put in line numbers. if it's the "cursor" line, highlight it
-        if i == 3 then
-            table.insert(exampleCode[i], 1, { lineNum, "CursorLineNrFg", "CursorLineNrBg" })
-        else
-            table.insert(exampleCode[i], 1, { lineNum, "LineNrFg", "LineNrBg" })
-        end
-        local lineLen = 0
-        for _, v in ipairs(exampleCode[i]) do
-            lineLen = #v[1] + lineLen
-        end
-        if lineLen > longestLine then
-            longestLine = lineLen
-        end
-    end
-    longestLine = 10 + longestLine
-    for _, l in ipairs(exampleCode) do
-        local lineLen = 0
-        for _, v in ipairs(l) do
-            lineLen = #v[1] + lineLen
-        end
-        local neededExtra = longestLine - lineLen
-        l[#l][1] = l[#l][1] .. string.rep(" ", neededExtra)
-    end
 end
 
 function viewCtx:setContext(context)

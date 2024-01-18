@@ -49,6 +49,10 @@ local function changeContextIndex(index)
     end
 end
 
+function M.getWinNr()
+    return winId
+end
+
 function M.refreshBuffer()
     local buf = M.getBufNr()
     M.setRemaps()
@@ -248,6 +252,7 @@ function M.addHighlights()
     end
     local keymaps = contexts[contextIndex]:getKeymaps(data)
     local line = 3
+    vim.api.nvim_win_set_hl_ns(winId, M.getNsId())
     for _, kmp in ipairs(keymaps) do
         if kmp.isGroup then
             M.highlight(line, 2, 3, "Operator")
@@ -263,7 +268,6 @@ function M.addHighlights()
         end
         line = line + 1
     end
-    vim.api.nvim_win_set_hl_ns(winId, M.getNsId())
     contexts[contextIndex]:addHighlights(data, M.highlight, M.makeHighlight)
     local line2 = vim.api.nvim_buf_get_lines(M.getBufNr(), 1, 2, false)[1]
     local i = tablineStart - 1

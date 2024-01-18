@@ -87,6 +87,18 @@ All the remaps are shown at the top of the screen.
 
 To preview a plugin, just hit `v` while hovering over it. To install a plugin, hit `i` while hovering over it. To uninstall a plugin, hit `x` while hovering over it in the "Installed" screen. To set the colorscheme, hit `u` while hovering over it in the Installed screen.
 
+## Telescope Integration
+
+Due to lazy.nvim's lazy loading of themes, calling the telescope picker for themes will not return any of the pineapple installed themes. However, pineapple provides an easy way to still use telescope to find a theme.
+
+Just run the code:
+
+```lua
+require('telescope').load_extension('pineapple')
+require('telescope').extensions.pineapple.colorschemes()
+
+```
+
 ## Speed
 
 Pineapple is designed to minimally interrupt your startup time. Nothing is loaded until the plugin is opened with the command `Pineapple` (at least with lazy.nvim).
@@ -121,3 +133,7 @@ The filtering capabilities are minimal, and the sorting capabilities are non-exi
 Pineapple is designed to be removed as easily as possible. The steps to remove it are pretty simple:
 
 Add the installation line for whatever your current theme is to your lazy.nvim config file. All your downloaded themes can be seen at ~/.config/nvim/YOUR_LUA_DIRECTORY/YOUR_PINEAPPLE_FILE.lua. After this, you can remove the pineapple install line and run `Lazy sync`.
+
+```
+
+```

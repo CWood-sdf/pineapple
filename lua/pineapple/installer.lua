@@ -55,6 +55,15 @@ function M.getInstallFileName()
     return fLoc
 end
 
+function M.getInstalledColorschemes()
+    local ret = {}
+    local data = require("spaceport.data").getAllData()
+    for _, v in ipairs(installedThemes) do
+
+    end
+    return ret
+end
+
 function M.getInstalledThemes()
     return installedThemes
 end
