@@ -36,5 +36,5 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
           owner: CWood-sdf
-          repo: spaceport.nvim
+          repo: pineapple
           title: "chore: rerun worker"
