@@ -30,3 +30,11 @@ jobs:
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"
           commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+      # needed because actions is not using a terminal, so nvim not run properly
+      - name: Create issue to run worker
+        uses: dacbd/create-issue-action@v1.2.1
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          owner: CWood-sdf
+          repo: spaceport.nvim
+          title: "chore: rerun worker"
