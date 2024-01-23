@@ -206,27 +206,27 @@ EVENTS                                            *pineapple-pineapple-events*
 
 Pineapple fires several events that you can attach autocmds to:
 
-  ---------------------------------------------------------------------------------
-  Event Name                 Description
-  -------------------------- ------------------------------------------------------
-  PineappleUninstallPre      Fired before a theme is uninstalled. The theme’s
-                             GitHub id is passed as a parameter
+  -------------------------------------------------------------------------------
+  Event Name                 Description                         Parameters
+  -------------------------- ----------------------------------- ----------------
+  PineappleUninstallPre      Fired before a theme is uninstalled The theme’s
+                                                                 GitHub id
 
-  PineappleUninstallPost     Fired after a theme is uninstalled. The theme’s GitHub
-                             id is passed as a parameter
+  PineappleUninstallPost     Fired after a theme is uninstalled  The theme’s
+                                                                 GitHub id
 
-  PineappleInstallPre        Fired before a theme is installed. The theme’s GitHub
-                             id is passed as a parameter
+  PineappleInstallPre        Fired before a theme is installed   The theme’s
+                                                                 GitHub id
 
-  PineappleInstallPost       Fired after a theme is installed. The theme’s GitHub
-                             id is passed as a parameter
+  PineappleInstallPost       Fired after a theme is installed    The theme’s
+                                                                 GitHub id
 
-  PineappleColorschemePre    Fired before a theme is set as the colorscheme. The
-                             theme is passed as a parameter
+  PineappleColorschemePre    Fired before a theme is set as the  The theme
+                             colorscheme                         
 
-  PineappleColorschemePost   Fired after a theme is set as the colorscheme. The
-                             theme is passed as a parameter
-  ---------------------------------------------------------------------------------
+  PineappleColorschemePost   Fired after a theme is set as the   The theme
+                             colorscheme                         
+  -------------------------------------------------------------------------------
 
 AUTOCMD USAGE ~
 
