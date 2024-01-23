@@ -134,6 +134,28 @@ Pineapple is designed to be removed as easily as possible. The steps to remove i
 
 Add the installation line for whatever your current theme is to your lazy.nvim config file. All your downloaded themes can be seen at ~/.config/nvim/YOUR_LUA_DIRECTORY/YOUR_PINEAPPLE_FILE.lua. After this, you can remove the pineapple install line and run `Lazy sync`.
 
-```
+## Events
 
+Pineapple fires several events that you can attach autocmds to:
+
+| Event Name                 | Description                                                                         |
+| -------------------------- | ----------------------------------------------------------------------------------- |
+| `PineappleUninstallPre`    | Fired before a theme is uninstalled. The theme's GitHub id is passed as a parameter |
+| `PineappleUninstallPost`   | Fired after a theme is uninstalled. The theme's GitHub id is passed as a parameter  |
+| `PineappleInstallPre`      | Fired before a theme is installed. The theme's GitHub id is passed as a parameter   |
+| `PineappleInstallPost`     | Fired after a theme is installed. The theme's GitHub id is passed as a parameter    |
+| `PineappleColorschemePre`  | Fired before a theme is set as the colorscheme. The theme is passed as a parameter  |
+| `PineappleColorschemePost` | Fired after a theme is set as the colorscheme. The theme is passed as a parameter   |
+
+### Autocmd Usage
+
+Using the autocmds is very simple, the name of the event is just passed as the pattern argument to the `User` autocmd, like this:
+
+```lua
+vim.api.nvim_create_autocmd("User", {
+    pattern = "PineappleColorschemePost",
+    callback = function(ev)
+        print("The colorscheme was set to " .. ev.data[1])
+    end,
+})
 ```

@@ -55,15 +55,6 @@ function M.getInstallFileName()
     return fLoc
 end
 
-function M.getInstalledColorschemes()
-    local ret = {}
-    local data = require("spaceport.data").getAllData()
-    for _, v in ipairs(installedThemes) do
-
-    end
-    return ret
-end
-
 function M.getInstalledThemes()
     return installedThemes
 end
@@ -84,6 +75,10 @@ function M.uninstall(gitUrl)
         error("Theme not installed")
         return
     end
+    vim.api.nvim_exec_autocmds("User", {
+        pattern = "PineappleUninstallPre",
+        data = { gitUrl },
+    })
     local fLoc = M.getInstallFileName()
     local f = io.open(fLoc, "w")
     if f == nil then
@@ -96,6 +91,10 @@ function M.uninstall(gitUrl)
     s = s .. "}"
     f:write(s)
     f:close()
+    vim.api.nvim_exec_autocmds("User", {
+        pattern = "PineappleUninstallPost",
+        data = { gitUrl },
+    })
 end
 
 function M.install(gitUrl)
@@ -105,6 +104,10 @@ function M.install(gitUrl)
             return
         end
     end
+    vim.api.nvim_exec_autocmds("User", {
+        pattern = "PineappleInstallPre",
+        data = { gitUrl },
+    })
     local fLoc = M.getInstallFileName()
     local f = io.open(fLoc, "w")
     if f == nil then
@@ -119,6 +122,10 @@ function M.install(gitUrl)
     f:write(s)
     f:close()
     table.insert(installedThemes, gitUrl)
+    vim.api.nvim_exec_autocmds("User", {
+        pattern = "PineappleInstallPost",
+        data = { gitUrl },
+    })
 end
 
 function M.setColorscheme(colorscheme)
@@ -135,6 +142,10 @@ function M.setColorscheme(colorscheme)
     if f == nil then
         error("Could not open file: " .. fPath)
     end
+    vim.api.nvim_exec_autocmds("User", {
+        pattern = "PineappleColorschemePre",
+        data = { colorscheme },
+    })
     vim.cmd("colorscheme " .. colorscheme)
     local s = "vim.cmd(\"colorscheme " .. colorscheme .. "\")\n"
     if M.opts.colorschemeSet ~= nil then
@@ -142,6 +153,10 @@ function M.setColorscheme(colorscheme)
     end
     f:write(s)
     f:close()
+    vim.api.nvim_exec_autocmds("User", {
+        pattern = "PineappleColorschemePost",
+        data = { colorscheme },
+    })
 end
 
 return M
