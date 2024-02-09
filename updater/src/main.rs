@@ -611,8 +611,8 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
                         colorscheme.data.light = Some(parsed);
                     }
                     Err(e) => {
-                        println!("Data parse failed on data {}", data);
-                        println!("{:?}", e);
+                        //println!("Data parse failed on data {}", data);
+                        //println!("{:?}", e);
                     }
                     _ => {}
                 };
@@ -650,8 +650,8 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
                         colorscheme.data.dark = Some(parsed);
                     }
                     Err(e) => {
-                        println!("Data parse failed on data {}", data);
-                        println!("{:?}", e);
+                        //println!("Data parse failed on data {}", data);
+                        //println!("{:?}", e);
                     }
                     _ => {}
                 };
