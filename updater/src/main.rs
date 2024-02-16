@@ -214,8 +214,8 @@ async fn make_color_data() -> Result<(), Box<dyn std::error::Error>> {
         let repo_url = repo.repo_url.clone();
         let colschemes = match get_repo_colschemes(repo).await {
             Ok(s) => s,
-            Err(_) => {
-                eprintln!("Error on repo {}", repo_url.clone());
+            Err(e) => {
+                eprintln!("Error on repo {}: {}", repo_url.clone(), e);
                 vec![]
             }
         };
@@ -297,7 +297,8 @@ async fn generate_colorscheme(
         "./code_sample.vim".to_string(),
     ]);
 
-    let mut run_cmd = tokio::process::Command::new("/home/codespace/.local/share/bob/nvim-bin/nvim");
+    let mut run_cmd =
+        tokio::process::Command::new("/home/codespace/.local/share/bob/nvim-bin/nvim");
     run_cmd.args(args);
     let mut spawn = run_cmd.spawn()?;
 
@@ -374,7 +375,8 @@ async fn generate_no_ts(force: bool, filename: String) -> Result<(), Box<dyn std
             format!("return '{}'", repo_name),
         )?;
         //println!("Starting prog");
-        let mut install_cmd = tokio::process::Command::new("/home/codespace/.local/share/bob/nvim-bin/nvim");
+        let mut install_cmd =
+            tokio::process::Command::new("/home/codespace/.local/share/bob/nvim-bin/nvim");
         install_cmd
             .arg("--headless")
             // .arg("--noplugin")
@@ -533,7 +535,8 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
             format!("{}/.config/nvim/lua/stuff/colorscheme.lua", home_dir),
             format!("return '{}'", repo_name),
         )?;
-        let mut install_cmd = tokio::process::Command::new("/home/codespace/.local/share/bob/nvim-bin/nvim");
+        let mut install_cmd =
+            tokio::process::Command::new("/home/codespace/.local/share/bob/nvim-bin/nvim");
         install_cmd
             // .arg("--clean")
             // .arg("-u")
@@ -610,7 +613,7 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
                         colorscheme.backgrounds = Some(vec!["light".to_string()]);
                         colorscheme.data.light = Some(parsed);
                     }
-                    Err(e) => {
+                    Err(_) => {
                         //println!("Data parse failed on data {}", data);
                         //println!("{:?}", e);
                     }
@@ -649,7 +652,7 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
                         }
                         colorscheme.data.dark = Some(parsed);
                     }
-                    Err(e) => {
+                    Err(_) => {
                         //println!("Data parse failed on data {}", data);
                         //println!("{:?}", e);
                     }
@@ -915,10 +918,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             .await?;
             let res =
                 generate_no_ts(cli.force, cli.file.unwrap_or("colors.json".to_string())).await;
-           match res {
-            Ok(_) => {}
-            Err(ref e) => println!("Err: {}", e)
-           };
+            match res {
+                Ok(_) => {}
+                Err(ref e) => println!("Err: {}", e),
+            };
             println!("Deleting ~/.config/nvim");
             rm_dir("~/.config/nvim".to_string()).await?;
             println!("Moving ~/.config/__pineapple_config_copy__ to ~/.config/nvim");
