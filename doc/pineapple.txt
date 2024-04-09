@@ -1,4 +1,4 @@
-*pineapple.txt*        For Neovim >= 0.8.0       Last change: 2024 February 16
+*pineapple.txt*         For Neovim >= 0.8.0         Last change: 2024 April 09
 
 ==============================================================================
 Table of Contents                                *pineapple-table-of-contents*
@@ -16,6 +16,7 @@ Table of Contents                                *pineapple-table-of-contents*
   - Api                                              |pineapple-pineapple-api|
   - Uninstall                                  |pineapple-pineapple-uninstall|
   - Events                                        |pineapple-pineapple-events|
+2. Links                                                     |pineapple-links|
 
 ==============================================================================
 1. Pineapple                                             *pineapple-pineapple*
