@@ -351,7 +351,7 @@ async fn generate_colorscheme(
         "--headless".to_string(),
         "-u".to_string(),
         "init.lua".to_string(),
-        format!("{}/code_sample.vim", "..".repeat(get_conf_nest_level())),
+        format!("{}/code_sample.vim", current_dir),
     ]);
     // println!("{}", args.join(" "));
     let dir_struct = ls(dir.clone()).await?;
