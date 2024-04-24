@@ -326,17 +326,18 @@ async fn generate_colorscheme(
 ) -> Result<bool, Box<dyn std::error::Error>> {
     let current_dir = std::env::current_dir()?;
     let background = if dark { "dark" } else { "light" };
-    let write_color_values = format!("autocmd ColorScheme * :lua vim.fn.timer_start(100, function() WriteColorValues(\"{}/gencolors.json\", \"{}\", \"{}\");  vim.cmd('qa') end)", get_dir_name(current_dir.to_str().unwrap().to_string(), dir_base.clone()), colorscheme, background);
+    let write_color_values = format!("\"autocmd ColorScheme * :lua vim.fn.timer_start(100, function() WriteColorValues('{}/gencolors.json', '{}', '{}');  vim.cmd('qa') end)\"", get_dir_name(current_dir.to_str().unwrap().to_string(), dir_base.clone()), colorscheme, background);
 
     let set_background = format!("set background={}", background);
     let buf_enter_autocmd = format!(
-        "autocmd VimEnter * :lua vim.fn.timer_start(50, function() vim.cmd('colorscheme {}') end)",
+        "\"autocmd VimEnter * :lua vim.fn.timer_start(50, function() vim.cmd('colorscheme {}') end)\"",
         colorscheme
     );
     let auto_quit_autocmd =
-        "autocmd VimEnter * :lua vim.fn.timer_start(500, function() vim.cmd('q') end)".to_string();
+        "\"autocmd VimEnter * :lua vim.fn.timer_start(500, function() vim.cmd('q') end)\""
+            .to_string();
 
-    let mut args: Vec<String> = vec!["-c".to_string(), write_color_values];
+    let mut args: Vec<String> = vec!["nvim".to_string(), "-c".to_string(), write_color_values];
     let current_dir = std::env::current_dir()?;
     let current_dir = current_dir.to_str().unwrap_or("osdf");
     let dir = get_dir_name(current_dir.to_string(), dir_base.clone());
@@ -357,10 +358,17 @@ async fn generate_colorscheme(
     let dir_struct = ls(dir.clone()).await?;
     println!("{}", dir_struct);
 
-    let home_dir = std::env::var("HOME")?;
-    let mut run_cmd =
-        tokio::process::Command::new(format!("{}/.local/share/bob/nvim-bin/nvim", home_dir));
-    run_cmd.args(args).current_dir(dir);
+    // let home_dir = std::env::var("HOME")?;
+    let mut run_cmd = tokio::process::Command::new(format!("bash"));
+    run_cmd
+        .arg("-c")
+        .arg(
+            args.iter()
+                .map(|v| v.clone())
+                .reduce(|v1, v2| format!("{} {}", v1, v2))
+                .unwrap(),
+        )
+        .current_dir(dir);
     let mut spawn = run_cmd.spawn()?;
 
     let (send, recv) = channel::<()>();
@@ -455,7 +463,6 @@ async fn generate(
         println!("Installing {}", repo_name);
         let current_dir = std::env::current_dir()?;
         let current_dir = current_dir.to_str().unwrap_or("osdf");
-        let home_dir = std::env::var("HOME")?;
         let p = format!(
             "{}/lua/stuff/colorscheme.lua",
             get_dir_name(current_dir.to_string(), dir_base.clone()),
@@ -465,22 +472,27 @@ async fn generate(
         // println!("Starting prog");
         let start_dir = get_dir_name(current_dir.to_string(), dir_base.clone());
         println!("{}", start_dir);
-        let mut install_cmd =
-            tokio::process::Command::new(format!("{}/.local/share/bob/nvim-bin/nvim", home_dir));
+        // let path_dir = format!("{}/.local/share/bob/nvim-bin", home_dir);
+        let nv_args = vec![
+            "-u",
+            "init.lua",
+            "--headless",
+            // repo_name.clone(),
+            // "--noplugin",
+            "-c",
+            "\"lua vim.fn.timer_start(100, function() vim.cmd('Lazy! sync'); vim.cmd('qa!') end)\"",
+        ];
+        let mut install_cmd = tokio::process::Command::new("bash");
         install_cmd
-            // .arg("--clean")
-            .arg("-u")
-            .arg(format!(
-                    "init.lua"
-                // current_dir, dir_base
-            ))
-            .arg("--headless")
-            // .arg(repo_name.clone())
-            // .arg("--noplugin")
             .arg("-c")
-            .arg(
-                "lua vim.fn.timer_start(100, function() vim.cmd('Lazy! sync'); vim.cmd('qa!') end)",
-            )
+            .arg(format!(
+                "nvim {}",
+                nv_args
+                    .iter()
+                    .map(|v| v.to_string())
+                    .reduce(|v1, v2| format!("{} {}", v1, v2))
+                    .unwrap()
+            ))
             .current_dir(start_dir);
 
         // install_cmd.stdout(Stdio::piped()).stdin(Stdio::piped());
