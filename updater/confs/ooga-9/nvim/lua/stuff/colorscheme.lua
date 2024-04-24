@@ -1,1 +1,0 @@
-return 'catppuccin/nvim'

@@ -1,1 +1,0 @@
-return 'joshdick/onedark.vim'
