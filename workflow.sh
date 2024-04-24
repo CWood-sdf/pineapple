@@ -1,9 +1,7 @@
 #!/bin/bash
 
-mkdir ~/.config/nvim
-
 cd updater
 
-bash ./scrape.sh
+chmod a+x ./run.sh
 
-cargo run --release -- make-color-data
+./run.sh
