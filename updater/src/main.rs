@@ -114,15 +114,15 @@ fn get_dir_name(home: String, dir_base: String) -> String {
 //         .split("/")
 //         .count()
 // }
-async fn ls(dir: String) -> Result<String, Box<dyn std::error::Error>> {
-    let mut cmd = tokio::process::Command::new("bash");
-    cmd.arg("-c").arg(format!("ls {} -a", dir));
-    let output = cmd.output().await?;
-    if output.status.code().unwrap() != 0 {
-        return Err("Error copying dir".into());
-    }
-    return Ok(String::from_utf8(output.stdout)?);
-}
+// async fn ls(dir: String) -> Result<String, Box<dyn std::error::Error>> {
+//     let mut cmd = tokio::process::Command::new("bash");
+//     cmd.arg("-c").arg(format!("ls {} -a", dir));
+//     let output = cmd.output().await?;
+//     if output.status.code().unwrap() != 0 {
+//         return Err("Error copying dir".into());
+//     }
+//     return Ok(String::from_utf8(output.stdout)?);
+// }
 async fn get_repo_colschemes(repo: Repo) -> Result<Vec<String>, Box<dyn std::error::Error>> {
     //create a process that runs "gh api repos/repo.repo_url/contents/colors" and returns the output
     let mut cmd = tokio::process::Command::new("gh");
@@ -355,8 +355,8 @@ async fn generate_colorscheme(
         format!("{}/code_sample.vim", current_dir),
     ]);
     // println!("{}", args.join(" "));
-    let dir_struct = ls(dir.clone()).await?;
-    println!("{}", dir_struct);
+    // let dir_struct = ls(dir.clone()).await?;
+    // println!("{}", dir_struct);
 
     // let home_dir = std::env::var("HOME")?;
     let mut run_cmd = tokio::process::Command::new(format!("bash"));
@@ -467,11 +467,9 @@ async fn generate(
             "{}/lua/stuff/colorscheme.lua",
             get_dir_name(current_dir.to_string(), dir_base.clone()),
         );
-        println!("{}", p);
         std::fs::write(p, format!("return '{}'", repo_name))?;
         // println!("Starting prog");
         let start_dir = get_dir_name(current_dir.to_string(), dir_base.clone());
-        println!("{}", start_dir);
         // let path_dir = format!("{}/.local/share/bob/nvim-bin", home_dir);
         let nv_args = vec![
             "-u",
@@ -895,7 +893,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("{}", cli.force);
     let file_lock: Arc<Mutex<bool>> = Arc::new(true.into());
     let repo_locks = Arc::new(Mutex::new(Vec::new()));
-    let thread_count = 1;
+    let thread_count = 64;
 
     // You can check for the existence of subcommands, and if found use their
     // matches just as you would the top level cmd
