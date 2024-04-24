@@ -1,4 +1,4 @@
-*pineapple.txt*         For Neovim >= 0.8.0         Last change: 2024 April 09
+*pineapple.txt*         For Neovim >= 0.8.0         Last change: 2024 April 24
 
 ==============================================================================
 Table of Contents                                *pineapple-table-of-contents*
