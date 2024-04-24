@@ -32,15 +32,7 @@ jobs:
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "chore(build): auto-generate color data"
+          commit_message: "chore(build): generate color data"
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"
           commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
-      # needed because actions is not using a terminal, so nvim not run properly
-      - name: Create issue to run worker
-        uses: dacbd/create-issue-action@v1.2.1
-        with:
-          token: ${{ secrets.GH_TOKEN }}
-          owner: CWood-sdf
-          repo: pineapple
-          title: "chore: rerun worker"

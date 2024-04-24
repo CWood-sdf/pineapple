@@ -511,14 +511,14 @@ end
 function SetUpColorScheme(colorscheme)
     vim.opt.termguicolors = true
     vim.cmd("colorscheme " .. colorscheme)
-    -- local background = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'bg#')
-    -- local foreground = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'fg#')
-    -- if background == "" or foreground == "" then
-    --     vim.opt.termguicolors = false
-    --     vim.cmd('colorscheme ' .. colorscheme)
-    --     background = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'bg#')
-    --     foreground = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'fg#')
-    -- end
+    local background = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'bg#')
+    local foreground = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'fg#')
+    if background == "" or foreground == "" then
+        vim.opt.termguicolors = false
+        vim.cmd('colorscheme ' .. colorscheme)
+        background = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'bg#')
+        foreground = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'fg#')
+    end
     --
     -- if background == "" or foreground == "" then
     --     vim.opt.termguicolors = false

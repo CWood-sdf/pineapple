@@ -1,6 +1,7 @@
 use std::{
     collections::HashMap,
     io::Write,
+    process::Stdio,
     sync::{Arc, Mutex},
 };
 
@@ -368,7 +369,9 @@ async fn generate_colorscheme(
                 .reduce(|v1, v2| format!("{} {}", v1, v2))
                 .unwrap(),
         )
-        .current_dir(dir);
+        .current_dir(dir)
+        .stdout(Stdio::null())
+        .stderr(Stdio::null());
     let mut spawn = run_cmd.spawn()?;
 
     let (send, recv) = channel::<()>();
