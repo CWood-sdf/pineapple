@@ -373,7 +373,7 @@ async fn generate_colorscheme(
 
     let (send, recv) = channel::<()>();
     tokio::spawn(async move {
-        tokio::time::sleep(std::time::Duration::from_secs(10)).await;
+        tokio::time::sleep(std::time::Duration::from_secs(400)).await;
         let _ = send.send(());
     });
     let was_killed;
@@ -506,7 +506,7 @@ async fn generate(
         let (send, recv) = channel::<()>();
 
         tokio::spawn(async move {
-            tokio::time::sleep(std::time::Duration::from_secs(40)).await;
+            tokio::time::sleep(std::time::Duration::from_secs(400)).await;
             let _ = send.send(());
         });
         let was_killed;
