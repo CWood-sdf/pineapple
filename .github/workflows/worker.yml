@@ -20,9 +20,15 @@ jobs:
         with:
           tag: nightly
       - name: Generate Color Schemes
-        run: bash ./workflow.sh
+        run: bash ./workflow_gen.sh
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Generate Treesitter theme colors
+        run: bash ./workflow_ts.sh
+      - name: Generate non-treesitter theme colors
+        run: bash ./workflow_nots.sh
+      - name: Data file
+        run: bash ./workflow_move.sh
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
