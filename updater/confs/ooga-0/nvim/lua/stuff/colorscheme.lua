@@ -1,1 +1,1 @@
-return 'sainnhe/everforest'
+return 'morhetz/gruvbox'
