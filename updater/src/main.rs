@@ -114,6 +114,15 @@ fn get_conf_nest_level() -> usize {
         .split("/")
         .count()
 }
+async fn ls(dir: String) -> Result<String, Box<dyn std::error::Error>> {
+    let mut cmd = tokio::process::Command::new("bash");
+    cmd.arg("-c").arg(format!("ls {} -a", dir));
+    let output = cmd.output().await?;
+    if output.status.code().unwrap() != 0 {
+        return Err("Error copying dir".into());
+    }
+    return Ok(String::from_utf8(output.stdout)?);
+}
 async fn get_repo_colschemes(repo: Repo) -> Result<Vec<String>, Box<dyn std::error::Error>> {
     //create a process that runs "gh api repos/repo.repo_url/contents/colors" and returns the output
     let mut cmd = tokio::process::Command::new("gh");
@@ -345,6 +354,8 @@ async fn generate_colorscheme(
         format!("{}/code_sample.vim", "..".repeat(get_conf_nest_level())),
     ]);
     // println!("{}", args.join(" "));
+    let dir_struct = ls(dir.clone()).await?;
+    println!("{}", dir_struct);
 
     let home_dir = std::env::var("HOME")?;
     let mut run_cmd =
