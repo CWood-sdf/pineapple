@@ -109,11 +109,11 @@ struct PathData {
 fn get_dir_name(home: String, dir_base: String) -> String {
     format!("{}/confs/{}/nvim", home, dir_base)
 }
-fn get_conf_nest_level() -> usize {
-    get_dir_name(".".to_string(), "sdf".to_string())
-        .split("/")
-        .count()
-}
+// fn get_conf_nest_level() -> usize {
+//     get_dir_name(".".to_string(), "sdf".to_string())
+//         .split("/")
+//         .count()
+// }
 async fn ls(dir: String) -> Result<String, Box<dyn std::error::Error>> {
     let mut cmd = tokio::process::Command::new("bash");
     cmd.arg("-c").arg(format!("ls {} -a", dir));
