@@ -1,3 +1,4 @@
+vim.cmd("set noswapfile")
 function IsHexColorLight(color)
     local rawColor = vim.fn.trim(color, "#") or ""
 
@@ -20,22 +21,40 @@ function IsHexColorDark(color)
     end
 end
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
+--START
+
+-- DO NOT change the paths and don't remove the colorscheme
+local root = vim.fn.fnamemodify("./.repro", ":p")
+
+-- set stdpaths to use .reprocalculator
+for _, name in ipairs({ "config", "data", "state", "cache" }) do
+    vim.env[("XDG_%s_HOME"):format(name:upper())] = root .. "/" .. name
 end
-vim.opt.rtp:prepend(lazypath)
+
+package.path = vim.fn.fnamemodify(".", ":p") .. "/?.lua;" .. package.path
+-- bootstrap lazy
+local lazypath = root .. "/plugins/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", lazypath, })
+end
+vim.opt.runtimepath:prepend(lazypath)
+--
+-- -- install plugins
+-- local plugins = {
+--     "folke/tokyonight.nvim",
+--     -- add any other plugins here
+-- }
+-- require("lazy").setup(plugins, {
+--     root = root .. "/plugins",
+-- })
+--
+-- vim.cmd.colorscheme("tokyonight")
+-- add anything else here
+--END
 
 require("lazy").setup({
     {
-        require("stuff.colorscheme"),
+        dofile(vim.fn.fnamemodify("./lua/stuff/colorscheme.lua", ":p")),
         lazy = false,
     },
 
@@ -345,7 +364,7 @@ function ConvertToHex(colorcode)
 
     local num = vim.fn.str2nr(colorcode)
     if num == 0 then
-        print(colorcode)
+        -- print(colorcode)
     end
     return colormappings[vim.fn.str2nr(colorcode) + 1]
 end
@@ -536,7 +555,6 @@ function WriteColorValues(filename, colorscheme, background)
     if (iscolorschemedark and background == "light") or (not iscolorschemedark and background == "dark") then
         data = GetColorValues()
     else
-        print("background not match")
     end
 
     local encodeddata = vim.fn.json_encode(data)

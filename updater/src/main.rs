@@ -1,5 +1,8 @@
-/// TODO: Need to add process timeout for generate
-use std::{collections::HashMap, io::Write};
+use std::{
+    collections::HashMap,
+    io::Write,
+    sync::{Arc, Mutex},
+};
 
 use clap::{Parser, Subcommand};
 use serde::{Deserialize, Serialize};
@@ -7,10 +10,34 @@ use tokio::sync::oneshot::channel;
 
 #[derive(Serialize, Hash, Eq, PartialEq, Debug, Clone, Deserialize)]
 struct Repo {
-    #[serde(rename = "stars")]
     stars: usize,
     repo_url: String,
     description: Option<String>,
+}
+#[derive(Serialize, Hash, Eq, PartialEq, Debug, Clone, Deserialize)]
+struct GhRepo {
+    #[serde(rename = "stargazers_count")]
+    stars: usize,
+    #[serde(rename = "full_name")]
+    repo_url: String,
+    description: Option<String>,
+}
+
+impl Into<Repo> for GhRepo {
+    fn into(self) -> Repo {
+        Repo {
+            stars: self.stars,
+            repo_url: self.repo_url,
+            description: self.description,
+        }
+    }
+}
+
+#[derive(Serialize, Hash, Eq, PartialEq, Debug, Clone, Deserialize)]
+struct GhRepoContainer {
+    items: Vec<GhRepo>,
+    total_count: usize,
+    incomplete_results: bool,
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
@@ -19,22 +46,22 @@ struct Data {
     dark: Option<HashMap<String, String>>,
 }
 impl Data {
-    fn fails(&self) -> bool {
-        if self.light.is_none() && self.dark.is_none() {
-            return true;
-        }
-        if let Some(light) = self.light.as_ref() {
-            if light.iter().any(|(_, v)| v == "#000000") {
-                return true;
-            }
-        }
-        if let Some(dark) = self.dark.as_ref() {
-            if dark.iter().any(|(_, v)| v == "#000000") {
-                return true;
-            }
-        }
-        false
-    }
+    // fn fails(&self) -> bool {
+    //     if self.light.is_none() && self.dark.is_none() {
+    //         return true;
+    //     }
+    //     if let Some(light) = self.light.as_ref() {
+    //         if light.iter().any(|(_, v)| v == "#000000") {
+    //             return true;
+    //         }
+    //     }
+    //     if let Some(dark) = self.dark.as_ref() {
+    //         if dark.iter().any(|(_, v)| v == "#000000") {
+    //             return true;
+    //         }
+    //     }
+    //     false
+    // }
 }
 #[derive(Clone, Debug, Deserialize, Serialize)]
 struct ColorSchemes {
@@ -78,6 +105,14 @@ struct PathData {
     #[serde(rename = "type")]
     type_: String,
     download_url: Option<String>,
+}
+fn get_dir_name(home: String, dir_base: String) -> String {
+    format!("{}/confs/{}/nvim", home, dir_base)
+}
+fn get_conf_nest_level() -> usize {
+    get_dir_name(".".to_string(), "sdf".to_string())
+        .split("/")
+        .count()
 }
 async fn get_repo_colschemes(repo: Repo) -> Result<Vec<String>, Box<dyn std::error::Error>> {
     //create a process that runs "gh api repos/repo.repo_url/contents/colors" and returns the output
@@ -155,9 +190,15 @@ async fn clean_import() -> Result<(), Box<dyn std::error::Error>> {
             println!("{:?}", d);
             let file = std::fs::File::open(d.path()).unwrap();
             let contents = std::io::BufReader::new(file);
-            let repo: Vec<Repo> = serde_json::from_reader(contents).unwrap();
-            println!("{:?}", repo.len());
-            repo
+            let repo: Vec<GhRepoContainer> = serde_json::from_reader(contents).unwrap();
+            let items = repo
+                .iter()
+                .map(|d| d.items.clone())
+                .take(1)
+                .flatten()
+                .collect::<Vec<GhRepo>>();
+            println!("{:?}", items.len());
+            items
         })
         .flatten()
         .collect::<Vec<_>>();
@@ -181,14 +222,15 @@ async fn clean_import() -> Result<(), Box<dyn std::error::Error>> {
         .collect::<Vec<_>>();
     let mut all_repos: HashMap<String, Repo> = HashMap::new();
     for repo in gh_repos {
-        all_repos.insert(repo.repo_url.clone(), repo);
+        all_repos.insert(repo.repo_url.clone(), repo.into());
     }
     for repo in nv_craft_repos {
         all_repos.insert(repo.repo_url.clone(), repo);
     }
     let capacity = all_repos.capacity();
     println!("Capacity: {}", capacity);
-    let all_repos = all_repos.into_iter().map(|(_, v)| v).collect::<Vec<Repo>>();
+    let mut all_repos = all_repos.into_iter().map(|(_, v)| v).collect::<Vec<Repo>>();
+    all_repos.sort_by(|a, b| b.stars.partial_cmp(&a.stars).unwrap());
     let repos_str = serde_json::to_string_pretty(&all_repos).unwrap();
 
     std::fs::write("repos.json", repos_str)?;
@@ -267,6 +309,7 @@ async fn make_color_data() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 async fn generate_colorscheme(
+    dir_base: String,
     // repo_name: String,
     // config: String,
     colorscheme: String,
@@ -274,32 +317,39 @@ async fn generate_colorscheme(
 ) -> Result<bool, Box<dyn std::error::Error>> {
     let current_dir = std::env::current_dir()?;
     let background = if dark { "dark" } else { "light" };
-    let write_color_values = format!("autocmd ColorScheme * :lua vim.fn.timer_start(100, function() WriteColorValues(\"{}/gencolors.json\", \"{}\", \"{}\");  vim.cmd('qa') end)", current_dir.to_str().unwrap(), colorscheme, background);
+    let write_color_values = format!("autocmd ColorScheme * :lua vim.fn.timer_start(100, function() WriteColorValues(\"{}/gencolors.json\", \"{}\", \"{}\");  vim.cmd('qa') end)", get_dir_name(current_dir.to_str().unwrap().to_string(), dir_base.clone()), colorscheme, background);
 
     let set_background = format!("set background={}", background);
     let buf_enter_autocmd = format!(
-        "autocmd UIEnter * :lua vim.fn.timer_start(50, function() vim.cmd('colorscheme {}') end)",
+        "autocmd VimEnter * :lua vim.fn.timer_start(50, function() vim.cmd('colorscheme {}') end)",
         colorscheme
     );
     let auto_quit_autocmd =
-        "autocmd UIEnter * :lua vim.fn.timer_start(500, function() vim.cmd('q') end)".to_string();
+        "autocmd VimEnter * :lua vim.fn.timer_start(500, function() vim.cmd('q') end)".to_string();
 
     let mut args: Vec<String> = vec!["-c".to_string(), write_color_values];
+    let current_dir = std::env::current_dir()?;
+    let current_dir = current_dir.to_str().unwrap_or("osdf");
+    let dir = get_dir_name(current_dir.to_string(), dir_base.clone());
 
     args.extend(vec![
-        // "--headless".to_string(),
         "-c".to_string(),
         set_background,
         "-c".to_string(),
         buf_enter_autocmd,
         "-c".to_string(),
         auto_quit_autocmd,
-        "./code_sample.vim".to_string(),
+        "--headless".to_string(),
+        "-u".to_string(),
+        "init.lua".to_string(),
+        format!("{}/code_sample.vim", "..".repeat(get_conf_nest_level())),
     ]);
+    // println!("{}", args.join(" "));
 
+    let home_dir = std::env::var("HOME")?;
     let mut run_cmd =
-        tokio::process::Command::new("/home/codespace/.local/share/bob/nvim-bin/nvim");
-    run_cmd.args(args);
+        tokio::process::Command::new(format!("{}/.local/share/bob/nvim-bin/nvim", home_dir));
+    run_cmd.args(args).current_dir(dir);
     let mut spawn = run_cmd.spawn()?;
 
     let (send, recv) = channel::<()>();
@@ -335,194 +385,56 @@ async fn generate_colorscheme(
     Ok(was_killed)
 }
 
-async fn generate_no_ts(force: bool, filename: String) -> Result<(), Box<dyn std::error::Error>> {
+async fn generate(
+    force: bool,
+    filename: String,
+    dir_base: String,
+    file_lock: Arc<Mutex<bool>>,
+    repo_locks: Arc<Mutex<Vec<bool>>>,
+    is_ts: bool,
+) -> Result<(), Box<dyn std::error::Error>> {
     println!("Using file {}", filename);
-    let file = std::fs::File::open(filename.clone())?;
-    let mut items: Vec<Item> = serde_json::from_reader(file)?;
-    println!("Items: {}", items.len());
-    let mut j = 0;
-    let len = items.len();
-    while j < items.len() {
-        let item = &mut items[j];
-        // if item.last_generated.is_some() {
-        //     j += 1;
-        //     continue;
-        // }
-        if !item.vim_color_schemes.iter().any(|s| s.data.fails()) {
-            j += 1;
-            continue;
-        }
-        if item.last_no_ts_gen.is_some() && !force {
-            j += 1;
-            continue;
-        }
-        item.last_no_ts_gen = Some(
-            std::time::SystemTime::now()
-                .duration_since(std::time::UNIX_EPOCH)
-                .unwrap()
-                .as_secs(),
-        );
-        let split_url = item.github_url.split("/").collect::<Vec<_>>();
-        let repo_name = split_url[split_url.len() - 2..=split_url.len() - 1]
-            .join("/")
-            .to_string();
-        println!("{} / {}", j, len);
-        println!("Installing {}", repo_name);
-        let home_dir = std::env::var("HOME")?;
-        //println!("Writing to lua file");
-        std::fs::write(
-            format!("{}/.config/nvim/lua/stuff/colorscheme.lua", home_dir),
-            format!("return '{}'", repo_name),
-        )?;
-        //println!("Starting prog");
-        let mut install_cmd =
-            tokio::process::Command::new("/home/codespace/.local/share/bob/nvim-bin/nvim");
-        install_cmd
-            .arg("--headless")
-            // .arg("--noplugin")
-            // .arg("--clean")
-            .arg("-c")
-            .arg(
-                "lua vim.fn.timer_start(100, function() vim.cmd('Lazy! sync'); vim.cmd('qa!') end)",
-            );
-        let mut spawn = install_cmd.spawn()?;
-
-        let (send, recv) = channel::<()>();
-        let was_killed;
-        tokio::spawn(async move {
-            tokio::time::sleep(std::time::Duration::from_secs(40)).await;
-            let _ = send.send(());
-        });
-        tokio::select! {
-            _ = spawn.wait() => {
-                was_killed = false;
-            }
-            _ = recv => {
-                spawn.kill().await?;
-                was_killed = true;
-
-            }
-        }
-        if was_killed {
-            println!("Process was killed");
-            j += 1;
-            continue;
-        }
-
-        // install_cmd.stdout(Stdio::piped()).stdin(Stdio::piped());
-
-        // println!("{}", String::from_utf8(out.stdout)?);
-        let mut new_colorschemes = Vec::new();
-        let mut i = 0;
-        while i < item.vim_color_schemes.len() {
-            let mut colorscheme = item.vim_color_schemes[i].clone();
-            if colorscheme.data.light.is_some()
-                && colorscheme
-                    .data
-                    .light
-                    .clone()
-                    .unwrap()
-                    .iter()
-                    .any(|(_, hex)| hex == "#000000")
-            {
-                let was_killed = generate_colorscheme(
-                    // repo_name.clone(),
-                    // "./nvim_worker_no_ts/init.lua".to_string(),
-                    colorscheme.name.clone(),
-                    false,
-                )
-                .await?;
-                if !was_killed {
-                    let data = std::fs::read_to_string("gencolors.json")?;
-                    match serde_json::from_str::<HashMap<String, String>>(&data) {
-                        Ok(parsed) if parsed.len() > 0 => {
-                            for (k, v) in parsed {
-                                if v != "#000000" {
-                                    colorscheme.data.light.as_mut().unwrap().insert(k, v);
-                                }
-                            }
-                        }
-                        Err(_) => {
-                            // println!("Data parse failed on data {}", data);
-                            // println!("{:?}", e);
-                        }
-                        _ => {}
-                    };
-                }
-            }
-
-            if colorscheme.data.dark.is_some()
-                && colorscheme
-                    .data
-                    .dark
-                    .clone()
-                    .unwrap()
-                    .iter()
-                    .any(|(_, hex)| hex == "#000000")
-            {
-                let was_killed = generate_colorscheme(
-                    // repo_name.clone(),
-                    // "./nvim_worker_no_ts/init.lua".to_string(),
-                    colorscheme.name.clone(),
-                    true,
-                )
-                .await?;
-                if !was_killed {
-                    let data = std::fs::read_to_string("gencolors.json")?;
-                    match serde_json::from_str::<HashMap<String, String>>(&data) {
-                        Ok(parsed) if parsed.len() > 0 => {
-                            for (k, v) in parsed {
-                                if v != "#000000" {
-                                    colorscheme.data.dark.as_mut().unwrap().insert(k, v);
-                                }
-                            }
-                        }
-                        Err(_) => {
-                            // println!("Data parse failed on data {}", data);
-                            // println!("{:?}", e);
-                        }
-                        _ => {}
-                    };
-                }
-            }
-
-            let _ = std::fs::remove_file("gencolors.json");
-            let _ = std::fs::write("gencolors.json", "{}");
-            i += 1;
-            new_colorschemes.push(colorscheme);
-        }
-        item.vim_color_schemes = new_colorschemes;
-        item.last_generated = Some(
-            std::time::SystemTime::now()
-                .duration_since(std::time::UNIX_EPOCH)
-                .unwrap()
-                .as_secs(),
-        );
-        j += 1;
-        std::fs::write(
-            filename.clone(),
-            serde_json::to_string_pretty(&items).unwrap(),
-        )?;
-        // break;
+    let mut items: Vec<Item>;
+    {
+        let file = std::fs::File::open(filename.clone())?;
+        items = serde_json::from_reader(file)?;
     }
-
-    // std::fs::write("colors.json", serde_json::to_string_pretty(&items).unwrap())?;
-
-    Ok(())
-}
-async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::error::Error>> {
-    println!("Using file {}", filename);
-    let file = std::fs::File::open(filename.clone())?;
-    let mut items: Vec<Item> = serde_json::from_reader(file)?;
     println!("Items: {}", items.len());
     let mut j = 0;
     while j < items.len() {
-        let len = items.len();
-        let item = &mut items[j];
-        if item.last_generated.is_some() {
-            j += 1;
-            continue;
+        {
+            // println!("Acquiring arr lock");
+            let mut arr2 = repo_locks.lock().unwrap();
+            let arr: &mut Vec<bool> = arr2.as_mut();
+            let mut arr = arr.clone();
+            // let arr: &mut Vec<bool> = arr2.as_mut();
+            // println!("Len: {}", arr.len());
+            while arr.len() <= j {
+                arr.push(false);
+            }
+            *arr2 = arr;
+            if arr2[j] {
+                j += 1;
+                // println!("Freeing arr lock");
+                continue;
+            }
+            arr2[j] = true;
+            // println!("Freeing arr lock");
         }
+        let len = items.len();
+        let mut item = items[j].clone();
+        if is_ts {
+            if item.last_generated.is_some() {
+                j += 1;
+                continue;
+            }
+        } else {
+            if item.last_no_ts_gen.is_some() {
+                j += 1;
+                continue;
+            }
+        }
+
         //stop for 5s
         let split_url = item.github_url.split("/").collect::<Vec<_>>();
         let repo_name = split_url[split_url.len() - 2..=split_url.len() - 1]
@@ -530,24 +442,35 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
             .to_string();
         println!("{} / {}", j, len);
         println!("Installing {}", repo_name);
+        let current_dir = std::env::current_dir()?;
+        let current_dir = current_dir.to_str().unwrap_or("osdf");
         let home_dir = std::env::var("HOME")?;
-        std::fs::write(
-            format!("{}/.config/nvim/lua/stuff/colorscheme.lua", home_dir),
-            format!("return '{}'", repo_name),
-        )?;
+        let p = format!(
+            "{}/lua/stuff/colorscheme.lua",
+            get_dir_name(current_dir.to_string(), dir_base.clone()),
+        );
+        println!("{}", p);
+        std::fs::write(p, format!("return '{}'", repo_name))?;
+        // println!("Starting prog");
+        let start_dir = get_dir_name(current_dir.to_string(), dir_base.clone());
+        println!("{}", start_dir);
         let mut install_cmd =
-            tokio::process::Command::new("/home/codespace/.local/share/bob/nvim-bin/nvim");
+            tokio::process::Command::new(format!("{}/.local/share/bob/nvim-bin/nvim", home_dir));
         install_cmd
             // .arg("--clean")
-            // .arg("-u")
-            // .arg("./nvim_worker/init.lua")
+            .arg("-u")
+            .arg(format!(
+                    "init.lua"
+                // current_dir, dir_base
+            ))
             .arg("--headless")
             // .arg(repo_name.clone())
             // .arg("--noplugin")
             .arg("-c")
             .arg(
                 "lua vim.fn.timer_start(100, function() vim.cmd('Lazy! sync'); vim.cmd('qa!') end)",
-            );
+            )
+            .current_dir(start_dir);
 
         // install_cmd.stdout(Stdio::piped()).stdin(Stdio::piped());
         let mut spawn = install_cmd.spawn()?;
@@ -578,9 +501,6 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
             }
         }
 
-        // let out = spawn.wait_with_output().await?;
-        // let was_killed = out.status.code().unwrap() == 137;
-
         if was_killed {
             println!("Process was killed");
             j += 1;
@@ -591,7 +511,8 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
         let mut i = 0;
         while i < item.vim_color_schemes.len() {
             let mut colorscheme = item.vim_color_schemes[i].clone();
-            if colorscheme.backgrounds.is_some() && !force {
+            // println!("{}", colorscheme.name);
+            if colorscheme.backgrounds.is_some() && !force && is_ts {
                 new_colorschemes.push(colorscheme);
                 i += 1;
                 continue;
@@ -599,12 +520,17 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
             let was_killed = generate_colorscheme(
                 // repo_name.clone(),
                 // "./nvim_worker/init.lua".to_string(),
+                dir_base.clone(),
                 colorscheme.name.clone(),
                 false,
             )
             .await?;
             if !was_killed {
-                let data = match std::fs::read_to_string("gencolors.json") {
+                let read_spot = format!(
+                    "{}/gencolors.json",
+                    get_dir_name(current_dir.to_string(), dir_base.clone())
+                );
+                let data = match std::fs::read_to_string(read_spot) {
                     Ok(d) => d,
                     Err(_) => "".to_string(),
                 };
@@ -622,6 +548,7 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
             }
 
             let was_killed = generate_colorscheme(
+                dir_base.to_string(),
                 // repo_name.clone(),
                 // "./nvim_worker/init.lua".to_string(),
                 colorscheme.name.clone(),
@@ -629,7 +556,11 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
             )
             .await?;
             if !was_killed {
-                let data = match std::fs::read_to_string("gencolors.json") {
+                let read_spot = format!(
+                    "{}/gencolors.json",
+                    get_dir_name(current_dir.to_string(), dir_base.clone())
+                );
+                let data = match std::fs::read_to_string(read_spot) {
                     Ok(d) => d,
                     Err(_) => "".to_string(),
                 };
@@ -660,35 +591,68 @@ async fn generate_ts(force: bool, filename: String) -> Result<(), Box<dyn std::e
                 };
             }
 
-            let _ = std::fs::remove_file("gencolors.json");
-            let _ = std::fs::write("gencolors.json", "{}");
+            // let _ = std::fs::remove_file("gencolors.json");
+            // let _ = std::fs::write("gencolors.json", "{}");
             i += 1;
             new_colorschemes.push(colorscheme);
         }
-        item.vim_color_schemes = new_colorschemes;
-        item.last_generated = Some(
-            std::time::SystemTime::now()
-                .duration_since(std::time::UNIX_EPOCH)
-                .unwrap()
-                .as_secs(),
-        );
-        j += 1;
-        match std::fs::write(
-            filename.clone(),
-            serde_json::to_string_pretty(&items).unwrap(),
-        ) {
-            Ok(_) => {}
-            Err(e) => {
-                println!("Error writing to file {}: {:?}", filename.clone(), e);
-                return Err(e.into());
+        {
+            let _lock = file_lock.lock();
+            let file = std::fs::File::open(filename.clone())?;
+            items = serde_json::from_reader(file)?;
+            item.vim_color_schemes = new_colorschemes;
+            if is_ts {
+                item.last_generated = Some(
+                    std::time::SystemTime::now()
+                        .duration_since(std::time::UNIX_EPOCH)
+                        .unwrap()
+                        .as_secs(),
+                );
+            } else {
+                item.last_no_ts_gen = Some(
+                    std::time::SystemTime::now()
+                        .duration_since(std::time::UNIX_EPOCH)
+                        .unwrap()
+                        .as_secs(),
+                );
             }
-        };
+            items[j] = item;
+            j += 1;
+            match std::fs::write(
+                filename.clone(),
+                serde_json::to_string_pretty(&items).unwrap(),
+            ) {
+                Ok(_) => {}
+                Err(e) => {
+                    println!("Error writing to file {}: {:?}", filename.clone(), e);
+                    return Err(e.into());
+                }
+            };
+        }
         // break;
     }
 
     // std::fs::write("colors.json", serde_json::to_string_pretty(&items).unwrap())?;
 
     Ok(())
+}
+async fn generate_no_ts(
+    force: bool,
+    filename: String,
+    dir_base: String,
+    file_lock: Arc<Mutex<bool>>,
+    repo_locks: Arc<Mutex<Vec<bool>>>,
+) -> Result<(), Box<dyn std::error::Error>> {
+    return generate(force, filename, dir_base, file_lock, repo_locks, false).await;
+}
+async fn generate_ts(
+    force: bool,
+    filename: String,
+    dir_base: String,
+    file_lock: Arc<Mutex<bool>>,
+    repo_locks: Arc<Mutex<Vec<bool>>>,
+) -> Result<(), Box<dyn std::error::Error>> {
+    return generate(force, filename, dir_base, file_lock, repo_locks, true).await;
 }
 
 async fn move_to_lua(filename: String) -> Result<(), Box<dyn std::error::Error>> {
@@ -779,7 +743,7 @@ struct Cli {
     file: Option<String>,
 
     /// Force the command to run
-    #[arg(short, long)]
+    #[arg(long)]
     force: bool,
 }
 
@@ -825,18 +789,27 @@ async fn dir_exists(dir: String) -> Result<bool, Box<dyn std::error::Error>> {
     }
     return Ok(true);
 }
-async fn move_dir(from: String, to: String) -> Result<(), Box<dyn std::error::Error>> {
-    let mut cmd = tokio::process::Command::new("bash");
-    cmd.arg("-c").arg(format!("mv {} {}", from, to));
-    let output = cmd.output().await?;
-    if output.status.code().unwrap() != 0 {
-        return Err("Error moving dir".into());
-    }
-    return Ok(());
-}
+// async fn move_dir(from: String, to: String) -> Result<(), Box<dyn std::error::Error>> {
+//     let mut cmd = tokio::process::Command::new("bash");
+//     cmd.arg("-c").arg(format!("mv {} {}", from, to));
+//     let output = cmd.output().await?;
+//     if output.status.code().unwrap() != 0 {
+//         return Err("Error moving dir".into());
+//     }
+//     return Ok(());
+// }
 async fn cp_dir(from: String, to: String) -> Result<(), Box<dyn std::error::Error>> {
     let mut cmd = tokio::process::Command::new("bash");
-    cmd.arg("-c").arg(format!("cp -r {} {}", from, to));
+    let dirs = to
+        .split("/")
+        .map(|v| v.to_string())
+        .collect::<Vec<String>>();
+    let dirs = dirs.iter().take(dirs.len() - 1).map(|v| v.clone());
+    let str = dirs
+        .reduce(|v, n| format!("{}/{}", v, n))
+        .unwrap_or("".to_string());
+    cmd.arg("-c")
+        .arg(format!("mkdir {} -p && cp -r {} {}", str, from, to));
     let output = cmd.output().await?;
     if output.status.code().unwrap() != 0 {
         return Err("Error copying dir".into());
@@ -845,8 +818,12 @@ async fn cp_dir(from: String, to: String) -> Result<(), Box<dyn std::error::Erro
 }
 async fn rm_dir(dir: String) -> Result<(), Box<dyn std::error::Error>> {
     let mut cmd = tokio::process::Command::new("bash");
+    println!("{}", dir);
     cmd.arg("-c").arg(format!("rm -rf {}", dir));
-    let output = cmd.output().await?;
+    let output = match cmd.output().await {
+        Ok(v) => v,
+        Err(e) => return Err(format!("Error removing dir: {}", e).into()),
+    };
     if output.status.code().unwrap() != 0 {
         return Err("Error removing dir".into());
     }
@@ -888,10 +865,14 @@ async fn do_yeet() -> Result<(), Box<dyn std::error::Error>> {
     println!("Yeet");
     Ok(())
 }
+
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let cli = Cli::parse();
     println!("{}", cli.force);
+    let file_lock: Arc<Mutex<bool>> = Arc::new(true.into());
+    let repo_locks = Arc::new(Mutex::new(Vec::new()));
+    let thread_count = 10;
 
     // You can check for the existence of subcommands, and if found use their
     // matches just as you would the top level cmd
@@ -902,62 +883,107 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
         Some(Commands::GenerateNoTs { .. }) => {
             println!("Generating...");
+            let mut id = 0;
+            let mut threads = Vec::new();
+            while id < thread_count {
+                let file_lock = file_lock.clone();
+                let repo_locks = repo_locks.clone();
+                let force = cli.force.clone();
+                let file = cli.file.clone().unwrap_or("colors.json".to_string());
+                threads.push(std::thread::spawn(move || {
+                    let rt = tokio::runtime::Runtime::new();
+                    let rt = match rt {
+                        Ok(v) => v,
+                        Err(_) => return,
+                    };
+                    rt.block_on(async {
+                        let dir_base = format!("ooga-{}", id);
+                        let dir_name = get_dir_name(".".to_string(), dir_base.clone());
 
-            if dir_exists("~/.config/nvim".to_string()).await? {
-                println!("Nvim config found, moving to ~/.config/__pineapple_config_copy__");
-                move_dir(
-                    "~/.config/nvim".to_string(),
-                    "~/.config/__pineapple_config_copy__".to_string(),
-                )
-                .await?;
+                        if match dir_exists(dir_name.clone()).await {
+                            Ok(v) => v,
+                            Err(_) => return,
+                        } {
+                            println!("Nvim config found, deleting");
+                            match rm_dir(dir_name.clone()).await {
+                                Ok(_) => {}
+                                Err(_) => return,
+                            }
+                        }
+                        match cp_dir("./nvim_worker_no_ts".to_string(), dir_name.clone()).await {
+                            Ok(_) => {}
+                            Err(_) => return,
+                        }
+                        let res =
+                            generate_no_ts(force, file, dir_base.clone(), file_lock, repo_locks)
+                                .await;
+                        // return Ok(());
+                        println!("Deleting config");
+                        // rm_dir(format!("./{}", dir_base)).await?;
+                        println!("sdf");
+                        match res {
+                            Err(e) => println!("{:?}", e),
+                            _ => println!("Generate exited successfully"),
+                        }
+                        // return Ok(());
+                    });
+                }));
+                id += 1;
             }
-            cp_dir(
-                "./nvim_worker_no_ts".to_string(),
-                "~/.config/nvim".to_string(),
-            )
-            .await?;
-            let res =
-                generate_no_ts(cli.force, cli.file.unwrap_or("colors.json".to_string())).await;
-            match res {
-                Ok(_) => {}
-                Err(ref e) => println!("Err: {}", e),
-            };
-            println!("Deleting ~/.config/nvim");
-            rm_dir("~/.config/nvim".to_string()).await?;
-            println!("Moving ~/.config/__pineapple_config_copy__ to ~/.config/nvim");
-            if dir_exists("~/.config/__pineapple_config_copy__".to_string()).await? {
-                move_dir(
-                    "~/.config/__pineapple_config_copy__".to_string(),
-                    "~/.config/nvim".to_string(),
-                )
-                .await?;
+            while !threads.iter().all(|t| t.is_finished()) {
+                std::thread::sleep(std::time::Duration::from_millis(100));
             }
-            res?;
         }
         Some(Commands::GenerateTs { .. }) => {
             println!("Generating...");
-
-            if dir_exists("~/.config/nvim".to_string()).await? {
-                println!("Nvim config found, moving to ~/.config/__pineapple_config_copy__");
-                move_dir(
-                    "~/.config/nvim".to_string(),
-                    "~/.config/__pineapple_config_copy__".to_string(),
-                )
-                .await?;
+            let mut id = 0;
+            let mut threads = Vec::new();
+            while id < thread_count {
+                let file_lock = file_lock.clone();
+                let repo_locks = repo_locks.clone();
+                let force = cli.force.clone();
+                let file = cli.file.clone().unwrap_or("colors.json".to_string());
+                threads.push(std::thread::spawn(move || {
+                    let rt = tokio::runtime::Runtime::new();
+                    let rt = match rt {
+                        Ok(v) => v,
+                        Err(_) => return,
+                    };
+                    rt.block_on(async {
+                        let dir_base = format!("ooga-{}", id);
+                        let dir_name = get_dir_name(".".to_string(), dir_base.clone());
+                        if match dir_exists(dir_name.clone()).await {
+                            Ok(v) => v,
+                            Err(_) => return,
+                        } {
+                            println!("Nvim config found, deleting");
+                            match rm_dir(dir_name.clone()).await {
+                                Ok(_) => {}
+                                Err(_) => return,
+                            }
+                        }
+                        match cp_dir("./nvim_worker".to_string(), dir_name.clone()).await {
+                            Ok(_) => {}
+                            Err(_) => return,
+                        }
+                        let res =
+                            generate_ts(force, file, dir_base.clone(), file_lock, repo_locks).await;
+                        // return Ok(());
+                        println!("Deleting config");
+                        // rm_dir(format!("./{}", dir_base)).await?;
+                        println!("sdf");
+                        match res {
+                            Err(e) => println!("{:?}", e),
+                            _ => println!("Generate exited successfully"),
+                        }
+                        // return Ok(());
+                    });
+                }));
+                id += 1;
             }
-            cp_dir("./nvim_worker".to_string(), "~/.config/nvim".to_string()).await?;
-            let res = generate_ts(cli.force, cli.file.unwrap_or("colors.json".to_string())).await;
-            println!("Deleting ~/.config/nvim");
-            rm_dir("~/.config/nvim".to_string()).await?;
-            println!("Moving ~/.config/__pineapple_config_copy__ to ~/.config/nvim");
-            if dir_exists("~/.config/__pineapple_config_copy__".to_string()).await? {
-                move_dir(
-                    "~/.config/__pineapple_config_copy__".to_string(),
-                    "~/.config/nvim".to_string(),
-                )
-                .await?;
+            while !threads.iter().all(|t| t.is_finished()) {
+                std::thread::sleep(std::time::Duration::from_millis(100));
             }
-            res?;
         }
         Some(Commands::MakeColorData { .. }) => {
             println!("Making color data...");
@@ -976,9 +1002,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             //     Err(_) => {}
             // };
         }
-        None => {
-            println!("No subcommand was used");
-        }
+        None => {}
     }
 
     // Continued program logic goes here...
