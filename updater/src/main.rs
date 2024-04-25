@@ -327,9 +327,9 @@ async fn generate_colorscheme(
 ) -> Result<bool, Box<dyn std::error::Error>> {
     let current_dir = std::env::current_dir()?;
     let background = if dark { "dark" } else { "light" };
-    let write_color_values = format!("\"autocmd ColorScheme * :lua vim.fn.timer_start(100, function() WriteColorValues('{}/gencolors.json', '{}', '{}');  vim.cmd('qa') end)\"", get_dir_name(current_dir.to_str().unwrap().to_string(), dir_base.clone()), colorscheme, background);
+    let write_color_values = format!("\"autocmd ColorScheme * :lua vim.fn.timer_start(100, function() WriteColorValues('{}/gencolors.json', '{}', '{}');  vim.cmd('qa!') end)\"", get_dir_name(current_dir.to_str().unwrap().to_string(), dir_base.clone()), colorscheme, background);
 
-    let set_background = format!("set background={}", background);
+    let set_background = format!("\"set background={}\"", background);
     let buf_enter_autocmd = format!(
         "\"autocmd VimEnter * :lua vim.fn.timer_start(50, function() vim.cmd('colorscheme {}') end)\"",
         colorscheme
@@ -338,12 +338,13 @@ async fn generate_colorscheme(
         "\"autocmd VimEnter * :lua vim.fn.timer_start(500, function() vim.cmd('q') end)\""
             .to_string();
 
-    let mut args: Vec<String> = vec!["nvim".to_string(), "-c".to_string(), write_color_values];
     let current_dir = std::env::current_dir()?;
     let current_dir = current_dir.to_str().unwrap_or("osdf");
     let dir = get_dir_name(current_dir.to_string(), dir_base.clone());
-
-    args.extend(vec![
+    let args: Vec<String> = vec![
+        "nvim".to_string(),
+        "-c".to_string(),
+        write_color_values,
         "-c".to_string(),
         set_background,
         "-c".to_string(),
@@ -354,8 +355,7 @@ async fn generate_colorscheme(
         "-u".to_string(),
         "init.lua".to_string(),
         format!("{}/code_sample.vim", current_dir),
-    ]);
-    // println!("{}", args.join(" "));
+    ];
     // let dir_struct = ls(dir.clone()).await?;
     // println!("{}", dir_struct);
 
@@ -363,15 +363,10 @@ async fn generate_colorscheme(
     let mut run_cmd = tokio::process::Command::new(format!("bash"));
     run_cmd
         .arg("-c")
-        .arg(
-            args.iter()
-                .map(|v| v.clone())
-                .reduce(|v1, v2| format!("{} {}", v1, v2))
-                .unwrap(),
-        )
-        .current_dir(dir)
-        .stdout(Stdio::null())
-        .stderr(Stdio::null());
+        .arg(args.join(" "))
+        // .stdout(Stdio::null())
+        // .stderr(Stdio::null())
+        .current_dir(dir);
     let mut spawn = run_cmd.spawn()?;
 
     let (send, recv) = channel::<()>();
@@ -415,13 +410,12 @@ async fn generate(
     repo_locks: Arc<Mutex<Vec<bool>>>,
     is_ts: bool,
 ) -> Result<(), Box<dyn std::error::Error>> {
-    println!("Using file {}", filename);
     let mut items: Vec<Item>;
     {
         let file = std::fs::File::open(filename.clone())?;
         items = serde_json::from_reader(file)?;
     }
-    println!("Items: {}", items.len());
+    // println!("Items: {}", items.len());
     let mut j = 0;
     while j < items.len() {
         {
@@ -481,7 +475,9 @@ async fn generate(
             // repo_name.clone(),
             // "--noplugin",
             "-c",
-            "\"lua vim.fn.timer_start(100, function() vim.cmd('Lazy! sync'); vim.cmd('qa!') end)\"",
+            "\"lua vim.fn.timer_start(5000, function() print('ooga'); vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, true, true), 'n', true) end, { ['repeat'] = -1 })\"",
+            "-c",
+            "\"lua vim.fn.timer_start(100, function() vim.cmd('Lazy sync'); vim.cmd('qa!') end)\"",
         ];
         let mut install_cmd = tokio::process::Command::new("bash");
         install_cmd
@@ -526,16 +522,15 @@ async fn generate(
         }
 
         if was_killed {
-            println!("Process was killed");
+            println!("Install process was killed");
             j += 1;
             continue;
         }
-        // println!("{}", String::from_utf8(out.stdout)?);
         let mut new_colorschemes = Vec::new();
         let mut i = 0;
         while i < item.vim_color_schemes.len() {
             let mut colorscheme = item.vim_color_schemes[i].clone();
-            // println!("{}", colorscheme.name);
+            // println!("Colorscheme {}", colorscheme.name);
             if colorscheme.backgrounds.is_some() && !force && is_ts {
                 new_colorschemes.push(colorscheme);
                 i += 1;
@@ -769,6 +764,9 @@ struct Cli {
     /// Force the command to run
     #[arg(long)]
     force: bool,
+
+    #[arg(long)]
+    thread_count: Option<usize>,
 }
 
 #[derive(Subcommand)]
@@ -896,7 +894,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("{}", cli.force);
     let file_lock: Arc<Mutex<bool>> = Arc::new(true.into());
     let repo_locks = Arc::new(Mutex::new(Vec::new()));
-    let thread_count = 64;
+    let thread_count = cli.thread_count.unwrap_or(64);
 
     // You can check for the existence of subcommands, and if found use their
     // matches just as you would the top level cmd
@@ -944,7 +942,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                         // return Ok(());
                         println!("Deleting config");
                         // rm_dir(format!("./{}", dir_base)).await?;
-                        println!("sdf");
                         match res {
                             Err(e) => println!("{:?}", e),
                             _ => println!("Generate exited successfully"),

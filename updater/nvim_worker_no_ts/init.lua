@@ -1,4 +1,5 @@
-vim.cmd("set noswapfile")
+vim.opt.swapfile = false
+vim.opt.backup = false
 -- DO NOT change the paths and don't remove the colorscheme
 local root = vim.fn.fnamemodify("./.repro", ":p")
 

@@ -1,4 +1,5 @@
-vim.cmd("set noswapfile")
+vim.opt.swapfile = false
+vim.opt.backup = false
 function IsHexColorLight(color)
     local rawColor = vim.fn.trim(color, "#") or ""
 
@@ -85,6 +86,11 @@ require("lazy").setup({
             })
         end,
     },
+}, {
+    install = {
+        missing = true,
+    },
+
 })
 vim.opt.compatible = false
 vim.opt.number = true
@@ -509,15 +515,20 @@ end
 
 -- Sets up colorscheme config through trial and error
 function SetUpColorScheme(colorscheme)
-    vim.opt.termguicolors = true
-    vim.cmd("colorscheme " .. colorscheme)
-    local background = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'bg#')
-    local foreground = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'fg#')
-    if background == "" or foreground == "" then
-        vim.opt.termguicolors = false
-        vim.cmd('colorscheme ' .. colorscheme)
-        background = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'bg#')
-        foreground = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'fg#')
+    local ok, _ = pcall(function()
+        vim.opt.termguicolors = true
+        vim.cmd("colorscheme " .. colorscheme)
+        local background = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'bg#')
+        local foreground = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'fg#')
+        if background == "" or foreground == "" then
+            vim.opt.termguicolors = false
+            vim.cmd('colorscheme ' .. colorscheme)
+            background = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'bg#')
+            foreground = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'fg#')
+        end
+    end)
+    if not ok then
+        error("setting colorscheme \"" .. colorscheme .. "\" failed")
     end
     --
     -- if background == "" or foreground == "" then
