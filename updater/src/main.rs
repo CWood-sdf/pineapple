@@ -137,7 +137,10 @@ async fn get_repo_colschemes(repo: Repo) -> Result<Vec<String>, Box<dyn std::err
         Err(_) => {}
     };
     // println!("{}", json);
-    let json: Vec<PathData> = serde_json::from_str(&json)?;
+    let json: Vec<PathData> = match serde_json::from_str(&json) {
+        Ok(v) => v,
+        Err(e) => return Err(format!("{} from str: {}", e.to_string(), json).into()),
+    };
 
     let mut ret = Vec::new();
 
