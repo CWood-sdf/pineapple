@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd updater
-cargo run --release -- generate-no-ts
+cargo run --release -- --thread-count 32 generate-no-ts

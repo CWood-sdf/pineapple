@@ -371,7 +371,7 @@ async fn generate_colorscheme(
 
     let (send, recv) = channel::<()>();
     tokio::spawn(async move {
-        tokio::time::sleep(std::time::Duration::from_secs(400)).await;
+        tokio::time::sleep(std::time::Duration::from_secs(30)).await;
         let _ = send.send(());
     });
     let was_killed;
@@ -505,7 +505,7 @@ async fn generate(
         let (send, recv) = channel::<()>();
 
         tokio::spawn(async move {
-            tokio::time::sleep(std::time::Duration::from_secs(400)).await;
+            tokio::time::sleep(std::time::Duration::from_secs(200)).await;
             let _ = send.send(());
         });
         let was_killed;
@@ -871,7 +871,7 @@ async fn do_yeet() -> Result<(), Box<dyn std::error::Error>> {
     println!("PID: {}", pid);
     let (send, recv) = channel::<()>();
     tokio::spawn(async move {
-        tokio::time::sleep(std::time::Duration::from_secs(10)).await;
+        tokio::time::sleep(std::time::Duration::from_secs(400)).await;
         let _ = send.send(());
     });
     tokio::select! {

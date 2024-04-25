@@ -2,4 +2,4 @@
 
 cd updater
 
-cargo run --release -- generate-ts
+cargo run --release -- --thread-count 32 generate-ts
