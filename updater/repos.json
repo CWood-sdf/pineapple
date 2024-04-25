@@ -5,17 +5,17 @@
     "description": "precision color scheme for multiple applications (terminal, vim, etc.) with both dark/light modes"
   },
   {
-    "stars": 13130,
+    "stars": 13133,
     "repo_url": "morhetz/gruvbox",
     "description": "Retro groove color scheme for Vim"
   },
   {
-    "stars": 5142,
+    "stars": 5146,
     "repo_url": "folke/tokyonight.nvim",
     "description": "🏙  A clean, dark Neovim theme written in Lua, with support for lsp, treesitter and lots of plugins. Includes additional themes for Kitty, Alacritty, iTerm and Fish."
   },
   {
-    "stars": 4661,
+    "stars": 4668,
     "repo_url": "catppuccin/nvim",
     "description": "🍨 Soothing pastel theme for (Neo)vim"
   },
@@ -25,7 +25,7 @@
     "description": "A dark Vim/Neovim color scheme inspired by Atom's One Dark syntax theme."
   },
   {
-    "stars": 3595,
+    "stars": 3599,
     "repo_url": "rebelot/kanagawa.nvim",
     "description": "NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika Hokusai."
   },
@@ -45,7 +45,7 @@
     "description": ":bullettrain_side: An oh-my-zsh shell theme based on the Powerline Vim plugin"
   },
   {
-    "stars": 2723,
+    "stars": 2726,
     "repo_url": "EdenEast/nightfox.nvim",
     "description": "🦊A highly customizable theme for vim and neovim with support for lsp, treesitter and a variety of plugins."
   },
@@ -60,7 +60,7 @@
     "description": ":art: Light & Dark Vim color schemes inspired by Google's Material Design"
   },
   {
-    "stars": 2547,
+    "stars": 2548,
     "repo_url": "sainnhe/everforest",
     "description": "🌲 Comfortable & Pleasant Color Scheme for Vim"
   },
@@ -80,12 +80,12 @@
     "description": "A collection of themes for vim-airline"
   },
   {
-    "stars": 1964,
+    "stars": 1967,
     "repo_url": "projekt0n/github-nvim-theme",
     "description": "Github's Neovim themes "
   },
   {
-    "stars": 1922,
+    "stars": 1923,
     "repo_url": "rose-pine/neovim",
     "description": "Soho vibes for Neovim"
   },
@@ -100,7 +100,7 @@
     "description": "Clean, vibrant and pleasing color schemes for Vim, Sublime Text, iTerm, gnome-terminal and more."
   },
   {
-    "stars": 1694,
+    "stars": 1695,
     "repo_url": "sainnhe/gruvbox-material",
     "description": "Gruvbox with Material Palette"
   },
@@ -115,7 +115,7 @@
     "description": "Modern theme for modern VIMs"
   },
   {
-    "stars": 1594,
+    "stars": 1597,
     "repo_url": "ellisonleao/gruvbox.nvim",
     "description": "Lua port of the most famous vim colorscheme"
   },
@@ -125,12 +125,12 @@
     "description": "Vimix is a flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell etc."
   },
   {
-    "stars": 1513,
+    "stars": 1515,
     "repo_url": "sainnhe/sonokai",
     "description": "High Contrast & Vivid Color Scheme based on Monokai Pro"
   },
   {
-    "stars": 1483,
+    "stars": 1486,
     "repo_url": "kepano/flexoki",
     "description": "An inky color scheme for prose and code."
   },
@@ -145,17 +145,17 @@
     "description": "Monokai color scheme for Vim converted from Textmate theme"
   },
   {
-    "stars": 1389,
+    "stars": 1390,
     "repo_url": "navarasu/onedark.nvim",
     "description": "One dark and light colorscheme for neovim >= 0.5.0 written in lua based on Atom's One Dark and Light theme. Additionally, it comes with 5 color variant styles"
   },
   {
-    "stars": 1316,
+    "stars": 1317,
     "repo_url": "rktjmp/lush.nvim",
     "description": "Create Neovim themes with real-time feedback, export anywhere."
   },
   {
-    "stars": 1296,
+    "stars": 1297,
     "repo_url": "nyoom-engineering/nyoom.nvim",
     "description": "A Neovim framework and doom emacs alternative for the stubborn martian hacker. Powered by fennel and the oxocarbon theme"
   },
@@ -195,7 +195,7 @@
     "description": ":izakaya_lantern: A hybrid Neovim configuration for productive developers who want a functional yet aesthetic Vim experience :izakaya_lantern:"
   },
   {
-    "stars": 963,
+    "stars": 964,
     "repo_url": "nyoom-engineering/oxocarbon.nvim",
     "description": "A dark and light Neovim theme written in fennel, inspired by IBM Carbon."
   },
@@ -245,7 +245,7 @@
     "description": "A dark charcoal theme for modern Neovim & classic Vim"
   },
   {
-    "stars": 747,
+    "stars": 746,
     "repo_url": "shaunsingh/nord.nvim",
     "description": "Neovim theme based off of the Nord Color Palette, written in lua with tree sitter support"
   },
@@ -270,7 +270,7 @@
     "description": "🎨 Atom's iconic One Dark theme. Cacheable, fully customisable, Tree-sitter and LSP semantic token support. Comes with variants"
   },
   {
-    "stars": 642,
+    "stars": 643,
     "repo_url": "Roboron3042/Cyberpunk-Neon",
     "description": "Cyberpunk Neon Themes for KDE Plasma, GTK, Telegram, Tilix, Vim, Zim and more."
   },
@@ -280,17 +280,17 @@
     "description": "An ambitious theme for vim"
   },
   {
-    "stars": 622,
+    "stars": 623,
     "repo_url": "savq/melange-nvim",
     "description": "🗡️ Warm color scheme for Neovim and beyond"
   },
   {
-    "stars": 613,
+    "stars": 615,
     "repo_url": "Mofiqul/vscode.nvim",
     "description": "Neovim/Vim color scheme inspired by Dark+ and Light+ theme in Visual Studio Code"
   },
   {
-    "stars": 601,
+    "stars": 602,
     "repo_url": "mcchrish/zenbones.nvim",
     "description": "🪨 A collection of contrast-based Vim/Neovim colorschemes"
   },
@@ -335,7 +335,7 @@
     "description": "A clean, dark vim colorscheme that celebrates the lights of downtown Tokyo at night, based on a VSCode theme by @enkia with the same name [Archived because I'm no longer using this]"
   },
   {
-    "stars": 535,
+    "stars": 536,
     "repo_url": "Mofiqul/dracula.nvim",
     "description": "Dracula colorscheme for neovim written in Lua"
   },
@@ -371,12 +371,12 @@
   },
   {
     "stars": 462,
-    "repo_url": "RRethy/nvim-base16",
+    "repo_url": "RRethy/base16-nvim",
     "description": "Neovim plugin for building a sync base16 colorscheme. Includes support for Treesitter and LSP highlight groups."
   },
   {
     "stars": 462,
-    "repo_url": "RRethy/base16-nvim",
+    "repo_url": "RRethy/nvim-base16",
     "description": "Neovim plugin for building a sync base16 colorscheme. Includes support for Treesitter and LSP highlight groups."
   },
   {
@@ -426,23 +426,23 @@
   },
   {
     "stars": 381,
-    "repo_url": "vinceliuice/vimix-icon-theme",
-    "description": "vimix-icon-theme"
-  },
-  {
-    "stars": 381,
     "repo_url": "zakaziko99/agnosterzak-ohmyzsh-theme",
     "description": "An oh-my-zsh theme based on Powerline Vim & Agnoster theme"
   },
   {
-    "stars": 374,
-    "repo_url": "loctvl842/monokai-pro.nvim",
-    "description": "Monokai Pro theme for Neovim written in Lua, with multiple filters: Pro, Classic, Machine, Octagon, Ristretto, Spectrum"
+    "stars": 381,
+    "repo_url": "vinceliuice/vimix-icon-theme",
+    "description": "vimix-icon-theme"
   },
   {
     "stars": 374,
     "repo_url": "cormacrelf/vim-colors-github",
     "description": "A Vim colorscheme based on Github's syntax highlighting as of 2018."
+  },
+  {
+    "stars": 374,
+    "repo_url": "loctvl842/monokai-pro.nvim",
+    "description": "Monokai Pro theme for Neovim written in Lua, with multiple filters: Pro, Classic, Machine, Octagon, Ristretto, Spectrum"
   },
   {
     "stars": 367,
@@ -455,7 +455,7 @@
     "description": "Ayu theme for Neovim."
   },
   {
-    "stars": 357,
+    "stars": 356,
     "repo_url": "luisiacc/gruvbox-baby",
     "description": "Gruvbox theme for neovim with full 🎄TreeSitter support. "
   },
@@ -491,13 +491,13 @@
   },
   {
     "stars": 332,
-    "repo_url": "tanvirtin/monokai.nvim",
-    "description": "Monokai theme for Neovim written in Lua."
-  },
-  {
-    "stars": 331,
     "repo_url": "nvimdev/zephyr-nvim",
     "description": "A dark neovim colorscheme written in lua"
+  },
+  {
+    "stars": 332,
+    "repo_url": "tanvirtin/monokai.nvim",
+    "description": "Monokai theme for Neovim written in Lua."
   },
   {
     "stars": 327,
@@ -520,7 +520,7 @@
     "description": "Monochrome color scheme for Vim"
   },
   {
-    "stars": 298,
+    "stars": 299,
     "repo_url": "olivercederborg/poimandres.nvim",
     "description": "Poimandres colorscheme for Neovim written in Lua"
   },
@@ -565,7 +565,7 @@
     "description": "🌊 Aquarium, a simple vibrant dark theme for vim 🗒"
   },
   {
-    "stars": 273,
+    "stars": 272,
     "repo_url": "svermeulen/text-to-colorscheme",
     "description": "Neovim colorschemes generated on the fly with a text prompt using ChatGPT"
   },
@@ -611,13 +611,13 @@
   },
   {
     "stars": 246,
-    "repo_url": "folke/styler.nvim",
-    "description": "Simple Neovim plugin to set a different colorscheme per filetype."
+    "repo_url": "sam4llis/nvim-tundra",
+    "description": "A theme for Neovim with support for LSP, Treesitter, Telescope, and more."
   },
   {
     "stars": 246,
-    "repo_url": "sam4llis/nvim-tundra",
-    "description": "A theme for Neovim with support for LSP, Treesitter, Telescope, and more."
+    "repo_url": "folke/styler.nvim",
+    "description": "Simple Neovim plugin to set a different colorscheme per filetype."
   },
   {
     "stars": 239,
@@ -645,7 +645,7 @@
     "description": "Buffer, mark, tabpage, colorscheme switcher for Neovim"
   },
   {
-    "stars": 228,
+    "stars": 229,
     "repo_url": "uloco/bluloco.nvim",
     "description": "bluloco theme port for neovim"
   },
@@ -666,23 +666,18 @@
   },
   {
     "stars": 213,
-    "repo_url": "Everblush/nvim",
-    "description": "A port of everblush.vim but written in lua"
-  },
-  {
-    "stars": 212,
-    "repo_url": "Everblush/everblush.nvim",
-    "description": "A port of everblush.vim but written in lua"
-  },
-  {
-    "stars": 212,
     "repo_url": "f-person/auto-dark-mode.nvim",
     "description": "A Neovim plugin for macOS, Linux & Windows that automatically changes the editor appearance based on system settings."
   },
   {
-    "stars": 211,
-    "repo_url": "kvrohit/mellow.nvim",
-    "description": "A soothing dark color scheme for neovim and friends."
+    "stars": 213,
+    "repo_url": "Everblush/nvim",
+    "description": "A port of everblush.vim but written in lua"
+  },
+  {
+    "stars": 213,
+    "repo_url": "Everblush/everblush.nvim",
+    "description": "A port of everblush.vim but written in lua"
   },
   {
     "stars": 211,
@@ -692,6 +687,11 @@
   {
     "stars": 210,
     "repo_url": "mellow-theme/mellow.nvim",
+    "description": "A soothing dark color scheme for neovim and friends."
+  },
+  {
+    "stars": 210,
+    "repo_url": "kvrohit/mellow.nvim",
     "description": "A soothing dark color scheme for neovim and friends."
   },
   {
@@ -721,13 +721,13 @@
   },
   {
     "stars": 198,
-    "repo_url": "noahfrederick/vim-noctu",
-    "description": "A Vim color scheme for 16-color terminals"
+    "repo_url": "catppuccin/vim",
+    "description": "🧋 Soothing pastel theme for Vim"
   },
   {
     "stars": 198,
-    "repo_url": "catppuccin/vim",
-    "description": "🧋 Soothing pastel theme for Vim"
+    "repo_url": "noahfrederick/vim-noctu",
+    "description": "A Vim color scheme for 16-color terminals"
   },
   {
     "stars": 193,
@@ -766,13 +766,13 @@
   },
   {
     "stars": 182,
-    "repo_url": "neanias/everforest-nvim",
-    "description": "A Lua port of the Everforest colour scheme"
+    "repo_url": "Yazeed1s/oh-lucy.nvim",
+    "description": "Inspired by oh-lucy theme in vscodium, with few tweaks!"
   },
   {
     "stars": 182,
-    "repo_url": "Yazeed1s/oh-lucy.nvim",
-    "description": "Inspired by oh-lucy theme in vscodium, with few tweaks!"
+    "repo_url": "neanias/everforest-nvim",
+    "description": "A Lua port of the Everforest colour scheme"
   },
   {
     "stars": 182,
@@ -786,16 +786,16 @@
   },
   {
     "stars": 173,
-    "repo_url": "shaunsingh/solarized.nvim",
-    "description": "Port of the Solarized colorscheme for vim, written in lua, with treesitter support. "
-  },
-  {
-    "stars": 173,
     "repo_url": "tony/awesome-config",
     "description": ":closed_book: Example awesome wm configuration. Includes personalization support (personal.vim), theme, polyglot unicode taglists, mpd support."
   },
   {
-    "stars": 171,
+    "stars": 173,
+    "repo_url": "shaunsingh/solarized.nvim",
+    "description": "Port of the Solarized colorscheme for vim, written in lua, with treesitter support. "
+  },
+  {
+    "stars": 172,
     "repo_url": "oxfist/night-owl.nvim",
     "description": "🦉 🌌 Night Owl colorscheme implementation for Neovim with support for Treesitter and semantic tokens"
   },
@@ -811,13 +811,13 @@
   },
   {
     "stars": 168,
-    "repo_url": "ishan9299/nvim-solarized-lua",
-    "description": "solarized colorscheme in lua for nvim 0.5"
+    "repo_url": "blueshirts/darcula",
+    "description": "VIM Darcula Theme"
   },
   {
     "stars": 168,
-    "repo_url": "blueshirts/darcula",
-    "description": "VIM Darcula Theme"
+    "repo_url": "ishan9299/nvim-solarized-lua",
+    "description": "solarized colorscheme in lua for nvim 0.5"
   },
   {
     "stars": 167,
@@ -825,9 +825,14 @@
     "description": "A dark GitHub theme for Vim and NeoVim"
   },
   {
-    "stars": 165,
+    "stars": 164,
     "repo_url": "zatchheems/tokyo-night-alacritty-theme",
     "description": "A slick dark theme for Alacritty based on the Tokyo Night VS Code theme and ported from the Vim theme of the same name."
+  },
+  {
+    "stars": 162,
+    "repo_url": "yazeed1s/minimal.nvim",
+    "description": ""
   },
   {
     "stars": 161,
@@ -838,11 +843,6 @@
     "stars": 161,
     "repo_url": "maxmx03/FluoroMachine.nvim",
     "description": "Synthwave x Fluoromachine port for Neovim"
-  },
-  {
-    "stars": 161,
-    "repo_url": "yazeed1s/minimal.nvim",
-    "description": ""
   },
   {
     "stars": 160,
@@ -856,13 +856,13 @@
   },
   {
     "stars": 157,
-    "repo_url": "mswift42/vim-themes",
-    "description": "some emacs themes ported to vim."
+    "repo_url": "jsit/toast.vim",
+    "description": "🍞 Toast! A colorful, medium-contrast color scheme with full Vim and Neovim support and automatic light and dark variants. Easy to read without frying your retinae."
   },
   {
     "stars": 157,
-    "repo_url": "jsit/toast.vim",
-    "description": "🍞 Toast! A colorful, medium-contrast color scheme with full Vim and Neovim support and automatic light and dark variants. Easy to read without frying your retinae."
+    "repo_url": "mswift42/vim-themes",
+    "description": "some emacs themes ported to vim."
   },
   {
     "stars": 156,
@@ -896,8 +896,8 @@
   },
   {
     "stars": 150,
-    "repo_url": "kvrohit/rasmus.nvim",
-    "description": "A color scheme for Neovim"
+    "repo_url": "gbprod/nord.nvim",
+    "description": " An arctic, north-bluish clean and elegant Neovim theme. "
   },
   {
     "stars": 150,
@@ -905,14 +905,19 @@
     "description": "One Monokai for Neovim"
   },
   {
-    "stars": 149,
-    "repo_url": "gbprod/nord.nvim",
-    "description": " An arctic, north-bluish clean and elegant Neovim theme. "
+    "stars": 150,
+    "repo_url": "kvrohit/rasmus.nvim",
+    "description": "A color scheme for Neovim"
   },
   {
     "stars": 149,
     "repo_url": "askfiy/visual_studio_code",
     "description": "A `neovim` theme that highly restores `vscode`, so that your friends will no longer be surprised that you use `neovim`, because they will think you are using `vscode` .. "
+  },
+  {
+    "stars": 149,
+    "repo_url": "xero/miasma.nvim",
+    "description": "a fog descends upon your editor ☁  dark color scheme inspired by the woods for vim and neovim"
   },
   {
     "stars": 149,
@@ -925,19 +930,14 @@
     "description": "🌑 Neovim theme inspired by material palenight."
   },
   {
-    "stars": 145,
-    "repo_url": "xero/miasma.nvim",
-    "description": "a fog descends upon your editor ☁  dark color scheme inspired by the woods for vim and neovim"
+    "stars": 144,
+    "repo_url": "cseelus/vim-colors-lucid",
+    "description": "A color scheme for VIM with vivid highlights and friendly, clear colors"
   },
   {
     "stars": 144,
     "repo_url": "rockyzhang24/arctic.nvim",
     "description": "Neovim color schemes ported from VSCode Dark+ and Dark Modern with Treesitter and semantic token highlighting"
-  },
-  {
-    "stars": 144,
-    "repo_url": "cseelus/vim-colors-lucid",
-    "description": "A color scheme for VIM with vivid highlights and friendly, clear colors"
   },
   {
     "stars": 143,
@@ -961,11 +961,6 @@
   },
   {
     "stars": 134,
-    "repo_url": "Se7endAY/grub2-theme-vimix",
-    "description": "A blur theme for grub"
-  },
-  {
-    "stars": 134,
     "repo_url": "artanikin/vim-synthwave84",
     "description": "The port of SynthWave '84 - VS Code theme to Vim"
   },
@@ -973,6 +968,11 @@
     "stars": 134,
     "repo_url": "colepeters/spacemacs-theme.vim",
     "description": "Spacemacs-flavoured colorscheme for Vim and iTerm"
+  },
+  {
+    "stars": 134,
+    "repo_url": "Se7endAY/grub2-theme-vimix",
+    "description": "A blur theme for grub"
   },
   {
     "stars": 125,
@@ -986,6 +986,11 @@
   },
   {
     "stars": 123,
+    "repo_url": "ewilazarus/preto",
+    "description": "A minimal dark theme for VIM."
+  },
+  {
+    "stars": 123,
     "repo_url": "miikanissi/modus-themes.nvim",
     "description": "Highly accessible themes for Neovim, conforming with the highest standard for color contrast between background and foreground values (WCAG AAA). A Neovim port of the original Modus Themes built for GNU Emacs."
   },
@@ -993,11 +998,6 @@
     "stars": 123,
     "repo_url": "atelierbram/Base2Tone-vim",
     "description": "Base2Tone - duotone - Themes for Vim"
-  },
-  {
-    "stars": 123,
-    "repo_url": "ewilazarus/preto",
-    "description": "A minimal dark theme for VIM."
   },
   {
     "stars": 122,
@@ -1011,13 +1011,13 @@
   },
   {
     "stars": 115,
-    "repo_url": "xolox/vim-colorscheme-switcher",
-    "description": "Makes it easy to quickly switch between color schemes in Vim"
-  },
-  {
-    "stars": 114,
     "repo_url": "zootedb0t/citruszest.nvim",
     "description": "A vibrant and refreshing neovim colorscheme inspired by citrus fruits."
+  },
+  {
+    "stars": 115,
+    "repo_url": "xolox/vim-colorscheme-switcher",
+    "description": "Makes it easy to quickly switch between color schemes in Vim"
   },
   {
     "stars": 113,
@@ -1041,18 +1041,13 @@
   },
   {
     "stars": 105,
-    "repo_url": "Th3Whit3Wolf/one-nvim",
-    "description": "Atom one theme"
-  },
-  {
-    "stars": 105,
     "repo_url": "monsonjeremy/onedark.nvim",
     "description": "OneDark NeoVim theme written in Lua"
   },
   {
-    "stars": 104,
-    "repo_url": "nyngwang/nvimgelion",
-    "description": "Evangelion but for Vimmers"
+    "stars": 105,
+    "repo_url": "Th3Whit3Wolf/one-nvim",
+    "description": "Atom one theme"
   },
   {
     "stars": 104,
@@ -1061,13 +1056,18 @@
   },
   {
     "stars": 104,
-    "repo_url": "romgrk/doom-one.vim",
-    "description": "A dark colorschme for vim, ported from doom-emacs' doom-one theme."
+    "repo_url": "nyngwang/nvimgelion",
+    "description": "Evangelion but for Vimmers"
   },
   {
     "stars": 104,
     "repo_url": "Arc0re/Iceberg-iTerm2",
     "description": "Dark blue theme. Port of the http://cocopon.me/app/vim-iceberg/ terminal.app theme to iTerm2"
+  },
+  {
+    "stars": 104,
+    "repo_url": "romgrk/doom-one.vim",
+    "description": "A dark colorschme for vim, ported from doom-emacs' doom-one theme."
   },
   {
     "stars": 103,
@@ -1096,6 +1096,11 @@
   },
   {
     "stars": 98,
+    "repo_url": "Th3Whit3Wolf/onebuddy",
+    "description": "Light and dark atom one theme"
+  },
+  {
+    "stars": 98,
     "repo_url": "projekt0n/caret.nvim",
     "description": "[WIP] The timeless colorscheme for neovim text editor."
   },
@@ -1105,24 +1110,24 @@
     "description": "A theme for Vim and NeoVim"
   },
   {
-    "stars": 98,
-    "repo_url": "Th3Whit3Wolf/onebuddy",
-    "description": "Light and dark atom one theme"
-  },
-  {
     "stars": 96,
     "repo_url": "metalelf0/jellybeans-nvim",
     "description": "A port of jellybeans colorscheme for neovim"
   },
   {
     "stars": 95,
-    "repo_url": "jstheoriginal/gruvbox-theme-for-xcode",
-    "description": "An Xcode theme based on the very popular gruvbox vim theme!"
+    "repo_url": "lalitmee/cobalt2.nvim",
+    "description": "cobalt2 theme for neovim in Lua using colorbuddy"
   },
   {
     "stars": 95,
     "repo_url": "LunarVim/synthwave84.nvim",
     "description": null
+  },
+  {
+    "stars": 95,
+    "repo_url": "jstheoriginal/gruvbox-theme-for-xcode",
+    "description": "An Xcode theme based on the very popular gruvbox vim theme!"
   },
   {
     "stars": 95,
@@ -1133,11 +1138,6 @@
     "stars": 95,
     "repo_url": "hachy/eva01.vim",
     "description": "Vim/Neovim colorscheme 😈"
-  },
-  {
-    "stars": 95,
-    "repo_url": "lalitmee/cobalt2.nvim",
-    "description": "cobalt2 theme for neovim in Lua using colorbuddy"
   },
   {
     "stars": 93,
@@ -1151,13 +1151,13 @@
   },
   {
     "stars": 91,
-    "repo_url": "sonjapeterson/1989.vim",
-    "description": "vim color scheme inspired by Taylor Swift"
+    "repo_url": "santos-gabriel-dario/darcula-solid.nvim",
+    "description": "A color scheme for those who love the IntelliJ style but prefer the Neovims feel."
   },
   {
     "stars": 91,
-    "repo_url": "santos-gabriel-dario/darcula-solid.nvim",
-    "description": "A color scheme for those who love the IntelliJ style but prefer the Neovims feel."
+    "repo_url": "sonjapeterson/1989.vim",
+    "description": "vim color scheme inspired by Taylor Swift"
   },
   {
     "stars": 90,
@@ -1186,13 +1186,13 @@
   },
   {
     "stars": 87,
-    "repo_url": "goatslacker/mango.vim",
-    "description": "A color scheme for vim"
+    "repo_url": "zanglg/nova.nvim",
+    "description": "Another color scheme for neovim written in lua, WIP"
   },
   {
     "stars": 87,
-    "repo_url": "zanglg/nova.nvim",
-    "description": "Another color scheme for neovim written in lua, WIP"
+    "repo_url": "goatslacker/mango.vim",
+    "description": "A color scheme for vim"
   },
   {
     "stars": 86,
@@ -1206,6 +1206,11 @@
   },
   {
     "stars": 83,
+    "repo_url": "pgdouyon/vim-yin-yang",
+    "description": "Low contrast black/white color scheme for Vim"
+  },
+  {
+    "stars": 83,
     "repo_url": "nekonako/xresources-nvim",
     "description": "🎨 Neovim colorscheme based on your xresources color"
   },
@@ -1213,11 +1218,6 @@
     "stars": 83,
     "repo_url": "Verf/deepwhite.nvim",
     "description": "DeepWhite colorscheme for Neovim."
-  },
-  {
-    "stars": 83,
-    "repo_url": "pgdouyon/vim-yin-yang",
-    "description": "Low contrast black/white color scheme for Vim"
   },
   {
     "stars": 82,
@@ -1261,6 +1261,11 @@
   },
   {
     "stars": 73,
+    "repo_url": "norcalli/nvim-base16.lua",
+    "description": "Programmatic lua library for setting base16 themes in Neovim."
+  },
+  {
+    "stars": 73,
     "repo_url": "zacanger/angr.vim",
     "description": "A pleasant, mild, dark (n)vim theme."
   },
@@ -1270,24 +1275,14 @@
     "description": "Cosmetic color scheme for Vim"
   },
   {
-    "stars": 73,
-    "repo_url": "norcalli/nvim-base16.lua",
-    "description": "Programmatic lua library for setting base16 themes in Neovim."
-  },
-  {
-    "stars": 71,
-    "repo_url": "twerth/ir_black",
-    "description": "The original IR_Black color scheme for vim"
-  },
-  {
     "stars": 71,
     "repo_url": "agude/vim-eldar",
     "description": "A dark color scheme for vim based on Elflord."
   },
   {
-    "stars": 70,
-    "repo_url": "lewpoly/sherbet.nvim",
-    "description": "Neovim colorscheme written in Lua."
+    "stars": 71,
+    "repo_url": "twerth/ir_black",
+    "description": "The original IR_Black color scheme for vim"
   },
   {
     "stars": 70,
@@ -1296,13 +1291,18 @@
   },
   {
     "stars": 70,
-    "repo_url": "shaeinst/roshnivim-cs",
-    "description": "Colorscheme for (neo)vim written in lua, specially made for roshnivim with Tree-sitter support."
+    "repo_url": "theniceboy/nvim-deus",
+    "description": "vim-deus with treesitter support"
   },
   {
     "stars": 70,
-    "repo_url": "theniceboy/nvim-deus",
-    "description": "vim-deus with treesitter support"
+    "repo_url": "lewpoly/sherbet.nvim",
+    "description": "Neovim colorscheme written in Lua."
+  },
+  {
+    "stars": 70,
+    "repo_url": "shaeinst/roshnivim-cs",
+    "description": "Colorscheme for (neo)vim written in lua, specially made for roshnivim with Tree-sitter support."
   },
   {
     "stars": 70,
@@ -1316,13 +1316,13 @@
   },
   {
     "stars": 67,
-    "repo_url": "Alexis12119/nightly.nvim",
-    "description": "A customized theme for Neovim, based on the Everblush color scheme."
+    "repo_url": "trapd00r/neverland-vim-theme",
+    "description": "256 colors CLI and GUI. It doesn't suck."
   },
   {
     "stars": 67,
-    "repo_url": "trapd00r/neverland-vim-theme",
-    "description": "256 colors CLI and GUI. It doesn't suck."
+    "repo_url": "Alexis12119/nightly.nvim",
+    "description": "A customized theme for Neovim, based on the Everblush color scheme."
   },
   {
     "stars": 67,
@@ -1346,11 +1346,6 @@
   },
   {
     "stars": 62,
-    "repo_url": "nelstrom/vim-mac-classic-theme",
-    "description": "A port of the Mac Classic theme from TextMate to Vim. Because everyone needs a decent light theme for special occasions."
-  },
-  {
-    "stars": 62,
     "repo_url": "cocopon/pgmnt.vim",
     "description": ":art: Template engine for Vim color schemes, in pure Vim script"
   },
@@ -1360,14 +1355,19 @@
     "description": "Complementary color schemes for your full Otaku terminal experience. Works best with the Doki Theme for Hyper.js!"
   },
   {
-    "stars": 61,
-    "repo_url": "mikker/seoul256-iTerm",
-    "description": "🌳 A port of the vim theme"
+    "stars": 62,
+    "repo_url": "nelstrom/vim-mac-classic-theme",
+    "description": "A port of the Mac Classic theme from TextMate to Vim. Because everyone needs a decent light theme for special occasions."
   },
   {
     "stars": 61,
     "repo_url": "HoNamDuong/hybrid.nvim",
     "description": "A dark Neovim theme written in Lua"
+  },
+  {
+    "stars": 61,
+    "repo_url": "mikker/seoul256-iTerm",
+    "description": "🌳 A port of the vim theme"
   },
   {
     "stars": 60,
@@ -1391,6 +1391,11 @@
   },
   {
     "stars": 57,
+    "repo_url": "shinchu/lightline-gruvbox.vim",
+    "description": "A lightline.vim theme for gruvbox"
+  },
+  {
+    "stars": 57,
     "repo_url": "casr/vim-colors-reference",
     "description": "Vim's default colour scheme"
   },
@@ -1400,9 +1405,9 @@
     "description": "🎨 Palette - A beautiful, versatile, systematic, Neovim theme system"
   },
   {
-    "stars": 57,
-    "repo_url": "shinchu/lightline-gruvbox.vim",
-    "description": "A lightline.vim theme for gruvbox"
+    "stars": 55,
+    "repo_url": "decaycs/decay.nvim",
+    "description": "A port of decay colorscheme for neovim using lua :3"
   },
   {
     "stars": 55,
@@ -1413,11 +1418,6 @@
     "stars": 55,
     "repo_url": "marcopaganini/termschool-vim-theme",
     "description": "A vim theme based on the \"codeschool\" theme, with lots of tweaks and optimized for 256 color terminals."
-  },
-  {
-    "stars": 55,
-    "repo_url": "decaycs/decay.nvim",
-    "description": "A port of decay colorscheme for neovim using lua :3"
   },
   {
     "stars": 54,
@@ -1431,13 +1431,13 @@
   },
   {
     "stars": 52,
-    "repo_url": "acarapetis/vim-colors-github",
-    "description": "Github color scheme for vim (light)"
+    "repo_url": "cryptomilk/nightcity.nvim",
+    "description": "🏙 Night City - A dark colorscheme for Neovim with LSP support"
   },
   {
     "stars": 52,
-    "repo_url": "cryptomilk/nightcity.nvim",
-    "description": "🏙 Night City - A dark colorscheme for Neovim with LSP support"
+    "repo_url": "acarapetis/vim-colors-github",
+    "description": "Github color scheme for vim (light)"
   },
   {
     "stars": 52,
@@ -1451,13 +1451,13 @@
   },
   {
     "stars": 49,
-    "repo_url": "bkegley/gloombuddy",
-    "description": "Gloom inspired theme for neovim"
-  },
-  {
-    "stars": 48,
     "repo_url": "crispybaccoon/evergarden",
     "description": ":rose: a comfy neovim colorscheme for cozy morning coding."
+  },
+  {
+    "stars": 49,
+    "repo_url": "bkegley/gloombuddy",
+    "description": "Gloom inspired theme for neovim"
   },
   {
     "stars": 48,
@@ -1476,33 +1476,18 @@
   },
   {
     "stars": 45,
-    "repo_url": "ngscheurich/iris.nvim",
-    "description": "🌈 Generate color palettes based on Neovim colorschemes."
+    "repo_url": "dunstontc/vim-vscode-theme",
+    "description": "Visual Studio Code's \"Dark+\" theme"
   },
   {
     "stars": 45,
-    "repo_url": "dunstontc/vim-vscode-theme",
-    "description": "Visual Studio Code's \"Dark+\" theme"
+    "repo_url": "ngscheurich/iris.nvim",
+    "description": "🌈 Generate color palettes based on Neovim colorschemes."
   },
   {
     "stars": 44,
     "repo_url": "adisen99/codeschool.nvim",
     "description": "Codeschool colorscheme for neovim written in lua with treesitter and built-in lsp support"
-  },
-  {
-    "stars": 43,
-    "repo_url": "GertjanReynaert/cobalt2-vim-theme",
-    "description": "Vim port of cobalt2 sublime theme"
-  },
-  {
-    "stars": 43,
-    "repo_url": "geoffharcourt/one-dark.vim",
-    "description": "A vim version of Atom's gorgeous one-dark color scheme"
-  },
-  {
-    "stars": 43,
-    "repo_url": "jesse-c/AppearanceNotifier",
-    "description": "This application listens for when the macOS interface theme changes and then does some thing(s). For now, it's hardcoded to switching my kitty and Neovim themes to match the new theme."
   },
   {
     "stars": 43,
@@ -1516,18 +1501,23 @@
   },
   {
     "stars": 43,
+    "repo_url": "GertjanReynaert/cobalt2-vim-theme",
+    "description": "Vim port of cobalt2 sublime theme"
+  },
+  {
+    "stars": 43,
     "repo_url": "2nthony/vitesse.nvim",
     "description": "Vitesse theme for neovim in Lua using colorbuddy"
   },
   {
-    "stars": 42,
-    "repo_url": "adisen99/apprentice.nvim",
-    "description": "Apprentice color scheme for Neovim written in Lua"
+    "stars": 43,
+    "repo_url": "geoffharcourt/one-dark.vim",
+    "description": "A vim version of Atom's gorgeous one-dark color scheme"
   },
   {
-    "stars": 42,
-    "repo_url": "tamlok/detorte",
-    "description": "Detorte color scheme for Vim (originating from built-in desert and torte color schemes)"
+    "stars": 43,
+    "repo_url": "jesse-c/AppearanceNotifier",
+    "description": "This application listens for when the macOS interface theme changes and then does some thing(s). For now, it's hardcoded to switching my kitty and Neovim themes to match the new theme."
   },
   {
     "stars": 42,
@@ -1538,6 +1528,16 @@
     "stars": 42,
     "repo_url": "djjcast/mirodark",
     "description": "A Vim color scheme based on Jason W Ryan's miromiro Vim color file and dark terminal color scheme."
+  },
+  {
+    "stars": 42,
+    "repo_url": "tamlok/detorte",
+    "description": "Detorte color scheme for Vim (originating from built-in desert and torte color schemes)"
+  },
+  {
+    "stars": 42,
+    "repo_url": "adisen99/apprentice.nvim",
+    "description": "Apprentice color scheme for Neovim written in Lua"
   },
   {
     "stars": 41,
@@ -1556,13 +1556,13 @@
   },
   {
     "stars": 40,
-    "repo_url": "spf13/vim-colors",
-    "description": "Collection of color schemes for VIM"
+    "repo_url": "Reewr/vim-monokai-phoenix",
+    "description": "Monokai Phoenix Theme for Vim"
   },
   {
     "stars": 40,
-    "repo_url": "Reewr/vim-monokai-phoenix",
-    "description": "Monokai Phoenix Theme for Vim"
+    "repo_url": "spf13/vim-colors",
+    "description": "Collection of color schemes for VIM"
   },
   {
     "stars": 39,
@@ -1576,8 +1576,8 @@
   },
   {
     "stars": 37,
-    "repo_url": "dharmx/nvim-colo",
-    "description": "Theming utlilities for neovim. This is very experimental at the moment."
+    "repo_url": "akinsho/horizon.nvim",
+    "description": "Horizon Theme  - Neovim Edition :sunrise:"
   },
   {
     "stars": 37,
@@ -1586,18 +1586,13 @@
   },
   {
     "stars": 37,
-    "repo_url": "akinsho/horizon.nvim",
-    "description": "Horizon Theme  - Neovim Edition :sunrise:"
+    "repo_url": "dharmx/nvim-colo",
+    "description": "Theming utlilities for neovim. This is very experimental at the moment."
   },
   {
     "stars": 36,
     "repo_url": "larssmit/vim-getafe",
     "description": "Vim Getafe color theme "
-  },
-  {
-    "stars": 36,
-    "repo_url": "kepano/flexoki-neovim",
-    "description": "Flexoki color scheme for Neovim"
   },
   {
     "stars": 36,
@@ -1610,9 +1605,9 @@
     "description": "Jetbrains Darcula Dark for Neovim."
   },
   {
-    "stars": 35,
-    "repo_url": "dotsilas/darcubox-nvim",
-    "description": "A color scheme for Neovim inspired by Gruvbox and Darcula"
+    "stars": 36,
+    "repo_url": "kepano/flexoki-neovim",
+    "description": "Flexoki color scheme for Neovim"
   },
   {
     "stars": 35,
@@ -1621,13 +1616,23 @@
   },
   {
     "stars": 35,
+    "repo_url": "jdsimcoe/abstract.vim",
+    "description": "A Vim color scheme based on https://www.abstractapp.com/"
+  },
+  {
+    "stars": 35,
+    "repo_url": "dotsilas/darcubox-nvim",
+    "description": "A color scheme for Neovim inspired by Gruvbox and Darcula"
+  },
+  {
+    "stars": 35,
     "repo_url": "psliwka/termcolors.nvim",
     "description": "generate colors for your terminal from any Neovim colorscheme 🌈"
   },
   {
-    "stars": 35,
-    "repo_url": "jdsimcoe/abstract.vim",
-    "description": "A Vim color scheme based on https://www.abstractapp.com/"
+    "stars": 34,
+    "repo_url": "widatama/vim-phoenix",
+    "description": "Monochrome color schemes for Vim"
   },
   {
     "stars": 34,
@@ -1641,18 +1646,8 @@
   },
   {
     "stars": 34,
-    "repo_url": "widatama/vim-phoenix",
-    "description": "Monochrome color schemes for Vim"
-  },
-  {
-    "stars": 34,
     "repo_url": "vigoux/oak",
     "description": "A calming vim/neovim colorscheme"
-  },
-  {
-    "stars": 33,
-    "repo_url": "hiyali/nvim",
-    "description": "❤️  A neovim config repo."
   },
   {
     "stars": 33,
@@ -1665,9 +1660,9 @@
     "description": "Dark vim theme with pronounced colors"
   },
   {
-    "stars": 32,
-    "repo_url": "jim-at-jibba/ariake-vim-colors",
-    "description": ""
+    "stars": 33,
+    "repo_url": "hiyali/nvim",
+    "description": "❤️  A neovim config repo."
   },
   {
     "stars": 32,
@@ -1676,13 +1671,18 @@
   },
   {
     "stars": 31,
+    "repo_url": "29decibel/codeschool-vim-theme",
+    "description": "codeschool vim theme"
+  },
+  {
+    "stars": 31,
     "repo_url": "letorbi/vim-colors-modern-borland",
     "description": "A modern colour scheme for Vim that mimics the style of the classic Borland Turbo Pascal & Turbo C++ IDEs."
   },
   {
-    "stars": 31,
-    "repo_url": "29decibel/codeschool-vim-theme",
-    "description": "codeschool vim theme"
+    "stars": 30,
+    "repo_url": "numToStr/Sakura.nvim",
+    "description": "Nice color scheme for neovim"
   },
   {
     "stars": 30,
@@ -1695,9 +1695,9 @@
     "description": "A low contrast, low distraction, dark 256 color scheme for vim."
   },
   {
-    "stars": 30,
-    "repo_url": "numToStr/Sakura.nvim",
-    "description": "Nice color scheme for neovim"
+    "stars": 29,
+    "repo_url": "CarloWood/neovim-true-color-scheme-editor",
+    "description": "My neovim color sheme plus real-time color editor tool."
   },
   {
     "stars": 29,
@@ -1706,23 +1706,18 @@
   },
   {
     "stars": 29,
-    "repo_url": "CarloWood/neovim-true-color-scheme-editor",
-    "description": "My neovim color sheme plus real-time color editor tool."
-  },
-  {
-    "stars": 29,
     "repo_url": "egel/terminator-gruvbox",
     "description": "A color theme for terminator using Pavel Pertsev's vim gruvbox color scheme"
   },
   {
     "stars": 28,
-    "repo_url": "TheNiteCoder/mountaineer.vim",
-    "description": "A dark and adventurous Vim/Neovim colorscheme I AM NOT THE OWNER(The owner has disappeared from Github)"
+    "repo_url": "mrjohannchang/color-scheme-holokai.vim",
+    "description": null
   },
   {
     "stars": 28,
-    "repo_url": "mrjohannchang/color-scheme-holokai.vim",
-    "description": null
+    "repo_url": "TheNiteCoder/mountaineer.vim",
+    "description": "A dark and adventurous Vim/Neovim colorscheme I AM NOT THE OWNER(The owner has disappeared from Github)"
   },
   {
     "stars": 27,
@@ -1731,8 +1726,8 @@
   },
   {
     "stars": 27,
-    "repo_url": "Alligator/accent.vim",
-    "description": "A simple vim colourscheme with a configurable accent colour"
+    "repo_url": "zaki/zazen",
+    "description": "zazen vim color scheme (a personalized version of zenesque)"
   },
   {
     "stars": 27,
@@ -1741,13 +1736,13 @@
   },
   {
     "stars": 27,
-    "repo_url": "gmr458/vscode_modern_theme.nvim",
-    "description": "VSCode Modern theme port for Neovim, Dark & Light versions"
+    "repo_url": "Alligator/accent.vim",
+    "description": "A simple vim colourscheme with a configurable accent colour"
   },
   {
     "stars": 27,
-    "repo_url": "zaki/zazen",
-    "description": "zazen vim color scheme (a personalized version of zenesque)"
+    "repo_url": "gmr458/vscode_modern_theme.nvim",
+    "description": "VSCode Modern theme port for Neovim, Dark & Light versions"
   },
   {
     "stars": 26,
@@ -1786,6 +1781,11 @@
   },
   {
     "stars": 23,
+    "repo_url": "datsfilipe/vesper.nvim",
+    "description": "Porting Vesper theme from Visual Studio Code to Neovim."
+  },
+  {
+    "stars": 23,
     "repo_url": "mkarmona/materialbox",
     "description": " Material palette inspired color / colour scheme for Vim (light and dark) based on Gruvbox"
   },
@@ -1796,23 +1796,8 @@
   },
   {
     "stars": 23,
-    "repo_url": "datsfilipe/vesper.nvim",
-    "description": "Porting Vesper theme from Visual Studio Code to Neovim."
-  },
-  {
-    "stars": 23,
     "repo_url": "novakne/kosmikoa.nvim",
     "description": "A dark color scheme for Neovim with support for LSP, Treesitter. This mirror is deprecated. Use the repo at https://sr.ht/~novakane/kosmikoa.nvim/"
-  },
-  {
-    "stars": 22,
-    "repo_url": "thayerw/vimbrant",
-    "description": "A vibrantly dark dark colour scheme for Vim and other terminal applications"
-  },
-  {
-    "stars": 22,
-    "repo_url": "Erichain/vim-monokai-pro",
-    "description": "Monokai Pro color scheme for Vim."
   },
   {
     "stars": 22,
@@ -1826,13 +1811,23 @@
   },
   {
     "stars": 22,
+    "repo_url": "Erichain/vim-monokai-pro",
+    "description": "Monokai Pro color scheme for Vim."
+  },
+  {
+    "stars": 22,
+    "repo_url": "thayerw/vimbrant",
+    "description": "A vibrantly dark dark colour scheme for Vim and other terminal applications"
+  },
+  {
+    "stars": 22,
     "repo_url": "wincent/base16-nvim",
     "description": "base16 color schemes in Lua for Neovim"
   },
   {
     "stars": 21,
-    "repo_url": "titanzero/zephyrium",
-    "description": "A dark color scheme for Vim, based on Zephyr, written in Lua"
+    "repo_url": "sontungexpt/witch",
+    "description": "The main theme for stinvim  Easy to use, easy to config, easy to extend."
   },
   {
     "stars": 21,
@@ -1841,18 +1836,28 @@
   },
   {
     "stars": 21,
+    "repo_url": "titanzero/zephyrium",
+    "description": "A dark color scheme for Vim, based on Zephyr, written in Lua"
+  },
+  {
+    "stars": 21,
     "repo_url": "DAddYE/soda.vim",
     "description": "Reinterpreted Soda Theme for Vim Users"
   },
   {
-    "stars": 21,
-    "repo_url": "sontungexpt/witch",
-    "description": "The main theme for stinvim  Easy to use, easy to config, easy to extend."
+    "stars": 20,
+    "repo_url": "vim-scripts/PaperColor.vim",
+    "description": "Light Vim color scheme inspired by Google's Material Design"
   },
   {
     "stars": 20,
-    "repo_url": "tobi-wan-kenobi/zengarden",
-    "description": "Calm color scheme for vim/neovim"
+    "repo_url": "VonHeikemen/little-wonder",
+    "description": "A collection of extensible color schemes with minimal amount of highlighting for Neovim."
+  },
+  {
+    "stars": 20,
+    "repo_url": "gryf/wombat256grf",
+    "description": "Modified wombat color scheme for vim"
   },
   {
     "stars": 20,
@@ -1866,23 +1871,13 @@
   },
   {
     "stars": 20,
-    "repo_url": "vim-scripts/PaperColor.vim",
-    "description": "Light Vim color scheme inspired by Google's Material Design"
+    "repo_url": "tobi-wan-kenobi/zengarden",
+    "description": "Calm color scheme for vim/neovim"
   },
   {
     "stars": 20,
     "repo_url": "hardhackerlabs/theme-vim",
     "description": "🧑🏾‍🚀 HardHacker Theme for Vim/Neovim 🌈"
-  },
-  {
-    "stars": 20,
-    "repo_url": "VonHeikemen/little-wonder",
-    "description": "A collection of extensible color schemes with minimal amount of highlighting for Neovim."
-  },
-  {
-    "stars": 20,
-    "repo_url": "gryf/wombat256grf",
-    "description": "Modified wombat color scheme for vim"
   },
   {
     "stars": 19,
@@ -1891,23 +1886,13 @@
   },
   {
     "stars": 18,
-    "repo_url": "acarapetis/vim-github-theme",
-    "description": "A vim theme similar to github's syntax highlighting"
-  },
-  {
-    "stars": 18,
     "repo_url": "treycucco/vim-monotonic",
     "description": "A low-key vim color scheme"
   },
   {
     "stars": 18,
-    "repo_url": "4e554c4c/darkman.nvim",
-    "description": "A neovim plugin for interfacing with the freedesktop dark mode standard"
-  },
-  {
-    "stars": 18,
-    "repo_url": "modess/vim-phpcolors",
-    "description": "VIM color schemes for PHP"
+    "repo_url": "amit-chaudhari1/karma.nvim",
+    "description": "A Neovim color theme inspired by Karma for VS Code"
   },
   {
     "stars": 18,
@@ -1916,38 +1901,23 @@
   },
   {
     "stars": 18,
+    "repo_url": "modess/vim-phpcolors",
+    "description": "VIM color schemes for PHP"
+  },
+  {
+    "stars": 18,
     "repo_url": "dterei/VimCobaltColourScheme",
     "description": "A Colbalt (from TextMate) inspired colour scheme for Vim"
   },
   {
     "stars": 18,
-    "repo_url": "amit-chaudhari1/karma.nvim",
-    "description": "A Neovim color theme inspired by Karma for VS Code"
+    "repo_url": "acarapetis/vim-github-theme",
+    "description": "A vim theme similar to github's syntax highlighting"
   },
   {
-    "stars": 17,
-    "repo_url": "metalelf0/VimColorSchemeTest-Ruby",
-    "description": "A script to create samples of installed vim color schemes"
-  },
-  {
-    "stars": 17,
-    "repo_url": "oahlen/iceberg.nvim",
-    "description": "Bluish color scheme for Neovim"
-  },
-  {
-    "stars": 17,
-    "repo_url": "daviesjamie/vim-base16-lightline",
-    "description": "A minimal base16 colour scheme for vim-lightline."
-  },
-  {
-    "stars": 17,
-    "repo_url": "Haron-Prime/Antares",
-    "description": "Antares - dark colorscheme for vim/neovim"
-  },
-  {
-    "stars": 17,
-    "repo_url": "chrsm/paramount-ng.nvim",
-    "description": "neovim-first paramount colorscheme"
+    "stars": 18,
+    "repo_url": "4e554c4c/darkman.nvim",
+    "description": "A neovim plugin for interfacing with the freedesktop dark mode standard"
   },
   {
     "stars": 17,
@@ -1956,13 +1926,33 @@
   },
   {
     "stars": 17,
+    "repo_url": "Haron-Prime/Antares",
+    "description": "Antares - dark colorscheme for vim/neovim"
+  },
+  {
+    "stars": 17,
+    "repo_url": "daviesjamie/vim-base16-lightline",
+    "description": "A minimal base16 colour scheme for vim-lightline."
+  },
+  {
+    "stars": 17,
+    "repo_url": "metalelf0/VimColorSchemeTest-Ruby",
+    "description": "A script to create samples of installed vim color schemes"
+  },
+  {
+    "stars": 17,
     "repo_url": "NightCS/night.nvim",
     "description": "A dark and cleaner colorscheme for neovim based in the colorscheme showed by rxyhn dotfiles"
   },
   {
-    "stars": 16,
-    "repo_url": "devsjc/vim-jb",
-    "description": "Colourscheme for Vim, inspired by JetBrains IDEs."
+    "stars": 17,
+    "repo_url": "chrsm/paramount-ng.nvim",
+    "description": "neovim-first paramount colorscheme"
+  },
+  {
+    "stars": 17,
+    "repo_url": "oahlen/iceberg.nvim",
+    "description": "Bluish color scheme for Neovim"
   },
   {
     "stars": 16,
@@ -1971,8 +1961,13 @@
   },
   {
     "stars": 16,
-    "repo_url": "RishabhRD/gruvy",
-    "description": "Gruvbuddy port independent of colorbuddy"
+    "repo_url": "devsjc/vim-jb",
+    "description": "Colourscheme for Vim, inspired by JetBrains IDEs."
+  },
+  {
+    "stars": 16,
+    "repo_url": "judaew/ronny.nvim",
+    "description": "Neovim/Vim color scheme inspired by Monokai theme"
   },
   {
     "stars": 16,
@@ -1986,8 +1981,8 @@
   },
   {
     "stars": 16,
-    "repo_url": "judaew/ronny.nvim",
-    "description": "Neovim/Vim color scheme inspired by Monokai theme"
+    "repo_url": "RishabhRD/gruvy",
+    "description": "Gruvbuddy port independent of colorbuddy"
   },
   {
     "stars": 15,
@@ -1996,13 +1991,13 @@
   },
   {
     "stars": 15,
-    "repo_url": "keiyakeiya/PapilioDehaanii.vim",
-    "description": "Duotone color scheme for Vim and Neovim."
+    "repo_url": "rickharris/vim-railscasts",
+    "description": "Railscasts theme for vim + iTerm2"
   },
   {
     "stars": 15,
-    "repo_url": "rickharris/vim-railscasts",
-    "description": "Railscasts theme for vim + iTerm2"
+    "repo_url": "keiyakeiya/PapilioDehaanii.vim",
+    "description": "Duotone color scheme for Vim and Neovim."
   },
   {
     "stars": 15,
@@ -2011,23 +2006,18 @@
   },
   {
     "stars": 14,
-    "repo_url": "qualiabyte/vim-colorstepper",
-    "description": "Cycle easily through vim color schemes"
-  },
-  {
-    "stars": 14,
-    "repo_url": "justinsgithub/oh-my-monokai.nvim",
-    "description": "obnoxious neovim theme based on Monokai"
-  },
-  {
-    "stars": 14,
-    "repo_url": "gerardbm/vim-atomic",
-    "description": "Atomic color scheme for Vim, Neovim and Gvim"
-  },
-  {
-    "stars": 14,
     "repo_url": "1995parham/naz.vim",
     "description": "Naz Neovim Theme 🥺"
+  },
+  {
+    "stars": 14,
+    "repo_url": "hhsnopek/vim-firewatch",
+    "description": ":fire: Firewatch Color Scheme for Vim"
+  },
+  {
+    "stars": 14,
+    "repo_url": "qualiabyte/vim-colorstepper",
+    "description": "Cycle easily through vim color schemes"
   },
   {
     "stars": 14,
@@ -2036,28 +2026,13 @@
   },
   {
     "stars": 14,
-    "repo_url": "hhsnopek/vim-firewatch",
-    "description": ":fire: Firewatch Color Scheme for Vim"
+    "repo_url": "gerardbm/vim-atomic",
+    "description": "Atomic color scheme for Vim, Neovim and Gvim"
   },
   {
-    "stars": 13,
-    "repo_url": "Mcmartelle/vim-monokai-bold",
-    "description": "Monokai color scheme with bold formatting scheme from Eiffel, for vim."
-  },
-  {
-    "stars": 13,
-    "repo_url": "hewo/vim-colorscheme-deepsea",
-    "description": "color scheme for vim"
-  },
-  {
-    "stars": 13,
-    "repo_url": "nn1ks/vim-darkspace",
-    "description": "A vim color scheme"
-  },
-  {
-    "stars": 13,
-    "repo_url": "lewis6991/moonlight.vim",
-    "description": "My personal colour scheme for vim"
+    "stars": 14,
+    "repo_url": "justinsgithub/oh-my-monokai.nvim",
+    "description": "obnoxious neovim theme based on Monokai"
   },
   {
     "stars": 13,
@@ -2071,6 +2046,11 @@
   },
   {
     "stars": 13,
+    "repo_url": "hewo/vim-colorscheme-deepsea",
+    "description": "color scheme for vim"
+  },
+  {
+    "stars": 13,
     "repo_url": "gkapfham/vim-vitamin-onec",
     "description": ":orange: A Dark Colorscheme for Vim and Neovim with Vitaminic  Colors"
   },
@@ -2078,6 +2058,26 @@
     "stars": 13,
     "repo_url": "bbenzikry/snazzybuddy.nvim",
     "description": "Snazzy color scheme for Neovim using colorbuddy"
+  },
+  {
+    "stars": 13,
+    "repo_url": "nn1ks/vim-darkspace",
+    "description": "A vim color scheme"
+  },
+  {
+    "stars": 13,
+    "repo_url": "Mcmartelle/vim-monokai-bold",
+    "description": "Monokai color scheme with bold formatting scheme from Eiffel, for vim."
+  },
+  {
+    "stars": 13,
+    "repo_url": "lewis6991/moonlight.vim",
+    "description": "My personal colour scheme for vim"
+  },
+  {
+    "stars": 12,
+    "repo_url": "Biscuit-Colorscheme/nvim",
+    "description": "Warm and cozy colorscheme for Neovim."
   },
   {
     "stars": 12,
@@ -2091,18 +2091,18 @@
   },
   {
     "stars": 12,
+    "repo_url": "alexmozaidze/palenight.nvim",
+    "description": "Palenight colorscheme for NeoVim written in Fennel."
+  },
+  {
+    "stars": 12,
     "repo_url": "calind/selenized.nvim",
     "description": "Lua port of Selenized theme for Neovim with support for Tree-sitter, nvim-cmp, GitSigns and some more"
   },
   {
-    "stars": 12,
-    "repo_url": "Biscuit-Colorscheme/nvim",
-    "description": "Warm and cozy colorscheme for Neovim."
-  },
-  {
-    "stars": 12,
-    "repo_url": "alexmozaidze/palenight.nvim",
-    "description": "Palenight colorscheme for NeoVim written in Fennel."
+    "stars": 11,
+    "repo_url": "miconda/lucariox.vim",
+    "description": "Customized vim and neovim color scheme inspired from lucario with darkblue elements"
   },
   {
     "stars": 11,
@@ -2121,11 +2121,6 @@
   },
   {
     "stars": 11,
-    "repo_url": "miconda/lucariox.vim",
-    "description": "Customized vim and neovim color scheme inspired from lucario with darkblue elements"
-  },
-  {
-    "stars": 11,
     "repo_url": "saltmade/citylights.vim",
     "description": "Citylights theme tuned for kitty, Neovim, and friends"
   },
@@ -2133,6 +2128,31 @@
     "stars": 10,
     "repo_url": "Haron-Prime/evening_vim",
     "description": "Dark colorscheme for vim/neovim"
+  },
+  {
+    "stars": 10,
+    "repo_url": "jayden-chan/base46.nvim",
+    "description": "Base46 theme setter for Neovim"
+  },
+  {
+    "stars": 10,
+    "repo_url": "lucy/term.vim",
+    "description": "terminal vim colour scheme"
+  },
+  {
+    "stars": 10,
+    "repo_url": "mr-ubik/vim-hackerman-syntax",
+    "description": "WIP - Vim / Neovim syntax colorscheme inspired by the 80s Retrofuturism/Synthwave/Outrun aesthetics"
+  },
+  {
+    "stars": 10,
+    "repo_url": "deathlyfrantic/vim-distill",
+    "description": "dark \"mid-contrast\" theme for neovim/gvim"
+  },
+  {
+    "stars": 10,
+    "repo_url": "sonjiku/yawnc.nvim",
+    "description": "Yet Another pyWal Neovim Colorscheme"
   },
   {
     "stars": 10,
@@ -2146,38 +2166,13 @@
   },
   {
     "stars": 10,
-    "repo_url": "lucy/term.vim",
-    "description": "terminal vim colour scheme"
-  },
-  {
-    "stars": 10,
-    "repo_url": "sonjiku/yawnc.nvim",
-    "description": "Yet Another pyWal Neovim Colorscheme"
-  },
-  {
-    "stars": 10,
-    "repo_url": "mr-ubik/vim-hackerman-syntax",
-    "description": "WIP - Vim / Neovim syntax colorscheme inspired by the 80s Retrofuturism/Synthwave/Outrun aesthetics"
+    "repo_url": "Lokaltog/monotone.nvim",
+    "description": "Another monochrome neovim colorscheme."
   },
   {
     "stars": 10,
     "repo_url": "masroof-maindak/swamp.nvim",
     "description": "Dark, Gruvbox-inspired colour scheme for Neovim."
-  },
-  {
-    "stars": 10,
-    "repo_url": "jayden-chan/base46.nvim",
-    "description": "Base46 theme setter for Neovim"
-  },
-  {
-    "stars": 10,
-    "repo_url": "deathlyfrantic/vim-distill",
-    "description": "dark \"mid-contrast\" theme for neovim/gvim"
-  },
-  {
-    "stars": 10,
-    "repo_url": "Lokaltog/monotone.nvim",
-    "description": "Another monochrome neovim colorscheme."
   },
   {
     "stars": 9,
@@ -2191,13 +2186,13 @@
   },
   {
     "stars": 9,
-    "repo_url": "thimc/gruber-darker.nvim",
-    "description": "gruber dark theme for neovim "
+    "repo_url": "bartekprtc/gruv-vsassist.nvim",
+    "description": "Neovim colour scheme inspired by The Cherno's VS theme"
   },
   {
     "stars": 9,
-    "repo_url": "bartekprtc/gruv-vsassist.nvim",
-    "description": "Neovim colour scheme inspired by The Cherno's VS theme"
+    "repo_url": "thimc/gruber-darker.nvim",
+    "description": "gruber dark theme for neovim "
   },
   {
     "stars": 8,
@@ -2206,33 +2201,13 @@
   },
   {
     "stars": 8,
-    "repo_url": "helbing/aura.nvim",
-    "description": "Aura colorscheme for Neovim written in Lua"
-  },
-  {
-    "stars": 8,
     "repo_url": "neutaaaaan/monosvkem",
     "description": " Because what the world needs is yet another mostly monochrome vim colourscheme "
   },
   {
     "stars": 8,
-    "repo_url": "kabouzeid/nvim-jellybeans",
-    "description": "Jellybeans inspired Neovim color scheme"
-  },
-  {
-    "stars": 8,
-    "repo_url": "protesilaos/prot16-vim",
-    "description": "Vim ports of the Prot16 collection of colour schemes."
-  },
-  {
-    "stars": 8,
-    "repo_url": "seandewar/paragon.vim",
-    "description": "Personal minimalistic Vim/Neovim colour scheme."
-  },
-  {
-    "stars": 8,
-    "repo_url": "lunacookies/vim-mayanfog",
-    "description": "A minimal version of the Mayansmoke colourscheme for Vim"
+    "repo_url": "helbing/aura.nvim",
+    "description": "Aura colorscheme for Neovim written in Lua"
   },
   {
     "stars": 8,
@@ -2241,13 +2216,28 @@
   },
   {
     "stars": 8,
+    "repo_url": "lunacookies/vim-mayanfog",
+    "description": "A minimal version of the Mayansmoke colourscheme for Vim"
+  },
+  {
+    "stars": 8,
+    "repo_url": "seandewar/paragon.vim",
+    "description": "Personal minimalistic Vim/Neovim colour scheme."
+  },
+  {
+    "stars": 8,
+    "repo_url": "kabouzeid/nvim-jellybeans",
+    "description": "Jellybeans inspired Neovim color scheme"
+  },
+  {
+    "stars": 8,
     "repo_url": "cloudlena/nvim-quantum",
     "description": "A Material Design based color scheme for Neovim"
   },
   {
-    "stars": 7,
-    "repo_url": "vyshane/cleanroom-vim-color",
-    "description": "A light, minimal Vim colour scheme that stays out of your way and gives you room to think."
+    "stars": 8,
+    "repo_url": "protesilaos/prot16-vim",
+    "description": "Vim ports of the Prot16 collection of colour schemes."
   },
   {
     "stars": 7,
@@ -2256,13 +2246,23 @@
   },
   {
     "stars": 7,
-    "repo_url": "hwadii/gruber_darker.nvim",
-    "description": "Gruber Darker color theme for Neovim"
+    "repo_url": "UtkarshVerma/molokai.nvim",
+    "description": "Molokai colorscheme for Neovim."
   },
   {
     "stars": 7,
-    "repo_url": "UtkarshVerma/molokai.nvim",
-    "description": "Molokai colorscheme for Neovim."
+    "repo_url": "vyshane/cleanroom-vim-color",
+    "description": "A light, minimal Vim colour scheme that stays out of your way and gives you room to think."
+  },
+  {
+    "stars": 7,
+    "repo_url": "f4z3r/gruvbox-material.nvim",
+    "description": "Material Gruvbox colorscheme for Neovim written in Lua"
+  },
+  {
+    "stars": 7,
+    "repo_url": "hwadii/gruber_darker.nvim",
+    "description": "Gruber Darker color theme for Neovim"
   },
   {
     "stars": 7,
@@ -2275,14 +2275,14 @@
     "description": "A dark and earthy colorscheme for Neovim."
   },
   {
-    "stars": 7,
-    "repo_url": "f4z3r/gruvbox-material.nvim",
-    "description": "Material Gruvbox colorscheme for Neovim written in Lua"
-  },
-  {
     "stars": 6,
     "repo_url": "tssm/nvim-random-colors",
     "description": "Choose a random color scheme on Neovim startup"
+  },
+  {
+    "stars": 6,
+    "repo_url": "brentlintner/vim-settings",
+    "description": "My Neovim config—supports rich color schemes, autocomplete, intellisense, inline linting, fuzzy file and grep searching, file tree browsing, window splitting, easy file buffer management and more!"
   },
   {
     "stars": 6,
@@ -2296,8 +2296,8 @@
   },
   {
     "stars": 6,
-    "repo_url": "brentlintner/vim-settings",
-    "description": "My Neovim config—supports rich color schemes, autocomplete, intellisense, inline linting, fuzzy file and grep searching, file tree browsing, window splitting, easy file buffer management and more!"
+    "repo_url": "gf3/molotov",
+    "description": "The exciting colour scheme that will make you code good™"
   },
   {
     "stars": 6,
@@ -2306,28 +2306,13 @@
   },
   {
     "stars": 6,
-    "repo_url": "gf3/molotov",
-    "description": "The exciting colour scheme that will make you code good™"
-  },
-  {
-    "stars": 6,
     "repo_url": "macguirerintoul/night_owl_light.vim",
     "description": "A light colour scheme for Vim based on @sdras' Light Owl (aka Night Owl Light) VSCode theme."
   },
   {
     "stars": 5,
-    "repo_url": "alexblackie/lunarised",
-    "description": "🌝 Custom neovim colourscheme inspired by the moon."
-  },
-  {
-    "stars": 5,
-    "repo_url": "pkukulak/idle",
-    "description": "A colour scheme for vim based on the popular Python IDE, IDLE."
-  },
-  {
-    "stars": 5,
-    "repo_url": "sebasruiz09/fizz.nvim",
-    "description": "Neovim color scheme blending Sapphire inspiration with select tones from Gruvbox, fostering an unassuming coding ambiance on a dark canvas."
+    "repo_url": "vyshane/vydark-vim-color",
+    "description": "A comfortable, dark Vim colour scheme for everyday use."
   },
   {
     "stars": 5,
@@ -2336,8 +2321,23 @@
   },
   {
     "stars": 5,
+    "repo_url": "reubenlillie/mine-shaft",
+    "description": "An accessible color scheme for Neovim"
+  },
+  {
+    "stars": 5,
+    "repo_url": "pkukulak/idle",
+    "description": "A colour scheme for vim based on the popular Python IDE, IDLE."
+  },
+  {
+    "stars": 5,
     "repo_url": "slavamak/obsidian-neovim",
     "description": "Default Neovim color scheme for Obsidian"
+  },
+  {
+    "stars": 5,
+    "repo_url": "sebasruiz09/fizz.nvim",
+    "description": "Neovim color scheme blending Sapphire inspiration with select tones from Gruvbox, fostering an unassuming coding ambiance on a dark canvas."
   },
   {
     "stars": 5,
@@ -2346,33 +2346,13 @@
   },
   {
     "stars": 5,
-    "repo_url": "reubenlillie/mine-shaft",
-    "description": "An accessible color scheme for Neovim"
-  },
-  {
-    "stars": 5,
-    "repo_url": "vyshane/vydark-vim-color",
-    "description": "A comfortable, dark Vim colour scheme for everyday use."
+    "repo_url": "alexblackie/lunarised",
+    "description": "🌝 Custom neovim colourscheme inspired by the moon."
   },
   {
     "stars": 4,
     "repo_url": "kevinm6/kurayami.nvim",
     "description": "Dark only theme for Neovim with treesitter support"
-  },
-  {
-    "stars": 4,
-    "repo_url": "Aryansh-S/fastdark.vim",
-    "description": "A minimalistic One Dark color scheme for Neovim and Vim (use with Neovim Treesitter or Vim Polyglot)"
-  },
-  {
-    "stars": 4,
-    "repo_url": "thenewvu/vim-colors-blueprint",
-    "description": "A color scheme for #vim and #neovim which was inspired by blueprints."
-  },
-  {
-    "stars": 4,
-    "repo_url": "roflolilolmao/oceanic-next.nvim",
-    "description": "Lua color scheme for Neovim"
   },
   {
     "stars": 4,
@@ -2385,9 +2365,44 @@
     "description": "Simpler method of generating colour schemes for Vim"
   },
   {
+    "stars": 4,
+    "repo_url": "roflolilolmao/oceanic-next.nvim",
+    "description": "Lua color scheme for Neovim"
+  },
+  {
+    "stars": 4,
+    "repo_url": "Aryansh-S/fastdark.vim",
+    "description": "A minimalistic One Dark color scheme for Neovim and Vim (use with Neovim Treesitter or Vim Polyglot)"
+  },
+  {
+    "stars": 4,
+    "repo_url": "thenewvu/vim-colors-blueprint",
+    "description": "A color scheme for #vim and #neovim which was inspired by blueprints."
+  },
+  {
+    "stars": 3,
+    "repo_url": "edouardp/myob-colorscheme",
+    "description": "MYOB Colour Scheme for Vim"
+  },
+  {
+    "stars": 3,
+    "repo_url": "neozenith/estilo-xoria256",
+    "description": "Revamp of Xoria256 Vim colour scheme to use Estilo to maintain palette and lightline support"
+  },
+  {
     "stars": 3,
     "repo_url": "atchim/sopa.nvim",
     "description": "GUI-only dark color scheme for Neovim"
+  },
+  {
+    "stars": 3,
+    "repo_url": "jlobos/camila",
+    "description": "Elegant Vim/Neovim color scheme that lets you focus on the content with simple bright colors "
+  },
+  {
+    "stars": 3,
+    "repo_url": "teloe/bland.vim",
+    "description": "Dark color scheme for vim/neovim"
   },
   {
     "stars": 3,
@@ -2401,28 +2416,13 @@
   },
   {
     "stars": 3,
-    "repo_url": "igorepst/hemisu.nvim",
-    "description": "Hemisu Color Scheme for Neovim"
-  },
-  {
-    "stars": 3,
-    "repo_url": "neozenith/estilo-xoria256",
-    "description": "Revamp of Xoria256 Vim colour scheme to use Estilo to maintain palette and lightline support"
-  },
-  {
-    "stars": 3,
-    "repo_url": "edouardp/myob-colorscheme",
-    "description": "MYOB Colour Scheme for Vim"
-  },
-  {
-    "stars": 3,
     "repo_url": "oahlen/huey",
     "description": "Neovim lua color scheme generator written in Rust."
   },
   {
     "stars": 3,
-    "repo_url": "teloe/bland.vim",
-    "description": "Dark color scheme for vim/neovim"
+    "repo_url": "igorepst/hemisu.nvim",
+    "description": "Hemisu Color Scheme for Neovim"
   },
   {
     "stars": 3,
@@ -2430,24 +2430,14 @@
     "description": "A dark Vim colour scheme for 256-colour terminals."
   },
   {
-    "stars": 3,
-    "repo_url": "jlobos/camila",
-    "description": "Elegant Vim/Neovim color scheme that lets you focus on the content with simple bright colors "
-  },
-  {
-    "stars": 2,
-    "repo_url": "bgwdotdev/gleam-theme-nvim",
-    "description": "a gleam flavoured colour scheme for neovim"
-  },
-  {
-    "stars": 2,
-    "repo_url": "ItsTerm1n4l/spice.nvim",
-    "description": "An easily customizable Neovim colourscheme with support for a wide variety of plugins"
-  },
-  {
     "stars": 2,
     "repo_url": "techygrrrl/techygrrrl-cmyk-colourrrs-neovim",
     "description": "CMYK colourrrs for Neovim is a dark colour scheme."
+  },
+  {
+    "stars": 2,
+    "repo_url": "cseelus/nvim-colors-tone",
+    "description": "Modest Neovim color scheme with a reduced number of bright and clear colors."
   },
   {
     "stars": 2,
@@ -2466,13 +2456,8 @@
   },
   {
     "stars": 2,
-    "repo_url": "cseelus/nvim-colors-tone",
-    "description": "Modest Neovim color scheme with a reduced number of bright and clear colors."
-  },
-  {
-    "stars": 2,
-    "repo_url": "vext01/reason-vim-colorscheme",
-    "description": "Vim colour scheme inspired by the Propellerhead Peason box."
+    "repo_url": "ingram1107/moneokai",
+    "description": "A colour scheme fork from vim-monokai, advocate for more Neovim enhancement"
   },
   {
     "stars": 2,
@@ -2481,8 +2466,13 @@
   },
   {
     "stars": 2,
-    "repo_url": "ingram1107/moneokai",
-    "description": "A colour scheme fork from vim-monokai, advocate for more Neovim enhancement"
+    "repo_url": "ItsTerm1n4l/spice.nvim",
+    "description": "An easily customizable Neovim colourscheme with support for a wide variety of plugins"
+  },
+  {
+    "stars": 2,
+    "repo_url": "bgwdotdev/gleam-theme-nvim",
+    "description": "a gleam flavoured colour scheme for neovim"
   },
   {
     "stars": 2,
@@ -2495,29 +2485,19 @@
     "description": "Persist neovim color scheme to a file"
   },
   {
-    "stars": 1,
-    "repo_url": "Aesthetikx/neoscheme.vim",
-    "description": "Color scheme for neovim"
+    "stars": 2,
+    "repo_url": "vext01/reason-vim-colorscheme",
+    "description": "Vim colour scheme inspired by the Propellerhead Peason box."
   },
   {
     "stars": 1,
-    "repo_url": "jackm245/IceVim-V1",
-    "description": "A Neovim distribution inspired by the Nord colour scheme"
+    "repo_url": "davidbeckingsale/vword.vim",
+    "description": "Dark, subtle Vim colourscheme"
   },
   {
     "stars": 1,
-    "repo_url": "vim-scripts/Cobalt-Colour-scheme",
-    "description": "Vim version of TextMates Cobalt colour scheme"
-  },
-  {
-    "stars": 1,
-    "repo_url": "astridlyre/moonlight.nvim",
-    "description": "A cool, dark colour scheme for Neovim, written in Lua. Inspired by vim-substrata."
-  },
-  {
-    "stars": 1,
-    "repo_url": "MahanRahmati/DarknessX-vim",
-    "description": "A dark Neovim color scheme (treesitter supported) "
+    "repo_url": "samir-roy/shinjuku.nvim",
+    "description": "Shinjuku Dark Color Scheme for NeoVim"
   },
   {
     "stars": 1,
@@ -2526,28 +2506,8 @@
   },
   {
     "stars": 1,
-    "repo_url": "ThomasAdam/EasyColour",
-    "description": "Simpler method of generating colour schemes for Vim"
-  },
-  {
-    "stars": 1,
     "repo_url": "Chib/vimgit",
     "description": "all my vim config files, plugins, colourscheme, etc."
-  },
-  {
-    "stars": 1,
-    "repo_url": "pedrominicz/focus",
-    "description": "A simple Neovim color scheme"
-  },
-  {
-    "stars": 1,
-    "repo_url": "daviesjamie/airline-hybrid-alt",
-    "description": "A minimal colour scheme for vim-airline."
-  },
-  {
-    "stars": 1,
-    "repo_url": "fmcgough/pencil-color.nvim",
-    "description": "a light colour scheme for neovim"
   },
   {
     "stars": 1,
@@ -2556,8 +2516,13 @@
   },
   {
     "stars": 1,
-    "repo_url": "samir-roy/shinjuku.nvim",
-    "description": "Shinjuku Dark Color Scheme for NeoVim"
+    "repo_url": "MahanRahmati/DarknessX-vim",
+    "description": "A dark Neovim color scheme (treesitter supported) "
+  },
+  {
+    "stars": 1,
+    "repo_url": "astridlyre/moonlight.nvim",
+    "description": "A cool, dark colour scheme for Neovim, written in Lua. Inspired by vim-substrata."
   },
   {
     "stars": 1,
@@ -2571,8 +2536,23 @@
   },
   {
     "stars": 1,
-    "repo_url": "ignu/Spacegray.vim",
-    "description": "A Vim color scheme based on the Spacegray Xcode theme."
+    "repo_url": "fmcgough/pencil-color.nvim",
+    "description": "a light colour scheme for neovim"
+  },
+  {
+    "stars": 1,
+    "repo_url": "vim-scripts/maroloccio3",
+    "description": "A monochromatic colour scheme for Vim in GUI mode."
+  },
+  {
+    "stars": 1,
+    "repo_url": "daviesjamie/airline-hybrid-alt",
+    "description": "A minimal colour scheme for vim-airline."
+  },
+  {
+    "stars": 1,
+    "repo_url": "vim-scripts/Cobalt-Colour-scheme",
+    "description": "Vim version of TextMates Cobalt colour scheme"
   },
   {
     "stars": 1,
@@ -2581,88 +2561,68 @@
   },
   {
     "stars": 1,
-    "repo_url": "BenBergman/ir_black-custom",
-    "description": "Custom fork of Todd Werth's ir_black vim colour scheme"
-  },
-  {
-    "stars": 1,
     "repo_url": "jacobsteves/vim-setup",
     "description": "Clear, smooth and clean Vim colour schemes."
   },
   {
     "stars": 1,
-    "repo_url": "davidbeckingsale/vword.vim",
-    "description": "Dark, subtle Vim colourscheme"
+    "repo_url": "jim-at-jibba/ariake.nvim",
+    "description": "Port of my Vimscript theme to Lua"
   },
   {
     "stars": 1,
-    "repo_url": "vim-scripts/maroloccio3",
-    "description": "A monochromatic colour scheme for Vim in GUI mode."
+    "repo_url": "BenBergman/ir_black-custom",
+    "description": "Custom fork of Todd Werth's ir_black vim colour scheme"
+  },
+  {
+    "stars": 1,
+    "repo_url": "pedrominicz/focus",
+    "description": "A simple Neovim color scheme"
+  },
+  {
+    "stars": 1,
+    "repo_url": "jackm245/IceVim-V1",
+    "description": "A Neovim distribution inspired by the Nord colour scheme"
+  },
+  {
+    "stars": 1,
+    "repo_url": "Aesthetikx/neoscheme.vim",
+    "description": "Color scheme for neovim"
+  },
+  {
+    "stars": 1,
+    "repo_url": "ignu/Spacegray.vim",
+    "description": "A Vim color scheme based on the Spacegray Xcode theme."
+  },
+  {
+    "stars": 1,
+    "repo_url": "ThomasAdam/EasyColour",
+    "description": "Simpler method of generating colour schemes for Vim"
   },
   {
     "stars": 0,
-    "repo_url": "jesse-kaufman/vim-glandix",
-    "description": "Custom NeoVim/Vim color scheme"
+    "repo_url": "titan-rocky/cream-starter",
+    "description": "A Neovim Color Scheme Plugin"
   },
   {
     "stars": 0,
-    "repo_url": "gilbertfrancois/intellij-light.vim",
-    "description": "The fantastic IntelliJ Light colour scheme for Vim and NeoVim."
+    "repo_url": "theKlisha/oolong.nvim",
+    "description": "Warm color scheme for Neovim"
   },
   {
     "stars": 0,
-    "repo_url": "masterbloxx/radiance.nvim",
-    "description": "A pretty Neovim color scheme"
+    "repo_url": "MVarga12/clion-colors-pencil",
+    "description": "Light colourscheme based on reedes' vim-colors-pencil."
   },
   {
     "stars": 0,
-    "repo_url": "IllegalLeft/honeywell.vim",
-    "description": "Honeywell terminal inspired vim colour scheme"
+    "repo_url": "filipdutescu/springan.nvim",
+    "description": "A dark Neovim colour scheme for 16/256/true-color terminals and GUIs. "
   },
   {
     "stars": 0,
-    "repo_url": "miguelroyo18/lacandon",
-    "description": "A Vim colour scheme based on the colours of the Lacandon Jungle."
-  },
-  {
-    "stars": 0,
-    "repo_url": "agcosmin/cosmin-nvim-theme",
-    "description": "Neovim color scheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "vim-scripts/zarniwoop.vim",
-    "description": "A colourful, dark colour scheme for Vim."
-  },
-  {
-    "stars": 0,
-    "repo_url": "coffee-theme/coffee.vim",
-    "description": "Coffee is a nice, warm colour scheme for software based of gruvbox which is light on eye strain and feels warm and cozy -- vim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "kylefiedler/ocean",
-    "description": "vim colour scheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "kevinkirkup/blackboard",
-    "description": "Blackboard Neovim color scheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "kstevens715/monoky.nvim",
-    "description": "A Monokai color scheme for Neovim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "jwrg/jamalun",
-    "description": "Custom Vim colour scheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "ValenTheRed/psmdc.nvim",
-    "description": "A neovim colourscheme"
+    "repo_url": "sdawson/noether",
+    "description": "A dark colour scheme for Vim."
   },
   {
     "stars": 0,
@@ -2671,13 +2631,18 @@
   },
   {
     "stars": 0,
-    "repo_url": "NI57721/vim-montage",
-    "description": "A plugin to fine-tune Vim's colour scheme"
+    "repo_url": "nyanpasu/suwako",
+    "description": "Vim colourscheme"
   },
   {
     "stars": 0,
-    "repo_url": "Oniup/ignite.nvim",
-    "description": "Neovim dark colour scheme inspired by gruvbox"
+    "repo_url": "avovsya/c64.vim",
+    "description": "Just a mirror of C64.vim colour scheme by Aaron Maupin - http://aaronmaupin.com/blog/vim-c64-color-scheme/"
+  },
+  {
+    "stars": 0,
+    "repo_url": "ChrisDavison/vim-colourtoggle",
+    "description": "Toggle vim colourscheme: light, dark, or based on time of day."
   },
   {
     "stars": 0,
@@ -2686,8 +2651,33 @@
   },
   {
     "stars": 0,
-    "repo_url": "ra-res/vscode-peachpuff",
-    "description": "peachpuff syntax theme adapted from vim's peachpuff colour scheme"
+    "repo_url": "agcosmin/cosmin-nvim-theme",
+    "description": "Neovim color scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "arp242/default2.vim",
+    "description": "Vim's default colour scheme with some small enhancements"
+  },
+  {
+    "stars": 0,
+    "repo_url": "Aloz1/BtrPrint",
+    "description": "BtrPrint is a vim printing plugin to allow for better printing capabilities within vim, primarily the ability to use a seperate colour scheme for syntax highlighting"
+  },
+  {
+    "stars": 0,
+    "repo_url": "JeremyTechDev/nv-colorschemes",
+    "description": "Color Schemes for NeoVim 🎨"
+  },
+  {
+    "stars": 0,
+    "repo_url": "rubik/vim-base16-paraiso",
+    "description": "Base16 Paraiso color scheme for Vim/Neovim"
+  },
+  {
+    "stars": 0,
+    "repo_url": "kheaactua/vim-managecolor",
+    "description": "Vim plugin to manage colour schemes."
   },
   {
     "stars": 0,
@@ -2696,23 +2686,48 @@
   },
   {
     "stars": 0,
-    "repo_url": "ekasc/kissland.nvim",
-    "description": "kissland inspired neovim color-scheme"
+    "repo_url": "mesabytes/darkcode.nvim",
+    "description": "neovim color scheme"
   },
   {
     "stars": 0,
-    "repo_url": "senidd/dawn-nvim",
-    "description": "Dawn colourscheme for Neovim."
+    "repo_url": "nikolay-pv/dotfiles",
+    "description": "Configs, color schemes for vim and neovim"
   },
   {
     "stars": 0,
-    "repo_url": "gabenespoli/vim-colors-snooker",
-    "description": "Colour palette and vim colourscheme based on the colours of a snooker table."
+    "repo_url": "KKMahogany/vimconfig",
+    "description": "My vim configs and colour schemes"
   },
   {
     "stars": 0,
-    "repo_url": "indika-dev/eclipse.nvim",
-    "description": "a neovim color scheme inspired by the eclipse color scheme"
+    "repo_url": "mctaylorpants/vim-borahae",
+    "description": "A colour scheme for vim 💜"
+  },
+  {
+    "stars": 0,
+    "repo_url": "mikepjb/vim-white",
+    "description": "A white colour scheme for vim"
+  },
+  {
+    "stars": 0,
+    "repo_url": "BeatScherrer/gravel-pit.nvim",
+    "description": "gravel-pit color scheme for neovim"
+  },
+  {
+    "stars": 0,
+    "repo_url": "williamrobertson/vimfiles",
+    "description": "Vim desktop config and colour schemes"
+  },
+  {
+    "stars": 0,
+    "repo_url": "ra-res/vscode-peachpuff",
+    "description": "peachpuff syntax theme adapted from vim's peachpuff colour scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "Svvarg/darkai.nvim",
+    "description": "Color scheme for neovim"
   },
   {
     "stars": 0,
@@ -2721,8 +2736,108 @@
   },
   {
     "stars": 0,
+    "repo_url": "indika-dev/eclipse.nvim",
+    "description": "a neovim color scheme inspired by the eclipse color scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "sulami/su256.vim",
+    "description": "A simple dark colourscheme for vim and neovim"
+  },
+  {
+    "stars": 0,
+    "repo_url": "miguelroyo18/lacandon",
+    "description": "A Vim colour scheme based on the colours of the Lacandon Jungle."
+  },
+  {
+    "stars": 0,
+    "repo_url": "fe-lipe-c/lipcs",
+    "description": "A neovim color scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "Visaal/neo_blue",
+    "description": "color scheme for neovim"
+  },
+  {
+    "stars": 0,
+    "repo_url": "DanHam/neos-irblack",
+    "description": "Custom version of the Vim IRBlack colour scheme"
+  },
+  {
+    "stars": 0,
     "repo_url": "frithrah/freedom-vim",
     "description": "A minimal colour scheme for Vim."
+  },
+  {
+    "stars": 0,
+    "repo_url": "jpetrie/turnip",
+    "description": "A color scheme for Neovim."
+  },
+  {
+    "stars": 0,
+    "repo_url": "fuckie/neovim-molokai",
+    "description": "Molokai color scheme for Neovim"
+  },
+  {
+    "stars": 0,
+    "repo_url": "nghamilton/hij",
+    "description": "Vim colour scheme for Haskell, replicating Intellij's default (light) colors"
+  },
+  {
+    "stars": 0,
+    "repo_url": "protesilaos/prot16-vim-airline",
+    "description": "Ports of the Prot16 collection of colour schemes for the popular Vim Airline plugin for Vim."
+  },
+  {
+    "stars": 0,
+    "repo_url": "adamransom/therapy",
+    "description": "Light colour scheme for Vim and the terminal"
+  },
+  {
+    "stars": 0,
+    "repo_url": "biancapower/vim-powerjs",
+    "description": "vim colour scheme for JS"
+  },
+  {
+    "stars": 0,
+    "repo_url": "av4625/vim-config",
+    "description": "My vim settings and colour scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "HenriAW/yfelin",
+    "description": "A light vim colourscheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "vim-scripts/zarniwoop.vim",
+    "description": "A colourful, dark colour scheme for Vim."
+  },
+  {
+    "stars": 0,
+    "repo_url": "Oniup/ignite.nvim",
+    "description": "Neovim dark colour scheme inspired by gruvbox"
+  },
+  {
+    "stars": 0,
+    "repo_url": "senidd/dawn-nvim",
+    "description": "Dawn colourscheme for Neovim."
+  },
+  {
+    "stars": 0,
+    "repo_url": "jstnas/lightline.dim",
+    "description": "A fork of lightline.vim with the dim colourscheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "ccdale/ccacolour",
+    "description": "vim colour scheme based on https://github.com/romainl/Apprentice"
+  },
+  {
+    "stars": 0,
+    "repo_url": "gabenespoli/vim-colors-snooker",
+    "description": "Colour palette and vim colourscheme based on the colours of a snooker table."
   },
   {
     "stars": 0,
@@ -2731,13 +2846,158 @@
   },
   {
     "stars": 0,
+    "repo_url": "addie43110/donttouchme",
+    "description": "the donttouchme colourscheme for vim"
+  },
+  {
+    "stars": 0,
+    "repo_url": "NI57721/vim-montage",
+    "description": "A plugin to fine-tune Vim's colour scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "iammerrick/nova-vim",
+    "description": "Nova color scheme plugin for Vim"
+  },
+  {
+    "stars": 0,
+    "repo_url": "archydragon/vim-blusted",
+    "description": "Yet another dark colour scheme for Vim"
+  },
+  {
+    "stars": 0,
+    "repo_url": "ValenTheRed/psmdc.nvim",
+    "description": "A neovim colourscheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "rushiagr/pygun.vim",
+    "description": "Vim colour scheme for Python which, if used with proper brightness and contrast, doesn't hurt the eye"
+  },
+  {
+    "stars": 0,
+    "repo_url": "dotlabel-chris/vim-config",
+    "description": "VIM config file and colour scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "marktermaat/vim-onehalf-color-scheme",
+    "description": "My personal twist of the Onehalf Vim colour scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "jesse-kaufman/vim-glandix",
+    "description": "Custom NeoVim/Vim color scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "mindblocks/blackhole",
+    "description": "vim / neovim color scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "AveryLychee/base16-flora-vim",
+    "description": "Base16 colourscheme for vim based off floraverse.com"
+  },
+  {
+    "stars": 0,
+    "repo_url": "SameAsMuli/desert-noir",
+    "description": "Vim colourscheme heavily based upon desert and 256-noir."
+  },
+  {
+    "stars": 0,
+    "repo_url": "jwrg/jamalun",
+    "description": "Custom Vim colour scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "nichobi/nicolour-nvim",
+    "description": "WIP neovim colour scheme"
+  },
+  {
+    "stars": 0,
     "repo_url": "jdw1996/vim-wiperblades",
     "description": "Minimal colour scheme for Vim"
   },
   {
     "stars": 0,
-    "repo_url": "theKlisha/oolong.nvim",
-    "description": "Warm color scheme for Neovim"
+    "repo_url": "coffee-theme/coffee.vim",
+    "description": "Coffee is a nice, warm colour scheme for software based of gruvbox which is light on eye strain and feels warm and cozy -- vim"
+  },
+  {
+    "stars": 0,
+    "repo_url": "itwasneo/silense.nvim",
+    "description": "Personal NeoVim color scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "masterbloxx/radiance.nvim",
+    "description": "A pretty Neovim color scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "ekasc/kissland.nvim",
+    "description": "kissland inspired neovim color-scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "kylefiedler/ocean",
+    "description": "vim colour scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "gaving/dreamcoat",
+    "description": "vim colour scheme registry"
+  },
+  {
+    "stars": 0,
+    "repo_url": "GlennLeo/cobalt2.nvim",
+    "description": "Cobalt2 color scheme for NeoVim"
+  },
+  {
+    "stars": 0,
+    "repo_url": "brokenax3/Octo-vim",
+    "description": "A vim colour scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "gilbertfrancois/intellij-light.vim",
+    "description": "The fantastic IntelliJ Light colour scheme for Vim and NeoVim."
+  },
+  {
+    "stars": 0,
+    "repo_url": "kstevens715/monoky.nvim",
+    "description": "A Monokai color scheme for Neovim"
+  },
+  {
+    "stars": 0,
+    "repo_url": "jefflasslett/positive-reinforcement",
+    "description": "My vim colour scheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "owainkenwayucl/vimcolours",
+    "description": "Some VIM colour Schemes"
+  },
+  {
+    "stars": 0,
+    "repo_url": "eshsrt64/vim-colourschemes",
+    "description": "Colour schemes for vim"
+  },
+  {
+    "stars": 0,
+    "repo_url": "davidchambers/aotearoa",
+    "description": "Colour scheme for Vim"
+  },
+  {
+    "stars": 0,
+    "repo_url": "ironhouzi/bioluminescence.vim",
+    "description": "A Vim colour scheme in 256 colours"
+  },
+  {
+    "stars": 0,
+    "repo_url": "veged/yacolors.nvim",
+    "description": "Neovim color scheme"
   },
   {
     "stars": 0,
@@ -2751,23 +3011,18 @@
   },
   {
     "stars": 0,
-    "repo_url": "ccdale/ccacolour",
-    "description": "vim colour scheme based on https://github.com/romainl/Apprentice"
+    "repo_url": "NateDolny/Leaf",
+    "description": "A simple green colour scheme for vim"
   },
   {
     "stars": 0,
-    "repo_url": "axdy/vimrc",
-    "description": "vimrc file for configuring vim set up. Includes Vundle packages and colour schemes."
+    "repo_url": "tiankaixie/fui.nvim",
+    "description": "Futuristic color scheme for neovim"
   },
   {
     "stars": 0,
-    "repo_url": "rushiagr/pygun.vim",
-    "description": "Vim colour scheme for Python which, if used with proper brightness and contrast, doesn't hurt the eye"
-  },
-  {
-    "stars": 0,
-    "repo_url": "filipdutescu/springan.vim",
-    "description": "A dark Vim/Neovim colour scheme for the GUI and 16/256/true-color terminals."
+    "repo_url": "tim-brown/shadesofamber",
+    "description": "Amber monitor style colour scheme for use with vim"
   },
   {
     "stars": 0,
@@ -2776,8 +3031,33 @@
   },
   {
     "stars": 0,
-    "repo_url": "fuckie/neovim-molokai",
-    "description": "Molokai color scheme for Neovim"
+    "repo_url": "deankinane/blaze.nvim",
+    "description": "Blaze is the only Neovim colour scheme that is guaranteed to make you a blazingly fast developer*"
+  },
+  {
+    "stars": 0,
+    "repo_url": "benfowler/lightline-nord-sane",
+    "description": "Cleaned-up 'Nord' colour scheme for vim-sightline"
+  },
+  {
+    "stars": 0,
+    "repo_url": "MonotoneDevelopment/hackerboi-vim-scheme",
+    "description": "Its me own vim colourscheme :P"
+  },
+  {
+    "stars": 0,
+    "repo_url": "puttehi/nvim-puttehi-dark",
+    "description": "Neovim color scheme as a plugin"
+  },
+  {
+    "stars": 0,
+    "repo_url": "zeph1rus/zephstyle-vim",
+    "description": "Vim Colourscheme"
+  },
+  {
+    "stars": 0,
+    "repo_url": "kevinkirkup/blackboard",
+    "description": "Blackboard Neovim color scheme"
   },
   {
     "stars": 0,
@@ -2791,123 +3071,8 @@
   },
   {
     "stars": 0,
-    "repo_url": "sulami/su256.vim",
-    "description": "A simple dark colourscheme for vim and neovim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "williamrobertson/vimfiles",
-    "description": "Vim desktop config and colour schemes"
-  },
-  {
-    "stars": 0,
-    "repo_url": "Visaal/neo_blue",
-    "description": "color scheme for neovim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "nichobi/nicolour-nvim",
-    "description": "WIP neovim colour scheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "rubik/vim-base16-paraiso",
-    "description": "Base16 Paraiso color scheme for Vim/Neovim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "titan-rocky/cream-starter",
-    "description": "A Neovim Color Scheme Plugin"
-  },
-  {
-    "stars": 0,
-    "repo_url": "Aloz1/BtrPrint",
-    "description": "BtrPrint is a vim printing plugin to allow for better printing capabilities within vim, primarily the ability to use a seperate colour scheme for syntax highlighting"
-  },
-  {
-    "stars": 0,
-    "repo_url": "ironhouzi/bioluminescence.vim",
-    "description": "A Vim colour scheme in 256 colours"
-  },
-  {
-    "stars": 0,
-    "repo_url": "maxmx03/caelum",
-    "description": "Caelum is a Neo(Vim) colorscheme inspired by the rich colors and intricate designs found in Catholic art during the Renaissance period, \"Caelum\" is a Latin word meaning \"sky\" or \"heaven.\""
-  },
-  {
-    "stars": 0,
-    "repo_url": "jstnas/lightline.dim",
-    "description": "A fork of lightline.vim with the dim colourscheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "eshsrt64/vim-colourschemes",
-    "description": "Colour schemes for vim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "nikolay-pv/dotfiles",
-    "description": "Configs, color schemes for vim and neovim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "jefflasslett/positive-reinforcement",
-    "description": "My vim colour scheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "sdawson/noether",
-    "description": "A dark colour scheme for Vim."
-  },
-  {
-    "stars": 0,
-    "repo_url": "Praful/vim-colour-scheme",
-    "description": "Vim colour scheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "sbmkvp/vim_colour_scheme",
-    "description": "My colour scheme for vim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "AveryLychee/base16-flora-vim",
-    "description": "Base16 colourscheme for vim based off floraverse.com"
-  },
-  {
-    "stars": 0,
-    "repo_url": "marktermaat/vim-onehalf-color-scheme",
-    "description": "My personal twist of the Onehalf Vim colour scheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "protesilaos/prot16-vim-airline",
-    "description": "Ports of the Prot16 collection of colour schemes for the popular Vim Airline plugin for Vim."
-  },
-  {
-    "stars": 0,
-    "repo_url": "mindblocks/blackhole",
-    "description": "vim / neovim color scheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "GlennLeo/cobalt2.nvim",
-    "description": "Cobalt2 color scheme for NeoVim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "coffee-theme/coffee.vim-airline",
-    "description": "Coffee is a nice, warm colour scheme for software based of gruvbox which is light on eye strain and feels warm and cozy -- vim ariline"
-  },
-  {
-    "stars": 0,
-    "repo_url": "gaving/dreamcoat",
-    "description": "vim colour scheme registry"
-  },
-  {
-    "stars": 0,
-    "repo_url": "davidchambers/aotearoa",
-    "description": "Colour scheme for Vim"
+    "repo_url": "jimmykodes/tyranitar.nvim",
+    "description": "tyranitar color scheme for neovim"
   },
   {
     "stars": 0,
@@ -2916,93 +3081,18 @@
   },
   {
     "stars": 0,
-    "repo_url": "addie43110/donttouchme",
-    "description": "the donttouchme colourscheme for vim"
+    "repo_url": "maxmx03/caelum",
+    "description": "Caelum is a Neo(Vim) colorscheme inspired by the rich colors and intricate designs found in Catholic art during the Renaissance period, \"Caelum\" is a Latin word meaning \"sky\" or \"heaven.\""
   },
   {
     "stars": 0,
-    "repo_url": "ChrisDavison/vim-colourtoggle",
-    "description": "Toggle vim colourscheme: light, dark, or based on time of day."
+    "repo_url": "filipdutescu/springan.vim",
+    "description": "A dark Vim/Neovim colour scheme for the GUI and 16/256/true-color terminals."
   },
   {
     "stars": 0,
-    "repo_url": "fe-lipe-c/lipcs",
-    "description": "A neovim color scheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "ericyan/vim-ocean",
-    "description": "Base16 Ocean colour scheme for Vim with matching vim-airline theme."
-  },
-  {
-    "stars": 0,
-    "repo_url": "brokenax3/Octo-vim",
-    "description": "A vim colour scheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "mikepjb/vim-white",
-    "description": "A white colour scheme for vim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "HenriAW/yfelin",
-    "description": "A light vim colourscheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "tiankaixie/fui.nvim",
-    "description": "Futuristic color scheme for neovim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "arp242/default2.vim",
-    "description": "Vim's default colour scheme with some small enhancements"
-  },
-  {
-    "stars": 0,
-    "repo_url": "mctaylorpants/vim-borahae",
-    "description": "A colour scheme for vim 💜"
-  },
-  {
-    "stars": 0,
-    "repo_url": "BeatScherrer/gravel-pit.nvim",
-    "description": "gravel-pit color scheme for neovim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "dotlabel-chris/vim-config",
-    "description": "VIM config file and colour scheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "jimmykodes/tyranitar.nvim",
-    "description": "tyranitar color scheme for neovim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "kheaactua/vim-managecolor",
-    "description": "Vim plugin to manage colour schemes."
-  },
-  {
-    "stars": 0,
-    "repo_url": "av4625/vim-config",
-    "description": "My vim settings and colour scheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "zeph1rus/zephstyle-vim",
-    "description": "Vim Colourscheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "adamransom/therapy",
-    "description": "Light colour scheme for Vim and the terminal"
-  },
-  {
-    "stars": 0,
-    "repo_url": "benfowler/lightline-nord-sane",
-    "description": "Cleaned-up 'Nord' colour scheme for vim-sightline"
+    "repo_url": "IllegalLeft/honeywell.vim",
+    "description": "Honeywell terminal inspired vim colour scheme"
   },
   {
     "stars": 0,
@@ -3011,117 +3101,27 @@
   },
   {
     "stars": 0,
-    "repo_url": "filipdutescu/springan.nvim",
-    "description": "A dark Neovim colour scheme for 16/256/true-color terminals and GUIs. "
+    "repo_url": "ericyan/vim-ocean",
+    "description": "Base16 Ocean colour scheme for Vim with matching vim-airline theme."
   },
   {
     "stars": 0,
-    "repo_url": "mesabytes/darkcode.nvim",
-    "description": "neovim color scheme"
+    "repo_url": "sbmkvp/vim_colour_scheme",
+    "description": "My colour scheme for vim"
   },
   {
     "stars": 0,
-    "repo_url": "tim-brown/shadesofamber",
-    "description": "Amber monitor style colour scheme for use with vim"
+    "repo_url": "coffee-theme/coffee.vim-airline",
+    "description": "Coffee is a nice, warm colour scheme for software based of gruvbox which is light on eye strain and feels warm and cozy -- vim ariline"
   },
   {
     "stars": 0,
-    "repo_url": "owainkenwayucl/vimcolours",
-    "description": "Some VIM colour Schemes"
+    "repo_url": "Praful/vim-colour-scheme",
+    "description": "Vim colour scheme"
   },
   {
     "stars": 0,
-    "repo_url": "jpetrie/turnip",
-    "description": "A color scheme for Neovim."
-  },
-  {
-    "stars": 0,
-    "repo_url": "deankinane/blaze.nvim",
-    "description": "Blaze is the only Neovim colour scheme that is guaranteed to make you a blazingly fast developer*"
-  },
-  {
-    "stars": 0,
-    "repo_url": "puttehi/nvim-puttehi-dark",
-    "description": "Neovim color scheme as a plugin"
-  },
-  {
-    "stars": 0,
-    "repo_url": "iammerrick/nova-vim",
-    "description": "Nova color scheme plugin for Vim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "NateDolny/Leaf",
-    "description": "A simple green colour scheme for vim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "itwasneo/silense.nvim",
-    "description": "Personal NeoVim color scheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "KKMahogany/vimconfig",
-    "description": "My vim configs and colour schemes"
-  },
-  {
-    "stars": 0,
-    "repo_url": "JeremyTechDev/nv-colorschemes",
-    "description": "Color Schemes for NeoVim 🎨"
-  },
-  {
-    "stars": 0,
-    "repo_url": "MVarga12/clion-colors-pencil",
-    "description": "Light colourscheme based on reedes' vim-colors-pencil."
-  },
-  {
-    "stars": 0,
-    "repo_url": "nghamilton/hij",
-    "description": "Vim colour scheme for Haskell, replicating Intellij's default (light) colors"
-  },
-  {
-    "stars": 0,
-    "repo_url": "archydragon/vim-blusted",
-    "description": "Yet another dark colour scheme for Vim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "MonotoneDevelopment/hackerboi-vim-scheme",
-    "description": "Its me own vim colourscheme :P"
-  },
-  {
-    "stars": 0,
-    "repo_url": "SameAsMuli/desert-noir",
-    "description": "Vim colourscheme heavily based upon desert and 256-noir."
-  },
-  {
-    "stars": 0,
-    "repo_url": "avovsya/c64.vim",
-    "description": "Just a mirror of C64.vim colour scheme by Aaron Maupin - http://aaronmaupin.com/blog/vim-c64-color-scheme/"
-  },
-  {
-    "stars": 0,
-    "repo_url": "veged/yacolors.nvim",
-    "description": "Neovim color scheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "DanHam/neos-irblack",
-    "description": "Custom version of the Vim IRBlack colour scheme"
-  },
-  {
-    "stars": 0,
-    "repo_url": "biancapower/vim-powerjs",
-    "description": "vim colour scheme for JS"
-  },
-  {
-    "stars": 0,
-    "repo_url": "Svvarg/darkai.nvim",
-    "description": "Color scheme for neovim"
-  },
-  {
-    "stars": 0,
-    "repo_url": "nyanpasu/suwako",
-    "description": "Vim colourscheme"
+    "repo_url": "axdy/vimrc",
+    "description": "vimrc file for configuring vim set up. Includes Vundle packages and colour schemes."
   }
 ]
