@@ -1,5 +1,17 @@
 vim.opt.swapfile = false
 vim.opt.backup = false
+
+function GetHexCodeForHl(hlgroup, part)
+    local hl = vim.api.nvim_get_hl(0, { name = hlgroup })
+
+    local num = hl[part]
+    if num == nil then
+        error("Failed to get " .. part .. " for " .. hlgroup .. "\n", 1)
+        -- return "#000000"
+    end
+    return string.format("#%06x", num)
+end
+
 function IsHexColorLight(color)
     local rawColor = vim.fn.trim(color, "#") or ""
 
@@ -392,9 +404,9 @@ end
 
 -- Get the color group value of the syn ID
 function GetColorValue(synID)
-    local color = vim.fn.synIDattr(vim.fn.synIDtrans(synID), "fg#")
+    local color = GetHexCodeForHl(GetColorGroupName(synID), "fg")
     if color == "" then
-        color = vim.fn.synIDattr(vim.fn.hlID("Normal"), "fg#")
+        color = GetHexCodeForHl("Normal", 'fg')
     end
     return ConvertToHex(color)
 end
@@ -402,51 +414,48 @@ end
 -- Get some color values that are not picked up by GetColorValues
 function GetExtraColorValues()
     return {
-        NormalFg = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("Normal"), "fg#")),
-        NormalBg = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg#")),
-        StatusLineFg = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("StatusLine"), "fg#")),
-        StatusLineBg = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("StatusLine"), "bg#")),
-        CursorFg = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("Cursor"), "fg#")),
-        CursorBg = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("Cursor"), "bg#")),
-        LineNrFg = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("LineNr"), "fg#")),
-        LineNrBg = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("LineNr"), "bg#")),
-        CursorLineFg = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("CursorLine"), "fg#")),
-        CursorLineBg = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("CursorLine"), "bg#")),
-        CursorLineNrFg = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("CursorLineNr"), "fg#")),
-        CursorLineNrBg = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("CursorLineNr"), "bg#")),
-        LineComment = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("LineComment"), "fg#")),
-        -- vimLineComment = ConvertToHex(vim.fn.synIdattr(vim.fn.hlId("vimLineComment"), "fg#")),
-        -- vimIsCommand = ConvertToHex(vim.fn.synIdattr(vim.fn.hlId("vimIsCommand"), "fg#")),
-        -- vimNumber = ConvertToHex(vim.fn.synIdattr(vim.fn.hlId("vimNumber"), "fg#")),
-        -- vimFuncVar = ConvertToHex(vim.fn.synIdattr(vim.fn.hlId("vimFuncVar"), "fg#")),
-        -- vimOper = ConvertToHex(vim.fn.synIdattr(vim.fn.hlId("vimOper"), "fg#")),
-        -- vimNotFunc = ConvertToHex(vim.fn.synIdattr(vim.fn.hlId("vimNotFunc"), "fg#")),
-        -- vimCommand = ConvertToHex(vim.fn.synIdattr(vim.fn.hlId("vimCommand"), "fg#")),
-        -- vimOperParen = ConvertToHex(vim.fn.synIdattr(vim.fn.hlId("vimOperParen"), "fg#")),
-        -- vimFuncName = ConvertToHex(vim.fn.synIdattr(vim.fn.hlId("vimFuncName"), "fg#")),
-        -- vimLet = ConvertToHex(vim.fn.synIdattr(vim.fn.hlId("vimLet"), "fg#")),
-        -- vimFunction = ConvertToHex(vim.fn.synIdattr(vim.fn.hlId("vimFunction"), "fg#")),
-        -- vimSubst = ConvertToHex(vim.fn.synIdattr(vim.fn.hlId("vimSubst"), "fg#")),
-        -- vimFuncBody = ConvertToHex(vim.fn.synIdattr(vim.fn.hlId("vimFuncBody"), "fg#")),
-        -- vimParenSep = ConvertToHex(vim.fn.synIdattr(vim.fn.hlId("vimParenSep"), "fg#")),
-        -- vimString = ConvertToHex(vim.fn.synIdattr(vim.fn.hlId("vimString"), "fg#")),
-        -- vimVar = ConvertToHex(vim.fn.synIdattr(vim.fn.hlId("vimVar"), "fg#")),
+        NormalFg = GetHexCodeForHl("Normal", 'fg'),
+        NormalBg = GetHexCodeForHl("Normal", 'bg'),
+        StatusLineFg = GetHexCodeForHl("StatusLine", 'fg'),
+        StatusLineBg = GetHexCodeForHl("StatusLine", 'bg'),
+        CursorFg = GetHexCodeForHl("Cursor", 'fg'),
+        CursorBg = GetHexCodeForHl("Cursor", 'bg'),
+        LineNrFg = GetHexCodeForHl("LineNr", 'fg'),
+        CursorLineBg = GetHexCodeForHl("CursorLine", 'bg'),
+        CursorLineNrFg = GetHexCodeForHl("CursorLineNr", 'fg'),
+        -- LineComment = GetHexCodeForHl("LineComment", 'fg'),
+        -- vimLineComment = vim.fn.synIdattr(vim.fn.hlId("vimLineComment"), "fg#"),
+        -- vimIsCommand = vim.fn.synIdattr(vim.fn.hlId("vimIsCommand"), "fg#"),
+        -- vimNumber = vim.fn.synIdattr(vim.fn.hlId("vimNumber"), "fg#"),
+        -- vimFuncVar = vim.fn.synIdattr(vim.fn.hlId("vimFuncVar"), "fg#"),
+        -- vimOper = vim.fn.synIdattr(vim.fn.hlId("vimOper"), "fg#"),
+        -- vimNotFunc = vim.fn.synIdattr(vim.fn.hlId("vimNotFunc"), "fg#"),
+        -- vimCommand = vim.fn.synIdattr(vim.fn.hlId("vimCommand"), "fg#"),
+        -- vimOperParen = vim.fn.synIdattr(vim.fn.hlId("vimOperParen"), "fg#"),
+        -- vimFuncName = vim.fn.synIdattr(vim.fn.hlId("vimFuncName"), "fg#"),
+        -- vimLet = vim.fn.synIdattr(vim.fn.hlId("vimLet"), "fg#"),
+        -- vimFunction = vim.fn.synIdattr(vim.fn.hlId("vimFunction"), "fg#"),
+        -- vimSubst = vim.fn.synIdattr(vim.fn.hlId("vimSubst"), "fg#"),
+        -- vimFuncBody = vim.fn.synIdattr(vim.fn.hlId("vimFuncBody"), "fg#"),
+        -- vimParenSep = vim.fn.synIdattr(vim.fn.hlId("vimParenSep"), "fg#"),
+        -- vimString = vim.fn.synIdattr(vim.fn.hlId("vimString"), "fg#"),
+        -- vimVar = vim.fn.synIdattr(vim.fn.hlId("vimVar"), "fg#"),
         --
-        -- Command = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("Command"), "fg#")),
-        -- Function = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("Function"), "fg#")),
-        -- IsCommand = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("IsCommand"), "fg#")),
-        -- FuncVar = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("FuncVar"), "fg#")),
-        -- String = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("String"), "fg#")),
-        -- FuncBody = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("FuncBody"), "fg#")),
-        -- Number = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("Number"), "fg#")),
-        -- FuncName = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("FuncName"), "fg#")),
-        -- Subst = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("Subst"), "fg#")),
-        -- Let = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("Let"), "fg#")),
-        -- Var = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("Var"), "fg#")),
-        -- ParenSep = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("ParenSep"), "fg#")),
-        -- Oper = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("Oper"), "fg#")),
-        -- OperParen = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("OperParen"), "fg#")),
-        -- NotFunc = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("NotFunc"), "fg#")),
+        -- Command = GetHexCodeForHl("Command", 'fg'),
+        -- Function = GetHexCodeForHl("Function", 'fg'),
+        -- IsCommand = GetHexCodeForHl("IsCommand", 'fg'),
+        -- FuncVar = GetHexCodeForHl("FuncVar", 'fg'),
+        -- String = GetHexCodeForHl("String", 'fg'),
+        -- FuncBody = GetHexCodeForHl("FuncBody", 'fg'),
+        -- Number = GetHexCodeForHl("Number", 'fg'),
+        -- FuncName = GetHexCodeForHl("FuncName", 'fg'),
+        -- Subst = GetHexCodeForHl("Subst", 'fg'),
+        -- Let = GetHexCodeForHl("Let", 'fg'),
+        -- Var = GetHexCodeForHl("Var", 'fg'),
+        -- ParenSep = GetHexCodeForHl("ParenSep", 'fg'),
+        -- Oper = GetHexCodeForHl("Oper", 'fg'),
+        -- OperParen = GetHexCodeForHl("OperParen", 'fg'),
+        -- NotFunc = GetHexCodeForHl("NotFunc", 'fg'),
     }
 end
 
@@ -490,7 +499,7 @@ function GetColorValues()
 
                             values[tsCapture] = GetFullColorHex(yeet)
                             if values[tsCapture] == "#000000" then
-                                values[tsCapture] = ConvertToHex(vim.fn.synIDattr(vim.fn.hlID("Normal"), "fg#"))
+                                values[tsCapture] = ConvertToHex(GetHexCodeForHl("Normal", 'fg'))
                             end
                         end
                     end
@@ -541,38 +550,52 @@ end
 function WriteColorValues(filename, colorscheme, background)
     -- try
     --
-    pcall(function()
-        SetUpColorScheme(colorscheme)
-        -- if trim(execute('colorscheme')) == 'default'
-        --     return 0 .' '
-        -- end
+    -- pcall(function()
+    -- SetUpColorScheme(colorscheme)
+    -- if trim(execute('colorscheme')) == 'default'
+    --     return 0 .' '
+    -- end
+    local data = {}
 
-        local synIdFg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Normal")), "fg#")
-        local synIdBg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Normal")), "bg#")
+    local synIdFg = GetHexCodeForHl("Normal", 'fg')
+    local synIdBg = GetHexCodeForHl("Normal", 'bg')
 
-        local background2 = ConvertToHex(synIdFg)
-        local foreground = ConvertToHex(synIdBg)
+    local background2 = ConvertToHex(synIdFg)
+    local foreground = ConvertToHex(synIdBg)
 
-        local iscolorschemedark = true
-        -- vim.fn.timer_start(100, function()
-        -- 	print(filename, colorscheme, background)
 
-        -- end)
-        if background2 ~= "" then
-            iscolorschemedark = IsHexColorDark(background2)
-        elseif foreground ~= "" then
-            iscolorschemedark = IsHexColorLight(foreground)
-        end
+    local iscolorschemedark = true
+    -- vim.fn.timer_start(100, function()
+    -- 	print(filename, colorscheme, background)
 
-        local data = {}
-        if (iscolorschemedark and background == "light") or (not iscolorschemedark and background == "dark") then
-            data = GetColorValues()
-        else
-        end
+    -- end)
+    if background2 ~= "" then
+        iscolorschemedark = IsHexColorDark(background2)
+    elseif foreground ~= "" then
+        iscolorschemedark = IsHexColorLight(foreground)
+    end
 
-        local encodeddata = vim.fn.json_encode(data)
-        vim.fn.writefile({ encodeddata }, filename)
-    end)
+    if (iscolorschemedark and background == "light") or (not iscolorschemedark and background == "dark") then
+        data = vim.tbl_extend("force", data, GetColorValues())
+    else
+    end
+    vim.notify("yeet4\n", 1)
+    -- vim.notify(iscolorschemedark .. "", 1)
+    vim.notify(background2 .. "\n", 1)
+    vim.notify(synIdBg .. "\n", 1)
+    vim.notify(GetHexCodeForHl("Normal", 'bg') .. "\n", 1)
+    vim.notify(vim.inspect(vim.api.nvim_get_hl(0, { name = "Normal" })) .. "\n", 1)
+    vim.notify(vim.fn.hlID("Normal") .. "" .. "\n", 1)
+
+    -- data.yeet3 = vim.fn.hlID("Normal")
+    -- data.yeet4 = synIdBg
+    vim.notify("Continuing\n", 1)
+
+    local encodeddata = vim.fn.json_encode(data)
+    vim.notify("Json encoded\n", 1)
+    vim.notify("Writing to file " .. filename .. "\n", 1)
+    vim.fn.writefile({ encodeddata }, filename)
+    -- end)
     -- catch /.*/
     -- endtry
 end

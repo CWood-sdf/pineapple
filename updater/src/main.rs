@@ -328,16 +328,17 @@ async fn generate_colorscheme(
     dark: bool,
 ) -> Result<bool, Box<dyn std::error::Error>> {
     let current_dir = std::env::current_dir()?;
+    // println!("yeet");
     let background = if dark { "dark" } else { "light" };
-    let write_color_values = format!("\"autocmd ColorScheme * :lua vim.fn.timer_start(100, function() WriteColorValues('{}/gencolors.json', '{}', '{}');  vim.cmd('qa!') end)\"", get_dir_name(current_dir.to_str().unwrap().to_string(), dir_base.clone()), colorscheme, background);
+    let write_color_values = format!("\"autocmd ColorScheme * :lua vim.fn.timer_start(2000, function() WriteColorValues('{}/gencolors.json', '{}', '{}');  vim.cmd('qa!') end)\"", get_dir_name(current_dir.to_str().unwrap().to_string(), dir_base.clone()), colorscheme, background);
 
     let set_background = format!("\"set background={}\"", background);
     let buf_enter_autocmd = format!(
-        "\"autocmd VimEnter * :lua vim.fn.timer_start(50, function() vim.cmd('colorscheme {}') end)\"",
+        "\"autocmd VimEnter * :lua vim.fn.timer_start(500, function() vim.cmd('colorscheme {}') end)\"",
         colorscheme
     );
     let auto_quit_autocmd =
-        "\"autocmd VimEnter * :lua vim.fn.timer_start(500, function() vim.cmd('q') end)\""
+        "\"autocmd VimEnter * :lua vim.fn.timer_start(6000, function() vim.cmd('q') end)\""
             .to_string();
 
     let current_dir = std::env::current_dir()?;
@@ -360,6 +361,8 @@ async fn generate_colorscheme(
     ];
     // let dir_struct = ls(dir.clone()).await?;
     // println!("{}", dir_struct);
+    //
+    // println!("{}", args.join(", "));
 
     // let home_dir = std::env::var("HOME")?;
     let mut run_cmd = tokio::process::Command::new(format!("bash"));
@@ -410,16 +413,16 @@ async fn generate(
     dir_base: String,
     file_lock: Arc<Mutex<bool>>,
     repo_locks: Arc<Mutex<Vec<bool>>>,
+    items: Arc<Mutex<Vec<Item>>>,
     is_ts: bool,
 ) -> Result<(), Box<dyn std::error::Error>> {
-    let mut items: Vec<Item>;
+    let items_len;
     {
-        let file = std::fs::File::open(filename.clone())?;
-        items = serde_json::from_reader(file)?;
+        let items_lock = items.lock().unwrap();
+        items_len = items_lock.len();
     }
-    // println!("Items: {}", items.len());
     let mut j = 0;
-    while j < items.len() {
+    while j < items_len {
         {
             // println!("Acquiring arr lock");
             let mut arr2 = repo_locks.lock().unwrap();
@@ -439,8 +442,8 @@ async fn generate(
             arr2[j] = true;
             // println!("Freeing arr lock");
         }
-        let len = items.len();
-        let mut item = items[j].clone();
+        let len = items_len;
+        let mut item = items.lock().unwrap()[j].clone();
         if is_ts {
             if item.last_generated.is_some() {
                 j += 1;
@@ -532,12 +535,12 @@ async fn generate(
         let mut i = 0;
         while i < item.vim_color_schemes.len() {
             let mut colorscheme = item.vim_color_schemes[i].clone();
-            // println!("Colorscheme {}", colorscheme.name);
-            if colorscheme.backgrounds.is_some() && !force && is_ts {
-                new_colorschemes.push(colorscheme);
-                i += 1;
-                continue;
-            }
+            println!("Colorscheme {}.{}", j, colorscheme.name);
+            // if colorscheme.backgrounds.is_some() && !force && is_ts {
+            //     new_colorschemes.push(colorscheme);
+            //     i += 1;
+            //     continue;
+            // }
             let was_killed = generate_colorscheme(
                 // repo_name.clone(),
                 // "./nvim_worker/init.lua".to_string(),
@@ -558,11 +561,16 @@ async fn generate(
                 match serde_json::from_str::<HashMap<String, String>>(&data) {
                     Ok(parsed) if parsed.len() > 0 => {
                         colorscheme.backgrounds = Some(vec!["light".to_string()]);
-                        colorscheme.data.light = Some(parsed);
+                        // colorscheme.data.light = Some(parsed);
+                        let mut new_data = colorscheme.data.light.unwrap_or(HashMap::new());
+                        for (k, v) in parsed {
+                            new_data.insert(k, v);
+                        }
+                        colorscheme.data.light = Some(new_data);
                     }
                     Err(_) => {
-                        //println!("Data parse failed on data {}", data);
-                        //println!("{:?}", e);
+                        // println!("Data parse failed on data {}", data);
+                        // println!("{:?}", e);
                     }
                     _ => {}
                 };
@@ -602,11 +610,15 @@ async fn generate(
                                 .unwrap()
                                 .push("dark".to_string());
                         }
-                        colorscheme.data.dark = Some(parsed);
+                        let mut new_data = colorscheme.data.light.unwrap_or(HashMap::new());
+                        for (k, v) in parsed {
+                            new_data.insert(k, v);
+                        }
+                        colorscheme.data.light = Some(new_data);
                     }
                     Err(_) => {
-                        //println!("Data parse failed on data {}", data);
-                        //println!("{:?}", e);
+                        // println!("Data parse failed on data {}", data);
+                        // println!("{:?}", e);
                     }
                     _ => {}
                 };
@@ -619,8 +631,6 @@ async fn generate(
         }
         {
             let _lock = file_lock.lock();
-            let file = std::fs::File::open(filename.clone())?;
-            items = serde_json::from_reader(file)?;
             item.vim_color_schemes = new_colorschemes;
             if is_ts {
                 item.last_generated = Some(
@@ -637,11 +647,12 @@ async fn generate(
                         .as_secs(),
                 );
             }
-            items[j] = item;
+            items.lock().unwrap()[j] = item;
             j += 1;
+            let arr: Vec<Item> = items.lock().unwrap().to_vec();
             match std::fs::write(
                 filename.clone(),
-                serde_json::to_string_pretty(&items).unwrap(),
+                serde_json::to_string_pretty(&arr).unwrap(),
             ) {
                 Ok(_) => {}
                 Err(e) => {
@@ -663,8 +674,12 @@ async fn generate_no_ts(
     dir_base: String,
     file_lock: Arc<Mutex<bool>>,
     repo_locks: Arc<Mutex<Vec<bool>>>,
+    items: Arc<Mutex<Vec<Item>>>,
 ) -> Result<(), Box<dyn std::error::Error>> {
-    return generate(force, filename, dir_base, file_lock, repo_locks, false).await;
+    return generate(
+        force, filename, dir_base, file_lock, repo_locks, items, false,
+    )
+    .await;
 }
 async fn generate_ts(
     force: bool,
@@ -672,8 +687,12 @@ async fn generate_ts(
     dir_base: String,
     file_lock: Arc<Mutex<bool>>,
     repo_locks: Arc<Mutex<Vec<bool>>>,
+    items: Arc<Mutex<Vec<Item>>>,
 ) -> Result<(), Box<dyn std::error::Error>> {
-    return generate(force, filename, dir_base, file_lock, repo_locks, true).await;
+    return generate(
+        force, filename, dir_base, file_lock, repo_locks, items, true,
+    )
+    .await;
 }
 
 async fn move_to_lua(filename: String) -> Result<(), Box<dyn std::error::Error>> {
@@ -896,7 +915,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("{}", cli.force);
     let file_lock: Arc<Mutex<bool>> = Arc::new(true.into());
     let repo_locks = Arc::new(Mutex::new(Vec::new()));
-    let thread_count = cli.thread_count.unwrap_or(64);
+    let thread_count = cli.thread_count.unwrap_or(128);
 
     // You can check for the existence of subcommands, and if found use their
     // matches just as you would the top level cmd
@@ -909,11 +928,23 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             println!("Generating...");
             let mut id = 0;
             let mut threads = Vec::new();
+            // let force = cli.force.clone();
+            let file = cli.file.clone().unwrap_or("colors.json".to_string());
+            let json_file = match std::fs::File::open(file.clone()) {
+                Ok(v) => v,
+                Err(_) => return Ok(()),
+            };
+            let items = match serde_json::from_reader(json_file) {
+                Ok(v) => v,
+                Err(_) => return Ok(()),
+            };
+            let items_mutex = Arc::new(Mutex::new(items));
             while id < thread_count {
                 let file_lock = file_lock.clone();
                 let repo_locks = repo_locks.clone();
                 let force = cli.force.clone();
                 let file = cli.file.clone().unwrap_or("colors.json".to_string());
+                let actual_items = items_mutex.clone();
                 threads.push(std::thread::spawn(move || {
                     let rt = tokio::runtime::Runtime::new();
                     let rt = match rt {
@@ -938,9 +969,15 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                             Ok(_) => {}
                             Err(_) => return,
                         }
-                        let res =
-                            generate_no_ts(force, file, dir_base.clone(), file_lock, repo_locks)
-                                .await;
+                        let res = generate_no_ts(
+                            force,
+                            file,
+                            dir_base.clone(),
+                            file_lock,
+                            repo_locks,
+                            actual_items,
+                        )
+                        .await;
                         // return Ok(());
                         println!("Deleting config");
                         // rm_dir(format!("./{}", dir_base)).await?;
@@ -961,12 +998,31 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             println!("Generating...");
             let mut id = 0;
             let mut threads = Vec::new();
+            threads.reserve_exact(thread_count);
+            let force = cli.force.clone();
+            let file = cli.file.clone().unwrap_or("colors.json".to_string());
+            let json_file = match std::fs::File::open(file.clone()) {
+                Ok(v) => v,
+                Err(_) => {
+                    println!("Could not open colors file");
+                    return Ok(());
+                }
+            };
+            let items = match serde_json::from_reader(json_file) {
+                Ok(v) => v,
+                Err(e) => {
+                    println!("Could not parse json {}", e);
+                    return Ok(());
+                }
+            };
+            let items_mutex = Arc::new(Mutex::new(items));
             while id < thread_count {
                 let file_lock = file_lock.clone();
                 let repo_locks = repo_locks.clone();
-                let force = cli.force.clone();
-                let file = cli.file.clone().unwrap_or("colors.json".to_string());
+                let actual_items = items_mutex.clone();
+                let file_copy = file.clone();
                 threads.push(std::thread::spawn(move || {
+                    let file = file_copy;
                     let rt = tokio::runtime::Runtime::new();
                     let rt = match rt {
                         Ok(v) => v,
@@ -989,12 +1045,18 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                             Ok(_) => {}
                             Err(_) => return,
                         }
-                        let res =
-                            generate_ts(force, file, dir_base.clone(), file_lock, repo_locks).await;
+                        let res = generate_ts(
+                            force,
+                            file,
+                            dir_base.clone(),
+                            file_lock,
+                            repo_locks,
+                            actual_items,
+                        )
+                        .await;
                         // return Ok(());
                         println!("Deleting config");
                         // rm_dir(format!("./{}", dir_base)).await?;
-                        println!("sdf");
                         match res {
                             Err(e) => println!("{:?}", e),
                             _ => println!("Generate exited successfully"),

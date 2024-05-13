@@ -35,6 +35,22 @@ require("lazy").setup({
 		lazy = false,
 	},
 })
+function GetHexCodeForHl(hlgroup, part)
+	local hl = nil
+	if type(hlgroup) == "string" then
+		hl = vim.api.nvim_get_hl(0, { name = hlgroup })
+	else
+		hl = vim.api.nvim_get_hl(0, { id = hlgroup })
+	end
+
+	local num = hl[part]
+	if num == nil then
+		-- vim.notify("Failed to get " .. part .. " for " .. hlgroup .. "\n", 1)
+		return "#000000"
+	end
+	return string.format("#%06x", num)
+end
+
 vim.opt.compatible = false
 vim.opt.number = true
 vim.opt.laststatus = 2
@@ -335,9 +351,10 @@ end
 
 -- Get the color group value of the syn ID
 function GetColorValue(synID)
-	local color = vim.fn.synIDattr(vim.fn.synIDtrans(synID), "fg#")
+	-- vim.notify(synID .. GetColorGroupName(synID) .. "\n")
+	local color = GetHexCodeForHl(synID, "fg")
 	if color == "" then
-		color = vim.fn.synIDattr(vim.fn.hlID("Normal"), "fg#")
+		color = GetHexCodeForHl("Normal", "fg")
 	end
 	return ConvertToHex(color)
 end
@@ -435,36 +452,36 @@ end
 
 -- Gets all color values of the current file and stores them in a file as JSON
 function WriteColorValues(filename, colorscheme, background)
-	pcall(function()
-		SetUpColorScheme(colorscheme)
-		-- if trim(execute('colorscheme')) == 'default'
-		--     return 0 .' '
-		-- end
+	-- pcall(function()
+	-- if trim(execute('colorscheme')) == 'default'
+	--     return 0 .' '
+	-- end
 
-		local synIdFg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Normal")), "fg#")
-		local synIdBg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Normal")), "bg#")
+	local synIdFg = GetHexCodeForHl("Normal", 'fg')
+	local synIdBg = GetHexCodeForHl("Normal", 'bg')
 
-		local background2 = ConvertToHex(synIdFg)
-		local foreground = ConvertToHex(synIdBg)
+	local background2 = ConvertToHex(synIdFg)
+	local foreground = ConvertToHex(synIdBg)
 
-		local iscolorschemedark = true
-		-- vim.fn.timer_start(100, function()
-		-- 	print(filename, colorscheme, background)
+	local iscolorschemedark = true
+	-- vim.fn.timer_start(100, function()
+	-- 	print(filename, colorscheme, background)
 
-		-- end)
-		if background2 ~= "" then
-			iscolorschemedark = IsHexColorLight(background2)
-		elseif foreground ~= "" then
-			iscolorschemedark = IsHexColorLight(foreground)
-		end
+	-- end)
+	if background2 ~= "" then
+		iscolorschemedark = IsHexColorLight(background2)
+	elseif foreground ~= "" then
+		iscolorschemedark = IsHexColorLight(foreground)
+	end
 
-		local data = {}
-		if (iscolorschemedark and background == "light") or (not iscolorschemedark and background == "dark") then
-			data = GetColorValues()
-		else
-		end
+	local data = {}
+	if (iscolorschemedark and background == "light") or (not iscolorschemedark and background == "dark") then
+		data = GetColorValues()
+	else
+		data = GetColorValues()
+	end
 
-		local encodeddata = vim.fn.json_encode(data)
-		vim.fn.writefile({ encodeddata }, filename)
-	end)
+	local encodeddata = vim.fn.json_encode(data)
+	vim.fn.writefile({ encodeddata }, filename)
+	-- end)
 end
