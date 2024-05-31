@@ -48,7 +48,7 @@ function M.getInstallFileName()
     local fPath = string.gsub(installFile, "%.", "/")
     local fLoc = ""
     if jit.os == "Windows" then
-        fLoc = os.getenv("USERPROFILE") .. "AppData\\Local\\nvim\\lua\\" .. fPath .. ".lua"
+        fLoc = os.getenv("USERPROFILE") .. "\\AppData\\Local\\nvim\\lua\\" .. fPath .. ".lua"
     else
         fLoc = os.getenv("HOME") .. "/.config/nvim/lua/" .. fPath .. ".lua"
     end
@@ -134,7 +134,7 @@ function M.setColorscheme(colorscheme)
     end
     local fPath = ""
     if jit.os == "Windows" then
-        fPath = os.getenv("USERPROFILE") .. "AppData\\Local\\nvim\\" .. colorSchemeFile
+        fPath = os.getenv("USERPROFILE") .. "\\AppData\\Local\\nvim\\" .. colorSchemeFile
     else
         fPath = os.getenv("HOME") .. "/.config/nvim/" .. colorSchemeFile
     end
