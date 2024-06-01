@@ -330,15 +330,18 @@ async fn generate_colorscheme(
     let current_dir = std::env::current_dir()?;
     // println!("yeet");
     let background = if dark { "dark" } else { "light" };
-    let write_color_values = format!("\"autocmd ColorScheme * :lua vim.fn.timer_start(2000, function() WriteColorValues('{}/gencolors.json', '{}', '{}');  vim.cmd('qa!') end)\"", get_dir_name(current_dir.to_str().unwrap().to_string(), dir_base.clone()), colorscheme, background);
+    let write_color_values = format!("\"autocmd ColorScheme * :lua vim.fn.timer_start(100, function() WriteColorValues('{}/gencolors.json', '{}', '{}');  vim.cmd('qa!') end)\"", get_dir_name(current_dir.to_str().unwrap().to_string(), dir_base.clone()), colorscheme, background);
 
     let set_background = format!("\"set background={}\"", background);
+    let buf_enter2_autocmd =
+        format!("\"autocmd VimEnter * :lua vim.fn.timer_start(50, function() end)\"",);
     let buf_enter_autocmd = format!(
-        "\"autocmd VimEnter * :lua vim.fn.timer_start(500, function() vim.cmd('colorscheme {}') end)\"",
+        "\"autocmd VimEnter * :lua vim.fn.timer_start(40, function() SetUpColorScheme('{}') end)\"",
         colorscheme
     );
+    // println!("{}", colorscheme);
     let auto_quit_autocmd =
-        "\"autocmd VimEnter * :lua vim.fn.timer_start(6000, function() vim.cmd('q') end)\""
+        "\"autocmd VimEnter * :lua vim.fn.timer_start(3000, function() vim.cmd('q') end)\""
             .to_string();
 
     let current_dir = std::env::current_dir()?;
@@ -352,6 +355,8 @@ async fn generate_colorscheme(
         set_background,
         "-c".to_string(),
         buf_enter_autocmd,
+        "-c".to_string(),
+        buf_enter2_autocmd,
         "-c".to_string(),
         auto_quit_autocmd,
         "--headless".to_string(),
@@ -376,7 +381,7 @@ async fn generate_colorscheme(
 
     let (send, recv) = channel::<()>();
     tokio::spawn(async move {
-        tokio::time::sleep(std::time::Duration::from_secs(30)).await;
+        tokio::time::sleep(std::time::Duration::from_secs(100)).await;
         let _ = send.send(());
     });
     let was_killed;
@@ -442,15 +447,18 @@ async fn generate(
             arr2[j] = true;
             // println!("Freeing arr lock");
         }
+        if std::path::Path::exists(std::path::Path::new("./kill.txt")) {
+            break;
+        }
         let len = items_len;
         let mut item = items.lock().unwrap()[j].clone();
         if is_ts {
-            if item.last_generated.is_some() {
+            if item.last_generated.is_some() && !force {
                 j += 1;
                 continue;
             }
         } else {
-            if item.last_no_ts_gen.is_some() {
+            if item.last_no_ts_gen.is_some() && !force {
                 j += 1;
                 continue;
             }
@@ -610,11 +618,11 @@ async fn generate(
                                 .unwrap()
                                 .push("dark".to_string());
                         }
-                        let mut new_data = colorscheme.data.light.unwrap_or(HashMap::new());
+                        let mut new_data = colorscheme.data.dark.unwrap_or(HashMap::new());
                         for (k, v) in parsed {
                             new_data.insert(k, v);
                         }
-                        colorscheme.data.light = Some(new_data);
+                        colorscheme.data.dark = Some(new_data);
                     }
                     Err(_) => {
                         // println!("Data parse failed on data {}", data);
@@ -875,7 +883,7 @@ async fn rm_dir(dir: String) -> Result<(), Box<dyn std::error::Error>> {
 // A function to test stuff
 async fn do_yeet() -> Result<(), Box<dyn std::error::Error>> {
     let mut cmd = tokio::process::Command::new("nvim");
-    cmd.arg("--headless");
+    // cmd.arg("--headless");
     // cmd.arg("-c").arg("nvim --headless");
     // cmd.arg("./timeout_nvim.sh 5 qa".to_string());
     // cmd

@@ -10,7 +10,7 @@ local exampleCode = {
         { "color",           "vimOperParen", "NormalBg", "@variable.parameter" },
         { ")",               "vimParenSep",  "NormalBg", "@punctuation.bracket" },
         { " ",               "vimFuncBody",  "NormalBg", "vimFuncBody" },
-        { "abort",           "vimIsCommand", "NormalBg", "vimIsCommand" },
+        { "abort",           "vimIsCommand", "NormalBg", "@keyword" },
     },
     {
         { "  ",        "vimFuncBody",  "NormalBg", "vimFuncBody" },

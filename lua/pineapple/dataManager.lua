@@ -37,8 +37,8 @@ local function setup()
 				if
 					vimColorScheme.data ~= nil
 					and (
-						(vimColorScheme.data.light ~= nil and vimColorScheme.data.light.vimFunction ~= nil)
-						or (vimColorScheme.data.dark ~= nil and vimColorScheme.data.dark.vimFunction ~= nil)
+						(vimColorScheme.data.light ~= nil and vimColorScheme.data.light["@keyword"] ~= nil)
+						or (vimColorScheme.data.dark ~= nil and vimColorScheme.data.dark["@keyword"] ~= nil)
 					)
 				then
 					if vimColorScheme.data.light ~= nil and vimColorScheme.data.light.LineNrBg == "#000000" then

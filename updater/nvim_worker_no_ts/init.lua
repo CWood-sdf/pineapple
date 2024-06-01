@@ -38,9 +38,9 @@ require("lazy").setup({
 function GetHexCodeForHl(hlgroup, part)
 	local hl = nil
 	if type(hlgroup) == "string" then
-		hl = vim.api.nvim_get_hl(0, { name = hlgroup })
+		hl = vim.api.nvim_get_hl(0, { name = hlgroup, link = false })
 	else
-		hl = vim.api.nvim_get_hl(0, { id = hlgroup })
+		hl = vim.api.nvim_get_hl(0, { id = hlgroup, link = false })
 	end
 
 	local num = hl[part]
@@ -106,9 +106,7 @@ function ConvertToHex(colorcode)
 		"#00af00",
 		"#00af5f",
 		"#00af87",
-		"#00afaf",
-		"#00afd7",
-		"#00afff",
+		"#00afaf", "#00afd7", "#00afff",
 		"#00d700",
 		"#00d75f",
 		"#00d787",
@@ -399,12 +397,6 @@ function GetColorValues()
 		currentline = currentline + 1
 	end
 
-	for k, v in pairs(GetExtraColorValues()) do
-		if values[k] == nil then
-			values[k] = v
-		end
-	end
-
 	return values
 end
 
@@ -475,11 +467,10 @@ function WriteColorValues(filename, colorscheme, background)
 	end
 
 	local data = {}
-	if (iscolorschemedark and background == "light") or (not iscolorschemedark and background == "dark") then
-		data = GetColorValues()
-	else
-		data = GetColorValues()
-	end
+	-- if (iscolorschemedark and background == "light") or (not iscolorschemedark and background == "dark") then
+	-- else
+	data = GetColorValues()
+	-- end
 
 	local encodeddata = vim.fn.json_encode(data)
 	vim.fn.writefile({ encodeddata }, filename)

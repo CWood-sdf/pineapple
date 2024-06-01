@@ -2,12 +2,12 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 
 function GetHexCodeForHl(hlgroup, part)
-    local hl = vim.api.nvim_get_hl(0, { name = hlgroup })
+    local hl = vim.api.nvim_get_hl(0, { name = hlgroup, link = false })
 
     local num = hl[part]
     if num == nil then
-        error("Failed to get " .. part .. " for " .. hlgroup .. "\n", 1)
-        -- return "#000000"
+        -- error("Failed to get " .. part .. " for " .. hlgroup .. "\n", 1)
+        return "#000000"
     end
     return string.format("#%06x", num)
 end
@@ -71,6 +71,45 @@ require("lazy").setup({
         lazy = false,
     },
 
+    -- {
+    --     "jbyuki/one-small-step-for-vimkind",
+    --     requires = {
+    --         "mfussenegger/nvim-dap",
+    --     },
+    --     config = function()
+    --         local dap = require("dap")
+    --         dap.configurations.lua = {
+    --             {
+    --                 type = 'nlua',
+    --                 request = 'attach',
+    --                 name = "Attach to running Neovim instance",
+    --             }
+    --         }
+    --
+    --         dap.adapters.nlua = function(callback, config)
+    --             callback({ type = 'server', host = config.host or "127.0.0.1", port = config.port or 8086 })
+    --         end
+    --     end,
+    --     lazy = false,
+    --
+    -- },
+
+    -- {
+    --     "mfussenegger/nvim-dap",
+    --     dependencies = {
+    --         "nvim-neotest/nvim-nio",
+    --     },
+    --     config = function()
+    --         local dap = require("dap")
+    --         dap.listeners.after.event_initialized["dapui_config"] = function()
+    --         end
+    --         dap.listeners.before.event_terminated["dapui_config"] = function()
+    --         end
+    --         dap.listeners.before.event_exited["dapui_config"] = function()
+    --         end
+    --     end,
+    --     lazy = false,
+    -- },
     -- highlighting
     {
         "nvim-treesitter/nvim-treesitter",
@@ -418,10 +457,11 @@ function GetExtraColorValues()
         NormalBg = GetHexCodeForHl("Normal", 'bg'),
         StatusLineFg = GetHexCodeForHl("StatusLine", 'fg'),
         StatusLineBg = GetHexCodeForHl("StatusLine", 'bg'),
-        CursorFg = GetHexCodeForHl("Cursor", 'fg'),
-        CursorBg = GetHexCodeForHl("Cursor", 'bg'),
+        -- CursorFg = GetHexCodeForHl("Cursor", 'fg'),
+        -- CursorBg = GetHexCodeForHl("Cursor", 'bg'),
         LineNrFg = GetHexCodeForHl("LineNr", 'fg'),
-        CursorLineBg = GetHexCodeForHl("CursorLine", 'bg'),
+        LineNrBg = GetHexCodeForHl("LineNr", 'bg'),
+        CursorLineNrBg = GetHexCodeForHl("CursorLineNr", 'bg'),
         CursorLineNrFg = GetHexCodeForHl("CursorLineNr", 'fg'),
         -- LineComment = GetHexCodeForHl("LineComment", 'fg'),
         -- vimLineComment = vim.fn.synIdattr(vim.fn.hlId("vimLineComment"), "fg#"),
@@ -485,25 +525,31 @@ function GetColorValues()
 
             local synID = vim.fn.synID(vim.fn.line(".") or 1, vim.fn.col(".") or 1, 1)
             if synID ~= 0 then
-                values[GetColorGroupName(synID)] = GetColorValue(synID)
+                pcall(function()
+                    values[GetColorGroupName(synID)] = GetColorValue(synID)
+                end)
             else
                 local tsCapture = ""
+                pcall(function()
+                    -- error possible
+                    local capture = vim.treesitter.get_captures_at_cursor(0) --pcall(function() return vim.treesitter.get_captures_at_cursor(0)[0] end)
+                    if #capture > 0 then
+                        if #capture == 1 then
+                            local x = 0
+                        end
+                        for _, v in ipairs(capture) do
+                            tsCapture = "@" .. v
+                            if values[tsCapture] == nil then
+                                local yeet = vim.api.nvim_get_hl(0, { name = tsCapture, link = false }).fg
 
-                -- error possible
-                local capture = vim.treesitter.get_captures_at_cursor(0) --pcall(function() return vim.treesitter.get_captures_at_cursor(0)[0] end)
-                if #capture > 0 then
-                    for _, v in ipairs(capture) do
-                        tsCapture = "@" .. v
-                        if values[tsCapture] == nil then
-                            local yeet = vim.api.nvim_get_hl(0, { name = tsCapture, link = false }).fg
-
-                            values[tsCapture] = GetFullColorHex(yeet)
-                            if values[tsCapture] == "#000000" then
-                                values[tsCapture] = ConvertToHex(GetHexCodeForHl("Normal", 'fg'))
+                                values[tsCapture] = GetFullColorHex(yeet)
+                                if values[tsCapture] == "#000000" then
+                                    values[tsCapture] = ConvertToHex(GetHexCodeForHl("Normal", 'fg'))
+                                end
                             end
                         end
                     end
-                end
+                end)
             end
 
             currentcol = currentcol + 1
@@ -511,11 +557,13 @@ function GetColorValues()
         currentline = currentline + 1
     end
 
-    for k, v in pairs(GetExtraColorValues()) do
-        if values[k] == nil then
-            values[k] = v
+    pcall(function()
+        for k, v in pairs(GetExtraColorValues()) do
+            if values[k] == nil then
+                values[k] = v
+            end
         end
-    end
+    end)
 
     return values
 end
@@ -525,16 +573,19 @@ end
 -- Sets up colorscheme config through trial and error
 function SetUpColorScheme(colorscheme)
     local ok, _ = pcall(function()
+        -- vim.notify("Setting colorscheme to '" .. colorscheme .. "'")
         vim.opt.termguicolors = true
         vim.cmd("colorscheme " .. colorscheme)
-        local background = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'bg#')
-        local foreground = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'fg#')
-        if background == "" or foreground == "" then
-            vim.opt.termguicolors = false
-            vim.cmd('colorscheme ' .. colorscheme)
-            background = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'bg#')
-            foreground = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'fg#')
-        end
+        -- vim.notify("colorscheme set to '" .. colorscheme .. "'")
+        -- local background = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'bg#')
+        -- local foreground = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'fg#')
+        -- if background == "" or foreground == "" then
+        --     vim.notify("No foreground, retrying...")
+        --     vim.opt.termguicolors = false
+        --     vim.cmd('colorscheme ' .. colorscheme)
+        --     background = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'bg#')
+        --     foreground = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'fg#')
+        -- end
     end)
     if not ok then
         error("setting colorscheme \"" .. colorscheme .. "\" failed")
@@ -557,11 +608,11 @@ function WriteColorValues(filename, colorscheme, background)
     -- end
     local data = {}
 
-    local synIdFg = GetHexCodeForHl("Normal", 'fg')
-    local synIdBg = GetHexCodeForHl("Normal", 'bg')
-
-    local background2 = ConvertToHex(synIdFg)
-    local foreground = ConvertToHex(synIdBg)
+    -- local synIdFg = GetHexCodeForHl("Normal", 'fg')
+    -- local synIdBg = GetHexCodeForHl("Normal", 'bg')
+    --
+    -- local background2 = ConvertToHex(synIdFg)
+    -- local foreground = ConvertToHex(synIdBg)
 
 
     local iscolorschemedark = true
@@ -569,31 +620,30 @@ function WriteColorValues(filename, colorscheme, background)
     -- 	print(filename, colorscheme, background)
 
     -- end)
-    if background2 ~= "" then
-        iscolorschemedark = IsHexColorDark(background2)
-    elseif foreground ~= "" then
-        iscolorschemedark = IsHexColorLight(foreground)
-    end
+    -- if background2 ~= "" then
+    --     iscolorschemedark = IsHexColorDark(background2)
+    -- elseif foreground ~= "" then
+    --     iscolorschemedark = IsHexColorLight(foreground)
+    -- end
 
-    if (iscolorschemedark and background == "light") or (not iscolorschemedark and background == "dark") then
-        data = vim.tbl_extend("force", data, GetColorValues())
-    else
-    end
-    vim.notify("yeet4\n", 1)
+    -- if (iscolorschemedark and background == "light") or (not iscolorschemedark and background == "dark") then
+    data = GetColorValues()
+    -- else
+    -- end
     -- vim.notify(iscolorschemedark .. "", 1)
-    vim.notify(background2 .. "\n", 1)
-    vim.notify(synIdBg .. "\n", 1)
-    vim.notify(GetHexCodeForHl("Normal", 'bg') .. "\n", 1)
-    vim.notify(vim.inspect(vim.api.nvim_get_hl(0, { name = "Normal" })) .. "\n", 1)
-    vim.notify(vim.fn.hlID("Normal") .. "" .. "\n", 1)
+    -- vim.notify(background2 .. "\n", 1)
+    -- vim.notify(synIdBg .. "\n", 1)
+    -- vim.notify(GetHexCodeForHl("Normal", 'bg') .. "\n", 1)
+    -- vim.notify(vim.inspect(vim.api.nvim_get_hl(0, { name = "Normal" })) .. "\n", 1)
+    -- vim.notify(vim.fn.hlID("Normal") .. "" .. "\n", 1)
 
     -- data.yeet3 = vim.fn.hlID("Normal")
     -- data.yeet4 = synIdBg
-    vim.notify("Continuing\n", 1)
+    -- vim.notify("Continuing\n", 1)
 
     local encodeddata = vim.fn.json_encode(data)
-    vim.notify("Json encoded\n", 1)
-    vim.notify("Writing to file " .. filename .. "\n", 1)
+    -- vim.notify("Json encoded", 1)
+    -- vim.notify("Writing to file " .. filename .. "\n", 1)
     vim.fn.writefile({ encodeddata }, filename)
     -- end)
     -- catch /.*/
