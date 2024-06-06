@@ -123,15 +123,24 @@ fn get_dir_name(home: String, dir_base: String) -> String {
 //     }
 //     return Ok(String::from_utf8(output.stdout)?);
 // }
-async fn get_repo_colschemes(repo: Repo) -> Result<Vec<String>, Box<dyn std::error::Error>> {
+async fn get_repo_colschemes(repo: &Repo) -> Result<Vec<String>, Box<dyn std::error::Error>> {
     //create a process that runs "gh api repos/repo.repo_url/contents/colors" and returns the output
-    let mut cmd = tokio::process::Command::new("gh");
-    cmd.arg("api")
-        .arg(format!("repos/{}/contents/colors", repo.repo_url));
-    // .arg("--cache 1h");
+    let json;
+    loop {
+        let mut cmd = tokio::process::Command::new("gh");
+        cmd.arg("api")
+            .arg(format!("repos/{}/contents/colors", repo.repo_url));
+        // .arg("--cache 1h");
 
-    let output = cmd.output().await?;
-    let json = String::from_utf8(output.stdout)?;
+        let output = cmd.output().await?;
+        let json2 = String::from_utf8(output.stdout)?;
+        if !json2.contains("rate-limits") {
+            json = json2;
+            break;
+        }
+        println!("Rate limited, waiting 60 minutes");
+        std::thread::sleep(std::time::Duration::new(3600, 0));
+    }
     match serde_json::from_str::<PathData>(&json) {
         Ok(_) => return Ok(vec![]),
         Err(_) => {}
@@ -177,7 +186,7 @@ async fn get_repo_colschemes(repo: Repo) -> Result<Vec<String>, Box<dyn std::err
     }
     Ok(ret)
 }
-async fn clean_import() -> Result<(), Box<dyn std::error::Error>> {
+fn clean_import() -> Result<(), Box<dyn std::error::Error>> {
     let repos = std::fs::read_dir(".")?;
     let repos = repos
         .into_iter()
@@ -201,12 +210,14 @@ async fn clean_import() -> Result<(), Box<dyn std::error::Error>> {
         .map(|d| {
             println!("{:?}", d);
             let file = std::fs::File::open(d.path()).unwrap();
-            let contents = std::io::BufReader::new(file);
-            let repo: Vec<GhRepoContainer> = serde_json::from_reader(contents).unwrap();
+            // let contents = std::io::BufReader::new(file);
+            let actual_contents = std::io::read_to_string(file).unwrap_or("".to_string());
+            let repo: Vec<GhRepoContainer> =
+                serde_json::from_str(&actual_contents).unwrap_or(vec![]);
             let items = repo
                 .iter()
                 .map(|d| d.items.clone())
-                .take(1)
+                // .take(1)
                 .flatten()
                 .collect::<Vec<GhRepo>>();
             println!("{:?}", items.len());
@@ -250,71 +261,80 @@ async fn clean_import() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-async fn make_color_data() -> Result<(), Box<dyn std::error::Error>> {
+async fn make_color_data_for(repos: &Arc<Vec<Repo>>, schemes: &Arc<Mutex<Vec<Item>>>, i: usize) {
+    let repo = &repos[i];
+    let stars = repo.stars;
+    let description = repo.description.clone();
+    let repo_url = repo.repo_url.clone();
+    let colschemes = match get_repo_colschemes(repo).await {
+        Ok(s) => s,
+        Err(e) => {
+            eprintln!("Error on repo {}: {}", repo_url.clone(), e);
+            return;
+        }
+    };
+    if colschemes.len() == 0 {
+        return;
+    }
+    let colschemes = colschemes
+        .into_iter()
+        .map(|s| ColorSchemes {
+            backgrounds: None,
+            name: s.clone(),
+            data: Data {
+                light: None,
+                dark: None,
+            },
+        })
+        .collect::<Vec<_>>();
+
+    let mut lock = schemes.lock().unwrap();
+    let items: &mut Vec<Item> = lock.as_mut();
+    items.push(Item {
+        name: repo_url.split("/").last().unwrap().to_string(),
+        github_url: format!("https://github.com/{}", repo_url),
+        description: description.unwrap_or("".to_string()),
+        vim_color_schemes: colschemes,
+        stargazers_count: Some(stars as u32),
+        last_generated: None,
+        last_no_ts_gen: None,
+    });
+}
+async fn make_color_data(thread_count: usize) -> Result<(), Box<dyn std::error::Error>> {
     let repos_file = std::fs::File::open("repos.json")?;
 
     let repos: Vec<Repo> = serde_json::from_reader(repos_file)?;
+    let repos_threadable: Arc<Vec<Repo>> = Arc::new(repos);
 
-    let mut schemes: Vec<Item> = vec![];
-
-    let start_time = std::time::Instant::now();
-    let check_count = repos.len();
+    let schemes: Arc<Mutex<Vec<Item>>> = Arc::new(Mutex::new(vec![]));
     let mut i = 0;
-
-    for repo in repos {
-        // println!("Checking repo: {}", repo.repo_url);
-        let stars = repo.stars;
-        let description = repo.description.clone();
-        let repo_url = repo.repo_url.clone();
-        let colschemes = match get_repo_colschemes(repo).await {
-            Ok(s) => s,
-            Err(e) => {
-                eprintln!("Error on repo {}: {}", repo_url.clone(), e);
-                vec![]
-            }
-        };
+    let mut threads = vec![];
+    while i < thread_count {
+        let repos_threadable_t = repos_threadable.clone();
+        let schemes_t = schemes.clone();
+        threads.push(std::thread::spawn(move || {
+            let rt = tokio::runtime::Runtime::new();
+            let rt = match rt {
+                Ok(v) => v,
+                Err(_) => return,
+            };
+            rt.block_on(async {
+                let mut j = 0;
+                while j * thread_count + i < repos_threadable_t.len() {
+                    let _ =
+                        make_color_data_for(&repos_threadable_t, &schemes_t, j * thread_count + i)
+                            .await;
+                    j += 1;
+                }
+            });
+        }));
         i += 1;
-        if i % 10 == 0 {
-            let elapsed = start_time.elapsed().as_secs_f64();
-            let remaining = (check_count - i) as f64 * elapsed / i as f64;
-            let minutes = remaining as usize / 60;
-            let output = serde_json::to_string_pretty(&schemes)?;
-            std::fs::write("colors.json", output)?;
-            println!(
-                "{} / {}, ETA: {}m {:.2}s",
-                i,
-                check_count,
-                minutes,
-                remaining - minutes as f64 * 60.0
-            );
-        }
-        if colschemes.len() == 0 {
-            continue;
-        }
-        let colschemes = colschemes
-            .into_iter()
-            .map(|s| ColorSchemes {
-                backgrounds: None,
-                name: s.clone(),
-                data: Data {
-                    light: None,
-                    dark: None,
-                },
-            })
-            .collect::<Vec<_>>();
-        schemes.push(Item {
-            name: repo_url.split("/").last().unwrap().to_string(),
-            github_url: format!("https://github.com/{}", repo_url),
-            description: description.unwrap_or("".to_string()),
-            vim_color_schemes: colschemes,
-            stargazers_count: Some(stars as u32),
-            last_generated: None,
-            last_no_ts_gen: None,
-        });
-        // println!("{:?}", colschemes);
+    }
+    while !threads.iter().all(|t| t.is_finished()) {
+        std::thread::sleep(std::time::Duration::from_millis(100));
     }
 
-    let output = serde_json::to_string(&schemes)?;
+    let output = serde_json::to_string(&schemes.lock().unwrap().clone())?;
     std::fs::write("colors.json", output)?;
 
     Ok(())
@@ -657,7 +677,13 @@ async fn generate(
             }
             items.lock().unwrap()[j] = item;
             j += 1;
-            let arr: Vec<Item> = items.lock().unwrap().to_vec();
+            let mut arr: Vec<Item> = items.lock().unwrap().to_vec();
+            arr.sort_by(|l, r| {
+                r.stargazers_count
+                    .unwrap_or(0)
+                    .partial_cmp(&l.stargazers_count.unwrap_or(0))
+                    .expect("ooga boga")
+            });
             match std::fs::write(
                 filename.clone(),
                 serde_json::to_string_pretty(&arr).unwrap(),
@@ -705,7 +731,13 @@ async fn generate_ts(
 
 async fn move_to_lua(filename: String) -> Result<(), Box<dyn std::error::Error>> {
     let file = std::fs::File::open(filename)?;
-    let json: Vec<Item> = serde_json::from_reader(file)?;
+    let mut json: Vec<Item> = serde_json::from_reader(file)?;
+    json.sort_by(|l, r| {
+        r.stargazers_count
+            .unwrap_or(0)
+            .partial_cmp(&l.stargazers_count.unwrap_or(0))
+            .expect("Needed an ordering or something")
+    });
     std::fs::write("data.lua", "return {\n")?;
     let mut file = std::fs::OpenOptions::new().append(true).open("data.lua")?;
     for item in json {
@@ -942,10 +974,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 Ok(v) => v,
                 Err(_) => return Ok(()),
             };
-            let items = match serde_json::from_reader(json_file) {
+            let mut items: Vec<Item> = match serde_json::from_reader(json_file) {
                 Ok(v) => v,
                 Err(_) => return Ok(()),
             };
+            items.sort_by(|l, r| {
+                r.vim_color_schemes
+                    .len()
+                    .partial_cmp(&l.vim_color_schemes.len())
+                    .expect("idk man")
+            });
             let items_mutex = Arc::new(Mutex::new(items));
             while id < thread_count {
                 let file_lock = file_lock.clone();
@@ -1016,13 +1054,19 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     return Ok(());
                 }
             };
-            let items = match serde_json::from_reader(json_file) {
+            let mut items: Vec<Item> = match serde_json::from_reader(json_file) {
                 Ok(v) => v,
                 Err(e) => {
                     println!("Could not parse json {}", e);
                     return Ok(());
                 }
             };
+            items.sort_by(|l, r| {
+                r.vim_color_schemes
+                    .len()
+                    .partial_cmp(&l.vim_color_schemes.len())
+                    .expect("idk man")
+            });
             let items_mutex = Arc::new(Mutex::new(items));
             while id < thread_count {
                 let file_lock = file_lock.clone();
@@ -1080,11 +1124,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
         Some(Commands::MakeColorData { .. }) => {
             println!("Making color data...");
-            make_color_data().await?;
+            make_color_data(thread_count).await?;
         }
         Some(Commands::CleanImport { .. }) => {
             println!("Cleaning import...");
-            clean_import().await?;
+            clean_import()?;
         }
         Some(Commands::Yeet { .. }) => {
             println!("Yeeting...");
@@ -1095,7 +1139,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             //     Err(_) => {}
             // };
         }
-        None => {}
+        None => {
+            clean_import()?;
+        }
     }
 
     // Continued program logic goes here...

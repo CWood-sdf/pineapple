@@ -31,6 +31,12 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup({
 	{
+		'rktjmp/lush.nvim',
+	},
+	{
+		'tjdevries/colorbuddy.nvim',
+	},
+	{
 		dofile(vim.fn.fnamemodify("./lua/stuff/colorscheme.lua", ":p")),
 		lazy = false,
 	},

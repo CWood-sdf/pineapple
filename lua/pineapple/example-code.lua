@@ -1,3 +1,4 @@
+---@type [string, string, string, string][][]
 local exampleCode = {
     {
         { '" Returns true if the color hex value is light', "vimLineComment", "NormalBg", "@comment" },

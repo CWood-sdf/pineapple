@@ -126,6 +126,7 @@ function M.install(gitUrl)
         pattern = "PineappleInstallPost",
         data = { gitUrl },
     })
+    vim.notify("Installed " .. gitUrl)
 end
 
 function M.setColorscheme(colorscheme)

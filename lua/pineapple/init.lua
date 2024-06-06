@@ -14,9 +14,21 @@ function M.setup(opts)
 end
 
 function M.actualSetup() end
+
+local inst = nil
+vim.api.nvim_create_user_command("Pineapple2", function()
+	if not has_setup then
+		M.setup()
+	end
+	if inst == nil then
+		inst = require("banana.render").newInstance("pineapple", "pineapple.pineapple")
+	end
+	inst:render()
+end, {})
+
 vim.api.nvim_create_user_command("Pineapple", function(_)
 	if not has_setup then
-		error("Pineapple has not been setup yet")
+		M.setup()
 	end
 	-- local pineapple = require("pineapple")
 	-- do actualSetup bc setup doesn't do anything

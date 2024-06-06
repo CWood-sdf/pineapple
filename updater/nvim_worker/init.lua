@@ -70,6 +70,12 @@ require("lazy").setup({
         dofile(vim.fn.fnamemodify("./lua/stuff/colorscheme.lua", ":p")),
         lazy = false,
     },
+    {
+        'rktjmp/lush.nvim',
+    },
+    {
+        'tjdevries/colorbuddy.nvim',
+    },
 
     -- {
     --     "jbyuki/one-small-step-for-vimkind",
