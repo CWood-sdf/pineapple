@@ -1,4 +1,4 @@
-*pineapple.txt*          For Neovim >= 0.8.0         Last change: 2024 June 06
+*pineapple.txt*          For Neovim >= 0.8.0         Last change: 2024 June 11
 
 ==============================================================================
 Table of Contents                                *pineapple-table-of-contents*
@@ -171,6 +171,9 @@ with the window.
 
 The filtering capabilities are minimal, and the sorting capabilities are
 non-existent.
+
+The UX design is currently not great. I am not a great UX designer, so please
+submit an issue or a pull request with suggestions/fixes!
 
 
 API                                                  *pineapple-pineapple-api*
