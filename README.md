@@ -117,6 +117,8 @@ The VimResize autocmd is not implemented yet, so the preview will not resize wit
 
 The filtering capabilities are minimal, and the sorting capabilities are non-existent.
 
+The UX design is currently not great. I am not a great UX designer, so please submit an issue or a pull request with suggestions/fixes!
+
 ## Api
 
 | Name                      | Description                                     |
