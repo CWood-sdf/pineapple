@@ -2,6 +2,8 @@
 
 The ultimate theme manager for Neovim
 
+![pineapple screen](./assets/showcase.jpg)
+
 ## Why
 
 The goals of this plugin are:
