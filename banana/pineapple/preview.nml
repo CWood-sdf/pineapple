@@ -1,0 +1,8 @@
+<div>
+    <template name="Preview">
+    <div id="background">
+
+    </div>
+    <script src="pineapple.banana.preview"></script>
+    </template>
+</div>

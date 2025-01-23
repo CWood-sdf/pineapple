@@ -1,0 +1,21 @@
+<div id="themecont">
+<style>
+        /* #themecont > div { */
+        /*     padding-left: 2ch; */
+        /* } */
+        /* #themecont { */
+        /*     width: 20%; */
+        /* } */
+        #themecont .themes {
+            padding-left: 2ch;
+        }
+        #themecont {
+            /* padding-left: 2ch; */
+        }
+        Preview {
+            position: absolute;
+        }
+</style>
+
+<script src="pineapple.banana.home"> </script>
+</div>

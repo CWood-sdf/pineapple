@@ -1,0 +1,57 @@
+<nml>
+<head>
+    <style>
+        #title {
+            text-align: center;
+
+        }
+        nml {
+            top: 5%;
+            left: 5%;
+            width: 40%;
+            height: 90%;
+        }
+
+        #tabline > div {
+            hl-bg: hl-extract(bg, CursorLine);
+            padding: 1ch 0ch;
+            width: 20ch;
+            margin-right: 1ch;
+        }
+        #tabline > div.selected {
+            hl-bg: hl-extract(bg, Visual);
+        }
+            
+        .keycode {
+            hl-fg: hl-extract(fg, Operator);
+        }
+        #tabline {
+            padding: 1ch 0ch;
+            display: flex;
+        }
+        #dispcont {
+            display: flex;
+        }
+        #cont {
+            padding-left: 2ch;
+
+        }
+    </style>
+</head>
+<body>
+    <template import="pineapple/preview"></template>
+    <div id="title">
+    ~~ Pineapple ~~
+    </div>
+    <div id="tabline">
+        <div remap="H" class="selected" page="home"> Home </div>
+        <div remap="I" page="installed"> Installed </div>
+        <div remap="?" page="help"> Help </div>
+    </div>
+    <div id="topline"></div>
+    <div id="cont">
+    </div>
+    <script src="banana.helpers.qtoclose"></script>
+    <script src="pineapple.banana"></script>
+</body>
+</nml>
