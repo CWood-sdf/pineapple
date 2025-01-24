@@ -2,7 +2,7 @@
 
 queries=("vim theme" "vim color scheme" "vim colour scheme" "vim colourscheme" "vim colorscheme" "neovim color scheme" "neovim colorscheme" "neovim colour scheme" "neovim colourscheme" "neovim theme")
 
-skip=( 0 1 2 3)
+# skip=( 0 1 2 3)
 
 
 for i in ${!queries[@]}; do

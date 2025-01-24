@@ -106,6 +106,11 @@ struct PathData {
     type_: String,
     download_url: Option<String>,
 }
+
+#[derive(Deserialize)]
+struct Message {
+    status: u32,
+}
 fn get_dir_name(home: String, dir_base: String) -> String {
     format!("{}/confs/{}/nvim", home, dir_base)
 }
@@ -145,6 +150,10 @@ async fn get_repo_colschemes(repo: &Repo) -> Result<Vec<String>, Box<dyn std::er
         Ok(_) => return Ok(vec![]),
         Err(_) => {}
     };
+
+    // match serde_json::from_str::<Message>(&json) {
+    //     Ok(_) => return
+    // };
     // println!("{}", json);
     let json: Vec<PathData> = match serde_json::from_str(&json) {
         Ok(v) => v,
@@ -309,9 +318,11 @@ async fn make_color_data(thread_count: usize) -> Result<(), Box<dyn std::error::
     let schemes: Arc<Mutex<Vec<Item>>> = Arc::new(Mutex::new(vec![]));
     let mut i = 0;
     let mut threads = vec![];
+    let j: Arc<Mutex<Vec<usize>>> = Arc::new(Mutex::new(vec![0]));
     while i < thread_count {
         let repos_threadable_t = repos_threadable.clone();
         let schemes_t = schemes.clone();
+        let j_t = j.clone();
         threads.push(std::thread::spawn(move || {
             let rt = tokio::runtime::Runtime::new();
             let rt = match rt {
@@ -319,12 +330,24 @@ async fn make_color_data(thread_count: usize) -> Result<(), Box<dyn std::error::
                 Err(_) => return,
             };
             rt.block_on(async {
-                let mut j = 0;
-                while j * thread_count + i < repos_threadable_t.len() {
-                    let _ =
-                        make_color_data_for(&repos_threadable_t, &schemes_t, j * thread_count + i)
-                            .await;
-                    j += 1;
+                let mut count = 0;
+                loop {
+                    let actualJ;
+                    {
+                        let mut lock = j_t.lock().unwrap();
+                        let jMut: &mut Vec<usize> = lock.as_mut();
+                        actualJ = jMut[0];
+                        jMut[0] += 1;
+                    }
+                    if actualJ >= repos_threadable_t.len() {
+                        break;
+                    }
+                    let _ = make_color_data_for(&repos_threadable_t, &schemes_t, actualJ).await;
+                    count += 1;
+                    count %= 10;
+                    if count == 0 {
+                        println!("{}/{}", actualJ, repos_threadable_t.len());
+                    }
                 }
             });
         }));
@@ -430,6 +453,34 @@ async fn generate_colorscheme(
     //     std::fs::write("gencolors.json", "{}")?;
     // }
     Ok(was_killed)
+}
+
+fn lightness(col: &String) -> Option<f32> {
+    if col.len() != 7 {
+        return None;
+    }
+    let trimmed = col.trim_start_matches('#');
+
+    let value = match u32::from_str_radix(trimmed, 16) {
+        Ok(v) => v,
+        _ => return None,
+    };
+
+    let red: f32 = ((value & 0x00ff0000) >> 16) as f32;
+    let green: f32 = ((value & 0x0000ff00) >> 8) as f32;
+    let blue: f32 = ((value & 0x000000ff) >> 0) as f32;
+    return Some(0.299 * red + 0.587 * green + 0.114 * blue);
+}
+
+fn is_light_theme(theme: &HashMap<String, String>) -> Option<bool> {
+    let bg = theme.get("NormalBg");
+    match bg {
+        None => None,
+        Some(v) => match lightness(v) {
+            None => None,
+            Some(v) => Some(v > 128.0),
+        },
+    }
 }
 
 async fn generate(
@@ -588,13 +639,15 @@ async fn generate(
                 };
                 match serde_json::from_str::<HashMap<String, String>>(&data) {
                     Ok(parsed) if parsed.len() > 0 => {
-                        colorscheme.backgrounds = Some(vec!["light".to_string()]);
-                        // colorscheme.data.light = Some(parsed);
-                        let mut new_data = colorscheme.data.light.unwrap_or(HashMap::new());
-                        for (k, v) in parsed {
-                            new_data.insert(k, v);
+                        let mut new_data = colorscheme.data.light.clone().unwrap_or(HashMap::new());
+                        if is_light_theme(&new_data).unwrap_or(true) {
+                            colorscheme.backgrounds = Some(vec!["light".to_string()]);
+                            // colorscheme.data.light = Some(parsed);
+                            for (k, v) in parsed {
+                                new_data.insert(k, v);
+                            }
+                            colorscheme.data.light = Some(new_data);
                         }
-                        colorscheme.data.light = Some(new_data);
                     }
                     Err(_) => {
                         // println!("Data parse failed on data {}", data);
@@ -638,11 +691,14 @@ async fn generate(
                                 .unwrap()
                                 .push("dark".to_string());
                         }
-                        let mut new_data = colorscheme.data.dark.unwrap_or(HashMap::new());
-                        for (k, v) in parsed {
-                            new_data.insert(k, v);
+                        let mut new_data = colorscheme.data.dark.clone().unwrap_or(HashMap::new());
+
+                        if !is_light_theme(&new_data).unwrap_or(false) {
+                            for (k, v) in parsed {
+                                new_data.insert(k, v);
+                            }
+                            colorscheme.data.dark = Some(new_data);
                         }
-                        colorscheme.data.dark = Some(new_data);
                     }
                     Err(_) => {
                         // println!("Data parse failed on data {}", data);
