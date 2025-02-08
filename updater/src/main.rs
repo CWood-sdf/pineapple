@@ -107,10 +107,10 @@ struct PathData {
     download_url: Option<String>,
 }
 
-#[derive(Deserialize)]
-struct Message {
-    status: u32,
-}
+// #[derive(Deserialize)]
+// struct Message {
+//     status: u32,
+// }
 fn get_dir_name(home: String, dir_base: String) -> String {
     format!("{}/confs/{}/nvim", home, dir_base)
 }
@@ -332,21 +332,21 @@ async fn make_color_data(thread_count: usize) -> Result<(), Box<dyn std::error::
             rt.block_on(async {
                 let mut count = 0;
                 loop {
-                    let actualJ;
+                    let actual_j;
                     {
                         let mut lock = j_t.lock().unwrap();
-                        let jMut: &mut Vec<usize> = lock.as_mut();
-                        actualJ = jMut[0];
-                        jMut[0] += 1;
+                        let j_mut: &mut Vec<usize> = lock.as_mut();
+                        actual_j = j_mut[0];
+                        j_mut[0] += 1;
                     }
-                    if actualJ >= repos_threadable_t.len() {
+                    if actual_j >= repos_threadable_t.len() {
                         break;
                     }
-                    let _ = make_color_data_for(&repos_threadable_t, &schemes_t, actualJ).await;
+                    let _ = make_color_data_for(&repos_threadable_t, &schemes_t, actual_j).await;
                     count += 1;
                     count %= 10;
                     if count == 0 {
-                        println!("{}/{}", actualJ, repos_threadable_t.len());
+                        println!("{}/{}", actual_j, repos_threadable_t.len());
                     }
                 }
             });
