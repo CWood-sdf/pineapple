@@ -15,15 +15,16 @@ end
 
 function M.actualSetup() end
 
+---@type Banana.Instance?
 local inst = nil
 vim.api.nvim_create_user_command("Pineapple2", function()
 	if not has_setup then
 		M.setup()
 	end
 	if inst == nil then
-		inst = require("banana.render").newInstance("pineapple", "pineapple.pineapple")
+		inst = require("banana.instance").newInstance("pineapple", "pineapple.pineapple")
 	end
-	inst:render()
+	inst:open()
 end, {})
 
 vim.api.nvim_create_user_command("Pineapple", function(_)
