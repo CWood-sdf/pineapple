@@ -193,14 +193,14 @@ for i = 1, #exampleCode do
         longestLine = lineLen
     end
 end
-longestLine = 10 + longestLine
-for _, l in ipairs(exampleCode) do
-    local lineLen = 0
-    for _, v in ipairs(l) do
-        lineLen = #v[1] + lineLen
-    end
-    local neededExtra = longestLine - lineLen
-    l[#l][1] = l[#l][1] .. string.rep(" ", neededExtra)
-end
+-- longestLine = 1 + longestLine
+-- for _, l in ipairs(exampleCode) do
+--     local lineLen = 0
+--     for _, v in ipairs(l) do
+--         lineLen = #v[1] + lineLen
+--     end
+--     local neededExtra = longestLine - lineLen
+--     l[#l][1] = l[#l][1] .. string.rep(" ", neededExtra)
+-- end
 
 return exampleCode

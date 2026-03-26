@@ -529,10 +529,10 @@ async fn generate(
                 continue;
             }
         } else {
-            if item.last_no_ts_gen.is_some() && !force {
-                j += 1;
-                continue;
-            }
+            // if item.last_no_ts_gen.is_some() && !force {
+            //     j += 1;
+            //     continue;
+            // }
         }
 
         //stop for 5s
